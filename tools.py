@@ -773,3 +773,59 @@ def CSVNormNoPlot(path):
     #normalization = ((normalization - 1)*2)+1
     
     return (Owl,normalization)
+
+
+def CSVGetAllVelocities(path):
+    import numpy as np
+    from astropy.io import fits
+    import os
+    import matplotlib.pyplot as plt
+
+    c = 299792.458 #km/s
+    
+    Owl,Normflux = CSVNormNoPlot(path)
+    #plt.plot(Owl,Normflux)
+    #plt.show()
+    ## Halpha, Hbeta, Hgamma, Hdelta, Hepsilon, H9, H10
+    lineList =  np.array([6562.79, 4861.35, 4340.472, 4101.734, 3970.075, 3889.064, 3835.397])
+    lineWindows = np.array([[4060.0, 4150.0], [4300.0,4375.0], [4800.0,4950.0]])
+    lineNames = np.array(["Halpha","Hbeta","Hgamma","Hdelta","Hepsilon","H9","H10"])
+    #lineIndex = 1
+    for lineIndex in range(1,4):
+        
+        #offset = 50
+        offset = 25
+    
+        upperLine = lineList[lineIndex] + offset
+        lowerLine = lineList[lineIndex] - offset
+        
+        wherr = np.where((Owl >= lowerLine) & (Owl <= upperLine))
+        flux = Normflux[wherr]
+        wl = Owl[wherr]
+        #wl = np.linspace(lowerLine,upperLine,len(flux))
+        #plt.plot(wl,flux)
+        #plt.axvline(lineList[lineIndex])
+        #plt.show()
+    
+        vel = []
+        for w in range(len(wl)):
+            v = c*(lineList[lineIndex] - wl[w])/lineList[lineIndex]
+            vel.append(v)
+        if (lineIndex == 1):
+            velBeta = vel
+            fluxBeta = flux
+
+        if (lineIndex == 2):
+            velGamma = vel
+            fluxGamma = flux
+
+        if (lineIndex == 3):
+            velDelta = vel
+            fluxDelta = flux
+
+
+    vels = np.array([velBeta,velGamma,velDelta])
+    fluxes = np.array([fluxBeta,fluxGamma,fluxDelta])
+
+
+    return (vels,fluxes)

@@ -190,6 +190,14 @@ plt.xlim(min(tmpWl),max(tmpWl))
 #plt.savefig("/home/seth/sdss_v_Model_normalized.pdf")
 plt.show()
 
+sdssVels, sdssFluxes = tls.CSVGetAllVelocities(sdssFile)
+
+sdssErrs = []
+for i in range(len(sdssFluxes)):
+    sdssErrs.append(0.05*sdssFluxes[i])
+
+
+    
 plot_format()
 plt.plot(tmpWl,tmpFlux,alpha=0.4)
 plt.plot(modelWl,modelFlux)
@@ -246,7 +254,6 @@ for i in range(len(modelVels)):
             global gw3
             gw3 = modelSamples[3].mean() 
 
-
         
 tls.mkdir("ModelFits")
 tls.mkdir("ModelFits/VelFits")
@@ -283,6 +290,15 @@ for j in range(len(lines)):
     ### Do the fit
     #ndim, nwalkers = 7,200
     ndim, nwalkers = 1, 200
+
+    sdssSampler = tls.MCMCfit(lnprobSum,args=(np.array(sdssVels),np.array(sdssFluxes),np.array(sdssErrs)),nwalkers=nwalkers,ndim=ndim,burnInSteps=8000,steps=8000)
+
+    sdssRV, sdssSTD = tls.GetRV(sdssSampler)
+
+    print "\n"
+    print "sdss:"
+    print sdssRV,sdssSTD
+    print "\n"
     
     sampler = tls.MCMCfit(lnprobSum,args=(vels,fluxes,ferrs),nwalkers=nwalkers,ndim=ndim,burnInSteps=8000,steps=8000)
 
