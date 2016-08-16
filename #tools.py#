@@ -760,7 +760,7 @@ def CSVNormNoPlot(path):
     interp = sp.splrep(wl,flux,s=5,k=3)
 
     fluxnew = sp.splev(Owl,interp,der=0)
-
+ 
     #plt.plot(wl,flux,alpha=0.2)
     #plt.plot(Owl,fluxnew,)
     #plt.plot(Owl,Oflux,alpha=0.3)
