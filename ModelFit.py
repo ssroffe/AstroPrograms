@@ -262,6 +262,7 @@ for j in range(len(lines)):
     rvArr.append(rvFit)
     stdArr.append(rvStd)
 
+    """
     off = 0.5
     plot_format()
     ## VERTICAL LINES
@@ -298,7 +299,7 @@ for j in range(len(lines)):
     plt.legend(prop={'size':8})
     plt.savefig("ModelFits/VelFits/"+wdName+"spec_"+str(j)+".pdf")
     plot_format()
-                           
+    """
 timeArr = np.array(timeArr)
 numArr = np.array(numArr)
 rvArr = np.array(rvArr)
