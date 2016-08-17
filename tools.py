@@ -824,7 +824,7 @@ def CSVGetAllVelocities(path):
             fluxDelta = flux
 
 
-    vels = np.array([velBeta,velGamma,velDelta])
+    vels = np.array([np.array(velBeta),np.array(velGamma),np.array(velDelta)])
     fluxes = np.array([fluxBeta,fluxGamma,fluxDelta])
 
 

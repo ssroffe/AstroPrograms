@@ -172,11 +172,13 @@ modelWl = modelData[:,0]
 
 modelFlux = modelFlux / max(modelFlux)
 
+tls.mkdir("sdssFits")
+plot_format()
 plt.plot(sdssWl,sdssFlux,label="sdss")
 plt.plot(modelWl,modelFlux,label="Model")
 plt.legend()
-#plt.savefig("/home/seth/sdss_v_Model_raw.pdf")
-plt.show()
+plt.savefig("sdssFits/sdss_v_Model_raw.pdf")
+#plt.show()
 plot_format()
 
 modelWl,modelFlux = tls.ModelNormNoPlot(modelFile)
@@ -187,8 +189,8 @@ sdssWl, sdssFlux = tls.CSVNormNoPlot(sdssFile)
 plt.plot(sdssWl,sdssFlux)
 plt.plot(modelWl,modelFlux)
 plt.xlim(min(tmpWl),max(tmpWl))
-#plt.savefig("/home/seth/sdss_v_Model_normalized.pdf")
-plt.show()
+plt.savefig("sdssFits/sdss_v_Model_normalized.pdf")
+#plt.show()
 
 sdssVels, sdssFluxes = tls.CSVGetAllVelocities(sdssFile)
 
@@ -292,13 +294,31 @@ for j in range(len(lines)):
     ndim, nwalkers = 1, 200
 
     sdssSampler = tls.MCMCfit(lnprobSum,args=(np.array(sdssVels),np.array(sdssFluxes),np.array(sdssErrs)),nwalkers=nwalkers,ndim=ndim,burnInSteps=8000,steps=8000)
-
+    off = 0.5
     sdssRV, sdssSTD = tls.GetRV(sdssSampler)
 
     print "\n"
     print "sdss:"
     print sdssRV,sdssSTD
     print "\n"
+    plot_format()
+    for i in range(len(modelVels)):
+        #plt.plot(sdssVels[i],sdssFluxes[i]+i*off)
+        if i == 0:
+            co = 'b'
+        elif i == 1:
+            co = 'g'
+        else:
+            co = 'r'
+        plt.step(sdssVels[i],sdssFluxes[i]+i*off,where='mid',linewidth=1.5,color=co)
+    plt.axvline(sdssRV,color='purple',ls='--')
+    plt.axvline(0,color='k',ls='--')
+    plt.plot(sdssVels[0],voigt(sdssVels[0],ld1,lw1,gd1,gw1,sdssRV)+0*off,color='k',linewidth=1.5,label='data fits')
+    plt.plot(sdssVels[1],voigt(sdssVels[1],ld2,lw2,gd2,gw2,sdssRV)+1*off,color='k',linewidth=1.5)
+    plt.plot(sdssVels[2],voigt(sdssVels[2],ld3,lw3,gd3,gw3,sdssRV)+2*off,color='k',linewidth=1.5)
+
+    plt.title(wdName+" RV value="+str(sdssRV)+" RV Err="+str(sdssSTD))
+    plt.savefig("sdssFits/"+wdName+"_sdssVelFit.pdf")
     
     sampler = tls.MCMCfit(lnprobSum,args=(vels,fluxes,ferrs),nwalkers=nwalkers,ndim=ndim,burnInSteps=8000,steps=8000)
 
