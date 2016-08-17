@@ -378,7 +378,7 @@ def NormNoPlot(path):
     normalization = Oflux/fluxnew
 
     ####NEW STUFF
-    #normalization = ((normalization - 1)*2)+1
+    normalization = ((normalization - 1)*2)+1
 
     errorPath = path[:-5] + "variance.fits"
 
@@ -668,7 +668,7 @@ def ModelNormNoPlot(path):
     normalization = Oflux/fluxnew
 
     ####NEW STUFF
-    #normalization = ((normalization - 1)*2)+1
+    normalization = ((normalization - 1)*2)+1
     
     return (Owl,normalization)
 
@@ -770,7 +770,7 @@ def CSVNormNoPlot(path):
     normalization = Oflux/fluxnew
 
     ####NEW STUFF
-    #normalization = ((normalization - 1)*2)+1
+    normalization = ((normalization - 1)*2)+1
     
     return (Owl,normalization)
 

@@ -141,7 +141,7 @@ else:
             return -np.inf
         return lp + lnlike(p, x, y, yerr)
 
-    """
+    
     def lnprobSum(p, x, y, yerr):
         rvs = p
         
@@ -154,19 +154,11 @@ else:
         s = lnprob(p1,x1,y1,yerr1) + lnprob(p2,x2,y2,yerr2) + lnprob(p3,x3,y3,yerr3)
         
         return s
-    """
-
-    def lnprobSum(x, y, yerr,rvs):
-        #rvs = p
-        
+    
+    def voigtSum(x, RVShift):
         x1,x2,x3 = x
-        y1,y2,y3 = y
-        yerr1,yerr2,yerr3 = yerr
-        p1 = (ld1,lw1,gd1,gw1,rvs)
-        p2 = (ld2,lw2,gd2,gw2,rvs)
-        p3 = (ld3,lw3,gd3,gw3,rvs)
-        s = lnprob(p1,x1,y1,yerr1) + lnprob(p2,x2,y2,yerr2) + lnprob(p3,x3,y3,yerr3)
-        
+        #s = voigt(x1,ld1,lw1,gd1,gw1,RVShift) + voigt(x2,ld2,lw2,gd2,gw2,RVShift) + voigt(x3,ld3,lw3,gd3,gw3,RVShift)
+        s = voigt1(x1,RVShift) + voigt2(x2,RVShift) + voigt3(x3,RVShift)
         return s
 
     
@@ -201,7 +193,8 @@ else:
     
 for i in range(len(modelVels)):
     
-    modelSampler = tls.MCMCfit(lnprobModel,args=(np.array(modelVels[i]),np.array(modelFluxes[i]),np.array(modelErrs[i])),nwalkers=mwalkers,ndim=mdim,burnInSteps=32000,steps=32000)
+    #modelSampler = tls.MCMCfit(lnprobModel,args=(np.array(modelVels[i]),np.array(modelFluxes[i]),np.array(modelErrs[i])),nwalkers=mwalkers,ndim=mdim,burnInSteps=32000,steps=32000)
+    modelSampler = tls.MCMCfit(lnprobModel,args=(np.array(modelVels[i]),np.array(modelFluxes[i]),np.array(modelErrs[i])),nwalkers=mwalkers,ndim=mdim,burnInSteps=16000,steps=16000)
     modelSamples = modelSampler.flatchain.reshape((-1,mdim)).T
     if i == 0:
         global ld1
@@ -267,18 +260,23 @@ for j in range(len(lines)):
     ### Get velocites, fluxes and errors
     vels,fluxes,ferrs = tls.GetAllVelocities(path)
 
+    
+    #fluxes = np.concatenate(fluxes)
+
     ### Do the fit
     #ndim, nwalkers = 7,200
     #ndim, nwalkers = 1, 200
     
     #sampler = tls.MCMCfit(lnprobSum,args=(vels,fluxes,ferrs),nwalkers=nwalkers,ndim=ndim,burnInSteps=8000,steps=8000)
 
-    popt,pcov = sp.curve_fit(lnprobSum,vels,fluxes,sigma=ferrs)
-    print popt
+    popt,pcov = sp.curve_fit(voigt2,vels[1],fluxes[1],sigma=ferrs[1])
+    #print popt
+    perr = np.sqrt(np.diag(pcov))
+    print popt,perr
 
     ### Get the RV Shifts from the sampler with errors
-    rvFit,rvStd = tls.GetRV(sampler)
-    print rvFit,rvStd
+    #rvFit,rvStd = tls.GetRV(sampler)
+    #print rvFit,rvStd
 
     numArr.append(j)
     rvArr.append(rvFit)

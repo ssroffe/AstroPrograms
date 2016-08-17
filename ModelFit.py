@@ -180,7 +180,7 @@ else:
     
 for i in range(len(modelVels)):
     
-    modelSampler = tls.MCMCfit(lnprobModel,args=(np.array(modelVels[i]),np.array(modelFluxes[i]),np.array(modelErrs[i])),nwalkers=mwalkers,ndim=mdim,burnInSteps=32000,steps=32000)
+    modelSampler = tls.MCMCfit(lnprobModel,args=(np.array(modelVels[i]),np.array(modelFluxes[i]),np.array(modelErrs[i])),nwalkers=mwalkers,ndim=mdim,burnInSteps=16000,steps=16000)
     modelSamples = modelSampler.flatchain.reshape((-1,mdim)).T
     if i == 0:
         global ld1
