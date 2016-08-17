@@ -543,7 +543,7 @@ def GetAllVelocities(path):
             fluxDelta = flux
             ferrDelta = ferr
 
-    vels = np.array([velBeta,velGamma,velDelta])
+    vels = np.array([np.array(velBeta),np.array(velGamma),np.array(velDelta)])
     fluxes = np.array([fluxBeta,fluxGamma,fluxDelta])
     ferrs = np.array([ferrBeta,ferrGamma,ferrDelta])
 
@@ -721,7 +721,7 @@ def ModelGetAllVelocities(path):
             fluxDelta = flux
 
 
-    vels = np.array([velBeta,velGamma,velDelta])
+    vels = np.array([np.array(velBeta),np.array(velGamma),np.array(velDelta)])
     fluxes = np.array([fluxBeta,fluxGamma,fluxDelta])
 
 
