@@ -1,5 +1,3 @@
-#!/usr/bin/python
-
 import tools as tls
 from astropy.io import fits
 import numpy as np
@@ -115,6 +113,18 @@ else:
     def voigt(x, Ldepth, Lwidth, Gdepth, Gwidth, RVShift):
         return 1.0-Ldepth/(1.0 + ((x-RVShift)/Lwidth)**2) - Gdepth*np.exp(-(x-RVShift)**2/(2*Gwidth**2))
     
+
+    def voigt1(x, RVShift):
+        Ldepth,Lwidth,Gdepth,Gwidth= ld1,lw1,gd1,gw1
+        return 1.0-Ldepth/(1.0 + ((x-RVShift)/Lwidth)**2) - Gdepth*np.exp(-(x-RVShift)**2/(2*Gwidth**2))
+    def voigt2(x, RVShift):
+        Ldepth,Lwidth,Gdepth,Gwidth= ld2,lw2,gd2,gw2
+        return 1.0-Ldepth/(1.0 + ((x-RVShift)/Lwidth)**2) - Gdepth*np.exp(-(x-RVShift)**2/(2*Gwidth**2))
+    def voigt3(x, RVShift):
+        Ldepth,Lwidth,Gdepth,Gwidth= ld3,lw3,gd3,gw3
+        return 1.0-Ldepth/(1.0 + ((x-RVShift)/Lwidth)**2) - Gdepth*np.exp(-(x-RVShift)**2/(2*Gwidth**2))
+
+
     def lnlike(p,x,y,err):
         Ldepth,Lwidth,Gdepth,Gwidth,RVShift = p
         return -np.sum((y-voigt(x,Ldepth,Lwidth,Gdepth,Gwidth,RVShift))**2/(2*err))
@@ -131,18 +141,27 @@ else:
             return -np.inf
         return lp + lnlike(p, x, y, yerr)
 
+    """
     def lnprobSum(p, x, y, yerr):
         rvs = p
         
         x1,x2,x3 = x
         y1,y2,y3 = y
         yerr1,yerr2,yerr3 = yerr
-        """print "\n"
-        print ld1, lw1, gd1, gw1
-        print ld2, lw2, gd2, gw2
-        print ld3, lw3, gd3, gw3
-        print "\n"
-        """
+        p1 = (ld1,lw1,gd1,gw1,rvs)
+        p2 = (ld2,lw2,gd2,gw2,rvs)
+        p3 = (ld3,lw3,gd3,gw3,rvs)
+        s = lnprob(p1,x1,y1,yerr1) + lnprob(p2,x2,y2,yerr2) + lnprob(p3,x3,y3,yerr3)
+        
+        return s
+    """
+
+    def lnprobSum(x, y, yerr,rvs):
+        #rvs = p
+        
+        x1,x2,x3 = x
+        y1,y2,y3 = y
+        yerr1,yerr2,yerr3 = yerr
         p1 = (ld1,lw1,gd1,gw1,rvs)
         p2 = (ld2,lw2,gd2,gw2,rvs)
         p3 = (ld3,lw3,gd3,gw3,rvs)
@@ -150,34 +169,15 @@ else:
         
         return s
 
-
+    
 lines = [line.rstrip('\n') for line in open('filelist')]
 
 plot_format()
 
 modelFile = "../../KoesterModels/da"+open('modelVal').read().splitlines()[0]+".dk"
 
-sdssFile = "tmpSpec"
-
-sdssData = np.genfromtxt(sdssFile,skip_header=1,delimiter=',')
-
-#sdssWl = sdssData[:,0]
-#sdssFlux = sdssData[:,1]
-
-#modelData = np.genfromtxt(modelFile,skip_header=34)
-#modelFlux = modelData[:,1]
-#modelWl = modelData[:,0]
-
 modelWl,modelFlux = tls.ModelNormNoPlot(modelFile)
 tmpWl,tmpFlux,_ = tls.NormNoPlot(lines[0])
-
-sdssWl, sdssFlux = tls.CSVNormNoPlot(sdssFile)
-
-plt.plot(sdssWl,sdssFlux)
-plt.plot(modelWl,modelFlux)
-plt.xlim(min(tmpWl),max(tmpWl))
-plt.show()
-
 plot_format()
 plt.plot(tmpWl,tmpFlux,alpha=0.4)
 plt.plot(modelWl,modelFlux)
@@ -237,7 +237,6 @@ for i in range(len(modelVels)):
 
         
 tls.mkdir("ModelFits")
-tls.mkdir("ModelFits/VelFits")
 
 numArr = []
 rvArr = []
@@ -270,10 +269,12 @@ for j in range(len(lines)):
 
     ### Do the fit
     #ndim, nwalkers = 7,200
-    ndim, nwalkers = 1, 200
+    #ndim, nwalkers = 1, 200
     
-    sampler = tls.MCMCfit(lnprobSum,args=(vels,fluxes,ferrs),nwalkers=nwalkers,ndim=ndim,burnInSteps=8000,steps=8000)
+    #sampler = tls.MCMCfit(lnprobSum,args=(vels,fluxes,ferrs),nwalkers=nwalkers,ndim=ndim,burnInSteps=8000,steps=8000)
 
+    popt,pcov = sp.curve_fit(lnprobSum,vels,fluxes,sigma=ferrs)
+    print popt
 
     ### Get the RV Shifts from the sampler with errors
     rvFit,rvStd = tls.GetRV(sampler)
@@ -282,44 +283,8 @@ for j in range(len(lines)):
     numArr.append(j)
     rvArr.append(rvFit)
     stdArr.append(rvStd)
+    
 
-    off = 0.5
-    plot_format()
-    ## VERTICAL LINES
-    plt.axvline(0,ls="--",color='k')
-    plt.axvline(rvFit,color='purple',linewidth=1.5,label="RV fit")
-    plt.axvline(rvFit+rvStd,ls='--',color='purple',label="RV +/- $\sigma$")
-    plt.axvline(rvFit-rvStd,ls='--',color='purple')
-
-    ## DATA (MODEL AND REAL)
-    for i in range(len(modelVels)):
-        plt.plot(modelVels[i],modelFluxes[i]+i*off)
-        if i == 0:
-            co = 'b'
-        elif i == 1:
-            co = 'g'
-        else:
-            co = 'r'
-        plt.step(vels[i],fluxes[i]+i*off,where='mid',linewidth=1.5,color=co)
-
-    ### REAL DATA FITS
-    plt.plot(vels[0],voigt(vels[0],ld1,lw1,gd1,gw1,rvFit)+0*off,color='k',linewidth=1.5,label='data fits')
-    plt.plot(vels[1],voigt(vels[1],ld2,lw2,gd2,gw2,rvFit)+1*off,color='k',linewidth=1.5)
-    plt.plot(vels[2],voigt(vels[2],ld3,lw3,gd3,gw3,rvFit)+2*off,color='k',linewidth=1.5)
-
-    ### MODEL DATA FITS
-    plt.plot(modelVels[0],voigtModel(modelVels[0],ld1,lw1,gd1,gw1)+0*off,color="y",linewidth=1.5,label='model fits')
-    plt.plot(modelVels[1],voigtModel(modelVels[1],ld2,lw2,gd2,gw2)+1*off,color="y",linewidth=1.5)
-    plt.plot(modelVels[2],voigtModel(modelVels[2],ld3,lw3,gd3,gw3)+2*off,color="y",linewidth=1.5)
-
-    plt.xlim(min(vels[0]),max(vels[0]))
-    plt.title(wdName+" Spectrum: " +str(j))
-    plt.xlabel("velocity [km/s]")
-    plt.ylabel("Normalized Flux + offset")
-    plt.legend(prop={'size':8})
-    plt.savefig("ModelFits/VelFits/"+wdName+"spec_"+str(j)+".pdf")
-    plot_format()
-                           
 timeArr = np.array(timeArr)
 numArr = np.array(numArr)
 rvArr = np.array(rvArr)
