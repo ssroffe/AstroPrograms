@@ -24,7 +24,7 @@ def lnlikeSine(p,x,y,err):
 def lnpriorSine(p):
     A,P,Phi,Gamma = p
     #minimum at 0.02 days for P
-    if 5.0 < A < 500.0 and 0.02 < P < 0.04 and 0.0 < Phi < (2*np.pi) and -500.0 < Gamma < 500.0:
+    if 5.0 < A < 500.0 and 0.02 < P < 0.1 and 0.0 < Phi < (2*np.pi) and -500.0 < Gamma < 500.0:
         return 0.0
     return -np.inf
 
@@ -268,7 +268,7 @@ rvArr = np.array(rvArr)
 stdArr = np.array(stdArr)
 
 Amin, Amax = 5.0, 500.0
-Pmin, Pmax = 0.02,0.04
+Pmin, Pmax = 0.02,0.1
 Phimin,Phimax = 0.0,(2*np.pi)
 GamMin, GamMax = -500.0, 500.0
 
