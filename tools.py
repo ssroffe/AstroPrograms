@@ -353,15 +353,18 @@ def NormNoPlot(path):
     flux = flux / max(flux)
     Oflux = Oflux / max(Oflux)
     
-    lineList =  np.array([6562.79, 4861.35, 4340.472, 4101.734, 3970.075, 3889.064, 3835.397])
+    #lineList =  np.array([6562.79, 4861.35, 4340.472, 4101.734, 3970.075, 3889.064, 3835.397])
+    lineList = np.array([4101.734,4340.472,4861.35])
     lineWindows = np.array([[4060.0, 4150.0], [4300.0,4375.0], [4800.0,4950.0]])
 
-    upperLine = lineList + 50
-    lowerLine = lineList - 50
+    offset = 100
+    upperLine = lineList + offset
+    lowerLine = lineList - offset
 
     ## cuts
     for i in range(len(lineList)):
-        cutList = np.where((wl >= lowerLine[i]) & (wl <= upperLine[i]))
+        cutList = np.where((wl >= lineWindows[i][0]) & (wl <= lineWindows[i][1]))
+        #cutList = np.where((wl >= lowerLine[i]) & (wl <= upperLine[i]))
         flux = np.delete(flux,cutList)
         wl = np.delete(wl,cutList)
     
@@ -378,7 +381,7 @@ def NormNoPlot(path):
     normalization = Oflux/fluxnew
 
     ####NEW STUFF
-    normalization = ((normalization - 1)*2)+1
+    #normalization = ((normalization - 1)*2)+1
 
     errorPath = path[:-5] + "variance.fits"
 
@@ -643,15 +646,18 @@ def ModelNormNoPlot(path):
     flux = flux / max(flux)
     Oflux = Oflux / max(Oflux)
     
-    lineList =  np.array([6562.79, 4861.35, 4340.472, 4101.734, 3970.075, 3889.064, 3835.397])
+    #lineList =  np.array([6562.79, 4861.35, 4340.472, 4101.734, 3970.075, 3889.064, 3835.397])
+    lineList = np.array([4101.734,4340.472,4861.35])
     lineWindows = np.array([[4060.0, 4150.0], [4300.0,4375.0], [4800.0,4950.0]])
 
-    upperLine = lineList + 50
-    lowerLine = lineList - 50
+    offset = 100
+    upperLine = lineList + offset
+    lowerLine = lineList - offset
 
     ## cuts
     for i in range(len(lineList)):
-        cutList = np.where((wl >= lowerLine[i]) & (wl <= upperLine[i]))
+        cutList = np.where((wl >= lineWindows[i][0]) & (wl <= lineWindows[i][1]))
+        #cutList = np.where((wl >= lowerLine[i]) & (wl <= upperLine[i]))
         flux = np.delete(flux,cutList)
         wl = np.delete(wl,cutList)
     
@@ -668,7 +674,7 @@ def ModelNormNoPlot(path):
     normalization = Oflux/fluxnew
 
     ####NEW STUFF
-    normalization = ((normalization - 1)*2)+1
+    #normalization = ((normalization - 1)*2)+1
     
     return (Owl,normalization)
 
@@ -744,15 +750,18 @@ def CSVNormNoPlot(path):
     
     Owl = sdssData[:,0]
 
-    lineList =  np.array([6562.79, 4861.35, 4340.472, 4101.734, 3970.075, 3889.064, 3835.397])
+    #lineList =  np.array([6562.79, 4861.35, 4340.472, 4101.734, 3970.075, 3889.064, 3835.397])
+    lineList = np.array([4101.734,4340.472,4861.35])
     lineWindows = np.array([[4060.0, 4150.0], [4300.0,4375.0], [4800.0,4950.0]])
 
-    upperLine = lineList + 50
-    lowerLine = lineList - 50
+    offset = 100
+    upperLine = lineList + offset
+    lowerLine = lineList - offset
 
     ## cuts
     for i in range(len(lineList)):
-        cutList = np.where((wl >= lowerLine[i]) & (wl <= upperLine[i]))
+        #cutList = np.where((wl >= lowerLine[i]) & (wl <= upperLine[i]))
+        cutList = np.where((wl >= lineWindows[i][0]) & (wl <= lineWindows[i][1]))
         flux = np.delete(flux,cutList)
         wl = np.delete(wl,cutList)
     
@@ -770,7 +779,7 @@ def CSVNormNoPlot(path):
     normalization = Oflux/fluxnew
 
     ####NEW STUFF
-    normalization = ((normalization - 1)*2)+1
+    #normalization = ((normalization - 1)*2)+1
     
     return (Owl,normalization)
 

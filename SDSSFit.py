@@ -189,6 +189,7 @@ sdssWl, sdssFlux = tls.CSVNormNoPlot(sdssFile)
 plt.plot(sdssWl,sdssFlux)
 plt.plot(modelWl,modelFlux)
 plt.xlim(min(tmpWl),max(tmpWl))
+plt.ylim(0,2)
 plt.savefig("sdssFits/sdss_v_Model_normalized.pdf")
 #plt.show()
 
