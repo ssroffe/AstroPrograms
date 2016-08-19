@@ -504,17 +504,19 @@ def GetAllVelocities(path):
     #Normflux = ((Normflux-1)*2)+1
 
     ## Halpha, Hbeta, Hgamma, Hdelta, Hepsilon, H9, H10
-    lineList =  np.array([6562.79, 4861.35, 4340.472, 4101.734, 3970.075, 3889.064, 3835.397])
+    #lineList =  np.array([6562.79, 4861.35, 4340.472, 4101.734, 3970.075, 3889.064, 3835.397])
+    lineList = np.array([4101.734,4340.472,4861.35])
     lineWindows = np.array([[4060.0, 4150.0], [4300.0,4375.0], [4800.0,4950.0]])
     lineNames = np.array(["Halpha","Hbeta","Hgamma","Hdelta","Hepsilon","H9","H10"])
     #lineIndex = 1
-    for lineIndex in range(1,4):
+    #for lineIndex in range(1,4):
+    for lineIndex in range(len(lineList)):
         
         #offset = 50
         offset = 25
     
-        upperLine = lineList[lineIndex] + offset
-        lowerLine = lineList[lineIndex] - offset
+        upperLine = lineList[lineIndex] + lineWindows[lineIndex][1]
+        lowerLine = lineList[lineIndex] - lineWindows[lineIndex][0]
         
         #plt.axvline(upperLine,color='black')
         #plt.axvline(lowerLine,color="black")
@@ -533,15 +535,15 @@ def GetAllVelocities(path):
         for w in range(len(wl)):
             v = c*(lineList[lineIndex] - wl[w])/lineList[lineIndex]
             vel.append(v)
-        if (lineIndex == 1):
+        if (lineIndex == 0):
             velBeta = vel
             fluxBeta = flux
             ferrBeta = ferr
-        if (lineIndex == 2):
+        if (lineIndex == 1):
             velGamma = vel
             fluxGamma = flux
             ferrGamma = ferr
-        if (lineIndex == 3):
+        if (lineIndex == 2):
             velDelta = vel
             fluxDelta = flux
             ferrDelta = ferr
@@ -690,46 +692,51 @@ def ModelGetAllVelocities(path):
     #plt.plot(Owl,Normflux)
     #plt.show()
     ## Halpha, Hbeta, Hgamma, Hdelta, Hepsilon, H9, H10
-    lineList =  np.array([6562.79, 4861.35, 4340.472, 4101.734, 3970.075, 3889.064, 3835.397])
+    #lineList =  np.array([6562.79, 4861.35, 4340.472, 4101.734, 3970.075, 3889.064, 3835.397])
+    lineList = np.array([4101.734,4340.472,4861.35])
     lineWindows = np.array([[4060.0, 4150.0], [4300.0,4375.0], [4800.0,4950.0]])
-    lineNames = np.array(["Halpha","Hbeta","Hgamma","Hdelta","Hepsilon","H9","H10"])
-    #lineIndex = 1
-    for lineIndex in range(1,4):
+    lineNames = np.array(["Halpha","Hbeta","Hgamma","Hdelta","Hepsilon","H9","H10"]
+    )
+    for lineIndex in range(len(lineList)):
         
         #offset = 50
         offset = 25
-    
-        upperLine = lineList[lineIndex] + offset
-        lowerLine = lineList[lineIndex] - offset
         
+        upperLine = lineList[lineIndex] + lineWindows[lineIndex][1]
+        lowerLine = lineList[lineIndex] - lineWindows[lineIndex][0]
+        
+        #plt.axvline(upperLine,color='black')
+        #plt.axvline(lowerLine,color="black")
+        #plt.plot(Owl,Normflux)
+        #plt.show()
+    
         wherr = np.where((Owl >= lowerLine) & (Owl <= upperLine))
         flux = Normflux[wherr]
+        #ferr = errorNorm[wherr]
         wl = Owl[wherr]
         #wl = np.linspace(lowerLine,upperLine,len(flux))
         #plt.plot(wl,flux)
-        #plt.axvline(lineList[lineIndex])
         #plt.show()
     
         vel = []
         for w in range(len(wl)):
             v = c*(lineList[lineIndex] - wl[w])/lineList[lineIndex]
             vel.append(v)
-        if (lineIndex == 1):
+        if (lineIndex == 0):
             velBeta = vel
             fluxBeta = flux
-
-        if (lineIndex == 2):
+            #ferrBeta = ferr
+        if (lineIndex == 1):
             velGamma = vel
             fluxGamma = flux
-
-        if (lineIndex == 3):
+            #ferrGamma = ferr
+        if (lineIndex == 2):
             velDelta = vel
             fluxDelta = flux
-
+            #ferrDelta = ferr
 
     vels = np.array([np.array(velBeta),np.array(velGamma),np.array(velDelta)])
     fluxes = np.array([fluxBeta,fluxGamma,fluxDelta])
-
 
     return (vels,fluxes)
 
@@ -796,43 +803,51 @@ def CSVGetAllVelocities(path):
     #plt.plot(Owl,Normflux)
     #plt.show()
     ## Halpha, Hbeta, Hgamma, Hdelta, Hepsilon, H9, H10
-    lineList =  np.array([6562.79, 4861.35, 4340.472, 4101.734, 3970.075, 3889.064, 3835.397])
+
+
+    lineList = np.array([4101.734,4340.472,4861.35])
     lineWindows = np.array([[4060.0, 4150.0], [4300.0,4375.0], [4800.0,4950.0]])
-    lineNames = np.array(["Halpha","Hbeta","Hgamma","Hdelta","Hepsilon","H9","H10"])
-    #lineIndex = 1
-    for lineIndex in range(1,4):
+    lineNames = np.array(["Halpha","Hbeta","Hgamma","Hdelta","Hepsilon","H9","H10"]
+    )
+    for lineIndex in range(len(lineList)):
         
         #offset = 50
         offset = 25
-    
-        upperLine = lineList[lineIndex] + offset
-        lowerLine = lineList[lineIndex] - offset
         
+        upperLine = lineList[lineIndex] + lineWindows[lineIndex][1]
+        lowerLine = lineList[lineIndex] - lineWindows[lineIndex][0]
+        
+        #plt.axvline(upperLine,color='black')
+        #plt.axvline(lowerLine,color="black")
+        #plt.plot(Owl,Normflux)
+        #plt.show()
+    
         wherr = np.where((Owl >= lowerLine) & (Owl <= upperLine))
         flux = Normflux[wherr]
+        
         wl = Owl[wherr]
         #wl = np.linspace(lowerLine,upperLine,len(flux))
         #plt.plot(wl,flux)
-        #plt.axvline(lineList[lineIndex])
         #plt.show()
     
         vel = []
         for w in range(len(wl)):
             v = c*(lineList[lineIndex] - wl[w])/lineList[lineIndex]
             vel.append(v)
-        if (lineIndex == 1):
+        if (lineIndex == 0):
             velBeta = vel
             fluxBeta = flux
-
-        if (lineIndex == 2):
+            #ferrBeta = ferr
+        if (lineIndex == 1):
             velGamma = vel
             fluxGamma = flux
-
-        if (lineIndex == 3):
+            #ferrGamma = ferr
+        if (lineIndex == 2):
             velDelta = vel
             fluxDelta = flux
+            #ferrDelta = ferr
 
-
+    
     vels = np.array([np.array(velBeta),np.array(velGamma),np.array(velDelta)])
     fluxes = np.array([fluxBeta,fluxGamma,fluxDelta])
 
