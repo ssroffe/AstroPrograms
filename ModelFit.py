@@ -99,7 +99,7 @@ else:
 
     def lnpriorModel(p):
         Ldepth,Lwidth,Gdepth,Gwidth = p
-        if 0.0 < Ldepth < 2.0 and 0.0 < Lwidth < 2000.0 and 0.0 < Gdepth < 2.0 and 0.0 < Gwidth < 2000.0:
+        if 0.0 < Ldepth < 1.0 and 0.0 < Lwidth < 2000.0 and 0.0 < Gdepth < 1.0 and 0.0 < Gwidth < 2000.0:
             return 0.0
         return -np.inf
     
@@ -186,7 +186,7 @@ for i in range(len(modelVels)):
         global ld1
         ld1 = modelSamples[0].mean()
         global lw1
-        lw1 = modelSamples[1].mean() + 100
+        lw1 = modelSamples[1].mean()
         if (len(sys.argv) == 1) or (sys.argv[1] is "voigt"):
             global gd1
             gd1 = modelSamples[2].mean()
@@ -196,7 +196,7 @@ for i in range(len(modelVels)):
         global ld2
         ld2 = modelSamples[0].mean()
         global lw2
-        lw2 = modelSamples[1].mean() + 100
+        lw2 = modelSamples[1].mean()
         if (len(sys.argv) == 1) or (sys.argv[1] is "voigt"):
             global gd2
             gd2 = modelSamples[2].mean()
@@ -206,7 +206,7 @@ for i in range(len(modelVels)):
         global ld3
         ld3 = modelSamples[0].mean()
         global lw3
-        lw3 = modelSamples[1].mean() +100
+        lw3 = modelSamples[1].mean()
         if (len(sys.argv) == 1) or (sys.argv[1] is "voigt"):
             global gd3
             gd3 = modelSamples[2].mean()
