@@ -223,9 +223,10 @@ tmpWl,tmpFlux,_ = tls.NormNoPlot(lines[0])
 
 sdssWl, sdssFlux = tls.CSVNormNoPlot(sdssFile)
 
-plt.plot(sdssWl,sdssFlux)
+plt.plot(sdssWl,sdssFlux,alpha=0.5)
 plt.plot(modelWl,modelFlux)
 plt.xlim(min(tmpWl),max(tmpWl))
+plt.axhline(1,color='k',ls='--')
 plt.ylim(0,2)
 plt.savefig("sdssFits/sdss_v_Model_normalized.pdf")
 #plt.show()
@@ -234,7 +235,7 @@ sdssVels, sdssFluxes = tls.CSVGetAllVelocities(sdssFile)
 
 sdssErrs = []
 for i in range(len(sdssFluxes)):
-    sdssErrs.append(0.05*sdssFluxes[i])
+    sdssErrs.append(0.1*sdssFluxes[i])
 
 
     
@@ -257,7 +258,7 @@ plotIndex = 1
 if (len(sys.argv) == 2) and sys.argv[1] is "lorentzian":
     mdim,mwalkers = 2,200
 else:
-    mdim,mwalkers = 4,100
+    mdim,mwalkers = 4,200
     
 for i in range(len(modelVels)):
     
@@ -273,6 +274,7 @@ for i in range(len(modelVels)):
             gd1 = modelSamples[2].mean()
             global gw1
             gw1 = modelSamples[3].mean()
+        #modelSampler.reset()
     elif i == 1:
         global ld2
         ld2 = modelSamples[0].mean()
@@ -283,6 +285,7 @@ for i in range(len(modelVels)):
             gd2 = modelSamples[2].mean()
             global gw2
             gw2 = modelSamples[3].mean()
+        #modelSampler.reset()
     elif i == 2:
         global ld3
         ld3 = modelSamples[0].mean()
@@ -292,7 +295,8 @@ for i in range(len(modelVels)):
             global gd3
             gd3 = modelSamples[2].mean()
             global gw3
-            gw3 = modelSamples[3].mean() 
+            gw3 = modelSamples[3].mean()
+    modelSampler.reset()
 
         
 tls.mkdir("ModelFits")
@@ -331,7 +335,7 @@ for j in range(len(lines)):
     #ndim, nwalkers = 7,200
     ndim, nwalkers = 1, 200
 
-    sdssSampler = tls.MCMCfit(lnprobSum,args=(np.array(sdssVels),np.array(sdssFluxes),np.array(sdssErrs)),nwalkers=nwalkers,ndim=ndim,burnInSteps=8000,steps=8000)
+    sdssSampler = tls.MCMCfit(lnprobSum,args=(np.array(sdssVels),np.array(sdssFluxes),np.array(sdssErrs)),nwalkers=nwalkers,ndim=ndim,burnInSteps=16000,steps=16000)
     off = 0.5
     sdssRV, sdssSTD = tls.GetRV(sdssSampler)
 
