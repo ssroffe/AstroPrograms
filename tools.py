@@ -363,17 +363,18 @@ def NormNoPlot(path):
     lowerLine = lineList - offset
 
     ## cuts
-    for i in range(len(lineList)):
-        cutList = np.where((wl >= lineWindows[i][0]) & (wl <= lineWindows[i][1]))
-        #cutList = np.where((wl >= lowerLine[i]) & (wl <= upperLine[i]))
-        flux = np.delete(flux,cutList)
-        wl = np.delete(wl,cutList)
+    #for i in range(len(lineList)):
+    #    cutList = np.where((wl >= lineWindows[i][0]) & (wl <= lineWindows[i][1]))
+    #    #cutList = np.where((wl >= lowerLine[i]) & (wl <= upperLine[i]))
+    #    flux = np.delete(flux,cutList)
+    #    wl = np.delete(wl,cutList)
     
     ## interpolation
     interp = sp.splrep(wl,flux,s=5,k=3)
 
-    wlnew = np.linspace(wl_start,wl_end,len(Oflux))
-    fluxnew = sp.splev(Owl,interp,der=0)
+    #wlnew = np.linspace(wl_start,wl_end,len(Oflux))
+    #fluxnew = sp.splev(Owl,interp,der=0)
+    fluxnew = savitzky_golay(flux,53,5)
 
     #plt.plot(Owl,fluxnew)
     #plt.plot(Owl,Oflux)
@@ -671,14 +672,24 @@ def ModelNormNoPlot(path):
         wl = np.delete(wl,cutList)
     
     ## interpolation
-    interp = sp.splrep(wl,flux,s=5,k=3)
+    #interp = sp.splrep(wl,flux,s=5,k=3)
 
-    fluxnew = sp.splev(Owl,interp,der=0)
+    #fluxnew = sp.splev(Owl,interp,der=0)
 
-    #plt.plot(Owl,Oflux)
-    #plt.plot(Owl,fluxnew)
-    #plt.title("TMP")
-    #plt.show()
+    #fluxsg = savitzky_golay(flux,103,5)
+    #interp = sp.splrep(wl,fluxsg,s=0)
+    #fluxnew = sp.interp1d(Owl,fluxsg)
+    #fluxnew = sp.splev(Owl,interp,der=0)
+
+    #interp = sp.InterpolatedUnivariateSpline(wl,flux,k=2)
+    #fluxnew = interp(Owl)
+
+    fluxnew = np.interp(Owl,wl,flux)
+    
+    plt.plot(Owl,Oflux)
+    plt.plot(Owl,fluxnew)
+    plt.title("TMP")
+    plt.show()
     
     normalization = Oflux/fluxnew
 
@@ -789,15 +800,27 @@ def CSVNormNoPlot(path):
         wl = np.delete(wl,cutList)
     
     ## interpolation
-    interp = sp.splrep(wl,flux,s=5,k=3)
+    #interp = sp.splrep(wl,flux,s=5,k=3)
 
-    fluxnew = sp.splev(Owl,interp,der=0)
-    test = planck(Owl,Teff)
-    testNorm = test /max(test)
+    #fluxnew = sp.splev(Owl,interp,der=0)
+    #fluxnew = savitzky_golay(flux,805,5)
+    #fluxsg = savitzky_golay(flux,103,5)
+    #interp = sp.splrep(wl,fluxsg,s=0)
+    #fluxnew = sp.interp1d(Owl,fluxnew)
+    #fluxnew = sp.splev(Owl,interp,der=0)
+
+    fluxnew = np.interp(Owl,wl,flux)
+    
+    #interp = sp.InterpolatedUnivariateSpline(wl,fluxsg,k=1)
+    #fluxnew = interp(Owl)
+    
     plt.plot(Owl,Oflux,alpha=0.3)
+    
     plt.plot(wl,flux,alpha=0.5)
+    plt.plot(Owl,fluxnew)
+    plt.ylim(min(Oflux),max(Oflux))
     #plt.plot(Owl,fluxnew,alpha=0.75)
-    plt.plot(Owl,testNorm)
+    #plt.plot(Owl,testNorm)
     plt.show()
     plt.clf()
     
