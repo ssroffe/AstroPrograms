@@ -356,25 +356,25 @@ def NormNoPlot(path):
     
     #lineList =  np.array([6562.79, 4861.35, 4340.472, 4101.734, 3970.075, 3889.064, 3835.397])
     lineList = np.array([4101.734,4340.472,4861.35])
-    lineWindows = np.array([[4060.0, 4150.0], [4300.0,4375.0], [4800.0,4950.0]])
+    lineWindows = np.array([[3975.0, 4150.0], [4300.0,4375.0], [4800.0,4950.0]])
     #lineWindows = np.array([[4060.0, 4150.0], [4300.0,4400.0], [4800.0,4950.0]])
     offset = 100
     upperLine = lineList + offset
     lowerLine = lineList - offset
 
-    ## cuts
-    #for i in range(len(lineList)):
-    #    cutList = np.where((wl >= lineWindows[i][0]) & (wl <= lineWindows[i][1]))
-    #    #cutList = np.where((wl >= lowerLine[i]) & (wl <= upperLine[i]))
-    #    flux = np.delete(flux,cutList)
-    #    wl = np.delete(wl,cutList)
+    # cuts
+    for i in range(len(lineList)):
+        cutList = np.where((wl >= lineWindows[i][0]) & (wl <= lineWindows[i][1]))
+        #cutList = np.where((wl >= lowerLine[i]) & (wl <= upperLine[i]))
+        flux = np.delete(flux,cutList)
+        wl = np.delete(wl,cutList)
     
     ## interpolation
     interp = sp.splrep(wl,flux,s=5,k=3)
 
     #wlnew = np.linspace(wl_start,wl_end,len(Oflux))
-    #fluxnew = sp.splev(Owl,interp,der=0)
-    fluxnew = savitzky_golay(flux,53,5)
+    fluxnew = sp.splev(Owl,interp,der=0)
+    #fluxnew = savitzky_golay(flux,53,5)
 
     #plt.plot(Owl,fluxnew)
     #plt.plot(Owl,Oflux)
@@ -454,7 +454,7 @@ def GetVelArr(path,lineIndex):
 
     ## Halpha, Hbeta, Hgamma, Hdelta, Hepsilon, H9, H10
     lineList =  np.array([6562.79, 4861.35, 4340.472, 4101.734, 3970.075, 3889.064, 3835.397])
-    lineWindows = np.array([[4060.0, 4150.0], [4300.0,4375.0], [4800.0,4950.0]])
+    lineWindows = np.array([[4000.0, 4150.0], [4300.0,4375.0], [4800.0,4950.0]])
     #lineWindows = np.array([[4060.0, 4150.0], [4300.0,4400.0], [4800.0,4950.0]])
     lineNames = np.array(["Halpha","Hbeta","Hgamma","Hdelta","Hepsilon","H9","H10"])
 
@@ -509,7 +509,7 @@ def GetAllVelocities(path):
     ## Halpha, Hbeta, Hgamma, Hdelta, Hepsilon, H9, H10
     #lineList =  np.array([6562.79, 4861.35, 4340.472, 4101.734, 3970.075, 3889.064, 3835.397])
     lineList = np.array([4101.734,4340.472,4861.35])
-    lineWindows = np.array([[4060.0, 4150.0], [4300.0,4375.0], [4800.0,4950.0]])
+    lineWindows = np.array([[4000.0, 4150.0], [4300.0,4375.0], [4800.0,4950.0]])
     #lineWindows = np.array([[4060.0, 4150.0], [4300.0,4400.0], [4800.0,4950.0]])
     lineNames = np.array(["Halpha","Hbeta","Hgamma","Hdelta","Hepsilon","H9","H10"])
     #lineIndex = 1
@@ -658,7 +658,7 @@ def ModelNormNoPlot(path):
     
     #lineList =  np.array([6562.79, 4861.35, 4340.472, 4101.734, 3970.075, 3889.064, 3835.397])
     lineList = np.array([4101.734,4340.472,4861.35])
-    lineWindows = np.array([[4060.0, 4150.0], [4300.0,4375.0], [4800.0,4950.0]])
+    lineWindows = np.array([[4000.0, 4150.0], [4300.0,4375.0], [4800.0,4950.0]])
     #lineWindows = np.array([[4060.0, 4150.0], [4300.0,4400.0], [4800.0,4950.0]])
     offset = 100
     upperLine = lineList + offset
@@ -672,9 +672,9 @@ def ModelNormNoPlot(path):
         wl = np.delete(wl,cutList)
     
     ## interpolation
-    #interp = sp.splrep(wl,flux,s=5,k=3)
+    interp = sp.splrep(wl,flux,s=5,k=3)
 
-    #fluxnew = sp.splev(Owl,interp,der=0)
+    fluxnew = sp.splev(Owl,interp,der=0)
 
     #fluxsg = savitzky_golay(flux,103,5)
     #interp = sp.splrep(wl,fluxsg,s=0)
@@ -684,7 +684,7 @@ def ModelNormNoPlot(path):
     #interp = sp.InterpolatedUnivariateSpline(wl,flux,k=2)
     #fluxnew = interp(Owl)
 
-    fluxnew = np.interp(Owl,wl,flux)
+    #fluxnew = np.interp(Owl,wl,flux)
     
     plt.plot(Owl,Oflux)
     plt.plot(Owl,fluxnew)
@@ -712,7 +712,7 @@ def ModelGetAllVelocities(path):
     ## Halpha, Hbeta, Hgamma, Hdelta, Hepsilon, H9, H10
     #lineList =  np.array([6562.79, 4861.35, 4340.472, 4101.734, 3970.075, 3889.064, 3835.397])
     lineList = np.array([4101.734,4340.472,4861.35])
-    lineWindows = np.array([[4060.0, 4150.0], [4300.0,4375.0], [4800.0,4950.0]])
+    lineWindows = np.array([[4000.0, 4150.0], [4300.0,4375.0], [4800.0,4950.0]])
     #lineWindows = np.array([[4060.0, 4150.0], [4300.0,4400.0], [4800.0,4950.0]])
     lineNames = np.array(["Halpha","Hbeta","Hgamma","Hdelta","Hepsilon","H9","H10"]
     )
@@ -781,10 +781,10 @@ def CSVNormNoPlot(path):
     
     Owl = sdssData[:,0]
     offset = 75
-    lineList =  np.array([6562.79, 4861.35, 4340.472, 4101.734, 3970.075, 3889.064, 3835.397])
-    #lineList = np.array([4101.734,4340.472,4861.35])
-    #lineWindows = np.array([[4060.0, 4150.0], [4300.0,4375.0], [4800.0,4950.0]])
-    lineWindows = np.array([[6563.0-offset,6563.0+offset],[4800.0,4950.0],[4300.0,4375.0],[4060.0,4150.0],[3970-offset,3970+offset],[3889-offset,3889+offset],[3835-offset,3835+offset]])
+    #lineList =  np.array([6562.79, 4861.35, 4340.472, 4101.734, 3970.075, 3889.064, 3835.397])
+    lineList = np.array([4101.734,4340.472,4861.35])
+    lineWindows = np.array([[3800.0, 4150.0], [4300.0,4375.0], [4800.0,4950.0]])
+    #lineWindows = np.array([[6563.0-offset,6563.0+offset],[4800.0,4950.0],[4300.0,4375.0],[3975.0,4150.0],[3970-offset,3970+offset],[3889-offset,3889+offset],[3835-offset,3835+offset]])
     #lineWindows = np.array([[4060.0, 4150.0], [4300.0,4400.0], [4800.0,4950.0]])
     offset = 50
     lowerLine = lineList - offset
