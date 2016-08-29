@@ -14,6 +14,8 @@ import corner as cn
 from datetime import datetime
 from astropy.time import Time
 
+import corner
+
 def sine(t,A,P,Phi,Gamma):
     ### A [km/s], P [same as t], Phi [rad], Gamma [km/s]
     return A*np.sin((2*np.pi)*(t/P) + Phi) + Gamma
@@ -101,7 +103,7 @@ else:
 
     def lnpriorModel(p):
         Ldepth,Lwidth,Gdepth,Gwidth = p
-        if 0.0 < Ldepth < 1.0 and 0.0 < Lwidth < 2000.0 and 0.0 < Gdepth < 1.0 and 0.0 < Gwidth < 2000.0:
+        if 0.0 < Ldepth < 1.0 and 1000.0 < Lwidth < 3000.0 and 0.0 < Gdepth < 1.0 and 10.0 < Gwidth < 300.0:
             return 0.0
         return -np.inf
     
@@ -141,9 +143,15 @@ else:
     
     def lnprior(p):
         RVShift = p
-        if -500.0 < RVShift < 500.0:
-            return 0.0
-        return -np.inf
+        #if -500.0 < RVShift < 500.0:
+        if tmpsdssRV == None and tmpsdssSTD == None:
+            if -250.0 < RVShift < 250.0:
+                return 0.0
+            return -np.inf
+        else:
+            if (tmpsdssRV - tmpsdssSTD) < RVShift < (tmpsdssRV - tmpsdssSTD):
+                return 0.0
+            return -np.inf
 
     def lnprob(p, x, y, yerr):
         lp = lnprior(p)
@@ -188,6 +196,15 @@ else:
         return s
 
 
+    def lnprior2(p):
+        RVShift = p
+        #if -500.0 < RVShift < 500.0:
+        if (tmpsdssRV-tmpsdssSTD) < RVShift < (tmpsdssRV+tmpsdssSTD):
+            return 0.0
+        return -np.inf
+
+global tmpsdssRV, tmpsdssSTD
+tmpsdssRV,tmpsdssSTD = None,None
 lines = [line.rstrip('\n') for line in open('filelist')]
 
 plot_format()
@@ -259,11 +276,23 @@ if (len(sys.argv) == 2) and sys.argv[1] is "lorentzian":
     mdim,mwalkers = 2,200
 else:
     mdim,mwalkers = 4,200
+
+LDMin,LDMax = 0.0,1.0
+LWMin,LWMax = 1000.0,3000.0
+GDMin,GDMax = 0.0,1.0
+GWMin,GWMax = 10.0, 300.0
+    
+modelMiddles = np.array([(LDMin + LDMax)/2, (LWMin + LWMax)/2, (GDMin + GDMax)/2,(GWMin + GWMax)/2])
+    
+modelPos = [modelMiddles + 1e-4*np.random.randn(mdim) for i in range(mwalkers)]
     
 for i in range(len(modelVels)):
     
-    modelSampler = tls.MCMCfit(lnprobModel,args=(np.array(modelVels[i]),np.array(modelFluxes[i]),np.array(modelErrs[i])),nwalkers=mwalkers,ndim=mdim,burnInSteps=16000,steps=16000)
+    modelSampler = tls.MCMCfit(lnprobModel,args=(np.array(modelVels[i]),np.array(modelFluxes[i]),np.array(modelErrs[i])),nwalkers=mwalkers,ndim=mdim,burnInSteps=16000,steps=16000,p=modelPos)
+    modelSamplesChain = modelSampler.chain[:,:,:].reshape((-1,mdim))
     modelSamples = modelSampler.flatchain.reshape((-1,mdim)).T
+    plot_format()
+    plt.plot(modelVels[i],modelFluxes[i],alpha=0.5)
     if i == 0:
         global ld1
         ld1 = modelSamples[0].mean()
@@ -274,6 +303,8 @@ for i in range(len(modelVels)):
             gd1 = modelSamples[2].mean()
             global gw1
             gw1 = modelSamples[3].mean()
+        plt.plot(modelVels[i],voigtModel(modelVels[i],ld1,lw1,gd1,gw1))
+
         #modelSampler.reset()
     elif i == 1:
         global ld2
@@ -285,6 +316,7 @@ for i in range(len(modelVels)):
             gd2 = modelSamples[2].mean()
             global gw2
             gw2 = modelSamples[3].mean()
+        plt.plot(modelVels[i],voigtModel(modelVels[i],ld2,lw2,gd2,gw2))
         #modelSampler.reset()
     elif i == 2:
         global ld3
@@ -296,7 +328,13 @@ for i in range(len(modelVels)):
             gd3 = modelSamples[2].mean()
             global gw3
             gw3 = modelSamples[3].mean()
+        plt.plot(modelVels[i],voigtModel(modelVels[i],ld3,lw3,gd3,gw3))
+
+    plt.savefig("sdssFits/ModelLine_"+str(i)+".pdf")
+    cor = corner.corner(modelSamplesChain,labels=["LD","LW","GD","GW"])
+    cor.savefig("sdssFits/corner_"+str(i)+".pdf")
     modelSampler.reset()
+
 
         
 tls.mkdir("ModelFits")
@@ -335,10 +373,21 @@ for j in range(len(lines)):
     #ndim, nwalkers = 7,200
     ndim, nwalkers = 1, 200
 
-    sdssSampler = tls.MCMCfit(lnprobSum,args=(np.array(sdssVels),np.array(sdssFluxes),np.array(sdssErrs)),nwalkers=nwalkers,ndim=ndim,burnInSteps=16000,steps=16000)
+    tmpsdssSampler = tls.MCMCfit(lnprobSum,args=(np.array(sdssVels),np.array(sdssFluxes),np.array(sdssErrs)),nwalkers=nwalkers,ndim=ndim,burnInSteps=16000,steps=16000)
+    #sdssSamplesChain = sdssSampler.chain[:,:,:].reshape((-1,ndim))
+    
     off = 0.5
-    sdssRV, sdssSTD = tls.GetRV(sdssSampler)
+    tmpsdssRV, tmpsdssSTD = tls.GetRV(tmpsdssSampler)
 
+    tmpMid = np.array([tmpsdssRV])
+    sdssPos = [tmpMid + 1e-4*np.random.randn(ndim) for i in range(nwalkers)]
+
+    sdssSampler = tls.MCMCfit(lnprobSum,args=(np.array(sdssVels),np.array(sdssFluxes),np.array(sdssErrs)),nwalkers=nwalkers,ndim=ndim,burnInSteps=16000,steps=16000,p=sdssPos)
+    
+    sdssSamplesChain = sdssSampler.chain[:,:,:].reshape((-1,ndim))
+
+    sdssRV, sdssSTD = tls.GetRV(sdssSampler)
+    
     print "\n"
     print "sdss:"
     print sdssRV,sdssSTD
@@ -353,14 +402,34 @@ for j in range(len(lines)):
         else:
             co = 'r'
         plt.step(sdssVels[i],sdssFluxes[i]+i*off,where='mid',linewidth=1.5,color=co)
+        
     plt.axvline(sdssRV,color='purple',ls='--')
+    plt.axvline(sdssRV+sdssSTD,color='green',ls='--')
+    plt.axvline(sdssRV-sdssSTD,color='green',ls='--')
     plt.axvline(0,color='k',ls='--')
+    
     plt.plot(sdssVels[0],voigt(sdssVels[0],ld1,lw1,gd1,gw1,sdssRV)+0*off,color='k',linewidth=1.5,label='data fits')
+    plt.plot(sdssVels[0],voigt(sdssVels[0],ld1,lw1,gd1,gw1,sdssRV+sdssSTD)+0*off,color='purple',linewidth=1.5,label='data fits + std',ls='--')
+    plt.plot(sdssVels[0],voigt(sdssVels[0],ld1,lw1,gd1,gw1,sdssRV-sdssSTD)+0*off,color='purple',linewidth=1.5,label='data fits - std',ls='--')
+    
     plt.plot(sdssVels[1],voigt(sdssVels[1],ld2,lw2,gd2,gw2,sdssRV)+1*off,color='k',linewidth=1.5)
+    plt.plot(sdssVels[1],voigt(sdssVels[1],ld2,lw2,gd2,gw2,sdssRV+sdssSTD)+1*off,color='purple',linewidth=1.5,ls='--')
+    plt.plot(sdssVels[1],voigt(sdssVels[1],ld2,lw2,gd2,gw2,sdssRV-sdssSTD)+1*off,color='purple',linewidth=1.5,ls='--')
+    
+
+    
     plt.plot(sdssVels[2],voigt(sdssVels[2],ld3,lw3,gd3,gw3,sdssRV)+2*off,color='k',linewidth=1.5)
+    plt.plot(sdssVels[2],voigt(sdssVels[2],ld3,lw3,gd3,gw3,sdssRV+sdssSTD)+2*off,color='purple',linewidth=1.5,ls='--')
+    plt.plot(sdssVels[2],voigt(sdssVels[2],ld3,lw3,gd3,gw3,sdssRV-sdssSTD)+2*off,color='purple',linewidth=1.5,ls='--')
+
+    
     plt.xlim(-1500,1500)
     plt.title(wdName+" RV value="+str(sdssRV)+" RV Err="+str(sdssSTD))
     plt.savefig("sdssFits/"+wdName+"_sdssVelFit.pdf")
+    plot_format()
+
+    sdssVelFig = corner.corner(sdssSamplesChain,label=["RV"])
+    sdssVelFig.savefig("sdssFits/corner_sdssVelFits.pdf")
     
     sampler = tls.MCMCfit(lnprobSum,args=(vels,fluxes,ferrs),nwalkers=nwalkers,ndim=ndim,burnInSteps=8000,steps=8000)
 
@@ -531,7 +600,6 @@ plt.savefig("ModelFits/"+wdName+"_time_zoomed.pdf")
 #print ""
 #print Amp,Per,Phi,Gamma
 
-import corner
 fig = corner.corner(samplesChain, labels=["A","P","Phi","Gam"])
 fig.savefig("ModelFits/"+wdName+"_Triangle.pdf")
 
