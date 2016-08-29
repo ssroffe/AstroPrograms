@@ -144,14 +144,9 @@ else:
     def lnprior(p):
         RVShift = p
         #if -500.0 < RVShift < 500.0:
-        if tmpsdssRV == None and tmpsdssSTD == None:
-            if -250.0 < RVShift < 250.0:
-                return 0.0
-            return -np.inf
-        else:
-            if (tmpsdssRV - tmpsdssSTD) < RVShift < (tmpsdssRV - tmpsdssSTD):
-                return 0.0
-            return -np.inf
+        if -250.0 < RVShift < 250.0:
+            return 0.0
+        return -np.inf
 
     def lnprob(p, x, y, yerr):
         lp = lnprior(p)
@@ -203,8 +198,8 @@ else:
             return 0.0
         return -np.inf
 
-global tmpsdssRV, tmpsdssSTD
-tmpsdssRV,tmpsdssSTD = None,None
+
+
 lines = [line.rstrip('\n') for line in open('filelist')]
 
 plot_format()
@@ -373,16 +368,16 @@ for j in range(len(lines)):
     #ndim, nwalkers = 7,200
     ndim, nwalkers = 1, 200
 
-    tmpsdssSampler = tls.MCMCfit(lnprobSum,args=(np.array(sdssVels),np.array(sdssFluxes),np.array(sdssErrs)),nwalkers=nwalkers,ndim=ndim,burnInSteps=16000,steps=16000)
+    #tmpsdssSampler = tls.MCMCfit(lnprobSum,args=(np.array(sdssVels),np.array(sdssFluxes),np.array(sdssErrs)),nwalkers=nwalkers,ndim=ndim,burnInSteps=16000,steps=16000)
     #sdssSamplesChain = sdssSampler.chain[:,:,:].reshape((-1,ndim))
     
     off = 0.5
-    tmpsdssRV, tmpsdssSTD = tls.GetRV(tmpsdssSampler)
+    #tmpsdssRV, tmpsdssSTD = tls.GetRV(tmpsdssSampler)
 
-    tmpMid = np.array([tmpsdssRV])
-    sdssPos = [tmpMid + 1e-4*np.random.randn(ndim) for i in range(nwalkers)]
+    #tmpMid = np.array([tmpsdssRV])
+    #sdssPos = [tmpMid + 1e-4*np.random.randn(ndim) for i in range(nwalkers)]
 
-    sdssSampler = tls.MCMCfit(lnprobSum,args=(np.array(sdssVels),np.array(sdssFluxes),np.array(sdssErrs)),nwalkers=nwalkers,ndim=ndim,burnInSteps=16000,steps=16000,p=sdssPos)
+    sdssSampler = tls.MCMCfit(lnprobSum,args=(np.array(sdssVels),np.array(sdssFluxes),np.array(sdssErrs)),nwalkers=nwalkers,ndim=ndim,burnInSteps=16000,steps=16000,)
     
     sdssSamplesChain = sdssSampler.chain[:,:,:].reshape((-1,ndim))
 
@@ -402,7 +397,7 @@ for j in range(len(lines)):
         else:
             co = 'r'
         plt.step(sdssVels[i],sdssFluxes[i]+i*off,where='mid',linewidth=1.5,color=co)
-        plt.errorbar(sdssVels[i],sdssFluxes[i]+i+off,yerr=sdssErrs,linestyle="None",color=co)
+        plt.errorbar(sdssVels[i],sdssFluxes[i]+i*off,yerr=np.array(sdssErrs[i]),linestyle="None",color=co)
         
     plt.axvline(sdssRV,color='purple',ls='--')
     plt.axvline(sdssRV+sdssSTD,color='green',ls='--')
