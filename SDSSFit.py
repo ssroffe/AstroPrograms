@@ -143,8 +143,7 @@ else:
     
     def lnprior(p):
         RVShift = p
-        #if -500.0 < RVShift < 500.0:
-        if -250.0 < RVShift < 250.0:
+        if -500.0 < RVShift < 500.0:
             return 0.0
         return -np.inf
 
@@ -206,14 +205,20 @@ plot_format()
 
 modelFile = "../../KoesterModels/da"+open('modelVal').read().splitlines()[0]+".dk"
 
-sdssFile = "tmpSpec"
+#sdssFile = "tmpSpec"
+sdssFile = "tmpSpecFits.fits"
 
-sdssData = np.genfromtxt(sdssFile,skip_header=1,delimiter=',')
+#sdssData = np.genfromtxt(sdssFile,skip_header=1,delimiter=',')
 
-sdssWl = sdssData[:,0]
-sdssFlux = np.array(sdssData[:,1])
+#sdssWl = sdssData[:,0]
+#sdssFlux = np.array(sdssData[:,1])
 
-sdssFlux = sdssFlux / max(sdssFlux)
+sdssData = fits.getdata(sdssFile)
+sdssWl,sdssFlux,tmpErrs = tls.SDSSNormNoPlot(sdssFile)
+#sdssFlux = sdssData[:,0]
+#sdssErrs = sdssData[:,2]
+
+#sdssFlux = sdssFlux / max(sdssFlux)
 
 modelData = np.genfromtxt(modelFile,skip_header=34)
 modelFlux = np.array(modelData[:,1])
@@ -233,7 +238,7 @@ plot_format()
 modelWl,modelFlux = tls.ModelNormNoPlot(modelFile)
 tmpWl,tmpFlux,_ = tls.NormNoPlot(lines[0])
 
-sdssWl, sdssFlux = tls.CSVNormNoPlot(sdssFile)
+#sdssWl, sdssFlux = tls.CSVNormNoPlot(sdssFile)
 
 plt.plot(sdssWl,sdssFlux,alpha=0.5)
 plt.plot(modelWl,modelFlux)
@@ -243,19 +248,13 @@ plt.ylim(0,2)
 plt.savefig("sdssFits/sdss_v_Model_normalized.pdf")
 #plt.show()
 
-sdssVels, sdssFluxes = tls.CSVGetAllVelocities(sdssFile)
+sdssVels, sdssFluxes, sdssErrs= tls.SDSSGetAllVelocities(sdssFile)
 
-sdssErrs = []
-for i in range(len(sdssFluxes)):
-    sdssErrs.append(0.1*sdssFluxes[i])
-
-
-    
-plot_format()
-plt.plot(tmpWl,tmpFlux,alpha=0.4)
-plt.plot(modelWl,modelFlux)
-plt.xlim(np.min(tmpWl),np.max(tmpWl))
-plt.savefig("ModelFits/SpectrumCheck.pdf")
+#plot_format()
+#plt.plot(tmpWl,tmpFlux,alpha=0.4)
+#plt.plot(modelWl,modelFlux)
+#plt.xlim(np.min(tmpWl),np.max(tmpWl))
+#plt.savefig("ModelFits/SpectrumCheck.pdf")
 plot_format()
 
 modelVels,modelFluxes = tls.ModelGetAllVelocities(modelFile)

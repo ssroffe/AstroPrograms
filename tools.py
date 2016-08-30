@@ -953,3 +953,173 @@ def planck(wl,T):
 
     calc = ((2*h*c**2)/(wl**5)) * (1/(np.exp((h*c)/(wl*kb*T)) -1))
     return calc
+
+def SDSSNormNoPlot(path):
+    from astropy.io import fits
+    import numpy as np
+    import scipy.interpolate as sp
+    import matplotlib.pyplot as plt
+    from astropy.io import fits
+    
+    sdssData = fits.getdata(path)
+    header = fits.getheader(path)
+    coeff0 = header['COEFF0']
+    coeff1 = header['COEFF1']
+    #print sdssData['FLUX']
+    flux = sdssData['FLUX']
+
+    tmpArr = []
+    for i in range(len(flux)):
+        tmpArr.append(i)
+    tmpArr = np.array(tmpArr)
+
+    wl = 10**(coeff0+coeff1*tmpArr)+header['HELIO_RV']
+    Owl = 10**(coeff0+coeff1*tmpArr)+header['HELIO_RV']
+    #wl = VAC / (1.0 + 2.735182E-4 + (131.4182 / VAC**2) + (2.76249E8 / VAC**4))+header['HELIO_RV']
+    #Owl = VAC / (1.0 + 2.735182E-4 + (131.4182 / VAC**2) + (2.76249E8 / VAC**4))+header['HELIO_RV']
+
+    #wl = np.linspace(3800,9200,len(flux))
+    #Owl = np.linspace(3800,9200,len(flux))
+    #plt.plot(wl,flux)
+    #plt.show()
+    err = np.array(sdssData['IVAR'])
+    print err
+    Oflux = np.array(sdssData['FLUX'])
+    
+    #flux = flux /max(flux)
+    #Oflux = Oflux / max(Oflux)
+    
+    #lineList =  np.array([6562.79, 4861.35, 4340.472, 4101.734, 3970.075, 3889.064, 3835.397])
+    lineList = np.array([4101.734,4340.472,4861.35])
+    lineWindows = np.array([[4040.0, 4190.0], [4250.0,4475.0], [4700.0,4975.0]])
+    #lineWindows = np.array([[6563.0-offset,6563.0+offset],[4800.0,4950.0],[4300.0,4375.0],[3975.0,4150.0],[3970-offset,3970+offset],[3889-offset,3889+offset],[3835-offset,3835+offset]])
+    #lineWindows = np.array([[4060.0, 4150.0], [4300.0,4400.0], [4800.0,4950.0]])
+    offset = 50
+    lowerLine = lineList - offset
+    #plt.plot(Owl,Oflux)
+    ## cuts
+    for i in range(len(lineList)):
+        
+        upperLine = lineWindows[i][1]
+        lowerLine = lineWindows[i][0]
+        cutList = np.where((wl >= lowerLine) & (wl <= upperLine))
+        #cutList = np.where((wl >= lineWindows[i][0]) & (wl <= lineWindows[i][1]))
+        flux = np.delete(flux,cutList)
+        wl = np.delete(wl,cutList)
+        #plt.axvline(lineList[i])
+    #plt.show()
+    #plt.clf()
+    ## interpolation
+    #interp = sp.splrep(wl,flux,s=5,k=3)
+    
+    interp = np.interp(Owl,wl,flux)
+    fluxnew = savitzky_golay(interp,103,5)
+    #fluxnew = sp.splev(Owl,interp,der=0)
+    #fluxnew = savitzky_golay(flux,805,5)
+    #fluxsg = savitzky_golay(flux,103,5)
+    #interp = sp.splrep(wl,fluxsg,s=0)
+    #fluxnew = sp.interp1d(Owl,fluxnew)
+    #fluxnew = sp.splev(Owl,interp,der=0)
+
+    #fluxnew = np.interp(Owl,wl,flux)
+    
+    #interp = sp.InterpolatedUnivariateSpline(wl,fluxsg,k=1)
+    #fluxnew = interp(Owl)
+    
+    #plt.plot(Owl,Oflux,alpha=0.3)
+    #plt.plot(wl,flux,alpha=0.5)
+    #plt.plot(Owl,fluxnew)
+    #plt.ylim(min(Oflux),max(Oflux))
+    #plt.plot(Owl,fluxnew,alpha=0.75)
+    #plt.plot(Owl,testNorm)
+    #plt.show()
+    #plt.clf()
+    
+    #plt.plot(wl,flux,alpha=0.2)
+    #plt.plot(Owl,fluxnew,)
+    #plt.plot(Owl,Oflux,alpha=0.3)
+    #plt.ylim(0,30)
+    #plt.show()
+    
+    normalization = Oflux/fluxnew
+    normErrs = err / fluxnew
+    ####NEW STUFF
+    #normalization = ((normalization - 1)*2)+1
+    plt.plot(Owl,normalization)
+    plt.show()
+    return (Owl,normalization,normErrs)
+
+
+def SDSSGetAllVelocities(path):
+    import numpy as np
+    from astropy.io import fits
+    import os
+    import matplotlib.pyplot as plt
+
+    c = 299792.458 #km/s
+    
+    Owl,Normflux,NormErr = SDSSNormNoPlot(path)
+
+    #plt.plot(Owl,Normflux)
+    #plt.show()
+
+    ## Halpha, Hbeta, Hgamma, Hdelta, Hepsilon, H9, H10
+
+    lineList = np.array([4101.734,4340.472,4861.35])
+    lineWindows = np.array([[4040.0, 4190.0], [4250.0,4475.0], [4700.0,4975.0]])
+    
+
+    #lineList = np.array([4101.734,4340.472,4861.35])
+    #lineWindows = np.array([[4060.0, 4150.0], [4300.0,4375.0], [4800.0,4950.0]])
+    #lineWindows = np.array([[4060.0, 4150.0], [4300.0,4400.0], [4800.0,4950.0]])
+    lineNames = np.array(["Halpha","Hbeta","Hgamma","Hdelta","Hepsilon","H9","H10"]
+    )
+    for lineIndex in range(len(lineList)):
+        
+        #offset = 50
+        #offset = 25
+        #offset = 20
+        #offset = 30
+        
+        upperLine = lineWindows[lineIndex][1]
+        lowerLine = lineWindows[lineIndex][0]
+
+        #upperLine = lineList[lineIndex] + offset
+        #lowerLine = lineList[lineIndex] - offset
+        
+        #plt.axvline(upperLine,color='black')
+        #plt.axvline(lowerLine,color="black")
+        #plt.plot(Owl,Normflux)
+        #plt.show()
+    
+        wherr = np.where((Owl >= lowerLine) & (Owl <= upperLine))
+        flux = Normflux[wherr]
+        ferr = NormErr[wherr]
+        wl = Owl[wherr]
+        #wl = np.linspace(lowerLine,upperLine,len(flux))
+        #plt.plot(wl,flux)
+        #plt.show()
+    
+        vel = []
+        for w in range(len(wl)):
+            v = c*(lineList[lineIndex] - wl[w])/lineList[lineIndex]
+            vel.append(v)
+        if (lineIndex == 0):
+            velBeta = vel
+            fluxBeta = flux
+            ferrBeta = ferr
+        if (lineIndex == 1):
+            velGamma = vel
+            fluxGamma = flux
+            ferrGamma = ferr
+        if (lineIndex == 2):
+            velDelta = vel
+            fluxDelta = flux
+            ferrDelta = ferr
+
+    
+    vels = np.array([np.array(velBeta),np.array(velGamma),np.array(velDelta)])
+    fluxes = np.array([fluxBeta,fluxGamma,fluxDelta])
+    ferrs = np.array([ferrBeta,ferrGamma,ferrDelta])
+    
+    return (vels,fluxes,ferrs)
