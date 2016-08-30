@@ -358,8 +358,8 @@ def NormNoPlot(path):
     Oflux = np.array(fits.getdata(path))
     Owl = np.linspace(wl_start,wl_end,len(Oflux))
 
-    flux = flux / max(flux)
-    Oflux = Oflux / max(Oflux)
+    #flux = flux / max(flux)
+    #Oflux = Oflux / max(Oflux)
     
     #lineList =  np.array([6562.79, 4861.35, 4340.472, 4101.734, 3970.075, 3889.064, 3835.397])
     #lineList = np.array([4101.734,4340.472,4861.35])
@@ -675,8 +675,8 @@ def ModelNormNoPlot(path):
     Oflux = np.array(modelData[:,1])
     Owl = modelData[:,0]
 
-    flux = flux / max(flux)
-    Oflux = Oflux / max(Oflux)
+    #flux = flux / max(flux)
+    #Oflux = Oflux / max(Oflux)
     
     #lineList =  np.array([6562.79, 4861.35, 4340.472, 4101.734, 3970.075, 3889.064, 3835.397])
     #lineList = np.array([4101.734,4340.472,4861.35])
@@ -807,8 +807,8 @@ def CSVNormNoPlot(path):
     
     Oflux = np.array(sdssData[:,1])
 
-    flux = flux /max(flux)
-    Oflux = Oflux / max(Oflux)
+    #flux = flux /max(flux)
+    #Oflux = Oflux / max(Oflux)
     
     Owl = sdssData[:,0]
     #offset = 75
@@ -973,8 +973,8 @@ def SDSSNormNoPlot(path):
         tmpArr.append(i)
     tmpArr = np.array(tmpArr)
 
-    wl = 10**(coeff0+coeff1*tmpArr)+header['HELIO_RV']
-    Owl = 10**(coeff0+coeff1*tmpArr)+header['HELIO_RV']
+    wl = 10**(coeff0+coeff1*tmpArr)+header['HELIO_RV']+header['SHIFT']
+    Owl = 10**(coeff0+coeff1*tmpArr)+header['HELIO_RV']+header['SHIFT']
     #wl = VAC / (1.0 + 2.735182E-4 + (131.4182 / VAC**2) + (2.76249E8 / VAC**4))+header['HELIO_RV']
     #Owl = VAC / (1.0 + 2.735182E-4 + (131.4182 / VAC**2) + (2.76249E8 / VAC**4))+header['HELIO_RV']
 
@@ -982,7 +982,7 @@ def SDSSNormNoPlot(path):
     #Owl = np.linspace(3800,9200,len(flux))
     #plt.plot(wl,flux)
     #plt.show()
-    err = np.array(sdssData['IVAR'])
+    err = 1/np.array(sdssData['IVAR'])
     print err
     Oflux = np.array(sdssData['FLUX'])
     
