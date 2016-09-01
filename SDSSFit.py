@@ -397,7 +397,7 @@ for j in range(len(lines)):
     #tmpMid = np.array([tmpsdssRV])
     #sdssPos = [tmpMid + 1e-4*np.random.randn(ndim) for i in range(nwalkers)]
 
-    sdssSampler = tls.MCMCfit(lnprobSum,args=(np.array(sdssVels),np.array(sdssFluxes),np.array(sdssErrs)),nwalkers=nwalkers,ndim=ndim,burnInSteps=16000,steps=16000,)
+    sdssSampler = tls.MCMCfit(lnprobSum,args=(np.array(sdssVels),np.array(sdssFluxes),np.array(sdssErrs)),nwalkers=nwalkers,ndim=ndim,burnInSteps=16000,steps=16000)
     
     sdssSamplesChain = sdssSampler.chain[:,:,:].reshape((-1,ndim))
 
