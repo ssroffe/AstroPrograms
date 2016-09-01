@@ -364,7 +364,17 @@ for j in range(len(lines)):
     vels,fluxes,ferrs = tls.GetAllVelocities(path)
 
     #print sdssVels[0]
-    wherrHotPixelErr = np.argmax(sdssFluxes[0][np.where((sdssVels[0] > -250.) & (sdssVels[0] < 0.))])
+    wherr = np.where((sdssVels[0] > -250.) & (sdssVels[0] < 0.))
+    #print sdssFluxes[0][wherr]
+    
+    wherrMaxFlux = np.max(sdssFluxes[0][wherr])
+    wherrHotPixelErr = np.where(sdssFluxes[0] == wherrMaxFlux)
+    #wherrHotPixelErr = sdssFluxes[0].index(wherrMaxFlux)
+    
+
+                                            
+    #print wherrHotPixelErr
+    print sdssVels[0][wherr]
     print sdssVels[0][wherrHotPixelErr]
     print sdssErrs[0][wherrHotPixelErr]
     sdssErrs[0][wherrHotPixelErr] = sdssErrs[0][wherrHotPixelErr]*100
