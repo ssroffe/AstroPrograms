@@ -983,7 +983,7 @@ def SDSSNormNoPlot(path):
     #plt.plot(wl,flux)
     #plt.show()
     err = 1/np.array(sdssData['IVAR'])
-    print err
+    #print err
     Oflux = np.array(sdssData['FLUX'])
     
     #flux = flux /max(flux)

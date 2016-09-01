@@ -363,6 +363,17 @@ for j in range(len(lines)):
     ### Get velocites, fluxes and errors
     vels,fluxes,ferrs = tls.GetAllVelocities(path)
 
+    #print sdssVels[0]
+    wherrHotPixelErr = np.argmax(sdssFluxes[0][np.where((sdssVels[0] > -250.) & (sdssVels[0] < 0.))])
+    print sdssVels[0][wherrHotPixelErr]
+    print sdssErrs[0][wherrHotPixelErr]
+    sdssErrs[0][wherrHotPixelErr] = sdssErrs[0][wherrHotPixelErr]*100
+    print sdssErrs[0][wherrHotPixelErr]
+    #print wherrHotPixelErr
+    #wherr = np.where((sdssVels[0] > -250.) & (sdssVels[0] < 0.))
+    #print sdssVels[0][wherr]
+    #print sdssErrs[0][wherr]
+    
     ### Do the fit
     #ndim, nwalkers = 7,200
     ndim, nwalkers = 1, 200
@@ -381,6 +392,7 @@ for j in range(len(lines)):
     sdssSamplesChain = sdssSampler.chain[:,:,:].reshape((-1,ndim))
 
     sdssRV, sdssSTD = tls.GetRV(sdssSampler)
+
     
     print "\n"
     print "sdss:"
@@ -419,6 +431,7 @@ for j in range(len(lines)):
 
     
     plt.xlim(-1500,1500)
+    plt.ylim(0,3)
     plt.title(wdName+" RV value="+str(sdssRV)+" RV Err="+str(sdssSTD))
     plt.savefig("sdssFits/"+wdName+"_sdssVelFit.pdf")
     plot_format()
