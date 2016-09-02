@@ -366,7 +366,7 @@ def NormNoPlot(path):
     #lineWindows = np.array([[3975.0, 4150.0], [4300.0,4375.0], [4800.0,4950.0]])
 
     lineList = np.array([4101.734,4340.472,4861.35])
-    lineWindows = np.array([[4040.0, 4190.0], [4250.0,4475.0], [4700.0,4975.0]])
+    lineWindows = np.array([[4040.0, 4190.0], [4250.0,4475.0], [4700.0,4970.0]])
     
     #lineWindows = np.array([[4060.0, 4150.0], [4300.0,4400.0], [4800.0,4950.0]])
     offset = 100
@@ -388,10 +388,12 @@ def NormNoPlot(path):
     #fluxnew = savitzky_golay(flux,53,5)
 
     interp = np.interp(Owl,wl,flux)
+    
     fluxnew = savitzky_golay(interp,103,5)
     
-    #plt.plot(Owl,fluxnew)
-    #plt.plot(Owl,Oflux)
+    #plt.plot(Owl,fluxnew,alpha=0.7)
+    #plt.plot(Owl,interp)
+    #plt.plot(Owl,Oflux,alpha=0.4)
     #plt.title("TMP2")
     #plt.show()
     normalization = Oflux/fluxnew
@@ -983,7 +985,7 @@ def SDSSNormNoPlot(path):
     #plt.plot(wl,flux)
     #plt.show()
     err = 1/np.array(sdssData['IVAR'])
-    print err
+    #print err
     Oflux = np.array(sdssData['FLUX'])
     
     #flux = flux /max(flux)
