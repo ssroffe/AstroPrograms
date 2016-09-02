@@ -249,6 +249,8 @@ plt.savefig("sdssFits/sdss_v_Model_normalized.pdf")
 #plt.show()
 
 sdssVels, sdssFluxes, sdssErrs= tls.SDSSGetAllVelocities(sdssFile)
+sdssErrsCopy = sdssErrs
+
 
 #plot_format()
 #plt.plot(tmpWl,tmpFlux,alpha=0.4)
@@ -363,6 +365,27 @@ for j in range(len(lines)):
     ### Get velocites, fluxes and errors
     vels,fluxes,ferrs = tls.GetAllVelocities(path)
 
+    #print sdssVels[0]
+    wherr = np.where((sdssVels[0] > -250.) & (sdssVels[0] < 0.))
+    #print sdssFluxes[0][wherr]
+    
+    wherrMaxFlux = np.max(sdssFluxes[0][wherr])
+    wherrHotPixelErr = np.where(sdssFluxes[0] == wherrMaxFlux)
+    #wherrHotPixelErr = sdssFluxes[0].index(wherrMaxFlux)
+    
+
+                                            
+    #print wherrHotPixelErr
+    print sdssVels[0][wherr]
+    print sdssVels[0][wherrHotPixelErr]
+    print sdssErrs[0][wherrHotPixelErr]
+    sdssErrs[0][wherrHotPixelErr] = sdssErrs[0][wherrHotPixelErr]*100
+    print sdssErrs[0][wherrHotPixelErr]
+    #print wherrHotPixelErr
+    #wherr = np.where((sdssVels[0] > -250.) & (sdssVels[0] < 0.))
+    #print sdssVels[0][wherr]
+    #print sdssErrs[0][wherr]
+    
     ### Do the fit
     #ndim, nwalkers = 7,200
     ndim, nwalkers = 1, 200
@@ -376,11 +399,12 @@ for j in range(len(lines)):
     #tmpMid = np.array([tmpsdssRV])
     #sdssPos = [tmpMid + 1e-4*np.random.randn(ndim) for i in range(nwalkers)]
 
-    sdssSampler = tls.MCMCfit(lnprobSum,args=(np.array(sdssVels),np.array(sdssFluxes),np.array(sdssErrs)),nwalkers=nwalkers,ndim=ndim,burnInSteps=16000,steps=16000,)
+    sdssSampler = tls.MCMCfit(lnprobSum,args=(np.array(sdssVels),np.array(sdssFluxes),np.array(sdssErrs)),nwalkers=nwalkers,ndim=ndim,burnInSteps=16000,steps=16000)
     
     sdssSamplesChain = sdssSampler.chain[:,:,:].reshape((-1,ndim))
 
     sdssRV, sdssSTD = tls.GetRV(sdssSampler)
+
     
     print "\n"
     print "sdss:"
@@ -419,6 +443,7 @@ for j in range(len(lines)):
 
     
     plt.xlim(-1500,1500)
+    plt.ylim(0,3)
     plt.title(wdName+" RV value="+str(sdssRV)+" RV Err="+str(sdssSTD))
     plt.savefig("sdssFits/"+wdName+"_sdssVelFit.pdf")
     plot_format()

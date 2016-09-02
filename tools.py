@@ -1047,8 +1047,8 @@ def SDSSNormNoPlot(path):
     normErrs = err / fluxnew
     ####NEW STUFF
     #normalization = ((normalization - 1)*2)+1
-    plt.plot(Owl,normalization)
-    plt.show()
+    #plt.plot(Owl,normalization)
+    #plt.show()
     return (Owl,normalization,normErrs)
 
 
