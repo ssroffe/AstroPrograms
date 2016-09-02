@@ -249,6 +249,8 @@ plt.savefig("sdssFits/sdss_v_Model_normalized.pdf")
 #plt.show()
 
 sdssVels, sdssFluxes, sdssErrs= tls.SDSSGetAllVelocities(sdssFile)
+sdssErrsCopy = sdssErrs
+
 
 #plot_format()
 #plt.plot(tmpWl,tmpFlux,alpha=0.4)
