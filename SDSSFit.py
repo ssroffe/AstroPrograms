@@ -376,11 +376,11 @@ for j in range(len(lines)):
 
                                             
     #print wherrHotPixelErr
-    print sdssVels[0][wherr]
-    print sdssVels[0][wherrHotPixelErr]
-    print sdssErrs[0][wherrHotPixelErr]
+    #print sdssVels[0][wherr]
+    #print sdssVels[0][wherrHotPixelErr]
+    #print sdssErrs[0][wherrHotPixelErr]
     sdssErrs[0][wherrHotPixelErr] = sdssErrs[0][wherrHotPixelErr]*100
-    print sdssErrs[0][wherrHotPixelErr]
+    #print sdssErrs[0][wherrHotPixelErr]
     #print wherrHotPixelErr
     #wherr = np.where((sdssVels[0] > -250.) & (sdssVels[0] < 0.))
     #print sdssVels[0][wherr]
@@ -400,8 +400,11 @@ for j in range(len(lines)):
     #sdssPos = [tmpMid + 1e-4*np.random.randn(ndim) for i in range(nwalkers)]
 
     sdssSampler = tls.MCMCfit(lnprobSum,args=(np.array(sdssVels),np.array(sdssFluxes),np.array(sdssErrs)),nwalkers=nwalkers,ndim=ndim,burnInSteps=16000,steps=16000)
+    sdssSamplerCopy = tls.MCMCfit(lnprobSum,args=(np.array(sdssVels),np.array(sdssFluxes),np.array(sdssErrsCopy)),nwalkers=nwalkers,ndim=ndim,burnInSteps=16000,steps=16000)
     
     sdssSamplesChain = sdssSampler.chain[:,:,:].reshape((-1,ndim))
+    sdssSamplesChainCopy = sdssSamplerCopy.chain[:,:,:].reshape((-1,ndim))
+    
 
     sdssRV, sdssSTD = tls.GetRV(sdssSampler)
 
@@ -421,6 +424,7 @@ for j in range(len(lines)):
             co = 'r'
         plt.step(sdssVels[i],sdssFluxes[i]+i*off,where='mid',linewidth=1.5,color=co)
         plt.errorbar(sdssVels[i],sdssFluxes[i]+i*off,yerr=np.array(sdssErrs[i]),linestyle="None",color=co)
+        plt.errorbar(sdssVels[i],sdssFluxes[i]+i*off,yerr=np.array(sdssErrsCopy[i]),linestyle="None",color=co)
         
     plt.axvline(sdssRV,color='purple',ls='--')
     plt.axvline(sdssRV+sdssSTD,color='green',ls='--')
@@ -449,7 +453,8 @@ for j in range(len(lines)):
     plot_format()
 
     sdssVelFig = corner.corner(sdssSamplesChain,label=["RV"])
-    sdssVelFig.savefig("sdssFits/corner_sdssVelFits.pdf")
+    sdssVelFig2 = corner.corner(sdssSamplesChainCopy,label=["RV"])
+    sdssVelFig2.savefig("sdssFits/corner_sdssVelFits.pdf")
     
     sampler = tls.MCMCfit(lnprobSum,args=(vels,fluxes,ferrs),nwalkers=nwalkers,ndim=ndim,burnInSteps=8000,steps=8000)
 
