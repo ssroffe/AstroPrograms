@@ -404,7 +404,9 @@ for j in range(len(lines)):
     
     sdssSamplesChain = sdssSampler.chain[:,:,:].reshape((-1,ndim))
     sdssSamplesChainCopy = sdssSamplerCopy.chain[:,:,:].reshape((-1,ndim))
-    
+
+    sdssSamples = sdssSampler.flatchain.reshape((-1,ndim)).T
+    sdssSamplesCopy = sdssSamplerCopy.flatchain.reshape((-1,ndim)).T
 
     sdssRV, sdssSTD = tls.GetRV(sdssSampler)
 
@@ -452,9 +454,14 @@ for j in range(len(lines)):
     plt.savefig("sdssFits/"+wdName+"_sdssVelFit.pdf")
     plot_format()
 
+    plt.hist(sdssSamples[0],label="with hot pixel error amp")
+    plt.hist(sdssSamplesCopy[0],alpha=0.5,label="Without Hot Pixel Error amp")
+    plt.legend()
+    plt.savefig("sdssFits/cornerOverlayTest.pdf")
+    plot_format()
     sdssVelFig = corner.corner(sdssSamplesChain,label=["RV"])
-    sdssVelFig2 = corner.corner(sdssSamplesChainCopy,label=["RV"])
-    sdssVelFig2.savefig("sdssFits/corner_sdssVelFits.pdf")
+    #sdssVelFig2 = corner.corner(sdssSamplesChainCopy,label=["RV"])
+    sdssVelFig.savefig("sdssFits/corner_sdssVelFits.pdf")
     
     sampler = tls.MCMCfit(lnprobSum,args=(vels,fluxes,ferrs),nwalkers=nwalkers,ndim=ndim,burnInSteps=8000,steps=8000)
 
