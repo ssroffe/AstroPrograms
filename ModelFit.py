@@ -99,7 +99,7 @@ else:
 
     def lnpriorModel(p):
         Ldepth,Lwidth,Gdepth,Gwidth = p
-        if 0.0 < Ldepth < 1.0 and 0.0 < Lwidth < 2000.0 and 0.0 < Gdepth < 1.0 and 0.0 < Gwidth < 2000.0:
+        if 0.0 < Ldepth < 1.0 and 0.0 < Lwidth < 3000.0 and 0.0 < Gdepth < 1.0 and 0.0 < Gwidth < 300.0:
             return 0.0
         return -np.inf
     
