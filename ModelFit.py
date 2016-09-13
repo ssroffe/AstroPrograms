@@ -148,6 +148,9 @@ else:
         
         return s
 
+tls.mkdir("ModelFits")
+tls.mkdir("ModelFits/VelFits")
+
 
 lines = [line.rstrip('\n') for line in open('filelist')]
 
@@ -213,9 +216,6 @@ for i in range(len(modelVels)):
             global gw3
             gw3 = modelSamples[3].mean() 
 
-
-tls.mkdir("ModelFits")
-tls.mkdir("ModelFits/VelFits")
 
 numArr = []
 rvArr = []
