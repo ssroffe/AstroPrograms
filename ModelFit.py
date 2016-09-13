@@ -262,7 +262,9 @@ for j in range(len(lines)):
     rvArr.append(rvFit)
     stdArr.append(rvStd)
 
-    for i in range(vels):
+    off = 0.5
+    
+    for i in range(len(vels)):
         if i ==0:
             co = 'b'
             ld = ld1
@@ -283,6 +285,7 @@ for j in range(len(lines)):
             gw = gw3
         plt.step(vels[i],fluxes[i]+i*off,where='mid',linewidth=1.5,color=co)
         plt.plot(vels[i],voigt(vels[i],ld,lw,gd,gw,rvFit)+i*off,color='k',linewidth=1.5)
+    plt.axvline(0,color='k',ls='--')
     plt.xlim(-1500,1500)
     plt.ylim(0,3)
     plt.title(wdName+" RV value="+str(rvFit)+" RV Err="+str(rvStd))
