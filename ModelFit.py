@@ -304,7 +304,7 @@ Phimin,Phimax = 0.0,(2*np.pi)
 GamMin, GamMax = -500.0, 500.0
 
 plot_format()
-plt.errorbar(numArr,rvArr,yerr=stdArr)
+plt.errorbar(numArr,rvArr,yerr=stdArr,ls='None')
 plt.ylabel("RV [km/s]")
 plt.xlabel("Spectrum number")
 plt.savefig("ModelFits/"+wdName+"_numRV.pdf")
