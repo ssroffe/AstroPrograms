@@ -214,14 +214,15 @@ for i in range(len(modelVels)):
             gw3 = modelSamples[3].mean() 
 
 
-        
 tls.mkdir("ModelFits")
+tls.mkdir("ModelFits/VelFits")
 
 numArr = []
 rvArr = []
 stdArr = []
 timeArr = []
 
+plot_format()
 for j in range(len(lines)):
 #for j in range(0,1):
 
@@ -260,7 +261,34 @@ for j in range(len(lines)):
     numArr.append(j)
     rvArr.append(rvFit)
     stdArr.append(rvStd)
-    
+
+    for i in range(vels):
+        if i ==0:
+            co = 'b'
+            ld = ld1
+            lw = lw1
+            gd = gd1
+            gw = gw1
+        elif i==1:
+            co = 'g'
+            ld = ld2
+            lw = lw2
+            gd = gd2
+            gw = gw2
+        else:
+            co = 'r'
+            ld = ld3
+            lw = lw3
+            gd = gd3
+            gw = gw3
+        plt.step(vels[i],fluxes[i]+i*off,where='mid',linewidth=1.5,color=co)
+        plt.plot(vels[i],voigt(vels[i],ld,lw,gd,gw,rvFit)+i*off,color='k',linewidth=1.5)
+    plt.xlim(-1500,1500)
+    plt.ylim(0,3)
+    plt.title(wdName+" RV value="+str(rvFit)+" RV Err="+str(rvStd))
+    plt.savefig("ModelFits/VelFits/Vel_specnum_"+str(j)+".pdf")
+    plot_format()
+
 
 timeArr = np.array(timeArr)
 numArr = np.array(numArr)
@@ -271,6 +299,14 @@ Amin, Amax = 5.0, 500.0
 Pmin, Pmax = 0.02,0.1
 Phimin,Phimax = 0.0,(2*np.pi)
 GamMin, GamMax = -500.0, 500.0
+
+plot_format()
+plt.errorbar(numArr,rvArr,yerr=stdArr)
+plt.ylabel("RV [km/s]")
+plt.xlabel("Spectrum number")
+plt.savefig("ModelFits/"+wdName+"_numRV.pdf")
+plot_format()
+
 
 middles = np.array([(Amin+Amax)/2,(Pmin+Pmax)/2,(Phimin+Phimax)/2,(GamMin+GamMax)/2])
 
