@@ -285,8 +285,12 @@ for j in range(len(lines)):
             gw = gw3
         plt.step(vels[i],fluxes[i]+i*off,where='mid',linewidth=1.5,color=co)
         plt.plot(vels[i],voigt(vels[i],ld,lw,gd,gw,rvFit)+i*off,color='k',linewidth=1.5)
+        plt.plot(vels[i],voigt(vels[i],ld,lw,gd,gw,rvFit+rvStd)+i*off,color='c',linewidth=1.5)
+        plt.plot(vels[i],voigt(vels[i],ld,lw,gd,gw,rvFit-rvStd)+i*off,color='c',linewidth=1.5)
     plt.axvline(0,color='k',ls='--')
     plt.axvline(rvFit,color='purple',ls='--')
+    plt.axvline(rvFit+rvStd,color='c',ls='--')
+    plt.axvline(rvFit-rvStd,color='c',ls='--')
     plt.xlim(-1500,1500)
     plt.ylim(0,3)
     plt.title(wdName+" RV value="+str(rvFit)+" RV Err="+str(rvStd))

@@ -24,7 +24,7 @@ def lnlikeSine(p,x,y,err):
 def lnpriorSine(p):
     A,P,Phi,Gamma = p
     #minimum at 0.02 days for P
-    if 5.0 < A < 500.0 and 0.02 < P < 0.04 and 0.0 < Phi < (2*np.pi) and -500.0 < Gamma < 500.0:
+    if 5.0 < A < 500.0 and 0.02 < P < 0.1 and 0.0 < Phi < (2*np.pi) and -500.0 < Gamma < 500.0:
         return 0.0
     return -np.inf
 
@@ -43,7 +43,7 @@ def lnlike(p,x,y,err):
 
 def lnprior(p):
     Ldepth,Lwidth,Gdepth,Gwidth,RVShift = p
-    if 0.0 < Ldepth < 1.0 and 0.0 < Lwidth < 2000.0 and 0.0 < Gdepth < 1.0 and 0.0 < Gwidth < 2000.0 and -500.0 < RVShift < 500.0:
+    if 0.0 < Ldepth < 1.0 and 0.0 < Lwidth < 3000.0 and 0.0 < Gdepth < 1.0 and 0.0 < Gwidth < 500.0 and -500.0 < RVShift < 500.0:
         return 0.0
     return -np.inf
 
@@ -99,6 +99,9 @@ def lnprobSum(p,x,y,yerr):
     return s
 """
 
+tls.mkdir("OrbitalFitsVoigt")
+tls.mkdir("OrbitalFitsVoigt/VelFits")
+
 lines = [line.rstrip('\n') for line in open('filelist')]
 plot_format()
 #print lines
@@ -138,8 +141,12 @@ for j in range(len(lines)):
     #ndim, nwalkers = 7,200
     ndim, nwalkers = 13, 200
     
-    sampler = tls.MCMCfit(lnprobSum,args=(vels,fluxes,ferrs),nwalkers=nwalkers,ndim=ndim,burnInSteps=4000,steps=4000)
+    sampler = tls.MCMCfit(lnprobSum,args=(vels,fluxes,ferrs),nwalkers=nwalkers,ndim=ndim,burnInSteps=8000,steps=8000)
+    samples = sampler.flatchain.reshape((-1,ndim)).T
 
+    ld1,lw1,gd1,gw1 = samples[0].mean(), samples[1].mean(), samples[2].mean(), samples[3].mean()
+    ld2,lw2,gd2,gw2 = samples[4].mean(), samples[5].mean(), samples[6].mean(), samples[7].mean()
+    ld3,lw3,gd3,gw3 = samples[8].mean(), samples[9].mean(), samples[10].mean(), samples[11].mean()
 
     ### Get the RV Shifts from the sampler with errors
     rvFit,rvStd = tls.GetRV(sampler)
@@ -148,6 +155,37 @@ for j in range(len(lines)):
     numArr.append(j)
     rvArr.append(rvFit)
     stdArr.append(rvStd)
+
+    off = 0.5
+    
+    for i in range(len(vels)):
+        if i ==0:
+            co = 'b'
+            ld = ld1
+            lw = lw1
+            gd = gd1
+            gw = gw1
+        elif i==1:
+            co = 'g'
+            ld = ld2
+            lw = lw2
+            gd = gd2
+            gw = gw2
+        else:
+            co = 'r'
+            ld = ld3
+            lw = lw3
+            gd = gd3
+            gw = gw3
+        plt.step(vels[i],fluxes[i]+i*off,where='mid',linewidth=1.5,color=co)
+        plt.plot(vels[i],voigt(vels[i],ld,lw,gd,gw,rvFit)+i*off,color='k',linewidth=1.5)
+    plt.axvline(0,color='k',ls='--')
+    plt.axvline(rvFit,color='purple',ls='--')
+    plt.xlim(-1500,1500)
+    plt.ylim(0,3)
+    plt.title(wdName+" RV value="+str(rvFit)+" RV Err="+str(rvStd))
+    plt.savefig("OrbitalFitsVoigt/VelFits/Vel_specnum_"+str(j)+".pdf")
+    plot_format()
     
 
 timeArr = np.array(timeArr)
