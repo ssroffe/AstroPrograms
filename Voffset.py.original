@@ -1,0 +1,98 @@
+import tools as tls
+from astropy.io import fits
+import numpy as np
+import scipy.interpolate as sp
+import matplotlib.pyplot as plt
+from plot_format import plot_format
+import os
+import sys
+
+lines = [line.rstrip('\n') for line in open('filelist')]
+plot_format()
+#print lines
+k = 0
+for j in range(len(lines)):
+    path = lines[j]
+
+    c = 299792.458 #km/s
+    basename = os.path.basename(path)[:-5]
+    
+    timeTaken = basename[15:]
+    #timeTaken = basename[7:]
+    #print timeTaken
+
+    header = fits.getheader(path)
+    wl_start, wl_end = map(float,header['W_RANGE'].split(" "))
+    
+    Owl,Normflux = tls.NormNoPlot(path)
+
+    ## Halpha, Hbeta, Hgamma, Hdelta, Hepsilon, H9, H10
+    lineList =  np.array([6562.79, 4861.35, 4340.472, 4101.734, 3970.075, 3889.064, 3835.397])
+    lineWindows = np.array([[4060.0, 4150.0], [4300.0,4375.0], [4800.0,4950.0]])
+    
+    lineIndex = 3
+
+    offset = 15
+
+    upperLine = lineList[lineIndex] + offset
+    lowerLine = lineList[lineIndex] - offset
+
+    #plt.axvline(upperLine,color='black')
+    #plt.axvline(lowerLine,color="black")
+    #plt.plot(Owl,Normflux)
+    #plt.show()
+
+    wherr = np.where((Owl >= lowerLine) & (Owl <= upperLine))
+    flux = Normflux[wherr]
+    wl = np.linspace(lowerLine,upperLine,len(flux))
+
+    #plt.plot(wl,flux)
+    #plt.show()
+
+    vel = []
+    for i in range(len(wl)):
+        v = c*(lineList[lineIndex] - wl[i])/lineList[lineIndex]
+        vel.append(v)
+
+
+    #Plot Hbeta vertical line
+    if (j < len(lines)/2):
+        plt.subplot(1,2,1)
+        plt.axvline(0,ls='--',color='black')
+        
+        plt.step(vel,flux+j*2.5,where='mid',color='black',linewidth=2)
+        #plt.plot(vel,flux+j,drawstyle='steps',color='black',linewidth=2)
+        #plt.plot(vel,flux+j*0.5)
+        
+        #plt.annotate(timeTaken, xy=(1000,j*2.5+1.5),color='blue')
+        plt.annotate(timeTaken, xy=(1000,j+1),color='blue')
+        plt.xlim(min(vel),max(vel))
+        #plt.title("Hbeta velocity space")
+        plt.xlabel("velocity [km/s]")
+        plt.ylabel("Normalized flux + offset")
+    else:
+        plt.subplot(1,2,2)
+        plt.axvline(0,ls='--',color='black')
+
+        plt.step(vel,flux+k*2.5,where='mid',color='black',linewidth=2)
+        #plt.plot(vel,flux+k,drawstyle='steps',color='black',linewidth=2)
+        #plt.plot(vel,flux+j*0.5)
+        
+        #plt.annotate(timeTaken, xy=(1000,k*2.5+1.5),color='blue')
+        plt.annotate(timeTaken, xy=(1000,k+1),color='blue')
+
+        plt.xlim(min(vel),max(vel))
+        #plt.title("Hbeta velocity space")
+        plt.xlabel("velocity [km/s]")
+        plt.ylabel("Normalized flux + offset")
+        k+=1
+
+if (lineIndex == 1):
+    #plt.savefig("/home/seth/research/VoffsetPlots/Hbeta_offset.pdf")
+    plt.savefig("vPlots/Hbeta_offset.pdf")
+elif (lineIndex == 2):
+    plt.savefig("vPlots/Hgamma_offset.pdf")
+elif (lineIndex == 3):
+    plt.savefig("vPlots/Hdelta_offset.pdf")
+elif (lineIndex == 4):
+    plt.savefig("vPlots/Hepsilon_offset.pdf")
