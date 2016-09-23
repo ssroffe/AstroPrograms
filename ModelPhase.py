@@ -99,7 +99,7 @@ else:
 
     def lnpriorModel(p):
         Ldepth,Lwidth,Gdepth,Gwidth = p
-        if 0.0 < Ldepth < 1.0 and 0.0 < Lwidth < 3000.0 and 0.0 < Gdepth < 1.0 and 0.0 < Gwidth < 600.0:
+        if 0.0 < Ldepth < 1.0 and 0.0 < Lwidth < 3000.0 and 0.0 < Gdepth < 1.0 and 0.0 < Gwidth < 500.0:
             return 0.0
         return -np.inf
     
@@ -148,8 +148,8 @@ else:
         
         return s
 
-tls.mkdir("ModelFits")
-tls.mkdir("ModelFits/VelFits")
+tls.mkdir("ModelPhaseFits")
+tls.mkdir("ModelPhaseFits/VelFits")
 
 
 lines = [line.rstrip('\n') for line in open('filelist')]
@@ -164,7 +164,7 @@ plot_format()
 plt.plot(tmpWl,tmpFlux,alpha=0.4)
 plt.plot(modelWl,modelFlux)
 plt.xlim(np.min(tmpWl),np.max(tmpWl))
-plt.savefig("ModelFits/SpectrumCheck.pdf")
+plt.savefig("ModelPhaseFits/SpectrumCheck.pdf")
 plot_format()
 
 modelVels,modelFluxes = tls.ModelGetAllVelocities(modelFile)
@@ -295,7 +295,7 @@ for j in range(len(lines)):
     plt.xlim(-1500,1500)
     plt.ylim(0,3)
     plt.title(wdName+" RV value="+str(rvFit)+" RV Err="+str(rvStd))
-    plt.savefig("ModelFits/VelFits/Vel_specnum_"+str(j)+".pdf")
+    plt.savefig("ModelPhaseFits/VelFits/Vel_specnum_"+str(j)+".pdf")
     plot_format()
 
 
@@ -313,7 +313,7 @@ plot_format()
 plt.errorbar(numArr,rvArr,yerr=stdArr,ls='None')
 plt.ylabel("RV [km/s]")
 plt.xlabel("Spectrum number")
-plt.savefig("ModelFits/"+wdName+"_numRV.pdf")
+plt.savefig("ModelPhaseFits/"+wdName+"_numRV.pdf")
 plot_format()
 
 
@@ -369,11 +369,10 @@ for A,P,Ph,Gam in samplesChain[np.random.randint(len(samplesChain),size=100)]:
 plt.xlabel("MJD [days]")
 plt.ylabel("Velocity [km/s]")
 #plt.title(wdName + " velocity vs time\n{v[t]="+str(params[0])+"*sin[2*pi*(t/"+str(params[1])+") + "+str(params[2])+"] + "+str(params[3])+"}")
-plt.savefig("ModelFits/"+wdName+"_time.pdf")
+plt.savefig("ModelPhaseFits/"+wdName+"_time.pdf")
 
-plot_format()
-plt.subplot(4,1,1)
-plt.errorbar(timeArr,rvArr,yerr=stdArr,linestyle='None',marker='o')
+
+
 for A,P,Ph,Gam in samplesChain[np.random.randint(len(samplesChain),size=1000)]:
     #plt.plot(newTime,sine(newTime,A,P,Ph,Gam),color='k',alpha=0.01)
     AArr.append(A)
@@ -382,8 +381,55 @@ for A,P,Ph,Gam in samplesChain[np.random.randint(len(samplesChain),size=1000)]:
     GArr.append(Gam)
 #    print A,P,Ph,Gam
 
-params = [AArr[-1],PArr[-1],PhArr[-1],GArr[-1]]
 
+##############################
+##### Phase Diagram Part #####
+##############################
+
+params = [AArr[-1],PArr[-1],PhArr[-1],GArr[-1]]
+AFit,PFit,PhFit,GamFit = params
+
+phiDiagArr = []
+
+for pt in timeArr:
+    PhiOff = ((2*np.pi)*(pt/PFit) + PhFit) 
+    phiDiagArr.append(PhiOff)
+
+for i in range(len(phiDiagArr)):
+    while (phiDiagArr[i] < 0) or (phiDiagArr[i] > (2*np.pi)):
+        if (phiDiagArr[i] < 0):
+            phiDiagArr[i] = phiDiagArr[i] + (2*np.pi)
+        else:
+            phiDiagArr[i] = phiDiagArr[i] - (2*np.pi)
+
+phiDiagArr = np.array(phiDiagArr)
+
+angles = np.linspace(0,2*np.pi,5000)
+
+yvalues = sine(phiDiagArr,AFit,2*np.pi,0,GamFit)
+
+residuals = yvalues - rvArr
+
+plot_format()
+plt.figure(1).add_axes((.1,.3,.8,.6))
+plt.plot(angles,sine(angles,AFit,2*np.pi,0,GamFit),'k--')
+plt.title(wdName+" Phase")
+plt.ylabel("RV [km/s]")
+plt.xlim(0,2*np.pi)
+plt.errorbar(phiDiagArr,rvArr,yerr=stdArr,linestyle='None',marker='o')
+
+plt.figure(1).add_axes((.1,.1,.8,.2))
+plt.plot(phiDiagArr,residuals,linestyle="None",marker="o")
+plt.xlabel("angle [rad]")
+plt.xlim(0,2*np.pi)
+plt.ylim(-200,200)
+plt.axhline(0,linestyle="--",color="black",alpha=0.5)
+plt.savefig("ModelPhaseFits/"+wdName+"_phase.pdf")
+
+
+plot_format()
+plt.subplot(4,1,1)
+plt.errorbar(timeArr,rvArr,yerr=stdArr,linestyle='None',marker='o')
 plt.plot(newTime,sine(newTime,params[0],params[1],params[2],params[3]),color="red",alpha=0.75)
 #plt.plot(newTime,sine(newTime,Amp,Per,Phi,Gamma),color="red",alpha=0.75)
 plt.xlabel("MJD [days]")
@@ -423,12 +469,12 @@ plt.ylabel("Velocity [km/s]")
 #plt.title(wdName + " velocity vs time")
 plt.xlim(np.max(timeArr)-0.1,np.max(timeArr)+0.1)
 
-plt.savefig("ModelFits/"+wdName+"_time_zoomed.pdf")
+plt.savefig("ModelPhaseFits/"+wdName+"_time_zoomed.pdf")
 
 #print ""
 #print Amp,Per,Phi,Gamma
 
 import corner
 fig = corner.corner(samplesChain, labels=["A","P","Phi","Gam"])
-fig.savefig("ModelFits/"+wdName+"_Triangle.pdf")
+fig.savefig("ModelPhaseFits/"+wdName+"_Triangle.pdf")
 

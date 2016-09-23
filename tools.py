@@ -366,7 +366,7 @@ def NormNoPlot(path):
     #lineWindows = np.array([[3975.0, 4150.0], [4300.0,4375.0], [4800.0,4950.0]])
 
     lineList = np.array([4101.734,4340.472,4861.35])
-    lineWindows = np.array([[4030.0, 4180.0], [4250.0,4475.0], [4695.0,4980.0]])
+    lineWindows = np.array([[4030.0, 4180.0], [4250.0,4475.0], [4700.0,4980.0]])
     
     #lineWindows = np.array([[4060.0, 4150.0], [4300.0,4400.0], [4800.0,4950.0]])
     offset = 100
@@ -535,7 +535,7 @@ def GetAllVelocities(path):
 
     lineList = np.array([4101.734,4340.472,4861.35])
     #lineWindows = np.array([[4040.0, 4190.0], [4250.0,4475.0], [4700.0,4975.0]])
-    lineWindows = np.array([[4030.0, 4180.0], [4250.0,4475.0], [4695.0,4980.0]])
+    lineWindows = np.array([[4030.0, 4180.0], [4250.0,4475.0], [4700.0,4980.0]])
     
     #lineWindows = np.array([[4060.0, 4150.0], [4300.0,4400.0], [4800.0,4950.0]])
     lineNames = np.array(["Halpha","Hbeta","Hgamma","Hdelta","Hepsilon","H9","H10"])
@@ -688,7 +688,7 @@ def ModelNormNoPlot(path):
     #lineWindows = np.array([[4000.0, 4150.0], [4300.0,4375.0], [4800.0,4950.0]])
     
     lineList = np.array([4101.734,4340.472,4861.35])
-    lineWindows = np.array([[4030.0, 4180.0], [4250.0,4475.0], [4695.0,4980.0]])
+    lineWindows = np.array([[4030.0, 4180.0], [4250.0,4475.0], [4700.0,4980.0]])
     
     #lineWindows = np.array([[4060.0, 4150.0], [4300.0,4400.0], [4800.0,4950.0]])
     offset = 100
@@ -750,7 +750,7 @@ def ModelGetAllVelocities(path):
 
     lineList = np.array([4101.734,4340.472,4861.35])
     #lineWindows = np.array([[4040.0, 4190.0], [4250.0,4475.0], [4700.0,4975.0]])
-    lineWindows = np.array([[4030.0, 4180.0], [4250.0,4475.0], [4695.0,4980.0]])    
+    lineWindows = np.array([[4030.0, 4180.0], [4250.0,4475.0], [4700.0,4980.0]])    
     #lineWindows = np.array([[4060.0, 4150.0], [4300.0,4400.0], [4800.0,4950.0]])
     lineNames = np.array(["Halpha","Hbeta","Hgamma","Hdelta","Hepsilon","H9","H10"]
     )
