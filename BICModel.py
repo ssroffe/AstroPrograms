@@ -12,6 +12,25 @@ import corner as cn
 from datetime import datetime
 from astropy.time import Time
 
+def NoOrbit(t,Gamma):
+    return Gamma
+
+def lnlikeNoOrbit(p,x,y,err):
+    Gamma = p
+    return -np.sum((y-NoOrbit(x,Gamma))**2/(2*err))
+
+def lnpriorNoOrbit(p):
+    Gamma = p
+    if -500.0 < Gamma < 500.0:
+        return 0.0
+    return -np.inf
+
+def lnprobNoOrbit(p,x,y,yerr):
+    lp = lnpriorNoOrbit(p)
+    if not np.isfinite(lp):
+        return -np.inf
+    return lp + lnlikeNoOrbit(p,x,y,yerr)
+
 def sine(t,A,P,Phi,Gamma):
     ### A [km/s], P [same as t], Phi [rad], Gamma [km/s]
     return A*np.sin((2*np.pi)*(t/P) + Phi) + Gamma
@@ -99,7 +118,7 @@ else:
 
     def lnpriorModel(p):
         Ldepth,Lwidth,Gdepth,Gwidth = p
-        if 0.0 < Ldepth < 1.0 and 500.0 < Lwidth < 3000.0 and 0.0 < Gdepth < 1.0 and 10.0 < Gwidth < 300.0:
+        if 0.0 < Ldepth < 1.0 and 0.0 < Lwidth < 3000.0 and 0.0 < Gdepth < 1.0 and 0.0 < Gwidth < 600.0:
             return 0.0
         return -np.inf
     
@@ -119,14 +138,9 @@ else:
     
     def lnprior(p):
         Ldepth,Lwidth,Gdepth,Gwidth,RVShift = p
-        if tmpRV == None and tmpSTD == None:
-            if -500.0 < RVShift < 500.0:
-                return 0.0
-            return -np.inf
-        else:
-            if (tmpRV - tmpSTD) < RVShift < (tmpRV + tmpSTD):
-                return 0.0
-            return -np.inf
+        if -500.0 < RVShift < 500.0:
+            return 0.0
+        return -np.inf
 
     def lnprob(p, x, y, yerr):
         lp = lnprior(p)
@@ -153,10 +167,10 @@ else:
         
         return s
 
+tls.mkdir("BICFits")
+tls.mkdir("BICFits/VelFits")
 
-global tmpRV, tmpSTD
-tmpRV, tmpSTD = None,None
-    
+
 lines = [line.rstrip('\n') for line in open('filelist')]
 
 plot_format()
@@ -169,7 +183,7 @@ plot_format()
 plt.plot(tmpWl,tmpFlux,alpha=0.4)
 plt.plot(modelWl,modelFlux)
 plt.xlim(np.min(tmpWl),np.max(tmpWl))
-plt.savefig("ModelFits/SpectrumCheck.pdf")
+plt.savefig("BICFits/SpectrumCheck.pdf")
 plot_format()
 
 modelVels,modelFluxes = tls.ModelGetAllVelocities(modelFile)
@@ -186,18 +200,9 @@ if (len(sys.argv) == 2) and sys.argv[1] is "lorentzian":
 else:
     mdim,mwalkers = 4,200
     
-LDMin,LDMax = 0.0,1.0
-LWMin,LWMax = 1000.0,3000.0
-GDMin,GDMax = 0.0,1.0
-GWMin,GWMax = 10.0, 300.0
-
-modelMiddles = np.array([(LDMin + LDMax)/2, (LWMin + LWMax)/2, (GDMin + GDMax)/2,(GWMin + GWMax)/2])
-
-modelPos = [modelMiddles + 1e-4*np.random.randn(mdim) for i in range(mwalkers)]
-
 for i in range(len(modelVels)):
     
-    modelSampler = tls.MCMCfit(lnprobModel,args=(np.array(modelVels[i]),np.array(modelFluxes[i]),np.array(modelErrs[i])),nwalkers=mwalkers,ndim=mdim,burnInSteps=16000,steps=16000,p=modelPos)
+    modelSampler = tls.MCMCfit(lnprobModel,args=(np.array(modelVels[i]),np.array(modelFluxes[i]),np.array(modelErrs[i])),nwalkers=mwalkers,ndim=mdim,burnInSteps=16000,steps=16000)
     modelSamples = modelSampler.flatchain.reshape((-1,mdim)).T
     if i == 0:
         global ld1
@@ -229,16 +234,14 @@ for i in range(len(modelVels)):
             gd3 = modelSamples[2].mean()
             global gw3
             gw3 = modelSamples[3].mean() 
-    modelSampler.reset()
 
-        
-tls.mkdir("ModelFits")
 
 numArr = []
 rvArr = []
 stdArr = []
 timeArr = []
 
+plot_format()
 for j in range(len(lines)):
 #for j in range(0,1):
 
@@ -267,15 +270,9 @@ for j in range(len(lines)):
     #ndim, nwalkers = 7,200
     ndim, nwalkers = 1, 200
     
-    tmpsampler = tls.MCMCfit(lnprobSum,args=(vels,fluxes,ferrs),nwalkers=nwalkers,ndim=ndim,burnInSteps=8000,steps=8000)
+    sampler = tls.MCMCfit(lnprobSum,args=(vels,fluxes,ferrs),nwalkers=nwalkers,ndim=ndim,burnInSteps=8000,steps=8000)
 
-    tmpRV, tmpSTD = tls.GetRV(tmpsampler)
 
-    tmpMid = np.array([tmpRV])
-    newPos = [tmpMid + 1e-4*np.random.randn(ndim) for i in range(nwalkers)]
-
-    sampler = tls.MCMCfit(lnprobSum,args=(vels,fluxes,ferrs),nwalkers=nwalkers,ndim=ndim,burnInSteps=8000,steps=8000,p=newPos)
-    
     ### Get the RV Shifts from the sampler with errors
     rvFit,rvStd = tls.GetRV(sampler)
     print rvFit,rvStd
@@ -283,19 +280,84 @@ for j in range(len(lines)):
     numArr.append(j)
     rvArr.append(rvFit)
     stdArr.append(rvStd)
+
+    off = 0.5
     
+    for i in range(len(vels)):
+        if i ==0:
+            co = 'b'
+            ld = ld1
+            lw = lw1
+            gd = gd1
+            gw = gw1
+        elif i==1:
+            co = 'g'
+            ld = ld2
+            lw = lw2
+            gd = gd2
+            gw = gw2
+        else:
+            co = 'r'
+            ld = ld3
+            lw = lw3
+            gd = gd3
+            gw = gw3
+        plt.step(vels[i],fluxes[i]+i*off,where='mid',linewidth=1.5,color=co)
+        plt.errorbar(vels[i],fluxes[i]+i*off,yerr=ferrs[i],linewidth=1.5,ls='None',color=co)
+        plt.plot(vels[i],voigt(vels[i],ld,lw,gd,gw,rvFit)+i*off,color='k',linewidth=1.5)
+        plt.plot(vels[i],voigt(vels[i],ld,lw,gd,gw,rvFit+rvStd)+i*off,color='c',linewidth=1.5)
+        plt.plot(vels[i],voigt(vels[i],ld,lw,gd,gw,rvFit-rvStd)+i*off,color='c',linewidth=1.5)
+    plt.axvline(0,color='k',ls='--')
+    plt.axvline(rvFit,color='purple',ls='--')
+    plt.axvline(rvFit+rvStd,color='c',ls='--')
+    plt.axvline(rvFit-rvStd,color='c',ls='--')
+    plt.xlim(-1500,1500)
+    plt.ylim(0,3)
+    plt.title(wdName+" RV value="+str(rvFit)+" RV Err="+str(rvStd))
+    plt.savefig("BICFits/VelFits/Vel_specnum_"+str(j)+".pdf")
+    plot_format()
+
 
 timeArr = np.array(timeArr)
 numArr = np.array(numArr)
 rvArr = np.array(rvArr)
 stdArr = np.array(stdArr)
 
+### Save data to a csv
+data = []
+for i in range(len(timeArr)):
+    data.append((timeArr[i],rvArr[i],stdArr[i]))
+
+dataArr = np.array(data)
+np.savetxt("BICFits/rvdata.csv",dataArr,delimiter=',')
+
+###
 Amin, Amax = 5.0, 500.0
 Pmin, Pmax = 0.02,0.1
 Phimin,Phimax = 0.0,(2*np.pi)
 GamMin, GamMax = -500.0, 500.0
 
+plot_format()
+plt.errorbar(numArr,rvArr,yerr=stdArr,ls='None')
+plt.ylabel("RV [km/s]")
+plt.xlabel("Spectrum number")
+plt.savefig("BICFits/"+wdName+"_numRV.pdf")
+plot_format()
+
 middles = np.array([(Amin+Amax)/2,(Pmin+Pmax)/2,(Phimin+Phimax)/2,(GamMin+GamMax)/2])
+
+noOrbWalkers,noOrbDim = 200,1
+noOrbPos = [middles[-1] + 1e-4*np.random.randn(dim) for i in range(walkers)]
+
+noOrbSampler = tls.MCMCfit(lnprobNoOrbit,args=(timeArr,rvArr,stdArr),nwalkers=noOrbWalkers,ndim=noOrbDim,burnInSteps=250000,steps=250000,p=noOrbPos)
+
+noOrbSamplesChain = sampler.chain[:,:,:].reshape((-1,1))
+noOrbSamples = sampler.flatchain.reshape((-1,1)).T
+
+mArr = []
+for m in samplesChain[np.random.randint(len(noOrbSamplesChain),size=1000)]:
+    mArr.append(m)
+mparam = mArr[-1]
 
 walkers,dim = 200,4
 
@@ -330,24 +392,16 @@ PArr = []
 PhArr = []
 GArr = []
 
-#for A,P,Ph,Gam in samplesChain[np.random.randint(len(samplesChain),size=1000)]:
-#    AArr.append(A)
-#    PArr.append(P)
-#    PhArr.append(Ph)
-#    GArr.append(Gam)
-    #plt.plot(newTime,sine(newTime,A,P,Ph,Gam),color='k',alpha=0.01)
-    #print A,P,Ph,Gam
-
 plot_format()
 plt.errorbar(timeArr,rvArr,yerr=stdArr,linestyle='None',marker='o')
 for A,P,Ph,Gam in samplesChain[np.random.randint(len(samplesChain),size=100)]:
     plt.plot(newTime,sine(newTime,A,P,Ph,Gam),color='k',alpha=0.1)
     #print A,P,Ph,Gam
 #plt.plot(newTime,sine(newTime,params[0],params[1],params[2],params[3]),color="red",alpha=0.75)
+plt.plot(newTime,noOrbit(newTime,mparam,color='r'))
 plt.xlabel("MJD [days]")
 plt.ylabel("Velocity [km/s]")
-#plt.title(wdName + " velocity vs time\n{v[t]="+str(params[0])+"*sin[2*pi*(t/"+str(params[1])+") + "+str(params[2])+"] + "+str(params[3])+"}")
-plt.savefig("ModelFits/"+wdName+"_time.pdf")
+plt.savefig("BICFits/"+wdName+"_time.pdf")
 
 plot_format()
 plt.subplot(4,1,1)
@@ -358,9 +412,30 @@ for A,P,Ph,Gam in samplesChain[np.random.randint(len(samplesChain),size=1000)]:
     PArr.append(P)
     PhArr.append(Ph)
     GArr.append(Gam)
-#    print A,P,Ph,Gam
+    #print A,P,Ph,Gam
 
 params = [AArr[-1],PArr[-1],PhArr[-1],GArr[-1]]
+
+
+##### BIC CALCULATIONS ########
+noOrbParams = (mparam)
+noOrbBIC = -2*np.log(lnlikeNoOrb(mparam,timeArr,rvArr,stdArr))+1*np.log(len(timeArr))
+
+sineParams = (params[0],params[1],params[2],params[3])
+sineBIC = -2*np.log(lnlikeSine(sineParams,timeArr,rvArr,stdArr))+4*np.log(len(timeArr))
+
+deltaBIC = noOrbBIC - sineBIC
+
+bicFile = open("BICFits/"+wdName+"_BICCalc.txt",'w')
+bicFile.write("Orbit eqn: v(t) = {0:.3f}*sin(2*pi*(t/{1:.3f}) + {2:.3f}) + {3:.3f}".format(params[0],params[1],params[2],params[3]))
+bicFile.write("No Orbit eqn: v(t) = {0:.3f}".format(mparam))
+bicFile.write("No Orbit BIC = {0:.3f}".format(noOrbBIC))
+bicFile.write("Sine BIC = {0:.3f}".format(sinBIC))
+bicFile.write("Delta BIC = noOrbBIC - sineBIC = {0:.3f}".format(deltaBIC))
+bicFile.close()
+
+##############################
+
 
 plt.plot(newTime,sine(newTime,params[0],params[1],params[2],params[3]),color="red",alpha=0.75)
 #plt.plot(newTime,sine(newTime,Amp,Per,Phi,Gamma),color="red",alpha=0.75)
@@ -401,12 +476,12 @@ plt.ylabel("Velocity [km/s]")
 #plt.title(wdName + " velocity vs time")
 plt.xlim(np.max(timeArr)-0.1,np.max(timeArr)+0.1)
 
-plt.savefig("ModelFits/"+wdName+"_time_zoomed.pdf")
+plt.savefig("BICFits/"+wdName+"_time_zoomed.pdf")
 
 #print ""
 #print Amp,Per,Phi,Gamma
 
 import corner
 fig = corner.corner(samplesChain, labels=["A","P","Phi","Gam"])
-fig.savefig("ModelFits/"+wdName+"_Triangle.pdf")
+fig.savefig("BICFits/"+wdName+"_Triangle.pdf")
 
