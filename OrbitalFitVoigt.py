@@ -117,7 +117,7 @@ for j in range(len(lines)):
 #for j in range(0,1):
 
     path = lines[j]
-
+    
     c = 299792.458 #km/s
     basename = os.path.basename(path)[:-5]
     wdName = basename[0:6]
