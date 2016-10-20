@@ -329,7 +329,7 @@ for i in range(len(timeArr)):
     data.append((timeArr[i],rvArr[i],stdArr[i]))
 
 dataArr = np.array(data)
-np.savetxt("BICFits/rvdata.csv",dataArr,delimiter=',')
+np.savetxt("BICFits/"+wdName+"_rvdata.csv",dataArr,delimiter=',')
 
 ###
 Amin, Amax = 5.0, 500.0
@@ -347,15 +347,15 @@ plot_format()
 middles = np.array([(Amin+Amax)/2,(Pmin+Pmax)/2,(Phimin+Phimax)/2,(GamMin+GamMax)/2])
 
 noOrbWalkers,noOrbDim = 200,1
-noOrbPos = [middles[-1] + 1e-4*np.random.randn(dim) for i in range(walkers)]
+noOrbPos = [middles[-1] + 1e-4*np.random.randn(noOrbDim) for i in range(noOrbWalkers)]
 
 noOrbSampler = tls.MCMCfit(lnprobNoOrbit,args=(timeArr,rvArr,stdArr),nwalkers=noOrbWalkers,ndim=noOrbDim,burnInSteps=250000,steps=250000,p=noOrbPos)
 
-noOrbSamplesChain = sampler.chain[:,:,:].reshape((-1,1))
-noOrbSamples = sampler.flatchain.reshape((-1,1)).T
+noOrbSamplesChain = noOrbSampler.chain[:,:,:].reshape((-1,1))
+noOrbSamples = noOrbSampler.flatchain.reshape((-1,1)).T
 
 mArr = []
-for m in samplesChain[np.random.randint(len(noOrbSamplesChain),size=1000)]:
+for m in noOrbSamplesChain[np.random.randint(len(noOrbSamplesChain),size=1000)]:
     mArr.append(m)
 mparam = mArr[-1]
 
@@ -387,6 +387,11 @@ PhiStd = PhiArr.std()
 
 newTime = np.linspace(np.min(timeArr),np.max(timeArr),5000)
 
+NoOrbArr = []
+for i in range(len(newTime)):
+    NoOrbArr.append(mparam)
+NoOrbArr = np.array(NoOrbArr)
+
 AArr = []
 PArr = []
 PhArr = []
@@ -398,7 +403,7 @@ for A,P,Ph,Gam in samplesChain[np.random.randint(len(samplesChain),size=100)]:
     plt.plot(newTime,sine(newTime,A,P,Ph,Gam),color='k',alpha=0.1)
     #print A,P,Ph,Gam
 #plt.plot(newTime,sine(newTime,params[0],params[1],params[2],params[3]),color="red",alpha=0.75)
-plt.plot(newTime,noOrbit(newTime,mparam,color='r'))
+plt.plot(newTime,NoOrbArr,color='r')
 plt.xlabel("MJD [days]")
 plt.ylabel("Velocity [km/s]")
 plt.savefig("BICFits/"+wdName+"_time.pdf")
@@ -419,19 +424,19 @@ params = [AArr[-1],PArr[-1],PhArr[-1],GArr[-1]]
 
 ##### BIC CALCULATIONS ########
 noOrbParams = (mparam)
-noOrbBIC = -2*np.log(lnlikeNoOrb(mparam,timeArr,rvArr,stdArr))+1*np.log(len(timeArr))
+noOrbBIC = -2*lnlikeNoOrbit(mparam,timeArr,rvArr,stdArr)+1*np.log(len(timeArr))
 
 sineParams = (params[0],params[1],params[2],params[3])
-sineBIC = -2*np.log(lnlikeSine(sineParams,timeArr,rvArr,stdArr))+4*np.log(len(timeArr))
+sineBIC = -2*lnlikeSine(sineParams,timeArr,rvArr,stdArr)+4*np.log(len(timeArr))
 
 deltaBIC = noOrbBIC - sineBIC
 
 bicFile = open("BICFits/"+wdName+"_BICCalc.txt",'w')
-bicFile.write("Orbit eqn: v(t) = {0:.3f}*sin(2*pi*(t/{1:.3f}) + {2:.3f}) + {3:.3f}".format(params[0],params[1],params[2],params[3]))
-bicFile.write("No Orbit eqn: v(t) = {0:.3f}".format(mparam))
-bicFile.write("No Orbit BIC = {0:.3f}".format(noOrbBIC))
-bicFile.write("Sine BIC = {0:.3f}".format(sinBIC))
-bicFile.write("Delta BIC = noOrbBIC - sineBIC = {0:.3f}".format(deltaBIC))
+bicFile.write("Orbit eqn: v(t) = {0:.3f}*sin(2*pi*(t/{1:.3f}) + {2:.3f}) + {3:.3f}\n".format(params[0],params[1],params[2],params[3]))
+bicFile.write("No Orbit eqn: v(t) = {0:.3f}\n".format(float(mparam)))
+bicFile.write("No Orbit BIC = {0:.3f}\n".format(float(noOrbBIC)))
+bicFile.write("Sine BIC = {0:.3f}\n".format(float(sineBIC)))
+bicFile.write("Delta BIC = noOrbBIC - sineBIC = {0:.3f}".format(float(deltaBIC)))
 bicFile.close()
 
 ##############################

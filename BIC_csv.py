@@ -167,8 +167,8 @@ else:
         
         return s
 
-tls.mkdir("ModelFits")
-tls.mkdir("ModelFits/VelFits")
+#tls.mkdir("BICFits")
+#tls.mkdir("BICFits/VelFits")
 
 
 lines = [line.rstrip('\n') for line in open('filelist')]
@@ -183,7 +183,7 @@ plot_format()
 plt.plot(tmpWl,tmpFlux,alpha=0.4)
 plt.plot(modelWl,modelFlux)
 plt.xlim(np.min(tmpWl),np.max(tmpWl))
-plt.savefig("ModelFits/SpectrumCheck.pdf")
+plt.savefig("BICFits/SpectrumCheck.pdf")
 plot_format()
 
 modelVels,modelFluxes = tls.ModelGetAllVelocities(modelFile)
@@ -199,7 +199,7 @@ if (len(sys.argv) == 2) and sys.argv[1] is "lorentzian":
     mdim,mwalkers = 2,200
 else:
     mdim,mwalkers = 4,200
-    
+"""
 for i in range(len(modelVels)):
     
     modelSampler = tls.MCMCfit(lnprobModel,args=(np.array(modelVels[i]),np.array(modelFluxes[i]),np.array(modelErrs[i])),nwalkers=mwalkers,ndim=mdim,burnInSteps=16000,steps=16000)
@@ -240,19 +240,20 @@ numArr = []
 rvArr = []
 stdArr = []
 timeArr = []
-
+"""
 plot_format()
 for j in range(len(lines)):
 #for j in range(0,1):
-
+    
     path = lines[j]
 
     c = 299792.458 #km/s
     basename = os.path.basename(path)[:-5]
     wdName = basename[0:6]
     #timeTaken = basename[15:]
-
+    """
     dateTaken = basename[7:17]
+    
     #timeTaken = basename[18:23]
     #dateTimeTaken = basename[7:23]
     dateTimeTaken = tls.GetDateTime(path)
@@ -314,29 +315,58 @@ for j in range(len(lines)):
     plt.xlim(-1500,1500)
     plt.ylim(0,3)
     plt.title(wdName+" RV value="+str(rvFit)+" RV Err="+str(rvStd))
-    plt.savefig("ModelFits/VelFits/Vel_specnum_"+str(j)+".pdf")
+    plt.savefig("BICFits/VelFits/Vel_specnum_"+str(j)+".pdf")
     plot_format()
+"""
 
+rvdata = np.genfromtxt("BICFits/"+wdName+"_rvdata.csv",delimiter=',')
 
-timeArr = np.array(timeArr)
-numArr = np.array(numArr)
-rvArr = np.array(rvArr)
-stdArr = np.array(stdArr)
+timeArr = rvdata[:,0]
+rvArr = rvdata[:,1]
+stdArr = rvdata[:,2]
 
+#timeArr = np.array(timeArr)
+#numArr = np.array(numArr)
+#rvArr = np.array(rvArr)
+#stdArr = np.array(stdArr)
+
+"""
+### Save data to a csv
+data = []
+for i in range(len(timeArr)):
+    data.append((timeArr[i],rvArr[i],stdArr[i]))
+
+dataArr = np.array(data)
+np.savetxt("BICFits/"+wdName+"_rvdata.csv",dataArr,delimiter=',')
+"""
+
+###
 Amin, Amax = 5.0, 500.0
 Pmin, Pmax = 0.02,0.1
 Phimin,Phimax = 0.0,(2*np.pi)
 GamMin, GamMax = -500.0, 500.0
 
-plot_format()
-plt.errorbar(numArr,rvArr,yerr=stdArr,ls='None')
-plt.ylabel("RV [km/s]")
-plt.xlabel("Spectrum number")
-plt.savefig("ModelFits/"+wdName+"_numRV.pdf")
-plot_format()
-
+#plot_format()
+#plt.errorbar(numArr,rvArr,yerr=stdArr,ls='None')
+#plt.ylabel("RV [km/s]")
+#plt.xlabel("Spectrum number")
+#plt.savefig("BICFits/"+wdName+"_numRV.pdf")
+#plot_format()
 
 middles = np.array([(Amin+Amax)/2,(Pmin+Pmax)/2,(Phimin+Phimax)/2,(GamMin+GamMax)/2])
+
+noOrbWalkers,noOrbDim = 200,1
+noOrbPos = [middles[-1] + 1e-4*np.random.randn(noOrbDim) for i in range(noOrbWalkers)]
+
+noOrbSampler = tls.MCMCfit(lnprobNoOrbit,args=(timeArr,rvArr,stdArr),nwalkers=noOrbWalkers,ndim=noOrbDim,burnInSteps=250000,steps=250000,p=noOrbPos)
+
+noOrbSamplesChain = noOrbSampler.chain[:,:,:].reshape((-1,1))
+noOrbSamples = noOrbSampler.flatchain.reshape((-1,1)).T
+
+mArr = []
+for m in noOrbSamplesChain[np.random.randint(len(noOrbSamplesChain),size=1000)]:
+    mArr.append(m)
+mparam = mArr[-1]
 
 walkers,dim = 200,4
 
@@ -366,18 +396,15 @@ PhiStd = PhiArr.std()
 
 newTime = np.linspace(np.min(timeArr),np.max(timeArr),5000)
 
+NoOrbArr = []
+for i in range(len(newTime)):
+    NoOrbArr.append(mparam)
+NoOrbArr = np.array(NoOrbArr)
+
 AArr = []
 PArr = []
 PhArr = []
 GArr = []
-
-#for A,P,Ph,Gam in samplesChain[np.random.randint(len(samplesChain),size=1000)]:
-#    AArr.append(A)
-#    PArr.append(P)
-#    PhArr.append(Ph)
-#    GArr.append(Gam)
-    #plt.plot(newTime,sine(newTime,A,P,Ph,Gam),color='k',alpha=0.01)
-    #print A,P,Ph,Gam
 
 plot_format()
 plt.errorbar(timeArr,rvArr,yerr=stdArr,linestyle='None',marker='o')
@@ -385,10 +412,10 @@ for A,P,Ph,Gam in samplesChain[np.random.randint(len(samplesChain),size=100)]:
     plt.plot(newTime,sine(newTime,A,P,Ph,Gam),color='k',alpha=0.1)
     #print A,P,Ph,Gam
 #plt.plot(newTime,sine(newTime,params[0],params[1],params[2],params[3]),color="red",alpha=0.75)
+plt.plot(newTime,NoOrbArr,color='r')
 plt.xlabel("MJD [days]")
 plt.ylabel("Velocity [km/s]")
-#plt.title(wdName + " velocity vs time\n{v[t]="+str(params[0])+"*sin[2*pi*(t/"+str(params[1])+") + "+str(params[2])+"] + "+str(params[3])+"}")
-plt.savefig("ModelFits/"+wdName+"_time.pdf")
+plt.savefig("BICFits/"+wdName+"_time.pdf")
 
 plot_format()
 plt.subplot(4,1,1)
@@ -399,9 +426,30 @@ for A,P,Ph,Gam in samplesChain[np.random.randint(len(samplesChain),size=1000)]:
     PArr.append(P)
     PhArr.append(Ph)
     GArr.append(Gam)
-#    print A,P,Ph,Gam
+    #print A,P,Ph,Gam
 
 params = [AArr[-1],PArr[-1],PhArr[-1],GArr[-1]]
+
+
+##### BIC CALCULATIONS ########
+noOrbParams = (mparam)
+noOrbBIC = -2*lnlikeNoOrbit(mparam,timeArr,rvArr,stdArr)+1*np.log(len(timeArr))
+
+sineParams = (params[0],params[1],params[2],params[3])
+sineBIC = -2*lnlikeSine(sineParams,timeArr,rvArr,stdArr)+4*np.log(len(timeArr))
+
+deltaBIC = noOrbBIC - sineBIC
+
+bicFile = open("BICFits/"+wdName+"_BICCalc.txt",'w')
+bicFile.write("Orbit eqn: v(t) = {0:.3f}*sin(2*pi*(t/{1:.3f}) + {2:.3f}) + {3:.3f}\n".format(params[0],params[1],params[2],params[3]))
+bicFile.write("No Orbit eqn: v(t) = {0:.3f}\n".format(float(mparam)))
+bicFile.write("No Orbit BIC = {0:.3f}\n".format(float(noOrbBIC)))
+bicFile.write("Sine BIC = {0:.3f}\n".format(float(sineBIC)))
+bicFile.write("Delta BIC = noOrbBIC - sineBIC = {0:.3f}".format(float(deltaBIC)))
+bicFile.close()
+
+##############################
+
 
 plt.plot(newTime,sine(newTime,params[0],params[1],params[2],params[3]),color="red",alpha=0.75)
 #plt.plot(newTime,sine(newTime,Amp,Per,Phi,Gamma),color="red",alpha=0.75)
@@ -442,12 +490,12 @@ plt.ylabel("Velocity [km/s]")
 #plt.title(wdName + " velocity vs time")
 plt.xlim(np.max(timeArr)-0.1,np.max(timeArr)+0.1)
 
-plt.savefig("ModelFits/"+wdName+"_time_zoomed.pdf")
+plt.savefig("BICFits/"+wdName+"_time_zoomed.pdf")
 
 #print ""
 #print Amp,Per,Phi,Gamma
 
 import corner
 fig = corner.corner(samplesChain, labels=["A","P","Phi","Gam"])
-fig.savefig("ModelFits/"+wdName+"_Triangle.pdf")
+fig.savefig("BICFits/"+wdName+"_Triangle.pdf")
 
