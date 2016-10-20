@@ -366,10 +366,7 @@ noOrbSamples = noOrbSampler.flatchain.reshape((-1,1)).T
 mArr = []
 for m in noOrbSamplesChain[np.random.randint(len(noOrbSamplesChain),size=1000)]:
     mArr.append(m)
-minit = mArr[-1]
-
-nllNoOrb = lambda *args: -lnlikeNoOrbit(*args)
-mparam = sp.minimize(nllNoOrb,[minit],args=(timeArr,rvArr,stdArr))
+mparam = mArr[-1]
 
 walkers,dim = 200,4
 
@@ -431,13 +428,8 @@ for A,P,Ph,Gam in samplesChain[np.random.randint(len(samplesChain),size=1000)]:
     GArr.append(Gam)
     #print A,P,Ph,Gam
 
-nll = lambda *args: -lnlikeSine(*args)
-results = sp.minimize(nll, [AArr[-1],PArr[-1],PhArr[-1],GArr[-1]],args=(timeArr,rvArr,stdArr))
-print results
-params = []
-Afit,Pfit,Phfit,Gfit = result["x"]
-#params = [AArr[-1],PArr[-1],PhArr[-1],GArr[-1]]
-params = [Afit,Pfit,Phfit,Gfit]
+params = [AArr[-1],PArr[-1],PhArr[-1],GArr[-1]]
+
 
 ##### BIC CALCULATIONS ########
 noOrbParams = (mparam)
