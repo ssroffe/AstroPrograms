@@ -11,7 +11,8 @@ def setFig():
     import matplotlib.pyplot as plt
     plt.rcdefaults()
     plt.rcParams.update({'figure.autolayout':'True'})
-    plt.rcParams.update({'font.size': 12})
+    #plt.rcParams.update({'font.size': 16})
+    plt.rcParams.update({'font.size': 18})
     plt.rcParams.update({'mathtext.default':'regular'})
     plt.rcParams.update({'mathtext.fontset':'stixsans'})
     plt.rcParams.update({'axes.linewidth': 1.5})
@@ -113,7 +114,6 @@ def PhasePlot():
     
     phiDiagArr = []
 
-
     for pt in timeArr:
         PhiOff = ((2*np.pi)*(pt/PFit) + PhFit) 
         phiDiagArr.append(PhiOff)
@@ -130,18 +130,20 @@ def PhasePlot():
 
     yvalues = sine(phiDiagArr,AFit,2*np.pi,0,GamFit)
 
-    residuals = yvalues - rvArr
+    residuals = rvArr - yvalues
 
     plot_format()
+    setFig()
     plt.figure(1).add_axes((.1,.3,.8,.6))
     plt.plot(angles,sine(angles,AFit,2*np.pi,0,GamFit),'k--')
     plt.title(wdName+" Phase")
     plt.ylabel("RV [km/s]")
     plt.xlim(0,2*np.pi)
     plt.errorbar(phiDiagArr,rvArr,yerr=stdArr,linestyle='None',marker='o')
-    
+
+    ## Residuals
     plt.figure(1).add_axes((.1,.1,.8,.2))
-    plt.plot(phiDiagArr,residuals,linestyle="None",marker="o")
+    plt.errorbar(phiDiagArr,residuals,yerr=stdArr,linestyle="None",marker="o")
     plt.xlabel("Phase [rad]")
     plt.xlim(0,2*np.pi)
     #plt.ylim(-200,200)
