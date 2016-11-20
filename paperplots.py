@@ -46,15 +46,26 @@ def TimePlot():
     timeArr = rvdata[:,0]
     rvArr = rvdata[:,1]
     stdArr = rvdata[:,2]
+
+    SNArr = Signal2Noise()
+    
+    #SNCut = 3.0
+    SNCut = 2.0
+    wherrSN = np.where(SNArr >= SNCut)
+    
+    timeArr = timeArr[wherrSN]
+    rvArr = rvArr[wherrSN]
+    stdArr = stdArr[wherrSN]
+    SNArr = SNArr[wherrSN]
     
     sineData = np.genfromtxt("BICFits/"+wdName+"_sineParams.csv")
     
-    largeTime = np.linspace(np.min(timeArr), np.max(timeArr), 5000)
+    largeTime = np.linspace(np.min(timeArr)-0.2, np.max(timeArr)+0.2, 5000)
     
     sineVals = sine(largeTime, sineData[0], sineData[1], sineData[2], sineData[3])
     
     wherr1 = np.where((np.min(timeArr) <= timeArr) & (timeArr <= np.min(timeArr) + 0.5))
-    
+    #s2n = Signal2Noise()
     ## separate large time gaps into different axes
     i = 0
     wherrArr = []
@@ -68,13 +79,19 @@ def TimePlot():
     
     ## Plotting
     for i in range(len(axes)):
-        axes[i].errorbar(timeArr,rvArr,yerr=stdArr,ls="None",marker='o')
+        axes[i].errorbar(timeArr,rvArr,yerr=stdArr,ls="None",marker='o',markersize=10)
         axes[i].plot(largeTime,sineVals,color='k')
+        ax2 = axes[i].twinx()
+        ax2.plot(timeArr,SNArr,ls="None",marker='o',color='r',markersize=10)
+        ax2.set_ylabel("Signal to Noise Ratio", color='r')
+        for t in ax2.get_yticklabels():
+            t.set_color("red")
         axes[i].set_xlim(min(wherrArr[i])-0.005,max(wherrArr[i])+0.005)
         axes[i].yaxis.tick_left()
         axes[i].set_ylim(-400,400)
         #axes[i].xaxis.get_offset_text().set_visible(False) #remove scientific notation
         axes[i].set_xlabel("MJD [days]")
+        plt.setp(axes[i].get_xticklabels(), rotation=25, horizontalalignment='right')
         #if i == int(len(axes)/2):
         #
         #    axes[i].set_title(wdName)
@@ -82,6 +99,8 @@ def TimePlot():
             axes[i].set_ylabel("RV [km/s]")
 
     plt.savefig("../../PaperPlots/"+wdName+"/"+wdName+"_time.pdf")
+
+    
     #plt.show()
 
 def PhasePlot():
@@ -104,6 +123,16 @@ def PhasePlot():
     timeArr = rvdata[:,0]
     rvArr = rvdata[:,1]
     stdArr = rvdata[:,2]
+
+    SNArr = Signal2Noise()
+
+    #SNCut = 3.0
+    SNCut = 2.0
+    wherrSN = np.where(SNArr >= SNCut)
+    
+    timeArr = timeArr[wherrSN]
+    rvArr = rvArr[wherrSN]
+    stdArr = stdArr[wherrSN]
     
     sineData = np.genfromtxt("BICFits/"+wdName+"_sineParams.csv")
     
@@ -139,11 +168,11 @@ def PhasePlot():
     plt.title(wdName+" Phase")
     plt.ylabel("RV [km/s]")
     plt.xlim(0,2*np.pi)
-    plt.errorbar(phiDiagArr,rvArr,yerr=stdArr,linestyle='None',marker='o')
+    plt.errorbar(phiDiagArr,rvArr,yerr=stdArr,linestyle='None',marker='o',markersize=10)
 
     ## Residuals
     plt.figure(1).add_axes((.1,.1,.8,.2))
-    plt.errorbar(phiDiagArr,residuals,yerr=stdArr,linestyle="None",marker="o")
+    plt.errorbar(phiDiagArr,residuals,yerr=stdArr,linestyle="None",marker="o",markersize=10)
     plt.xlabel("Phase [rad]")
     plt.xlim(0,2*np.pi)
     #plt.ylim(-200,200)
@@ -151,6 +180,26 @@ def PhasePlot():
     plt.savefig("../../PaperPlots/"+wdName+"/"+wdName+"_phase.pdf")
     #plt.show()
 
+def Signal2Noise():
+    from numpy import array, where, median, abs
+    import tools as tls
+    lines = [line.rstrip('\n') for line in open('filelist')]
+    s2n = []
+    for j in range(len(lines)):
+        wl, flux = tls.RawSpectrum(lines[j])
+        
+        flux = array(flux)
+        
+        # Values that are exactly zero (padded) are skipped
+        flux = array(flux[where(flux != 0.0)])
+        n    = len(flux)
+        # For spectra shorter than this, no value can be returned
+        if (n>4):
+            signal = median(flux)               
+            noise  = 0.6052697 * median(abs(2.0 * flux[2:n-2] - flux[0:n-4] - flux[4:n]))
+            s2n.append(float(signal/noise))
+    return array(s2n)
+           
 def PlotAll():
     TimePlot()
     PhasePlot()
@@ -159,3 +208,4 @@ if __name__ == '__main__':
     #TimePlot()
     #PhasePlot()
     PlotAll()
+    #Signal2Noise()
