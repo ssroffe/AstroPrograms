@@ -204,7 +204,46 @@ def Signal2Noise():
             noise  = 0.6052697 * median(abs(2.0 * flux[2:n-2] - flux[0:n-4] - flux[4:n]))
             s2n.append(float(signal/noise))
     return array(s2n)
-           
+
+def LatexTable():
+    import numpy as np
+    import tools as tls
+    from astropy.io import ascii
+
+    #ascii.write(data, format='latex')
+    
+    lines = [line.rstrip('\n') for line in open('filelist')]
+    basename = tls.GetFileName(lines[0])
+    wdName = basename[0:6]
+
+    rvdata = np.genfromtxt("BICFits/"+wdName+"_rvdata.csv",delimiter=',')
+
+    Objects = {"wd1235" : "J123549.89+154319.3", "wd1203" : "J120315.22+650524.4",
+               "wd1140" : "J114024.02+661842.2", "wd1121" : "J112105.23+644336.4",
+               "wd0907" : "J090751.78+071844.6", "wd0343" : "J034319.09+101238.0"}
+
+    fullName = Objects[wdName]
+
+    plusminus = "\\pm"
+    timeArr = rvdata[:,0]
+    rvArr = rvdata[:,1]
+    stdArr = rvdata[:,2]
+
+    nameCol = []
+    rvCol = []
+    for i in range(len(rvArr)):
+        rvVal = "{0:.2f}".format(rvArr[i])
+        stdVal = "{0:.2f}".format(stdArr[i])
+        rvCol.append(str(rvVal) + " " + plusminus + " \ " + str(stdVal))
+        if i == 0:
+            nameCol.append(fullName)
+        else:
+            nameCol.append("...")
+            
+    ascii.write([nameCol,timeArr,rvCol],format="latex")
+    
+    
+
 def PlotAll():
     TimePlot()
     PhasePlot()
@@ -214,3 +253,4 @@ if __name__ == '__main__':
     #PhasePlot()
     PlotAll()
     #Signal2Noise()
+    #LatexTable()
