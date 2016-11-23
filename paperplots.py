@@ -81,11 +81,11 @@ def TimePlot():
     for i in range(len(axes)):
         axes[i].errorbar(timeArr,rvArr,yerr=stdArr,ls="None",marker='o',markersize=10)
         axes[i].plot(largeTime,sineVals,color='k')
-        ax2 = axes[i].twinx()
-        ax2.plot(timeArr,SNArr,ls="None",marker='o',color='r',markersize=10)
-        ax2.set_ylabel("Signal to Noise Ratio", color='r')
-        for t in ax2.get_yticklabels():
-            t.set_color("red")
+        #ax2 = axes[i].twinx()
+        #ax2.plot(timeArr,SNArr,ls="None",marker='o',color='r',markersize=10)
+        #ax2.set_ylabel("Signal to Noise Ratio", color='r')
+        #for t in ax2.get_yticklabels():
+        #    t.set_color("red")
         axes[i].set_xlim(min(wherrArr[i])-0.005,max(wherrArr[i])+0.005)
         axes[i].yaxis.tick_left()
         axes[i].set_ylim(-400,400)
@@ -108,6 +108,7 @@ def PhasePlot():
     import numpy as np
     import matplotlib.pyplot as plt
     from plot_format import plot_format
+    from matplotlib.ticker import MaxNLocator
     #setFig()
     tls.mkdir("../../PaperPlots")
 
@@ -165,6 +166,8 @@ def PhasePlot():
     setFig()
     plt.figure(1).add_axes((.1,.3,.8,.6))
     plt.plot(angles,sine(angles,AFit,2*np.pi,0,GamFit),'k--')
+    plt.gca().yaxis.set_major_locator(MaxNLocator(prune='lower'))
+    plt.gca().xaxis.set_ticks([])
     plt.title(wdName+" Phase")
     plt.ylabel("RV [km/s]")
     plt.xlim(0,2*np.pi)
@@ -173,6 +176,8 @@ def PhasePlot():
     ## Residuals
     plt.figure(1).add_axes((.1,.1,.8,.2))
     plt.errorbar(phiDiagArr,residuals,yerr=stdArr,linestyle="None",marker="o",markersize=10)
+    #plt.gca().yaxis.set_major_locator(MaxNLocator(prune='upper'))
+    plt.gca().xaxis.set_major_locator(MaxNLocator(prune='lower'))
     plt.xlabel("Phase [rad]")
     plt.xlim(0,2*np.pi)
     #plt.ylim(-200,200)
