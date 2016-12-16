@@ -4,7 +4,7 @@ def sine(t,A,P,Phi,Gamma):
 
 def splitAxis(num):
     import matplotlib.pyplot as plt
-    axes = plt.subplots(1,num,sharey=True,facecolor='w',figsize=(20,10))
+    axes = plt.subplots(1,num,sharey=True,facecolor='w',figsize=(25,10))
     return  axes
 
 def setFig():
@@ -12,10 +12,10 @@ def setFig():
     plt.rcdefaults()
     plt.rcParams.update({'figure.autolayout':'True'})
     #plt.rcParams.update({'font.size': 16})
-    plt.rcParams.update({'font.size': 18})
+    plt.rcParams.update({'font.size': 36})
     plt.rcParams.update({'mathtext.default':'regular'})
     plt.rcParams.update({'mathtext.fontset':'stixsans'})
-    plt.rcParams.update({'axes.linewidth': 1.5})
+    plt.rcParams.update({'axes.linewidth': 3.0})
     plt.rcParams.update({'xtick.major.size': 5})
     plt.rcParams.update({'xtick.major.width': 1.25 })
     plt.rcParams.update({'xtick.minor.size': 2.5})
@@ -30,6 +30,8 @@ def TimePlot():
     import tools as tls
     import numpy as np
     import matplotlib.pyplot as plt
+    from matplotlib.ticker import FormatStrFormatter
+
     setFig()
     tls.mkdir("../../PaperPlots")
 
@@ -49,8 +51,8 @@ def TimePlot():
 
     SNArr = Signal2Noise()
     
-    #SNCut = 3.0
-    SNCut = 2.0
+    SNCut = 3.0
+    #SNCut = 2.0
     wherrSN = np.where(SNArr >= SNCut)
     
     timeArr = timeArr[wherrSN]
@@ -59,7 +61,7 @@ def TimePlot():
     SNArr = SNArr[wherrSN]
     
     sineData = np.genfromtxt("BICFits/"+wdName+"_sineParams.csv")
-    
+    amp,period,phi,gam = sineData
     largeTime = np.linspace(np.min(timeArr)-0.2, np.max(timeArr)+0.2, 5000)
     
     sineVals = sine(largeTime, sineData[0], sineData[1], sineData[2], sineData[3])
@@ -78,19 +80,28 @@ def TimePlot():
     #plt.xlabel("MJD [days]")
     
     ## Plotting
+    off = 55950
     for i in range(len(axes)):
-        axes[i].errorbar(timeArr,rvArr,yerr=stdArr,ls="None",marker='o',markersize=10)
-        axes[i].plot(largeTime,sineVals,color='k')
+        axes[i].errorbar(timeArr-off,rvArr,yerr=stdArr,ls="None",marker='o',markersize=10)
+        axes[i].plot(largeTime-off,sineVals,color='k')
         #ax2 = axes[i].twinx()
         #ax2.plot(timeArr,SNArr,ls="None",marker='o',color='r',markersize=10)
         #ax2.set_ylabel("Signal to Noise Ratio", color='r')
         #for t in ax2.get_yticklabels():
         #    t.set_color("red")
-        axes[i].set_xlim(min(wherrArr[i])-0.005,max(wherrArr[i])+0.005)
+        if len(wherrArr[i]) == 1:
+            axes[i].set_xlim(min(wherrArr[i])-off-period,max(wherrArr[i])-off+period)
+            axes[i].xaxis.set_ticks([wherrArr[i]-off])
+        else:
+            axes[i].set_xlim(min(wherrArr[i])-off-0.005,max(wherrArr[i])-off+0.005)
+            axes[i].xaxis.set_ticks(np.arange(min(wherrArr[i])-off,max(wherrArr[i])-off,0.02))
         axes[i].yaxis.tick_left()
-        axes[i].set_ylim(-400,400)
+        axes[i].ticklabel_format(useOffset=False)
+        axes[i].xaxis.set_major_formatter(FormatStrFormatter('%.3f'))
+        #axes[i].set_ylim(-400,400)
+        axes[i].set_ylim(-350,350)
         #axes[i].xaxis.get_offset_text().set_visible(False) #remove scientific notation
-        axes[i].set_xlabel("MJD [days]")
+        axes[i].set_xlabel("MJD [days - "+str(off)+"]")
         plt.setp(axes[i].get_xticklabels(), rotation=25, horizontalalignment='right')
         #if i == int(len(axes)/2):
         #
@@ -98,8 +109,9 @@ def TimePlot():
         if i == 0:
             axes[i].set_ylabel("RV [km/s]")
 
+    plt.savefig("/home/seth/Dropbox/astro_research/PaperPlots/"+wdName+"/"+wdName+"_time.pdf")
     plt.savefig("../../PaperPlots/"+wdName+"/"+wdName+"_time.pdf")
-
+    
     
     #plt.show()
 
@@ -127,8 +139,8 @@ def PhasePlot():
 
     SNArr = Signal2Noise()
 
-    #SNCut = 3.0
-    SNCut = 2.0
+    SNCut = 3.0
+    #SNCut = 2.0
     wherrSN = np.where(SNArr >= SNCut)
     
     timeArr = timeArr[wherrSN]
@@ -175,6 +187,8 @@ def PhasePlot():
 
     ## Residuals
     plt.figure(1).add_axes((.1,.1,.8,.2))
+    plt.gca().xaxis.set_ticks(np.arange(min(angles),max(angles),np.pi/2))
+    plt.gca().yaxis.set_ticks([-150,0,150])
     plt.errorbar(phiDiagArr,residuals,yerr=stdArr,linestyle="None",marker="o",markersize=10)
     #plt.gca().yaxis.set_major_locator(MaxNLocator(prune='upper'))
     plt.gca().xaxis.set_major_locator(MaxNLocator(prune='lower'))
@@ -182,6 +196,7 @@ def PhasePlot():
     plt.xlim(0,2*np.pi)
     #plt.ylim(-200,200)
     plt.axhline(0,linestyle="--",color="black",alpha=0.5)
+    plt.savefig("/home/seth/Dropbox/astro_research/PaperPlots/"+wdName+"/"+wdName+"_phase.pdf")
     plt.savefig("../../PaperPlots/"+wdName+"/"+wdName+"_phase.pdf")
     #plt.show()
 
