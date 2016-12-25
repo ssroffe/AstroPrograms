@@ -299,7 +299,7 @@ def GetModelVelocity(Hline="gamma"):
     import numpy as np
     import matplotlib.pyplot as plt
     from astropy.io import fits
-    
+    import os
     
     Objects = {"wd1235" : "J123549.89+154319.3", "wd1203" : "J120315.22+650524.4",
                "wd1140" : "J114024.02+661842.2", "wd1121" : "J112105.23+644336.4",
