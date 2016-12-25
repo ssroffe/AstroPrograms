@@ -7,25 +7,30 @@ def sine(t,A,P,Phi,Gamma):
 
 """FOR VELOCITY FITTING"""
 def voigtModel(x, Ldepth, Lwidth, Gdepth, Gwidth):
+    import numpy as np
     return 1.0-Ldepth/(1.0 + ((x)/Lwidth)**2) - Gdepth*np.exp(-(x)**2/(2*Gwidth**2))
 
 def lnlikeModel(p,x,y,err):
+    import numpy as np
     Ldepth,Lwidth,Gdepth,Gwidth = p
     return -np.sum((y-voigtModel(x,Ldepth,Lwidth,Gdepth,Gwidth))**2/(2*err))
 
 def lnpriorModel(p):
+    import numpy as np
     Ldepth,Lwidth,Gdepth,Gwidth = p
     if 0.0 < Ldepth < 1.0 and 0.0 < Lwidth < 3000.0 and 0.0 < Gdepth < 1.0 and 0.0 < Gwidth < 600.0:
         return 0.0
     return -np.inf
 
 def lnprobModel(p, x, y,yerr):
+    import numpy as np
     lp = lnpriorModel(p)
     if not np.isfinite(lp):
         return -np.inf
     return lp + lnlikeModel(p, x, y, yerr)
 
 def voigt(x, Ldepth, Lwidth, Gdepth, Gwidth, RVShift):
+    import numpy as np
     return 1.0-Ldepth/(1.0 + ((x-RVShift)/Lwidth)**2) - Gdepth*np.exp(-(x-RVShift)**2/(2*Gwidth**2))
 
 """Split the large gaps in the x-axis for the time plot"""
