@@ -342,7 +342,11 @@ def GetModelVelocity(Hline="gamma"):
 
 """Actually plot the velocity curves"""
 def PlotVelocities(Hline="gamma"):
+    import os
+    import tools as tls
+    from plot_format import plot_format
     import numpy as np
+    from matplotlib.ticker import MaxNLocator
     import matplotlib.pyplot as plt
     
     HLines = { "beta" : 0, "gamma" : 1, "delta" : 2 }
@@ -353,9 +357,14 @@ def PlotVelocities(Hline="gamma"):
     wdName = basename[0:6]
 
     
-    ld,lw,gd,gw = np.genfromtxt("BICFits/"+wdName+"_"+Hline+"_modelParams.csv",delimeter=',')
+    ld,lw,gd,gw = np.genfromtxt("BICFits/"+wdName+"_"+Hline+"_modelParams.csv",delimiter=',')
     rvdata = np.genfromtxt("BICFits/"+wdName+"_rvdata.csv",delimiter=',')
-    timeArr,rvArr,stdArr = rvdata
+    
+    timeArr = rvdata[:,0]
+    rvArr = rvdata[:,1]
+    stdArr = rvdata[:,2]
+
+    
 
     off = 0.5
 
@@ -364,7 +373,9 @@ def PlotVelocities(Hline="gamma"):
     else:
         halfway = 999
         
-    setfig()    
+    
+    setFig()
+    f, (ax1,ax2) = plt.subplots(1,2,sharey=True)
     for j in range(len(lines)):
         path = lines[j]
         c = 299792.458
@@ -372,27 +383,37 @@ def PlotVelocities(Hline="gamma"):
         vels = vels[Hl]
         fluxes = fluxes[Hl]
         ferrs = ferrs[Hl]
-        f, (ax1,ax2) = plt.subplots(1,2,sharey=True)
+
         if j <= halfway:
             k = j
             ax1.step(vels,fluxes+k*off,where='mid',linewidth=1.5,color='k')
-            ax1.plot(vels,voigt(vels,ld,lw,gd,gw,rvArr[j])+j*off,color='r',linewidth=1.5,label='Best fit')
-            ax1.plot(vels,voigt(vels,ld,lw,gd,gw,rvArr[j]+stdArr[j])+k*off,color='cyan',linewidth=1.5,label='Best fit $\pm$ std')
-            ax1.plot(vels,voigt(vels,ld,lw,gd,gw,rvArr[j]-stdArr[j])+k*off,color='cyan',linewidth=1.5)
-            plt.ylabel("Normalized Flux + offset")
-            plt.xlabel("Velocity [km s$^{-1}$]")
+            ax1.plot(vels,voigt(vels,ld,lw,gd,gw,rvArr[j])+k*off,color='r',linewidth=3.0,label='Best fit')
+            ax1.plot(vels,voigt(vels,ld,lw,gd,gw,rvArr[j]+stdArr[j])+k*off,color='cyan',linewidth=3.0,label='Best fit $\pm$ std')
+            ax1.plot(vels,voigt(vels,ld,lw,gd,gw,rvArr[j]-stdArr[j])+k*off,color='cyan',linewidth=3.0)
+            ax1.axvline(0,color='k',ls='--')
+            plt.gca().yaxis.set_major_locator(MaxNLocator(prune='lower'))
+            ax1.set_ylabel("Normalized Flux + offset")
+            ax1.set_xlabel("Velocity [km s$^{-1}$]")
+            ax1.set_xlim(-1500,1500)
         else:
             k = j - halfway
             ax2.step(vels,fluxes+k*off,where='mid',linewidth=1.5,color='k')
-            ax2.plot(vels,voigt(vels,ld,lw,gd,gw,rvArr[j])+j*off,color='r',linewidth=1.5,label='Best fit')
-            ax2.plot(vels,voigt(vels,ld,lw,gd,gw,rvArr[j]+stdArr[j])+k*off,color='cyan',linewidth=1.5,label='Best fit $\pm$ std')
-            ax2.plot(vels,voigt(vels,ld,lw,gd,gw,rvArr[j]-stdArr[j])+k*off,color='cyan',linewidth=1.5)
-            plt.xlabel("Velocity [km s$^{-1}$]")
-            
+            ax2.plot(vels,voigt(vels,ld,lw,gd,gw,rvArr[j])+k*off,color='r',linewidth=3.0,label='Best fit')
+            ax2.plot(vels,voigt(vels,ld,lw,gd,gw,rvArr[j]+stdArr[j])+k*off,color='cyan',linewidth=3.0,label='Best fit $\pm$ std')
+            ax2.plot(vels,voigt(vels,ld,lw,gd,gw,rvArr[j]-stdArr[j])+k*off,color='cyan',linewidth=3.0)
+            ax2.axvline(0,color='k',ls='--')
+            ax2.set_xlabel("Velocity [km s$^{-1}$]")
+            ax2.set_xlim(-1500,1500)
+    #plt.show()
+    #plt.savefig("/home/seth/Dropbox/astro_research/PaperPlots/"+wdName+"/"+wdName+"_phase.pdf")
+    plt.savefig("/cygdrive/c/Users/seth/Dropbox/astro_research/PaperPlots/"+wdName+"/"+wdName+"_velocity.pdf")
+    plt.savefig("../../PaperPlots/"+wdName+"/"+wdName+"_velocity.pdf")
+    
     
 def PlotAll():
     TimePlot()
     PhasePlot()
+    PlotVelocities()
 
 def makeVelocityCurves():
     GetModelVelocity()
@@ -401,8 +422,9 @@ def makeVelocityCurves():
 if __name__ == '__main__':
     #TimePlot()
     #PhasePlot()
-    #PlotAll()
+    PlotAll()
     #Signal2Noise()
     #LatexTable()
 
-    GetModelVelocity()
+    #GetModelVelocity()
+    #PlotVelocities()
