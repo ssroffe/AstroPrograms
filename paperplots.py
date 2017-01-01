@@ -405,8 +405,8 @@ def PlotVelocities(Hline="gamma"):
             ax2.set_xlabel("Velocity [km s$^{-1}$]")
             ax2.set_xlim(-1500,1500)
     #plt.show()
-    #plt.savefig("/home/seth/Dropbox/astro_research/PaperPlots/"+wdName+"/"+wdName+"_phase.pdf")
-    plt.savefig("/cygdrive/c/Users/seth/Dropbox/astro_research/PaperPlots/"+wdName+"/"+wdName+"_velocity.pdf")
+    plt.savefig("/home/seth/Dropbox/astro_research/PaperPlots/"+wdName+"/"+wdName+"_phase.pdf")
+    #plt.savefig("/cygdrive/c/Users/seth/Dropbox/astro_research/PaperPlots/"+wdName+"/"+wdName+"_velocity.pdf")
     plt.savefig("../../PaperPlots/"+wdName+"/"+wdName+"_velocity.pdf")
     
     
