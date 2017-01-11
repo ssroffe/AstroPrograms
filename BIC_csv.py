@@ -362,11 +362,15 @@ for A,P,Ph,Gam in samplesChain[np.random.randint(len(samplesChain),size=1000)]:
 
 nll = lambda *args: -lnprobSine(*args)
 results = sp.minimize(nll, [AArr[-1],PArr[-1],PhArr[-1],GArr[-1]],args=(timeArr,rvArr,stdArr))
+Astd = AArr.std()
+Pstd = PArr.std()
+Phstd = PhArr.std()
+Gstd = GArr.std()
 #print results
 params = []
 Afit,Pfit,Phfit,Gfit = results["x"]
 #params = [AArr[-1],PArr[-1],PhArr[-1],GArr[-1]]
-params = [Afit,Pfit,Phfit,Gfit]
+params = [(Afit,Astd),(Pfit,Pstd),(Phfit,Phstd),(Gfit,Gstd)]
 
 np.savetxt("BICFits/"+wdName+"_sineParams.csv",params,delimiter=',')
 
@@ -386,7 +390,8 @@ bicFile.write("No Orbit BIC = {0:.3f}\n".format(float(noOrbBIC)))
 bicFile.write("Sine BIC = {0:.3f}\n".format(float(sineBIC)))
 bicFile.write("Delta BIC = noOrbBIC - sineBIC = {0:.3f}".format(float(deltaBIC)))
 bicFile.close()
-
+deltaBICArr = np.array(deltaBIC)
+np.savetxt("BICFits/"+wdName+"_deltaBIC.csv",deltaBICArr,delimiter=',')
 ##############################
 
 

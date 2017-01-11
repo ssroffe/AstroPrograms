@@ -1,5 +1,36 @@
 ### STUFF FOR PAPER
 
+"""Binary Mass function Calculation"""
+def BinMassFunc():
+    import tools as tls
+    import numpy as np
+    
+    lines = [line.rstrip('\n') for line in open('filelist')]
+    basename = tls.GetFileName(lines[0])
+    wdName = basename[0:6]
+    
+    rvdata = np.genfromtxt("BICFits/"+wdName+"_rvdata.csv",delimiter=',')
+    sineData = np.genfromtxt("BICFits/"+wdName+"_sineParams.csv")
+
+    amp,period,phi,gam = sineData
+
+    period = period * 24 * 3600 #Convert days to seconds
+    amp = amp * 1000 #Convert km/s to m/s
+    
+    G = 6.67408 * 10**(-11) #Nm^2/kg^2
+    
+    f = (period*amp**3)/(2*np.pi*G) #kg
+
+    Msf = f/(1.989 * 10**30)
+    
+    print "Binary mass function output: " + str(Msf) + " Msun"
+
+    tmpArr = np.array([Msf])
+    np.savetxt("BICFits/"+wdName+"_BinMassFuncVal.csv",tmpArr,delimiter=',')
+    
+    return f
+    
+
 """Sine model for fitting"""
 def sine(t,A,P,Phi,Gamma):
     import numpy as np
@@ -62,6 +93,7 @@ def setFig():
 """Plot orbital solution vs time"""
 def TimePlot():
     import tools as tls
+    from sys import platform
     import numpy as np
     import matplotlib.pyplot as plt
     from matplotlib.ticker import FormatStrFormatter
@@ -142,8 +174,11 @@ def TimePlot():
         #    axes[i].set_title(wdName)
         if i == 0:
             axes[i].set_ylabel("RV [km/s]")
-
-    plt.savefig("/home/seth/Dropbox/astro_research/PaperPlots/"+wdName+"/"+wdName+"_time.pdf")
+    if platform == 'cygwin':
+        #plt.savefig("/home/seth/Dropbox/astro_research/PaperPlots/"+wdName+"/"+wdName+"_time.pdf")
+        plt.savefig("/cygdrive/c/Users/seth/Dropbox/astro_research/PaperPlots/"+wdName+"/"+wdName+"_time.pdf")
+    else:
+        plt.savefig("/home/seth/Dropbox/astro_research/PaperPlots/"+wdName+"/"+wdName+"_time.pdf")
     plt.savefig("../../PaperPlots/"+wdName+"/"+wdName+"_time.pdf")
     
     
@@ -152,6 +187,7 @@ def TimePlot():
 """Plot phase-folded orbit"""
 def PhasePlot():
     import tools as tls
+    from sys import platform
     import numpy as np
     import matplotlib.pyplot as plt
     from plot_format import plot_format
@@ -231,7 +267,12 @@ def PhasePlot():
     plt.xlim(0,2*np.pi)
     #plt.ylim(-200,200)
     plt.axhline(0,linestyle="--",color="black",alpha=0.5)
-    plt.savefig("/home/seth/Dropbox/astro_research/PaperPlots/"+wdName+"/"+wdName+"_phase.pdf")
+
+    if platform == 'cygwin':
+        #plt.savefig("/home/seth/Dropbox/astro_research/PaperPlots/"+wdName+"/"+wdName+"_phase.pdf")
+        plt.savefig("/cygdrive/c/Users/seth/Dropbox/astro_research/PaperPlots/"+wdName+"/"+wdName+"_phase.pdf")
+    else:
+        plt.savefig("/home/seth/Dropbox/astro_research/PaperPlots/"+wdName+"/"+wdName+"_phase.pdf")
     plt.savefig("../../PaperPlots/"+wdName+"/"+wdName+"_phase.pdf")
     #plt.show()
 
@@ -345,6 +386,7 @@ def PlotVelocities(Hline="gamma"):
     import os
     import tools as tls
     from plot_format import plot_format
+    from sys import platform
     import numpy as np
     from matplotlib.ticker import MaxNLocator
     import matplotlib.pyplot as plt
@@ -373,8 +415,9 @@ def PlotVelocities(Hline="gamma"):
     else:
         halfway = 999
         
-    
+    #plot_format()
     setFig()
+    plot_format()
     f, (ax1,ax2) = plt.subplots(1,2,sharey=True)
     for j in range(len(lines)):
         path = lines[j]
@@ -383,13 +426,14 @@ def PlotVelocities(Hline="gamma"):
         vels = vels[Hl]
         fluxes = fluxes[Hl]
         ferrs = ferrs[Hl]
-
+        stdalph = 0.7
+        
         if j <= halfway:
             k = j
             ax1.step(vels,fluxes+k*off,where='mid',linewidth=1.5,color='k')
-            ax1.plot(vels,voigt(vels,ld,lw,gd,gw,rvArr[j])+k*off,color='r',linewidth=3.0,label='Best fit')
-            ax1.plot(vels,voigt(vels,ld,lw,gd,gw,rvArr[j]+stdArr[j])+k*off,color='cyan',linewidth=3.0,label='Best fit $\pm$ std')
-            ax1.plot(vels,voigt(vels,ld,lw,gd,gw,rvArr[j]-stdArr[j])+k*off,color='cyan',linewidth=3.0)
+            ax1.plot(vels,voigt(vels,ld,lw,gd,gw,rvArr[j])+k*off,color='r',linewidth=1.5,label='Best fit')
+            ax1.plot(vels,voigt(vels,ld,lw,gd,gw,rvArr[j]+stdArr[j])+k*off,color='cyan',linewidth=1.5,alpha=stdalph,label='Best fit $\pm$ std')
+            ax1.plot(vels,voigt(vels,ld,lw,gd,gw,rvArr[j]-stdArr[j])+k*off,color='cyan',linewidth=1.5,alpha=stdalph)
             ax1.axvline(0,color='k',ls='--')
             plt.gca().yaxis.set_major_locator(MaxNLocator(prune='lower'))
             ax1.set_ylabel("Normalized Flux + offset")
@@ -398,15 +442,18 @@ def PlotVelocities(Hline="gamma"):
         else:
             k = j - halfway
             ax2.step(vels,fluxes+k*off,where='mid',linewidth=1.5,color='k')
-            ax2.plot(vels,voigt(vels,ld,lw,gd,gw,rvArr[j])+k*off,color='r',linewidth=3.0,label='Best fit')
-            ax2.plot(vels,voigt(vels,ld,lw,gd,gw,rvArr[j]+stdArr[j])+k*off,color='cyan',linewidth=3.0,label='Best fit $\pm$ std')
-            ax2.plot(vels,voigt(vels,ld,lw,gd,gw,rvArr[j]-stdArr[j])+k*off,color='cyan',linewidth=3.0)
+            ax2.plot(vels,voigt(vels,ld,lw,gd,gw,rvArr[j])+k*off,color='r',linewidth=1.5,label='Best fit')
+            ax2.plot(vels,voigt(vels,ld,lw,gd,gw,rvArr[j]+stdArr[j])+k*off,color='cyan',linewidth=1.5,alpha=stdalph,label='Best fit $\pm$ std')
+            ax2.plot(vels,voigt(vels,ld,lw,gd,gw,rvArr[j]-stdArr[j])+k*off,color='cyan',linewidth=1.5,alpha=stdalph)
             ax2.axvline(0,color='k',ls='--')
             ax2.set_xlabel("Velocity [km s$^{-1}$]")
             ax2.set_xlim(-1500,1500)
     #plt.show()
-    plt.savefig("/home/seth/Dropbox/astro_research/PaperPlots/"+wdName+"/"+wdName+"_phase.pdf")
-    #plt.savefig("/cygdrive/c/Users/seth/Dropbox/astro_research/PaperPlots/"+wdName+"/"+wdName+"_velocity.pdf")
+    if platform == 'cygwin':
+        #plt.savefig("/home/seth/Dropbox/astro_research/PaperPlots/"+wdName+"/"+wdName+"_phase.pdf")
+        plt.savefig("/cygdrive/c/Users/seth/Dropbox/astro_research/PaperPlots/"+wdName+"/"+wdName+"_velocity.pdf")
+    else:
+        plt.savefig("/home/seth/Dropbox/astro_research/PaperPlots/"+wdName+"/"+wdName+"_phase.pdf")
     plt.savefig("../../PaperPlots/"+wdName+"/"+wdName+"_velocity.pdf")
     
     
@@ -422,9 +469,11 @@ def makeVelocityCurves():
 if __name__ == '__main__':
     #TimePlot()
     #PhasePlot()
-    PlotAll()
+    #PlotAll()
     #Signal2Noise()
     #LatexTable()
 
+    BinMassFunc()
+    
     #GetModelVelocity()
     #PlotVelocities()
