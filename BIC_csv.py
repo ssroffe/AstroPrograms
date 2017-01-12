@@ -352,7 +352,7 @@ plt.savefig("BICFits/"+wdName+"_time.pdf")
 plot_format()
 plt.subplot(4,1,1)
 plt.errorbar(timeArr,rvArr,yerr=stdArr,linestyle='None',marker='o')
-for A,P,Ph,Gam in samplesChain[np.random.randint(len(samplesChain),size=1000)]:
+for A,P,Ph,Gam in samplesChain[np.random.randint(len(samplesChain),size=5000)]:
     #plt.plot(newTime,sine(newTime,A,P,Ph,Gam),color='k',alpha=0.01)
     AArr.append(A)
     PArr.append(P)
@@ -362,10 +362,12 @@ for A,P,Ph,Gam in samplesChain[np.random.randint(len(samplesChain),size=1000)]:
 
 nll = lambda *args: -lnprobSine(*args)
 results = sp.minimize(nll, [AArr[-1],PArr[-1],PhArr[-1],GArr[-1]],args=(timeArr,rvArr,stdArr))
-Astd = AArr.std()
-Pstd = PArr.std()
-Phstd = PhArr.std()
-Gstd = GArr.std()
+
+Astd = np.array(AArr).std()
+Pstd = np.array(PArr).std()
+Phstd = np.array(PhArr).std()
+Gstd = np.array(GArr).std()
+
 #print results
 params = []
 Afit,Pfit,Phfit,Gfit = results["x"]
@@ -378,35 +380,35 @@ np.savetxt("BICFits/"+wdName+"_sineParams.csv",params,delimiter=',')
 noOrbParams = (mparam)
 noOrbBIC = -2*lnlikeNoOrbit(mparam,timeArr,rvArr,stdArr)+1*np.log(len(timeArr))
 
-sineParams = (params[0],params[1],params[2],params[3])
+sineParams = (Afit,Pfit,Phfit,Gfit)
 sineBIC = -2*lnlikeSine(sineParams,timeArr,rvArr,stdArr)+4*np.log(len(timeArr))
 
 deltaBIC = noOrbBIC - sineBIC
 
 bicFile = open("BICFits/"+wdName+"_BICCalc.txt",'w')
-bicFile.write("Orbit eqn: v(t) = {0:.3f}*sin(2*pi*(t/{1:.3f}) + {2:.3f}) + {3:.3f}\n".format(params[0],params[1],params[2],params[3]))
+bicFile.write("Orbit eqn: v(t) = {0:.3f}*sin(2*pi*(t/{1:.3f}) + {2:.3f}) + {3:.3f}\n".format(Afit,Pfit,Phfit,Gfit))
 bicFile.write("No Orbit eqn: v(t) = {0:.3f}\n".format(float(mparam)))
 bicFile.write("No Orbit BIC = {0:.3f}\n".format(float(noOrbBIC)))
 bicFile.write("Sine BIC = {0:.3f}\n".format(float(sineBIC)))
 bicFile.write("Delta BIC = noOrbBIC - sineBIC = {0:.3f}".format(float(deltaBIC)))
 bicFile.close()
-deltaBICArr = np.array(deltaBIC)
+deltaBICArr = np.array([deltaBIC])
 np.savetxt("BICFits/"+wdName+"_deltaBIC.csv",deltaBICArr,delimiter=',')
 ##############################
 
 
-plt.plot(newTime,sine(newTime,params[0],params[1],params[2],params[3]),color="red",alpha=0.75)
+plt.plot(newTime,sine(newTime,Afit,Pfit,Phfit,Gfit),color="red",alpha=0.75)
 #plt.plot(newTime,sine(newTime,Amp,Per,Phi,Gamma),color="red",alpha=0.75)
 plt.xlabel("MJD [days]")
 plt.ylabel("Velocity [km/s]")
-plt.title(wdName + " velocity vs time"+'\n'+"$v(t) = {0:.3f}*sin(2\pi(t/{1:.3f}) + {2:.3f}) + {3:.3f}$".format(params[0],params[1],params[2],params[3]))
+plt.title(wdName + " velocity vs time"+'\n'+"$v(t) = {0:.3f}*sin(2\pi(t/{1:.3f}) + {2:.3f}) + {3:.3f}$".format(Afit,Pfit,Phfit,Gfit))
 
 plt.subplot(4,1,2)
 plt.errorbar(timeArr,rvArr,yerr=stdArr,linestyle='None',marker='o')
 #for A,P,Ph,Gam in samplesChain[np.random.randint(len(samplesChain),size=100)]:
     #plt.plot(newTime,sine(newTime,A,P,Ph,Gam),color='k',alpha=0.1)
     #print A,P,Ph,Gam
-plt.plot(newTime,sine(newTime,params[0],params[1],params[2],params[3]),color="red",alpha=0.75)
+plt.plot(newTime,sine(newTime,Afit,Pfit,Phfit,Gfit),color="red",alpha=0.75)
 plt.xlabel("MJD [days]")
 plt.ylabel("Velocity [km/s]")
 #plt.title(wdName + " velocity vs time")
@@ -417,7 +419,7 @@ plt.errorbar(timeArr,rvArr,yerr=stdArr,linestyle='None',marker='o')
 #for A,P,Ph,Gam in samplesChain[np.random.randint(len(samplesChain),size=100)]:
     #plt.plot(newTime,sine(newTime,A,P,Ph,Gam),color='k',alpha=0.1)
     #print A,P,Ph,Gam
-plt.plot(newTime,sine(newTime,params[0],params[1],params[2],params[3]),color="red",alpha=0.75)
+plt.plot(newTime,sine(newTime,Afit,Pfit,Phfit,Gfit),color="red",alpha=0.75)
 plt.xlabel("MJD [days]")
 plt.ylabel("Velocity [km/s]")
 #plt.title(wdName + " velocity vs time")
@@ -428,7 +430,7 @@ plt.errorbar(timeArr,rvArr,yerr=stdArr,linestyle='None',marker='o')
 #for A,P,Ph,Gam in samplesChain[np.random.randint(len(samplesChain),size=100)]:
     #plt.plot(newTime,sine(newTime,A,P,Ph,Gam),color='k',alpha=0.1)
     #print A,P,Ph,Gam
-plt.plot(newTime,sine(newTime,params[0],params[1],params[2],params[3]),color="red",alpha=0.75)
+plt.plot(newTime,sine(newTime,Afit,Pfit,Phfit,Gfit),color="red",alpha=0.75)
 plt.xlabel("MJD [days]")
 plt.ylabel("Velocity [km/s]")
 #plt.title(wdName + " velocity vs time")
