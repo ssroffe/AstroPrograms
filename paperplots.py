@@ -408,7 +408,7 @@ def PlotVelocities(Hline="gamma"):
 
     
 
-    off = 0.5
+    off = 0.3
 
     if len(lines) >= 10:
         halfway = int(len(lines)/2)
@@ -418,7 +418,7 @@ def PlotVelocities(Hline="gamma"):
     #plot_format()
     setFig()
     plot_format()
-    f, (ax1,ax2) = plt.subplots(1,2,sharey=True)
+    f, (ax1,ax2) = plt.subplots(1,2)#,sharey=True)
     for j in range(len(lines)):
         path = lines[j]
         c = 299792.458
@@ -427,27 +427,30 @@ def PlotVelocities(Hline="gamma"):
         fluxes = fluxes[Hl]
         ferrs = ferrs[Hl]
         stdalph = 0.7
+        modelLW = 1.0
         
         if j <= halfway:
             k = j
             ax1.step(vels,fluxes+k*off,where='mid',linewidth=1.5,color='k')
-            ax1.plot(vels,voigt(vels,ld,lw,gd,gw,rvArr[j])+k*off,color='r',linewidth=1.5,label='Best fit')
-            ax1.plot(vels,voigt(vels,ld,lw,gd,gw,rvArr[j]+stdArr[j])+k*off,color='cyan',linewidth=1.5,alpha=stdalph,label='Best fit $\pm$ std')
-            ax1.plot(vels,voigt(vels,ld,lw,gd,gw,rvArr[j]-stdArr[j])+k*off,color='cyan',linewidth=1.5,alpha=stdalph)
+            ax1.plot(vels,voigt(vels,ld,lw,gd,gw,rvArr[j])+k*off,color='r',linewidth=modelLW,label='Best fit')
+            ax1.plot(vels,voigt(vels,ld,lw,gd,gw,rvArr[j]+stdArr[j])+k*off,color='cyan',linewidth=modelLW,alpha=stdalph,label='Best fit $\pm$ std')
+            ax1.plot(vels,voigt(vels,ld,lw,gd,gw,rvArr[j]-stdArr[j])+k*off,color='cyan',linewidth=modelLW,alpha=stdalph)
             ax1.axvline(0,color='k',ls='--')
             plt.gca().yaxis.set_major_locator(MaxNLocator(prune='lower'))
             ax1.set_ylabel("Normalized Flux + offset")
             ax1.set_xlabel("Velocity [km s$^{-1}$]")
             ax1.set_xlim(-1500,1500)
+            ax1.set_ylim(min(fluxes-0.2),max(fluxes+k*off)+0.2)
         else:
             k = j - halfway
             ax2.step(vels,fluxes+k*off,where='mid',linewidth=1.5,color='k')
-            ax2.plot(vels,voigt(vels,ld,lw,gd,gw,rvArr[j])+k*off,color='r',linewidth=1.5,label='Best fit')
-            ax2.plot(vels,voigt(vels,ld,lw,gd,gw,rvArr[j]+stdArr[j])+k*off,color='cyan',linewidth=1.5,alpha=stdalph,label='Best fit $\pm$ std')
-            ax2.plot(vels,voigt(vels,ld,lw,gd,gw,rvArr[j]-stdArr[j])+k*off,color='cyan',linewidth=1.5,alpha=stdalph)
+            ax2.plot(vels,voigt(vels,ld,lw,gd,gw,rvArr[j])+k*off+0.1,color='r',linewidth=modelLW,label='Best fit')
+            ax2.plot(vels,voigt(vels,ld,lw,gd,gw,rvArr[j]+stdArr[j])+k*off+0.1,color='cyan',linewidth=modelLW,alpha=stdalph,label='Best fit $\pm$ std')
+            ax2.plot(vels,voigt(vels,ld,lw,gd,gw,rvArr[j]-stdArr[j])+k*off+0.1,color='cyan',linewidth=modelLW,alpha=stdalph)
             ax2.axvline(0,color='k',ls='--')
             ax2.set_xlabel("Velocity [km s$^{-1}$]")
             ax2.set_xlim(-1500,1500)
+            ax2.set_ylim(min(fluxes)-0.2,max(fluxes+k*off)+0.2)
     #plt.show()
     if platform == 'cygwin':
         #plt.savefig("/home/seth/Dropbox/astro_research/PaperPlots/"+wdName+"/"+wdName+"_phase.pdf")
@@ -473,7 +476,7 @@ if __name__ == '__main__':
     #Signal2Noise()
     #LatexTable()
 
-    BinMassFunc()
+    #BinMassFunc()
     
     #GetModelVelocity()
-    #PlotVelocities()
+    PlotVelocities()
