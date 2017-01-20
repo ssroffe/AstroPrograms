@@ -29,7 +29,7 @@ def BinMassFunc():
     np.savetxt("BICFits/"+wdName+"_BinMassFuncVal.csv",tmpArr,delimiter=',')
     
     return f
-    
+
 
 """Sine model for fitting"""
 def sine(t,A,P,Phi,Gamma):
@@ -401,15 +401,24 @@ def PlotVelocities(Hline="gamma"):
     
     ld,lw,gd,gw = np.genfromtxt("BICFits/"+wdName+"_"+Hline+"_modelParams.csv",delimiter=',')
     rvdata = np.genfromtxt("BICFits/"+wdName+"_rvdata.csv",delimiter=',')
+    rvdataclone = np.genfromtxt("BICFits/"+wdName+"_rvdata.csv",delimiter=',')
     
     timeArr = rvdata[:,0]
     rvArr = rvdata[:,1]
     stdArr = rvdata[:,2]
 
-    
+    rvOrd = []
+    for i in range(len(rvArr)):
+        rvOrd.append((rvArr[i],stdArr[i],i))
 
-    off = 0.3
-
+    sortArr = sorted(rvOrd)#,reverse=True)
+    #print sortArr
+    rvArr = [rv[0] for rv in sortArr]
+    stdArr = [std[1] for std in sortArr]
+    orderArr = [order[2] for order in sortArr]
+    off = 1.0
+    #print rvArr
+    textoff = 0.1
     if len(lines) >= 10:
         halfway = int(len(lines)/2)
     else:
@@ -420,43 +429,50 @@ def PlotVelocities(Hline="gamma"):
     plot_format()
     f, (ax1,ax2) = plt.subplots(1,2)#,sharey=True)
     for j in range(len(lines)):
-        path = lines[j]
+        path = lines[orderArr[j]]
         c = 299792.458
         vels,fluxes,ferrs = tls.GetAllVelocities(path)
         vels = vels[Hl]
         fluxes = fluxes[Hl]
         ferrs = ferrs[Hl]
-        stdalph = 0.7
+        stdalph = 0.6
         modelLW = 1.0
         
         if j <= halfway:
             k = j
-            ax1.step(vels,fluxes+k*off,where='mid',linewidth=1.5,color='k')
+            ax2.step(vels,fluxes+k*off,where='mid',linewidth=1.0,color='k')
+            ax2.plot(vels,voigt(vels,ld,lw,gd,gw,rvArr[j])+k*off,color='r',linewidth=modelLW,label='Best fit')
+            ax2.plot(vels,voigt(vels,ld,lw,gd,gw,rvArr[j]+stdArr[j])+k*off,color='cyan',linewidth=modelLW,alpha=stdalph,label='Best fit $\pm$ std')
+            ax2.plot(vels,voigt(vels,ld,lw,gd,gw,rvArr[j]-stdArr[j])+k*off,color='cyan',linewidth=modelLW,alpha=stdalph)
+            ax2.axvline(0,color='k',ls='--')
+            ax2.text(-1450,np.min(fluxes)+k*off-textoff,"Spec. "+str(orderArr[j]),fontsize=10)
+            plt.gca().yaxis.set_major_locator(MaxNLocator(prune='lower'))
+            ax2.set_ylabel("Normalized Flux + offset")
+            ax2.set_xlabel("Velocity [km s$^{-1}$]")
+            ax2.set_xlim(-1500,1500)
+            plt.gca().xaxis.set_ticks([-1000,0,1000])
+            ax2.set_ylim(min(fluxes-0.2),max(fluxes)+k*off+0.2)
+            #ax1.invert_yaxis()
+        else:
+            k = j - halfway
+            ax1.step(vels,fluxes+k*off,where='mid',linewidth=1.0,color='k')
             ax1.plot(vels,voigt(vels,ld,lw,gd,gw,rvArr[j])+k*off,color='r',linewidth=modelLW,label='Best fit')
             ax1.plot(vels,voigt(vels,ld,lw,gd,gw,rvArr[j]+stdArr[j])+k*off,color='cyan',linewidth=modelLW,alpha=stdalph,label='Best fit $\pm$ std')
             ax1.plot(vels,voigt(vels,ld,lw,gd,gw,rvArr[j]-stdArr[j])+k*off,color='cyan',linewidth=modelLW,alpha=stdalph)
+            ax1.text(-1450,np.min(fluxes)+k*off-textoff,"Spec. "+str(orderArr[j]),fontsize=10)
             ax1.axvline(0,color='k',ls='--')
-            plt.gca().yaxis.set_major_locator(MaxNLocator(prune='lower'))
-            ax1.set_ylabel("Normalized Flux + offset")
             ax1.set_xlabel("Velocity [km s$^{-1}$]")
+            ax1.set_ylabel("Normalized Flux + offset")
             ax1.set_xlim(-1500,1500)
-            ax1.set_ylim(min(fluxes-0.2),max(fluxes+k*off)+0.2)
-        else:
-            k = j - halfway
-            ax2.step(vels,fluxes+k*off,where='mid',linewidth=1.5,color='k')
-            ax2.plot(vels,voigt(vels,ld,lw,gd,gw,rvArr[j])+k*off+0.1,color='r',linewidth=modelLW,label='Best fit')
-            ax2.plot(vels,voigt(vels,ld,lw,gd,gw,rvArr[j]+stdArr[j])+k*off+0.1,color='cyan',linewidth=modelLW,alpha=stdalph,label='Best fit $\pm$ std')
-            ax2.plot(vels,voigt(vels,ld,lw,gd,gw,rvArr[j]-stdArr[j])+k*off+0.1,color='cyan',linewidth=modelLW,alpha=stdalph)
-            ax2.axvline(0,color='k',ls='--')
-            ax2.set_xlabel("Velocity [km s$^{-1}$]")
-            ax2.set_xlim(-1500,1500)
-            ax2.set_ylim(min(fluxes)-0.2,max(fluxes+k*off)+0.2)
+            plt.gca().xaxis.set_ticks([-1000,0,1000])
+            ax1.set_ylim(min(fluxes)+0.2,max(fluxes)+k*off)
     #plt.show()
     if platform == 'cygwin':
         #plt.savefig("/home/seth/Dropbox/astro_research/PaperPlots/"+wdName+"/"+wdName+"_phase.pdf")
         plt.savefig("/cygdrive/c/Users/seth/Dropbox/astro_research/PaperPlots/"+wdName+"/"+wdName+"_velocity.pdf")
     else:
         plt.savefig("/home/seth/Dropbox/astro_research/PaperPlots/"+wdName+"/"+wdName+"_phase.pdf")
+
     plt.savefig("../../PaperPlots/"+wdName+"/"+wdName+"_velocity.pdf")
     
     
