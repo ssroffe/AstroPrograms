@@ -30,6 +30,22 @@ def BinMassFunc():
     
     return f
 
+def CoolingModelMass():
+    import tools as tls
+    import numpy as np
+    import matplotlib.pyplot as plt
+
+    coolingFile = "/home/seth/research/Paperwds/Table_DA.txt"
+    coolingData = np.genfromtxt(coolingFile,skip_header=2)
+    
+    Teff = coolingData[:,0]
+    logg = coolingData[:,1]
+    Msun = coolingData[:,2]
+    age = coolingData[:,-1]
+
+    plt.plot(Teff,logg)
+    plt.show()
+    
 
 """Sine model for fitting"""
 def sine(t,A,P,Phi,Gamma):
@@ -489,10 +505,8 @@ if __name__ == '__main__':
     #TimePlot()
     #PhasePlot()
     #PlotAll()
-    #Signal2Noise()
     #LatexTable()
-
     #BinMassFunc()
-    
     #GetModelVelocity()
-    PlotVelocities()
+    #PlotVelocities()
+    CoolingModelMass()
