@@ -35,8 +35,8 @@ def CoolingModelMass():
     import numpy as np
     import matplotlib.pyplot as plt
 
-    coolingFile = "/home/seth/research/Paperwds/Table_DA.txt"
-    coolingData = np.genfromtxt(coolingFile,skip_header=2)
+    coolingFile = "/home/seth/research/Paperwds/C_0200204"
+    coolingData = np.genfromtxt(coolingFile,skip_header=6)
     
     Teff = coolingData[:,0]
     logg = coolingData[:,1]
