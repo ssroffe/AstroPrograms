@@ -30,6 +30,10 @@ def BinMassFunc():
     
     return f
 
+def getCoolingFileData(path):
+    import numpy as np
+    
+
 def CoolingModelMass():
     import tools as tls
     import numpy as np
