@@ -30,20 +30,90 @@ def BinMassFunc():
     
     return f
 
+def getCoolingModelData(path):
+    import numpy as np
+
+    filelines = []
+
+    HHEMODEL = False
+    Cflag, COFlag, HFlag, HeFlag = False,False,False,False
+    if "C_" in path:
+        datastart = 5
+        Cflag = True
+    elif "CO_" in path:
+        datastart = 0
+        COFlag = True
+    elif "Table_" in path:
+        HHEMODEL = True
+        
+        
+    with open(path) as f:
+        for i, line in enumerate(f):
+            if i >= datastart and len(line.split()) > 1:
+                tmpLine = line.split()
+                filelines.append(tmpLine)
+
+    data = []
+    for i in range(len(filelines)):
+        try:
+            if filelines[i] == filelines[i+1]:
+                del filelines[i+1]
+        except:
+            tmp = 1
+            
+    for i in range(len(filelines)):
+        try:
+            if i % 3 == 0:
+                newLine = filelines[i] + filelines[i+1] + filelines[i+2]
+                data.append(newLine)
+        except IndexError:
+            print path
+            print filelines[i]
+            raise
+
+    
+    return (np.array(data),Cflag,COFlag,HFlag,HeFlag)
+    
 def CoolingModelMass():
     import tools as tls
     import numpy as np
     import matplotlib.pyplot as plt
 
-    coolingFile = "/home/seth/research/Paperwds/C_0200204"
+    coolingPath = '/home/seth/research/Paperwds/coolingmodels/'
+    #coolingFile = "/home/seth/research/Paperwds/coolingmodels/C_0200204"
+    lines = [coolingPath+line.rstrip('\n') for line in open(coolingPath+'filelist')]
+    setFig()
+    CTeff, Clogg = [],[]
+    COTeff,COlogg = [],[]
+    HTeff,Hlogg = [],[]
+    HeTeff,Helogg = [],[]
+    for coolingFile in lines:
+        data,Cflag,COFlag,HFlag,HeFlag = getCoolingModelData(coolingFile)
+        
+        Teff = data[:,1]
+        logg = data[:,2]
+        if Cflag:
+            CTeff.append(Teff)
+            Clogg.append(logg)
+            co = 'k'
+        elif COFlag:
+            COTeff.append(Teff)
+            COlogg.append(logg)
+            co = 'b'
+        elif HFlag:
+            HTeff.append(Teff)
+            Hlogg.append(logg)
+            co = 'g'
+        elif HeFlag:
+            HeTeff.append(Teff)
+            Helogg.append(logg)
+            co = 'r'
+            
+        plt.plot(Teff,logg,color=co,linewidth=1.5)
+    plt.show()
     
     
-    Teff = coolingData[:,0]
-    logg = coolingData[:,1]
-    Msun = coolingData[:,2]
-    age = coolingData[:,-1]
     
-
 """Sine model for fitting"""
 def sine(t,A,P,Phi,Gamma):
     import numpy as np

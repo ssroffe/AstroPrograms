@@ -1,0 +1,2114 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+AArr	AIC_csv.py	/^AArr = []$/;"	kind:variable	line:404
+AArr	BICModel.py	/^AArr = []$/;"	kind:variable	line:398
+AArr	BIC_csv.py	/^AArr = []$/;"	kind:variable	line:336
+AArr	ModelFit.py	/^AArr = []$/;"	kind:variable	line:350
+AArr	ModelFitScipy.py	/^AArr = []$/;"	kind:variable	line:326
+AArr	ModelPhase.py	/^AArr = []$/;"	kind:variable	line:350
+AArr	OrbitalFitScipy.py	/^AArr = []$/;"	kind:variable	line:147
+AArr	OrbitalFitVoigt.py	/^AArr = []$/;"	kind:variable	line:231
+AArr	PhaseDiagram.py	/^AArr = []$/;"	kind:variable	line:144
+AArr	SDSSFit.py	/^AArr = []$/;"	kind:variable	line:554
+AArr	SDSSFitTest.py	/^AArr = []$/;"	kind:variable	line:557
+AIC_csv.py	AIC_csv.py	1;"	kind:file	line:1
+Amp	AIC_csv.py	/^Amp = AmpArr.mean()$/;"	kind:variable	line:390
+Amp	BICModel.py	/^Amp = AmpArr.mean()$/;"	kind:variable	line:384
+Amp	BIC_csv.py	/^Amp = AmpArr.mean()$/;"	kind:variable	line:322
+Amp	ModelFit.py	/^Amp = AmpArr.mean()$/;"	kind:variable	line:341
+Amp	ModelFitScipy.py	/^Amp = AmpArr.mean()$/;"	kind:variable	line:317
+Amp	ModelPhase.py	/^Amp = AmpArr.mean()$/;"	kind:variable	line:341
+Amp	OrbitalFit.py	/^Amp = AmpArr.mean()$/;"	kind:variable	line:127
+Amp	OrbitalFitLorentzian.py	/^Amp = AmpArr.mean()$/;"	kind:variable	line:127
+Amp	OrbitalFitScipy.py	/^Amp = AmpArr.mean()$/;"	kind:variable	line:140
+Amp	OrbitalFitVoigt.py	/^Amp = AmpArr.mean()$/;"	kind:variable	line:222
+Amp	SDSSFit.py	/^Amp = AmpArr.mean()$/;"	kind:variable	line:545
+Amp	SDSSFitTest.py	/^Amp = AmpArr.mean()$/;"	kind:variable	line:548
+AmpArr	AIC_csv.py	/^AmpArr = samples[0]$/;"	kind:variable	line:385
+AmpArr	BICModel.py	/^AmpArr = samples[0]$/;"	kind:variable	line:379
+AmpArr	BIC_csv.py	/^AmpArr = samples[0]$/;"	kind:variable	line:317
+AmpArr	ModelFit.py	/^AmpArr = samples[0]$/;"	kind:variable	line:336
+AmpArr	ModelFitScipy.py	/^AmpArr = samples[0]$/;"	kind:variable	line:312
+AmpArr	ModelPhase.py	/^AmpArr = samples[0]$/;"	kind:variable	line:336
+AmpArr	OrbitalFit.py	/^AmpArr = samples[0]$/;"	kind:variable	line:122
+AmpArr	OrbitalFitLorentzian.py	/^AmpArr = samples[0]$/;"	kind:variable	line:122
+AmpArr	OrbitalFitScipy.py	/^AmpArr = samples[0]$/;"	kind:variable	line:135
+AmpArr	OrbitalFitVoigt.py	/^AmpArr = samples[0]$/;"	kind:variable	line:217
+AmpArr	SDSSFit.py	/^AmpArr = samples[0]$/;"	kind:variable	line:540
+AmpArr	SDSSFitTest.py	/^AmpArr = samples[0]$/;"	kind:variable	line:543
+Astd	BIC_csv.py	/^Astd = np.array(AArr).std()$/;"	kind:variable	line:366
+BICModel.py	BICModel.py	1;"	kind:file	line:1
+BIC_csv.py	BIC_csv.py	1;"	kind:file	line:1
+BinMassFunc	paperplots.py	/^def BinMassFunc():$/;"	kind:function	line:4
+CSVGetAllVelocities	tools.py	/^def CSVGetAllVelocities(path):$/;"	kind:function	line:880
+CSVNormNoPlot	tools.py	/^def CSVNormNoPlot(path):$/;"	kind:function	line:803
+CompareFit.py	CompareFit.py	1;"	kind:file	line:1
+FormatStrFormatter	paperplots.py	/^    from matplotlib.ticker import FormatStrFormatter$/;"	kind:namespace	line:99
+GArr	AIC_csv.py	/^GArr = []$/;"	kind:variable	line:407
+GArr	BICModel.py	/^GArr = []$/;"	kind:variable	line:401
+GArr	BIC_csv.py	/^GArr = []$/;"	kind:variable	line:339
+GArr	ModelFit.py	/^GArr = []$/;"	kind:variable	line:353
+GArr	ModelFitScipy.py	/^GArr = []$/;"	kind:variable	line:329
+GArr	ModelPhase.py	/^GArr = []$/;"	kind:variable	line:353
+GArr	OrbitalFitScipy.py	/^GArr = []$/;"	kind:variable	line:150
+GArr	OrbitalFitVoigt.py	/^GArr = []$/;"	kind:variable	line:234
+GArr	PhaseDiagram.py	/^GArr = []$/;"	kind:variable	line:147
+GArr	SDSSFit.py	/^GArr = []$/;"	kind:variable	line:557
+GArr	SDSSFitTest.py	/^GArr = []$/;"	kind:variable	line:560
+GamArr	AIC_csv.py	/^GamArr = samples[3]$/;"	kind:variable	line:388
+GamArr	BICModel.py	/^GamArr = samples[3]$/;"	kind:variable	line:382
+GamArr	BIC_csv.py	/^GamArr = samples[3]$/;"	kind:variable	line:320
+GamArr	ModelFit.py	/^GamArr = samples[3]$/;"	kind:variable	line:339
+GamArr	ModelFitScipy.py	/^GamArr = samples[3]$/;"	kind:variable	line:315
+GamArr	ModelPhase.py	/^GamArr = samples[3]$/;"	kind:variable	line:339
+GamArr	OrbitalFit.py	/^GamArr = samples[3]$/;"	kind:variable	line:125
+GamArr	OrbitalFitLorentzian.py	/^GamArr = samples[3]$/;"	kind:variable	line:125
+GamArr	OrbitalFitScipy.py	/^GamArr = samples[3]$/;"	kind:variable	line:138
+GamArr	OrbitalFitVoigt.py	/^GamArr = samples[3]$/;"	kind:variable	line:220
+GamArr	SDSSFit.py	/^GamArr = samples[3]$/;"	kind:variable	line:543
+GamArr	SDSSFitTest.py	/^GamArr = samples[3]$/;"	kind:variable	line:546
+Gamma	AIC_csv.py	/^Gamma = GamArr.mean()$/;"	kind:variable	line:393
+Gamma	BICModel.py	/^Gamma = GamArr.mean()$/;"	kind:variable	line:387
+Gamma	BIC_csv.py	/^Gamma = GamArr.mean()$/;"	kind:variable	line:325
+Gamma	ModelFit.py	/^Gamma = GamArr.mean()$/;"	kind:variable	line:344
+Gamma	ModelFitScipy.py	/^Gamma = GamArr.mean()$/;"	kind:variable	line:320
+Gamma	ModelPhase.py	/^Gamma = GamArr.mean()$/;"	kind:variable	line:344
+Gamma	OrbitalFit.py	/^Gamma = GamArr.mean()$/;"	kind:variable	line:130
+Gamma	OrbitalFitLorentzian.py	/^Gamma = GamArr.mean()$/;"	kind:variable	line:130
+Gamma	OrbitalFitScipy.py	/^Gamma = GamArr.mean()$/;"	kind:variable	line:143
+Gamma	OrbitalFitVoigt.py	/^Gamma = GamArr.mean()$/;"	kind:variable	line:225
+Gamma	SDSSFit.py	/^Gamma = GamArr.mean()$/;"	kind:variable	line:548
+Gamma	SDSSFitTest.py	/^Gamma = GamArr.mean()$/;"	kind:variable	line:551
+GdepthFit	VoigtFit.py	/^        GdepthFit = GdepthMean$/;"	kind:variable	line:131
+GdepthFitArr	VoigtFit.py	/^        GdepthFitArr = samplesTrans[2]$/;"	kind:variable	line:113
+GdepthMean	VoigtFit.py	/^        GdepthMean = GdepthFitArr.mean()$/;"	kind:variable	line:119
+GdepthStd	VoigtFit.py	/^        GdepthStd = GdepthFitArr.std()$/;"	kind:variable	line:125
+GetAllVelocities	tools.py	/^def GetAllVelocities(path):$/;"	kind:function	line:511
+GetDateTime	tools.py	/^def GetDateTime(path):$/;"	kind:function	line:19
+GetFileName	tools.py	/^def GetFileName(path):$/;"	kind:function	line:14
+GetJD	tools.py	/^def GetJD(path):$/;"	kind:function	line:29
+GetModelVelocity	paperplots.py	/^def GetModelVelocity(Hline="gamma"):$/;"	kind:function	line:343
+GetRV	tools.py	/^def GetRV(sampler):$/;"	kind:function	line:621
+GetVelArr	tools.py	/^def GetVelArr(path,lineIndex):$/;"	kind:function	line:453
+Gstd	BIC_csv.py	/^Gstd = np.array(GArr).std()$/;"	kind:variable	line:369
+GwidthFit	VoigtFit.py	/^        GwidthFit = GwidthMean$/;"	kind:variable	line:132
+GwidthFitArr	VoigtFit.py	/^        GwidthFitArr = samplesTrans[3]$/;"	kind:variable	line:114
+GwidthMean	VoigtFit.py	/^        GwidthMean = GwidthFitArr.mean()$/;"	kind:variable	line:120
+GwidthStd	VoigtFit.py	/^        GwidthStd = GwidthFitArr.std()$/;"	kind:variable	line:126
+LatexTable	paperplots.py	/^def LatexTable():$/;"	kind:function	line:303
+LdepthFit	VoigtFit.py	/^        LdepthFit = LdepthMean$/;"	kind:variable	line:129
+LdepthFitArr	VoigtFit.py	/^        LdepthFitArr = samplesTrans[0]$/;"	kind:variable	line:111
+LdepthMean	VoigtFit.py	/^        LdepthMean = LdepthFitArr.mean()$/;"	kind:variable	line:117
+LdepthStd	VoigtFit.py	/^        LdepthStd = LdepthFitArr.std()$/;"	kind:variable	line:123
+LwidthFit	VoigtFit.py	/^        LwidthFit = LwidthMean$/;"	kind:variable	line:130
+LwidthFitArr	VoigtFit.py	/^        LwidthFitArr = samplesTrans[1]$/;"	kind:variable	line:112
+LwidthMean	VoigtFit.py	/^        LwidthMean = LwidthFitArr.mean()$/;"	kind:variable	line:118
+LwidthStd	VoigtFit.py	/^        LwidthStd = LwidthFitArr.std()$/;"	kind:variable	line:124
+MCErrorArray	CompareFit.py	/^MCErrorArray = []$/;"	kind:variable	line:49
+MCMCfit	tools.py	/^def MCMCfit(lnprob,args,burnInSampler=False,nwalkers=100,ndim=3,burnInSteps=1000,steps=2000,p=None):$/;"	kind:function	line:593
+MCRVArray	CompareFit.py	/^MCRVArray = []$/;"	kind:variable	line:48
+MaxNLocator	paperplots.py	/^    from matplotlib.ticker import MaxNLocator$/;"	kind:namespace	line:194
+MaxNLocator	paperplots.py	/^    from matplotlib.ticker import MaxNLocator$/;"	kind:namespace	line:391
+ModelFit.py	ModelFit.py	1;"	kind:file	line:1
+ModelFitScipy.py	ModelFitScipy.py	1;"	kind:file	line:1
+ModelGetAllVelocities	tools.py	/^def ModelGetAllVelocities(path):$/;"	kind:function	line:735
+ModelNormNoPlot	tools.py	/^def ModelNormNoPlot(path):$/;"	kind:function	line:670
+ModelPhase.py	ModelPhase.py	1;"	kind:file	line:1
+NoOrbArr	AIC_csv.py	/^NoOrbArr = []$/;"	kind:variable	line:399
+NoOrbArr	AIC_csv.py	/^NoOrbArr = np.array(NoOrbArr)$/;"	kind:variable	line:402
+NoOrbArr	BICModel.py	/^NoOrbArr = []$/;"	kind:variable	line:393
+NoOrbArr	BICModel.py	/^NoOrbArr = np.array(NoOrbArr)$/;"	kind:variable	line:396
+NoOrbArr	BIC_csv.py	/^NoOrbArr = []$/;"	kind:variable	line:331
+NoOrbArr	BIC_csv.py	/^NoOrbArr = np.array(NoOrbArr)$/;"	kind:variable	line:334
+NoOrbit	AIC_csv.py	/^def NoOrbit(t,Gamma):$/;"	kind:function	line:15
+NoOrbit	BICModel.py	/^def NoOrbit(t,Gamma):$/;"	kind:function	line:15
+NoOrbit	BIC_csv.py	/^def NoOrbit(t,Gamma):$/;"	kind:function	line:16
+NormNoPlot	tools.py	/^def NormNoPlot(path):$/;"	kind:function	line:344
+Normalize	tools.py	/^def Normalize(path):$/;"	kind:function	line:76
+NormalizeSG	tools.py	/^def NormalizeSG(path):$/;"	kind:function	line:203
+OrbitalFit.py	OrbitalFit.py	1;"	kind:file	line:1
+OrbitalFitLorentzian.py	OrbitalFitLorentzian.py	1;"	kind:file	line:1
+OrbitalFitScipy.py	OrbitalFitScipy.py	1;"	kind:file	line:1
+OrbitalFitVoigt.py	OrbitalFitVoigt.py	1;"	kind:file	line:1
+PArr	AIC_csv.py	/^PArr = []$/;"	kind:variable	line:405
+PArr	BICModel.py	/^PArr = []$/;"	kind:variable	line:399
+PArr	BIC_csv.py	/^PArr = []$/;"	kind:variable	line:337
+PArr	ModelFit.py	/^PArr = []$/;"	kind:variable	line:351
+PArr	ModelFitScipy.py	/^PArr = []$/;"	kind:variable	line:327
+PArr	ModelPhase.py	/^PArr = []$/;"	kind:variable	line:351
+PArr	OrbitalFitScipy.py	/^PArr = []$/;"	kind:variable	line:148
+PArr	OrbitalFitVoigt.py	/^PArr = []$/;"	kind:variable	line:232
+PArr	PhaseDiagram.py	/^PArr = []$/;"	kind:variable	line:145
+PArr	SDSSFit.py	/^PArr = []$/;"	kind:variable	line:555
+PArr	SDSSFitTest.py	/^PArr = []$/;"	kind:variable	line:558
+ParamVsNum.py	ParamVsNum.py	1;"	kind:file	line:1
+Per	AIC_csv.py	/^Per = PerArr.mean()$/;"	kind:variable	line:391
+Per	BICModel.py	/^Per = PerArr.mean()$/;"	kind:variable	line:385
+Per	BIC_csv.py	/^Per = PerArr.mean()$/;"	kind:variable	line:323
+Per	ModelFit.py	/^Per = PerArr.mean()$/;"	kind:variable	line:342
+Per	ModelFitScipy.py	/^Per = PerArr.mean()$/;"	kind:variable	line:318
+Per	ModelPhase.py	/^Per = PerArr.mean()$/;"	kind:variable	line:342
+Per	OrbitalFit.py	/^Per = PerArr.mean()$/;"	kind:variable	line:128
+Per	OrbitalFitLorentzian.py	/^Per = PerArr.mean()$/;"	kind:variable	line:128
+Per	OrbitalFitScipy.py	/^Per = PerArr.mean()$/;"	kind:variable	line:141
+Per	OrbitalFitVoigt.py	/^Per = PerArr.mean()$/;"	kind:variable	line:223
+Per	SDSSFit.py	/^Per = PerArr.mean()$/;"	kind:variable	line:546
+Per	SDSSFitTest.py	/^Per = PerArr.mean()$/;"	kind:variable	line:549
+PerArr	AIC_csv.py	/^PerArr = samples[1]$/;"	kind:variable	line:386
+PerArr	BICModel.py	/^PerArr = samples[1]$/;"	kind:variable	line:380
+PerArr	BIC_csv.py	/^PerArr = samples[1]$/;"	kind:variable	line:318
+PerArr	ModelFit.py	/^PerArr = samples[1]$/;"	kind:variable	line:337
+PerArr	ModelFitScipy.py	/^PerArr = samples[1]$/;"	kind:variable	line:313
+PerArr	ModelPhase.py	/^PerArr = samples[1]$/;"	kind:variable	line:337
+PerArr	OrbitalFit.py	/^PerArr = samples[1]$/;"	kind:variable	line:123
+PerArr	OrbitalFitLorentzian.py	/^PerArr = samples[1]$/;"	kind:variable	line:123
+PerArr	OrbitalFitScipy.py	/^PerArr = samples[1]$/;"	kind:variable	line:136
+PerArr	OrbitalFitVoigt.py	/^PerArr = samples[1]$/;"	kind:variable	line:218
+PerArr	SDSSFit.py	/^PerArr = samples[1]$/;"	kind:variable	line:541
+PerArr	SDSSFitTest.py	/^PerArr = samples[1]$/;"	kind:variable	line:544
+PhArr	AIC_csv.py	/^PhArr = []$/;"	kind:variable	line:406
+PhArr	BICModel.py	/^PhArr = []$/;"	kind:variable	line:400
+PhArr	BIC_csv.py	/^PhArr = []$/;"	kind:variable	line:338
+PhArr	ModelFit.py	/^PhArr = []$/;"	kind:variable	line:352
+PhArr	ModelFitScipy.py	/^PhArr = []$/;"	kind:variable	line:328
+PhArr	ModelPhase.py	/^PhArr = []$/;"	kind:variable	line:352
+PhArr	OrbitalFitScipy.py	/^PhArr = []$/;"	kind:variable	line:149
+PhArr	OrbitalFitVoigt.py	/^PhArr = []$/;"	kind:variable	line:233
+PhArr	PhaseDiagram.py	/^PhArr = []$/;"	kind:variable	line:146
+PhArr	SDSSFit.py	/^PhArr = []$/;"	kind:variable	line:556
+PhArr	SDSSFitTest.py	/^PhArr = []$/;"	kind:variable	line:559
+PhaseDiagram.py	PhaseDiagram.py	1;"	kind:file	line:1
+PhasePlot	paperplots.py	/^def PhasePlot():$/;"	kind:function	line:188
+Phi	AIC_csv.py	/^Phi = PhiArr.mean()$/;"	kind:variable	line:392
+Phi	BICModel.py	/^Phi = PhiArr.mean()$/;"	kind:variable	line:386
+Phi	BIC_csv.py	/^Phi = PhiArr.mean()$/;"	kind:variable	line:324
+Phi	ModelFit.py	/^Phi = PhiArr.mean()$/;"	kind:variable	line:343
+Phi	ModelFitScipy.py	/^Phi = PhiArr.mean()$/;"	kind:variable	line:319
+Phi	ModelPhase.py	/^Phi = PhiArr.mean()$/;"	kind:variable	line:343
+Phi	OrbitalFit.py	/^Phi = PhiArr.mean()$/;"	kind:variable	line:129
+Phi	OrbitalFitLorentzian.py	/^Phi = PhiArr.mean()$/;"	kind:variable	line:129
+Phi	OrbitalFitScipy.py	/^Phi = PhiArr.mean()$/;"	kind:variable	line:142
+Phi	OrbitalFitVoigt.py	/^Phi = PhiArr.mean()$/;"	kind:variable	line:224
+Phi	SDSSFit.py	/^Phi = PhiArr.mean()$/;"	kind:variable	line:547
+Phi	SDSSFitTest.py	/^Phi = PhiArr.mean()$/;"	kind:variable	line:550
+PhiArr	AIC_csv.py	/^PhiArr = samples[2]$/;"	kind:variable	line:387
+PhiArr	BICModel.py	/^PhiArr = samples[2]$/;"	kind:variable	line:381
+PhiArr	BIC_csv.py	/^PhiArr = samples[2]$/;"	kind:variable	line:319
+PhiArr	ModelFit.py	/^PhiArr = samples[2]$/;"	kind:variable	line:338
+PhiArr	ModelFitScipy.py	/^PhiArr = samples[2]$/;"	kind:variable	line:314
+PhiArr	ModelPhase.py	/^PhiArr = samples[2]$/;"	kind:variable	line:338
+PhiArr	OrbitalFit.py	/^PhiArr = samples[2]$/;"	kind:variable	line:124
+PhiArr	OrbitalFitLorentzian.py	/^PhiArr = samples[2]$/;"	kind:variable	line:124
+PhiArr	OrbitalFitScipy.py	/^PhiArr = samples[2]$/;"	kind:variable	line:137
+PhiArr	OrbitalFitVoigt.py	/^PhiArr = samples[2]$/;"	kind:variable	line:219
+PhiArr	SDSSFit.py	/^PhiArr = samples[2]$/;"	kind:variable	line:542
+PhiArr	SDSSFitTest.py	/^PhiArr = samples[2]$/;"	kind:variable	line:545
+PhiOff	ModelPhase.py	/^    PhiOff = ((2*np.pi)*(pt\/PFit) + PhFit) $/;"	kind:variable	line:395
+PhiOff	PhaseDiagram.py	/^    PhiOff = ((2*np.pi)*(pt\/PFit) + PhFit) $/;"	kind:variable	line:162
+PhiStd	AIC_csv.py	/^PhiStd = PhiArr.std()$/;"	kind:variable	line:395
+PhiStd	BICModel.py	/^PhiStd = PhiArr.std()$/;"	kind:variable	line:389
+PhiStd	BIC_csv.py	/^PhiStd = PhiArr.std()$/;"	kind:variable	line:327
+PhiStd	ModelFit.py	/^PhiStd = PhiArr.std()$/;"	kind:variable	line:346
+PhiStd	ModelFitScipy.py	/^PhiStd = PhiArr.std()$/;"	kind:variable	line:322
+PhiStd	ModelPhase.py	/^PhiStd = PhiArr.std()$/;"	kind:variable	line:346
+PhiStd	OrbitalFitVoigt.py	/^PhiStd = PhiArr.std()$/;"	kind:variable	line:227
+PhiStd	SDSSFit.py	/^PhiStd = PhiArr.std()$/;"	kind:variable	line:550
+PhiStd	SDSSFitTest.py	/^PhiStd = PhiArr.std()$/;"	kind:variable	line:553
+Phstd	BIC_csv.py	/^Phstd = np.array(PhArr).std()$/;"	kind:variable	line:368
+PlotAll	paperplots.py	/^def PlotAll():$/;"	kind:function	line:479
+PlotFormat	tools.py	/^def PlotFormat():$/;"	kind:function	line:38
+PlotVelocities	paperplots.py	/^def PlotVelocities(Hline="gamma"):$/;"	kind:function	line:385
+Pstd	BIC_csv.py	/^Pstd = np.array(PArr).std()$/;"	kind:variable	line:367
+RVFit	CompareFit.py	/^    RVFit = RVFitArr.mean()$/;"	kind:variable	line:164
+RVFit	Vfit.py	/^        RVFit = RVMean$/;"	kind:variable	line:124
+RVFit	VfitMC.py	/^        RVFit = RVMean$/;"	kind:variable	line:124
+RVFit	VfitMC_resid.py	/^    RVFit = RVMean$/;"	kind:variable	line:130
+RVFit	Vfit_rvs.py	/^    RVFit = RVFitArr.mean()$/;"	kind:variable	line:149
+RVFit	Vfit_rvs_tmp.py	/^    RVFit = RVFitArr.mean()$/;"	kind:variable	line:154
+RVFit	Vfit_tmp.py	/^        RVFit = RVMean$/;"	kind:variable	line:135
+RVFit	VoigtFit.py	/^        RVFit = RVMean$/;"	kind:variable	line:133
+RVFit	Voigt_rvs.py	/^    RVFit = RVFitArr.mean()$/;"	kind:variable	line:162
+RVFitArr	CompareFit.py	/^    RVFitArr = samples[6]$/;"	kind:variable	line:154
+RVFitArr	Vfit.py	/^        RVFitArr = samples[2]$/;"	kind:variable	line:112
+RVFitArr	VfitMC.py	/^        RVFitArr = samples[2]$/;"	kind:variable	line:112
+RVFitArr	VfitMC_resid.py	/^    RVFitArr = samples[2]$/;"	kind:variable	line:115
+RVFitArr	Vfit_rvs.py	/^    RVFitArr = samples[6]$/;"	kind:variable	line:139
+RVFitArr	Vfit_rvs_tmp.py	/^    RVFitArr = samplesTrans[6]$/;"	kind:variable	line:144
+RVFitArr	Vfit_tmp.py	/^        RVFitArr = samplesTrans[2]$/;"	kind:variable	line:123
+RVFitArr	VoigtFit.py	/^        RVFitArr = samplesTrans[4]$/;"	kind:variable	line:115
+RVFitArr	Voigt_rvs.py	/^    RVFitArr = samplesTrans[12]$/;"	kind:variable	line:148
+RVMean	Vfit.py	/^        RVMean = RVFitArr.mean()$/;"	kind:variable	line:116
+RVMean	VfitMC.py	/^        RVMean = RVFitArr.mean()$/;"	kind:variable	line:116
+RVMean	VfitMC_resid.py	/^    RVMean = RVFitArr.mean()$/;"	kind:variable	line:121
+RVMean	Vfit_tmp.py	/^        RVMean = RVFitArr.mean()$/;"	kind:variable	line:127
+RVMean	VoigtFit.py	/^        RVMean = RVFitArr.mean()$/;"	kind:variable	line:121
+RVStd	CompareFit.py	/^    RVStd = RVFitArr.std()$/;"	kind:variable	line:165
+RVStd	Vfit.py	/^        RVStd = RVFitArr.std()$/;"	kind:variable	line:120
+RVStd	VfitMC.py	/^        RVStd = RVFitArr.std()$/;"	kind:variable	line:120
+RVStd	VfitMC_resid.py	/^    RVStd = RVFitArr.std()$/;"	kind:variable	line:125
+RVStd	Vfit_rvs.py	/^    RVStd = RVFitArr.std()$/;"	kind:variable	line:150
+RVStd	Vfit_rvs_tmp.py	/^    RVStd = RVFitArr.std()$/;"	kind:variable	line:155
+RVStd	Vfit_tmp.py	/^        RVStd = RVFitArr.std()$/;"	kind:variable	line:131
+RVStd	VoigtFit.py	/^        RVStd = RVFitArr.std()$/;"	kind:variable	line:127
+RVStd	Voigt_rvs.py	/^    RVStd = RVFitArr.std()$/;"	kind:variable	line:176
+RVnum.py	RVnum.py	1;"	kind:file	line:1
+RVtime.py	RVtime.py	1;"	kind:file	line:1
+RawSpectrum	tools.py	/^def RawSpectrum(path):$/;"	kind:function	line:62
+SDSSFit.py	SDSSFit.py	1;"	kind:file	line:1
+SDSSFitTest.py	SDSSFitTest.py	1;"	kind:file	line:1
+SDSSGetAllVelocities	tools.py	/^def SDSSGetAllVelocities(path):$/;"	kind:function	line:1060
+SDSSNormNoPlot	tools.py	/^def SDSSNormNoPlot(path):$/;"	kind:function	line:964
+SNArr	BIC_csv.py	/^SNArr = Signal2Noise()$/;"	kind:variable	line:262
+SNCut	BIC_csv.py	/^SNCut = 2.0$/;"	kind:variable	line:264
+SPErrorArray	CompareFit.py	/^SPErrorArray = []$/;"	kind:variable	line:53
+SPRVArray	CompareFit.py	/^SPRVArray = []$/;"	kind:variable	line:52
+Signal2Noise	BIC_csv.py	/^from paperplots import Signal2Noise$/;"	kind:namespace	line:14
+Signal2Noise	paperplots.py	/^def Signal2Noise():$/;"	kind:function	line:281
+Time	AIC_csv.py	/^from astropy.time import Time$/;"	kind:namespace	line:13
+Time	BICModel.py	/^from astropy.time import Time$/;"	kind:namespace	line:13
+Time	BIC_csv.py	/^from astropy.time import Time$/;"	kind:namespace	line:13
+Time	ModelFit.py	/^from astropy.time import Time$/;"	kind:namespace	line:13
+Time	ModelFitScipy.py	/^from astropy.time import Time$/;"	kind:namespace	line:13
+Time	ModelPhase.py	/^from astropy.time import Time$/;"	kind:namespace	line:13
+Time	OrbitalFit.py	/^from astropy.time import Time$/;"	kind:namespace	line:13
+Time	OrbitalFitLorentzian.py	/^from astropy.time import Time$/;"	kind:namespace	line:13
+Time	OrbitalFitScipy.py	/^from astropy.time import Time$/;"	kind:namespace	line:13
+Time	OrbitalFitVoigt.py	/^from astropy.time import Time$/;"	kind:namespace	line:13
+Time	ParamVsNum.py	/^from astropy.time import Time$/;"	kind:namespace	line:13
+Time	PhaseDiagram.py	/^from astropy.time import Time$/;"	kind:namespace	line:13
+Time	SDSSFit.py	/^from astropy.time import Time$/;"	kind:namespace	line:15
+Time	SDSSFitTest.py	/^from astropy.time import Time$/;"	kind:namespace	line:15
+TimePlot	paperplots.py	/^def TimePlot():$/;"	kind:function	line:94
+Vfit.py	Vfit.py	1;"	kind:file	line:1
+VfitMC.py	VfitMC.py	1;"	kind:file	line:1
+VfitMC_resid.py	VfitMC_resid.py	1;"	kind:file	line:1
+Vfit_rvs.py	Vfit_rvs.py	1;"	kind:file	line:1
+Vfit_rvs_tmp.py	Vfit_rvs_tmp.py	1;"	kind:file	line:1
+Vfit_scipy.py	Vfit_scipy.py	1;"	kind:file	line:1
+Vfit_tmp.py	Vfit_tmp.py	1;"	kind:file	line:1
+Voffset.py	Voffset.py	1;"	kind:file	line:1
+VoigtFit.py	VoigtFit.py	1;"	kind:file	line:1
+Voigt_rvs.py	Voigt_rvs.py	1;"	kind:file	line:1
+abs	paperplots.py	/^    from numpy import array, where, median, abs$/;"	kind:namespace	line:282
+angles	ModelPhase.py	/^angles = np.linspace(0,2*np.pi,5000)$/;"	kind:variable	line:407
+angles	PhaseDiagram.py	/^angles = np.linspace(0,2*np.pi,5000)$/;"	kind:variable	line:175
+array	paperplots.py	/^    from numpy import array, where, median, abs$/;"	kind:namespace	line:282
+ascii	paperplots.py	/^    from astropy.io import ascii$/;"	kind:namespace	line:306
+basename	AIC_csv.py	/^    basename = os.path.basename(path)[:-5]$/;"	kind:variable	line:251
+basename	BICModel.py	/^    basename = os.path.basename(path)[:-5]$/;"	kind:variable	line:251
+basename	BIC_csv.py	/^    basename = os.path.basename(path)[:-5]$/;"	kind:variable	line:252
+basename	CompareFit.py	/^    basename = os.path.basename(path)[:-5]$/;"	kind:variable	line:62
+basename	ModelFit.py	/^    basename = os.path.basename(path)[:-5]$/;"	kind:variable	line:232
+basename	ModelFitScipy.py	/^    basename = os.path.basename(path)[:-5]$/;"	kind:variable	line:245
+basename	ModelPhase.py	/^    basename = os.path.basename(path)[:-5]$/;"	kind:variable	line:232
+basename	OrbitalFit.py	/^    basename = os.path.basename(path)[:-5]$/;"	kind:variable	line:84
+basename	OrbitalFitLorentzian.py	/^    basename = os.path.basename(path)[:-5]$/;"	kind:variable	line:84
+basename	OrbitalFitScipy.py	/^    basename = os.path.basename(path)[:-5]$/;"	kind:variable	line:87
+basename	OrbitalFitVoigt.py	/^    basename = os.path.basename(path)[:-5]$/;"	kind:variable	line:122
+basename	ParamVsNum.py	/^    basename = os.path.basename(path)[:-5]$/;"	kind:variable	line:103
+basename	PhaseDiagram.py	/^    basename = os.path.basename(path)[:-5]$/;"	kind:variable	line:88
+basename	SDSSFit.py	/^    basename = os.path.basename(path)[:-5]$/;"	kind:variable	line:350
+basename	SDSSFitTest.py	/^    basename = os.path.basename(path)[:-5]$/;"	kind:variable	line:350
+basename	Vfit.py	/^    basename = os.path.basename(path)[:-5]$/;"	kind:variable	line:44
+basename	VfitMC.py	/^    basename = os.path.basename(path)[:-5]$/;"	kind:variable	line:44
+basename	VfitMC_resid.py	/^    basename = os.path.basename(path)[:-5]$/;"	kind:variable	line:44
+basename	Vfit_rvs.py	/^    basename = os.path.basename(path)[:-5]$/;"	kind:variable	line:56
+basename	Vfit_rvs_tmp.py	/^    basename = os.path.basename(path)[:-5]$/;"	kind:variable	line:55
+basename	Vfit_tmp.py	/^    basename = os.path.basename(path)[:-5]$/;"	kind:variable	line:44
+basename	Voffset.py	/^    basename = os.path.basename(path)[:-5]$/;"	kind:variable	line:21
+basename	VoigtFit.py	/^    basename = os.path.basename(path)[:-5]$/;"	kind:variable	line:44
+basename	Voigt_rvs.py	/^    basename = os.path.basename(path)[:-5]$/;"	kind:variable	line:56
+bicFile	AIC_csv.py	/^bicFile = open("BICFits\/"+wdName+"_BICCalc.txt",'w')$/;"	kind:variable	line:443
+bicFile	BICModel.py	/^bicFile = open("BICFits\/"+wdName+"_BICCalc.txt",'w')$/;"	kind:variable	line:443
+bicFile	BIC_csv.py	/^bicFile = open("BICFits\/"+wdName+"_BICCalc.txt",'w')$/;"	kind:variable	line:388
+burnInSamples	Vfit_rvs_tmp.py	/^    burnInSamples = sampler.chain[:,:,:].reshape((-1,ndim))$/;"	kind:variable	line:126
+c	AIC_csv.py	/^    c = 299792.458 #km\/s$/;"	kind:variable	line:250
+c	BICModel.py	/^    c = 299792.458 #km\/s$/;"	kind:variable	line:250
+c	BIC_csv.py	/^    c = 299792.458 #km\/s$/;"	kind:variable	line:251
+c	CompareFit.py	/^    c = 299792.458 #km\/s$/;"	kind:variable	line:61
+c	ModelFit.py	/^    c = 299792.458 #km\/s$/;"	kind:variable	line:231
+c	ModelFitScipy.py	/^    c = 299792.458 #km\/s$/;"	kind:variable	line:244
+c	ModelPhase.py	/^    c = 299792.458 #km\/s$/;"	kind:variable	line:231
+c	OrbitalFit.py	/^    c = 299792.458 #km\/s$/;"	kind:variable	line:83
+c	OrbitalFitLorentzian.py	/^    c = 299792.458 #km\/s$/;"	kind:variable	line:83
+c	OrbitalFitScipy.py	/^    c = 299792.458 #km\/s$/;"	kind:variable	line:86
+c	OrbitalFitVoigt.py	/^    c = 299792.458 #km\/s$/;"	kind:variable	line:121
+c	ParamVsNum.py	/^    c = 299792.458 #km\/s$/;"	kind:variable	line:102
+c	PhaseDiagram.py	/^    c = 299792.458 #km\/s$/;"	kind:variable	line:87
+c	SDSSFit.py	/^    c = 299792.458 #km\/s$/;"	kind:variable	line:349
+c	SDSSFitTest.py	/^    c = 299792.458 #km\/s$/;"	kind:variable	line:349
+c	Vfit.py	/^    c = 299792.458 #km\/s$/;"	kind:variable	line:43
+c	VfitMC.py	/^    c = 299792.458 #km\/s$/;"	kind:variable	line:43
+c	VfitMC_resid.py	/^    c = 299792.458 #km\/s$/;"	kind:variable	line:43
+c	Vfit_rvs.py	/^    c = 299792.458 #km\/s$/;"	kind:variable	line:55
+c	Vfit_rvs_tmp.py	/^    c = 299792.458 #km\/s$/;"	kind:variable	line:54
+c	Vfit_tmp.py	/^    c = 299792.458 #km\/s$/;"	kind:variable	line:43
+c	Voffset.py	/^    c = 299792.458 #km\/s$/;"	kind:variable	line:20
+c	VoigtFit.py	/^    c = 299792.458 #km\/s$/;"	kind:variable	line:43
+c	Voigt_rvs.py	/^    c = 299792.458 #km\/s$/;"	kind:variable	line:55
+cn	AIC_csv.py	/^import corner as cn$/;"	kind:namespace	line:11
+cn	BICModel.py	/^import corner as cn$/;"	kind:namespace	line:11
+cn	BIC_csv.py	/^import corner as cn$/;"	kind:namespace	line:11
+cn	CompareFit.py	/^import corner as cn$/;"	kind:namespace	line:10
+cn	ModelFit.py	/^import corner as cn$/;"	kind:namespace	line:11
+cn	ModelFitScipy.py	/^import corner as cn$/;"	kind:namespace	line:11
+cn	ModelPhase.py	/^import corner as cn$/;"	kind:namespace	line:11
+cn	OrbitalFit.py	/^import corner as cn$/;"	kind:namespace	line:11
+cn	OrbitalFitLorentzian.py	/^import corner as cn$/;"	kind:namespace	line:11
+cn	OrbitalFitScipy.py	/^import corner as cn$/;"	kind:namespace	line:11
+cn	OrbitalFitVoigt.py	/^import corner as cn$/;"	kind:namespace	line:11
+cn	ParamVsNum.py	/^import corner as cn$/;"	kind:namespace	line:11
+cn	PhaseDiagram.py	/^import corner as cn$/;"	kind:namespace	line:11
+cn	SDSSFit.py	/^import corner as cn$/;"	kind:namespace	line:13
+cn	SDSSFitTest.py	/^import corner as cn$/;"	kind:namespace	line:13
+cn	VfitMC.py	/^    import corner as cn$/;"	kind:namespace	line:146
+cn	VfitMC_resid.py	/^    import corner as cn$/;"	kind:namespace	line:165
+cn	Vfit_rvs.py	/^import corner as cn$/;"	kind:namespace	line:10
+cn	Vfit_rvs_tmp.py	/^import corner as cn$/;"	kind:namespace	line:10
+co	OrbitalFitVoigt.py	/^            co = 'b'$/;"	kind:variable	line:163
+co	OrbitalFitVoigt.py	/^            co = 'g'$/;"	kind:variable	line:169
+co	OrbitalFitVoigt.py	/^            co = 'r'$/;"	kind:variable	line:175
+cor	SDSSFit.py	/^    cor = corner.corner(modelSamplesChain,labels=["LD","LW","GD","GW"])$/;"	kind:variable	line:330
+cor	SDSSFitTest.py	/^    cor = corner.corner(modelSamplesChain,labels=["LD","LW","GD","GW"])$/;"	kind:variable	line:330
+corner	AIC_csv.py	/^import corner$/;"	kind:namespace	line:498
+corner	BICModel.py	/^import corner$/;"	kind:namespace	line:498
+corner	BIC_csv.py	/^import corner$/;"	kind:namespace	line:444
+corner	ModelFit.py	/^import corner$/;"	kind:namespace	line:431
+corner	ModelFitScipy.py	/^import corner$/;"	kind:namespace	line:407
+corner	ModelPhase.py	/^import corner$/;"	kind:namespace	line:477
+corner	OrbitalFitScipy.py	/^import corner$/;"	kind:namespace	line:233
+corner	OrbitalFitVoigt.py	/^import corner$/;"	kind:namespace	line:312
+corner	SDSSFit.py	/^import corner$/;"	kind:namespace	line:17
+corner	SDSSFitTest.py	/^import corner$/;"	kind:namespace	line:17
+d1Fit	CompareFit.py	/^    d1Fit = d1FitArr.mean()$/;"	kind:variable	line:156
+d1Fit	Vfit_rvs.py	/^    d1Fit = d1FitArr.mean()$/;"	kind:variable	line:141
+d1Fit	Vfit_rvs_tmp.py	/^    d1Fit = d1FitArr.mean()$/;"	kind:variable	line:146
+d1FitArr	CompareFit.py	/^    d1FitArr = samples[0]$/;"	kind:variable	line:148
+d1FitArr	Vfit_rvs.py	/^    d1FitArr = samples[0]$/;"	kind:variable	line:133
+d1FitArr	Vfit_rvs_tmp.py	/^    d1FitArr = samplesTrans[0]$/;"	kind:variable	line:138
+d2Fit	CompareFit.py	/^    d2Fit = d2FitArr.mean()$/;"	kind:variable	line:158
+d2Fit	Vfit_rvs.py	/^    d2Fit = d2FitArr.mean()$/;"	kind:variable	line:143
+d2Fit	Vfit_rvs_tmp.py	/^    d2Fit = d2FitArr.mean()$/;"	kind:variable	line:148
+d2FitArr	CompareFit.py	/^    d2FitArr = samples[2]$/;"	kind:variable	line:150
+d2FitArr	Vfit_rvs.py	/^    d2FitArr = samples[2]$/;"	kind:variable	line:135
+d2FitArr	Vfit_rvs_tmp.py	/^    d2FitArr = samplesTrans[2]$/;"	kind:variable	line:140
+d3Fit	CompareFit.py	/^    d3Fit = d3FitArr.mean()$/;"	kind:variable	line:160
+d3Fit	Vfit_rvs.py	/^    d3Fit = d3FitArr.mean()$/;"	kind:variable	line:145
+d3Fit	Vfit_rvs_tmp.py	/^    d3Fit = d3FitArr.mean()$/;"	kind:variable	line:150
+d3FitArr	CompareFit.py	/^    d3FitArr = samples[4]$/;"	kind:variable	line:152
+d3FitArr	Vfit_rvs.py	/^    d3FitArr = samples[4]$/;"	kind:variable	line:137
+d3FitArr	Vfit_rvs_tmp.py	/^    d3FitArr = samplesTrans[4]$/;"	kind:variable	line:142
+data	BICModel.py	/^data = []$/;"	kind:variable	line:327
+dataArr	BICModel.py	/^dataArr = np.array(data)$/;"	kind:variable	line:331
+dateTaken	BICModel.py	/^    dateTaken = basename[7:17]$/;"	kind:variable	line:255
+dateTaken	ModelFit.py	/^    dateTaken = basename[7:17]$/;"	kind:variable	line:236
+dateTaken	ModelFitScipy.py	/^    dateTaken = basename[7:17]$/;"	kind:variable	line:249
+dateTaken	ModelPhase.py	/^    dateTaken = basename[7:17]$/;"	kind:variable	line:236
+dateTaken	OrbitalFit.py	/^    dateTaken = basename[7:17]$/;"	kind:variable	line:88
+dateTaken	OrbitalFitLorentzian.py	/^    dateTaken = basename[7:17]$/;"	kind:variable	line:88
+dateTaken	OrbitalFitScipy.py	/^    dateTaken = basename[7:17]$/;"	kind:variable	line:91
+dateTaken	OrbitalFitVoigt.py	/^    dateTaken = basename[7:17]$/;"	kind:variable	line:126
+dateTaken	ParamVsNum.py	/^    dateTaken = basename[7:17]$/;"	kind:variable	line:107
+dateTaken	PhaseDiagram.py	/^    dateTaken = basename[7:17]$/;"	kind:variable	line:92
+dateTaken	SDSSFit.py	/^    dateTaken = basename[7:17]$/;"	kind:variable	line:354
+dateTaken	SDSSFitTest.py	/^    dateTaken = basename[7:17]$/;"	kind:variable	line:354
+dateTimeTaken	BICModel.py	/^    dateTimeTaken = tls.GetDateTime(path)$/;"	kind:variable	line:258
+dateTimeTaken	ModelFit.py	/^    dateTimeTaken = tls.GetDateTime(path)$/;"	kind:variable	line:239
+dateTimeTaken	ModelFitScipy.py	/^    dateTimeTaken = tls.GetDateTime(path)$/;"	kind:variable	line:252
+dateTimeTaken	ModelPhase.py	/^    dateTimeTaken = tls.GetDateTime(path)$/;"	kind:variable	line:239
+dateTimeTaken	OrbitalFit.py	/^    dateTimeTaken = basename[7:23]$/;"	kind:variable	line:90
+dateTimeTaken	OrbitalFitLorentzian.py	/^    dateTimeTaken = basename[7:23]$/;"	kind:variable	line:90
+dateTimeTaken	OrbitalFitScipy.py	/^    dateTimeTaken = basename[7:23]$/;"	kind:variable	line:93
+dateTimeTaken	OrbitalFitVoigt.py	/^        dateTimeTaken = dateTaken + "T" + dateTimeTaken$/;"	kind:variable	line:131
+dateTimeTaken	OrbitalFitVoigt.py	/^    dateTimeTaken = tls.GetDateTime(path)$/;"	kind:variable	line:129
+dateTimeTaken	ParamVsNum.py	/^        dateTimeTaken = dateTaken + "T" + dateTimeTaken$/;"	kind:variable	line:112
+dateTimeTaken	ParamVsNum.py	/^    dateTimeTaken = tls.GetDateTime(path)$/;"	kind:variable	line:110
+dateTimeTaken	PhaseDiagram.py	/^        dateTimeTaken = dateTaken + "T" + dateTimeTaken$/;"	kind:variable	line:97
+dateTimeTaken	PhaseDiagram.py	/^    dateTimeTaken = tls.GetDateTime(path)$/;"	kind:variable	line:95
+dateTimeTaken	SDSSFit.py	/^    dateTimeTaken = tls.GetDateTime(path)$/;"	kind:variable	line:357
+dateTimeTaken	SDSSFitTest.py	/^    dateTimeTaken = tls.GetDateTime(path)$/;"	kind:variable	line:357
+dates	AIC_csv.py	/^import matplotlib.dates as dates$/;"	kind:namespace	line:6
+dates	BICModel.py	/^import matplotlib.dates as dates$/;"	kind:namespace	line:6
+dates	BIC_csv.py	/^import matplotlib.dates as dates$/;"	kind:namespace	line:6
+dates	ModelFit.py	/^import matplotlib.dates as dates$/;"	kind:namespace	line:6
+dates	ModelFitScipy.py	/^import matplotlib.dates as dates$/;"	kind:namespace	line:6
+dates	ModelPhase.py	/^import matplotlib.dates as dates$/;"	kind:namespace	line:6
+dates	OrbitalFit.py	/^import matplotlib.dates as dates$/;"	kind:namespace	line:6
+dates	OrbitalFitLorentzian.py	/^import matplotlib.dates as dates$/;"	kind:namespace	line:6
+dates	OrbitalFitScipy.py	/^import matplotlib.dates as dates$/;"	kind:namespace	line:6
+dates	OrbitalFitVoigt.py	/^import matplotlib.dates as dates$/;"	kind:namespace	line:6
+dates	ParamVsNum.py	/^import matplotlib.dates as dates$/;"	kind:namespace	line:6
+dates	PhaseDiagram.py	/^import matplotlib.dates as dates$/;"	kind:namespace	line:6
+dates	RVtime.py	/^import matplotlib.dates as dates$/;"	kind:namespace	line:6
+dates	SDSSFit.py	/^import matplotlib.dates as dates$/;"	kind:namespace	line:8
+dates	SDSSFitTest.py	/^import matplotlib.dates as dates$/;"	kind:namespace	line:8
+datetime	AIC_csv.py	/^from datetime import datetime$/;"	kind:namespace	line:12
+datetime	BICModel.py	/^from datetime import datetime$/;"	kind:namespace	line:12
+datetime	BIC_csv.py	/^from datetime import datetime$/;"	kind:namespace	line:12
+datetime	ModelFit.py	/^from datetime import datetime$/;"	kind:namespace	line:12
+datetime	ModelFitScipy.py	/^from datetime import datetime$/;"	kind:namespace	line:12
+datetime	ModelPhase.py	/^from datetime import datetime$/;"	kind:namespace	line:12
+datetime	OrbitalFit.py	/^from datetime import datetime$/;"	kind:namespace	line:12
+datetime	OrbitalFitLorentzian.py	/^from datetime import datetime$/;"	kind:namespace	line:12
+datetime	OrbitalFitScipy.py	/^from datetime import datetime$/;"	kind:namespace	line:12
+datetime	OrbitalFitVoigt.py	/^from datetime import datetime$/;"	kind:namespace	line:12
+datetime	ParamVsNum.py	/^from datetime import datetime$/;"	kind:namespace	line:12
+datetime	PhaseDiagram.py	/^from datetime import datetime$/;"	kind:namespace	line:12
+datetime	RVtime.py	/^from datetime import datetime$/;"	kind:namespace	line:9
+datetime	SDSSFit.py	/^from datetime import datetime$/;"	kind:namespace	line:14
+datetime	SDSSFitTest.py	/^from datetime import datetime$/;"	kind:namespace	line:14
+deltaBIC	AIC_csv.py	/^deltaBIC = noOrbBIC - sineBIC$/;"	kind:variable	line:441
+deltaBIC	BICModel.py	/^deltaBIC = noOrbBIC - sineBIC$/;"	kind:variable	line:441
+deltaBIC	BIC_csv.py	/^deltaBIC = noOrbBIC - sineBIC$/;"	kind:variable	line:386
+deltaBICArr	BIC_csv.py	/^deltaBICArr = np.array([deltaBIC])$/;"	kind:variable	line:395
+depthFit	Vfit.py	/^        depthFit = depthMean$/;"	kind:variable	line:122
+depthFit	VfitMC.py	/^        depthFit = depthMean$/;"	kind:variable	line:122
+depthFit	VfitMC_resid.py	/^    depthFit = depthMean$/;"	kind:variable	line:128
+depthFit	Vfit_tmp.py	/^        depthFit = depthMean$/;"	kind:variable	line:133
+depthFitArr	Vfit.py	/^        depthFitArr = samples[0]$/;"	kind:variable	line:110
+depthFitArr	VfitMC.py	/^        depthFitArr = samples[0]$/;"	kind:variable	line:110
+depthFitArr	VfitMC_resid.py	/^    depthFitArr = samples[0]$/;"	kind:variable	line:113
+depthFitArr	Vfit_tmp.py	/^        depthFitArr = samplesTrans[0]$/;"	kind:variable	line:121
+depthMean	Vfit.py	/^        depthMean = depthFitArr.mean()$/;"	kind:variable	line:114
+depthMean	VfitMC.py	/^        depthMean = depthFitArr.mean()$/;"	kind:variable	line:114
+depthMean	VfitMC_resid.py	/^    depthMean = depthFitArr.mean()$/;"	kind:variable	line:119
+depthMean	Vfit_tmp.py	/^        depthMean = depthFitArr.mean()$/;"	kind:variable	line:125
+depthStd	Vfit.py	/^        depthStd = depthFitArr.std()$/;"	kind:variable	line:118
+depthStd	VfitMC.py	/^        depthStd = depthFitArr.std()$/;"	kind:variable	line:118
+depthStd	VfitMC_resid.py	/^    depthStd = depthFitArr.std()$/;"	kind:variable	line:123
+depthStd	Vfit_tmp.py	/^        depthStd = depthFitArr.std()$/;"	kind:variable	line:129
+division	plot_format.py	/^from __future__ import division, print_function$/;"	kind:namespace	line:1
+err	CompareFit.py	/^            err = np.mean(perr)$/;"	kind:variable	line:113
+errorBeta	RVnum.py	/^errorBeta = []$/;"	kind:variable	line:29
+errorBeta	RVtime.py	/^errorBeta = []$/;"	kind:variable	line:33
+errorDelta	RVnum.py	/^errorDelta = []$/;"	kind:variable	line:31
+errorDelta	RVtime.py	/^errorDelta = []$/;"	kind:variable	line:35
+errorGamma	RVnum.py	/^errorGamma = []$/;"	kind:variable	line:30
+errorGamma	RVtime.py	/^errorGamma = []$/;"	kind:variable	line:34
+errorJoined	RVnum.py	/^errorJoined = []$/;"	kind:variable	line:23
+errorJoined	RVtime.py	/^errorJoined = []$/;"	kind:variable	line:26
+factorial	tools.py	/^    from math import factorial$/;"	kind:namespace	line:647
+ferr	CompareFit.py	/^        ferr = errorNorm[wherr]$/;"	kind:variable	line:96
+ferr	Vfit.py	/^        ferr = errorNorm[wherr]$/;"	kind:variable	line:78
+ferr	VfitMC.py	/^        ferr = errorNorm[wherr]$/;"	kind:variable	line:78
+ferr	VfitMC_resid.py	/^    ferr = errorNorm[wherr]$/;"	kind:variable	line:78
+ferr	Vfit_rvs.py	/^        ferr = errorNorm[wherr]$/;"	kind:variable	line:90
+ferr	Vfit_rvs_tmp.py	/^        ferr = errorNorm[wherr]$/;"	kind:variable	line:89
+ferr	Vfit_tmp.py	/^        ferr = errorNorm[wherr]$/;"	kind:variable	line:78
+ferr	VoigtFit.py	/^        ferr = errorNorm[wherr]$/;"	kind:variable	line:80
+ferr	Voigt_rvs.py	/^        ferr = errorNorm[wherr]$/;"	kind:variable	line:90
+ferrBeta	CompareFit.py	/^            ferrBeta = ferr$/;"	kind:variable	line:108
+ferrBeta	Vfit_rvs.py	/^            ferrBeta = ferr$/;"	kind:variable	line:102
+ferrBeta	Vfit_rvs_tmp.py	/^            ferrBeta = ferr$/;"	kind:variable	line:101
+ferrBeta	Voigt_rvs.py	/^            ferrBeta = ferr$/;"	kind:variable	line:102
+ferrDelta	CompareFit.py	/^            ferrDelta = ferr$/;"	kind:variable	line:125
+ferrDelta	Vfit_rvs.py	/^            ferrDelta = ferr$/;"	kind:variable	line:110
+ferrDelta	Vfit_rvs_tmp.py	/^            ferrDelta = ferr$/;"	kind:variable	line:109
+ferrDelta	Voigt_rvs.py	/^            ferrDelta = ferr$/;"	kind:variable	line:110
+ferrGamma	CompareFit.py	/^            ferrGamma = ferr$/;"	kind:variable	line:121
+ferrGamma	Vfit_rvs.py	/^            ferrGamma = ferr$/;"	kind:variable	line:106
+ferrGamma	Vfit_rvs_tmp.py	/^            ferrGamma = ferr$/;"	kind:variable	line:105
+ferrGamma	Voigt_rvs.py	/^            ferrGamma = ferr$/;"	kind:variable	line:106
+ferrs	CompareFit.py	/^    ferrs = [ferrBeta,ferrGamma,ferrDelta]$/;"	kind:variable	line:133
+ferrs	Vfit_rvs.py	/^    ferrs = [ferrBeta,ferrGamma,ferrDelta]$/;"	kind:variable	line:118
+ferrs	Vfit_rvs_tmp.py	/^    ferrs = [ferrBeta,ferrGamma,ferrDelta]$/;"	kind:variable	line:117
+ferrs	Voigt_rvs.py	/^    ferrs = [ferrBeta,ferrGamma,ferrDelta]$/;"	kind:variable	line:117
+fig	AIC_csv.py	/^fig = corner.corner(samplesChain, labels=["A","P","Phi","Gam"])$/;"	kind:variable	line:499
+fig	BICModel.py	/^fig = corner.corner(samplesChain, labels=["A","P","Phi","Gam"])$/;"	kind:variable	line:499
+fig	BIC_csv.py	/^fig = corner.corner(samplesChain, labels=["A","P","Phi","Gam"])$/;"	kind:variable	line:445
+fig	ModelFit.py	/^fig = corner.corner(samplesChain, labels=["A","P","Phi","Gam"])$/;"	kind:variable	line:432
+fig	ModelFitScipy.py	/^fig = corner.corner(samplesChain, labels=["A","P","Phi","Gam"])$/;"	kind:variable	line:408
+fig	ModelPhase.py	/^fig = corner.corner(samplesChain, labels=["A","P","Phi","Gam"])$/;"	kind:variable	line:478
+fig	OrbitalFitScipy.py	/^fig = corner.corner(samplesChain, labels=["A","P","Phi","Gam"])$/;"	kind:variable	line:234
+fig	OrbitalFitVoigt.py	/^fig = corner.corner(samplesChain, labels=["A","P","Phi","Gam"])$/;"	kind:variable	line:313
+fig	SDSSFit.py	/^fig = corner.corner(samplesChain, labels=["A","P","Phi","Gam"])$/;"	kind:variable	line:635
+fig	SDSSFitTest.py	/^fig = corner.corner(samplesChain, labels=["A","P","Phi","Gam"])$/;"	kind:variable	line:638
+fig	VfitMC.py	/^    fig = cn.corner(flatchain,labels=["depth","width","RV shift"])$/;"	kind:variable	line:148
+fig	VfitMC_resid.py	/^    fig = cn.corner(flatchain,labels=["depth","width","RV shift"])$/;"	kind:variable	line:167
+filename	interactive_norm.py	/^    filename = sys.argv[1]$/;"	kind:variable	line:79
+fits	AIC_csv.py	/^from astropy.io import fits$/;"	kind:namespace	line:2
+fits	BICModel.py	/^from astropy.io import fits$/;"	kind:namespace	line:2
+fits	BIC_csv.py	/^from astropy.io import fits$/;"	kind:namespace	line:2
+fits	CompareFit.py	/^from astropy.io import fits$/;"	kind:namespace	line:2
+fits	ModelFit.py	/^from astropy.io import fits$/;"	kind:namespace	line:2
+fits	ModelFitScipy.py	/^from astropy.io import fits$/;"	kind:namespace	line:2
+fits	ModelPhase.py	/^from astropy.io import fits$/;"	kind:namespace	line:2
+fits	OrbitalFit.py	/^from astropy.io import fits$/;"	kind:namespace	line:2
+fits	OrbitalFitLorentzian.py	/^from astropy.io import fits$/;"	kind:namespace	line:2
+fits	OrbitalFitScipy.py	/^from astropy.io import fits$/;"	kind:namespace	line:2
+fits	OrbitalFitVoigt.py	/^from astropy.io import fits$/;"	kind:namespace	line:2
+fits	ParamVsNum.py	/^from astropy.io import fits$/;"	kind:namespace	line:2
+fits	PhaseDiagram.py	/^from astropy.io import fits$/;"	kind:namespace	line:2
+fits	RVnum.py	/^from astropy.io import fits$/;"	kind:namespace	line:2
+fits	RVtime.py	/^from astropy.io import fits$/;"	kind:namespace	line:2
+fits	SDSSFit.py	/^from astropy.io import fits$/;"	kind:namespace	line:4
+fits	SDSSFitTest.py	/^from astropy.io import fits$/;"	kind:namespace	line:4
+fits	Vfit.py	/^from astropy.io import fits$/;"	kind:namespace	line:2
+fits	VfitMC.py	/^from astropy.io import fits$/;"	kind:namespace	line:2
+fits	VfitMC_resid.py	/^from astropy.io import fits$/;"	kind:namespace	line:2
+fits	Vfit_rvs.py	/^from astropy.io import fits$/;"	kind:namespace	line:2
+fits	Vfit_rvs_tmp.py	/^from astropy.io import fits$/;"	kind:namespace	line:2
+fits	Vfit_scipy.py	/^from astropy.io import fits$/;"	kind:namespace	line:2
+fits	Vfit_tmp.py	/^from astropy.io import fits$/;"	kind:namespace	line:2
+fits	Voffset.py	/^from astropy.io import fits$/;"	kind:namespace	line:2
+fits	VoigtFit.py	/^from astropy.io import fits$/;"	kind:namespace	line:2
+fits	Voigt_rvs.py	/^from astropy.io import fits$/;"	kind:namespace	line:2
+fits	paperplots.py	/^    from astropy.io import fits$/;"	kind:namespace	line:347
+fits	tools.py	/^    from astropy.io import fits$/;"	kind:namespace	line:1062
+fits	tools.py	/^    from astropy.io import fits$/;"	kind:namespace	line:20
+fits	tools.py	/^    from astropy.io import fits$/;"	kind:namespace	line:204
+fits	tools.py	/^    from astropy.io import fits$/;"	kind:namespace	line:30
+fits	tools.py	/^    from astropy.io import fits$/;"	kind:namespace	line:345
+fits	tools.py	/^    from astropy.io import fits$/;"	kind:namespace	line:455
+fits	tools.py	/^    from astropy.io import fits$/;"	kind:namespace	line:513
+fits	tools.py	/^    from astropy.io import fits$/;"	kind:namespace	line:63
+fits	tools.py	/^    from astropy.io import fits$/;"	kind:namespace	line:671
+fits	tools.py	/^    from astropy.io import fits$/;"	kind:namespace	line:737
+fits	tools.py	/^    from astropy.io import fits$/;"	kind:namespace	line:77
+fits	tools.py	/^    from astropy.io import fits$/;"	kind:namespace	line:804
+fits	tools.py	/^    from astropy.io import fits$/;"	kind:namespace	line:882
+fits	tools.py	/^    from astropy.io import fits$/;"	kind:namespace	line:965
+fits	tools.py	/^    from astropy.io import fits$/;"	kind:namespace	line:969
+flatchain	CompareFit.py	/^    flatchain = sampler.flatchain$/;"	kind:variable	line:145
+flatchain	Vfit.py	/^        flatchain = sampler.flatchain$/;"	kind:variable	line:107
+flatchain	VfitMC.py	/^        flatchain = sampler.flatchain$/;"	kind:variable	line:107
+flatchain	VfitMC_resid.py	/^    flatchain = sampler.flatchain$/;"	kind:variable	line:107
+flatchain	Vfit_rvs.py	/^    flatchain = sampler.flatchain$/;"	kind:variable	line:130
+flatchain	Vfit_rvs_tmp.py	/^    flatchain = sampler.flatchain$/;"	kind:variable	line:132
+flatchain	Vfit_tmp.py	/^        flatchain = sampler.flatchain$/;"	kind:variable	line:107
+flatchain	VoigtFit.py	/^        flatchain = sampler.flatchain$/;"	kind:variable	line:107
+flatchain	Voigt_rvs.py	/^    flatchain = sampler.flatchain$/;"	kind:variable	line:132
+flux	CompareFit.py	/^        flux = Normflux[wherr]$/;"	kind:variable	line:95
+flux	Vfit.py	/^        flux = Normflux[wherr]$/;"	kind:variable	line:77
+flux	VfitMC.py	/^        flux = Normflux[wherr]$/;"	kind:variable	line:77
+flux	VfitMC_resid.py	/^    flux = Normflux[wherr]$/;"	kind:variable	line:77
+flux	Vfit_rvs.py	/^        flux = Normflux[wherr]$/;"	kind:variable	line:89
+flux	Vfit_rvs_tmp.py	/^        flux = Normflux[wherr]$/;"	kind:variable	line:88
+flux	Vfit_tmp.py	/^        flux = Normflux[wherr]$/;"	kind:variable	line:77
+flux	Voffset.py	/^        flux = Normflux[wherr]$/;"	kind:variable	line:54
+flux	VoigtFit.py	/^        flux = Normflux[wherr]$/;"	kind:variable	line:79
+flux	Voigt_rvs.py	/^        flux = Normflux[wherr]$/;"	kind:variable	line:89
+fluxBeta	CompareFit.py	/^            fluxBeta = flux$/;"	kind:variable	line:107
+fluxBeta	Vfit_rvs.py	/^            fluxBeta = flux$/;"	kind:variable	line:101
+fluxBeta	Vfit_rvs_tmp.py	/^            fluxBeta = flux$/;"	kind:variable	line:100
+fluxBeta	Voigt_rvs.py	/^            fluxBeta = flux$/;"	kind:variable	line:101
+fluxDelta	CompareFit.py	/^            fluxDelta = flux$/;"	kind:variable	line:124
+fluxDelta	Vfit_rvs.py	/^            fluxDelta = flux$/;"	kind:variable	line:109
+fluxDelta	Vfit_rvs_tmp.py	/^            fluxDelta = flux$/;"	kind:variable	line:108
+fluxDelta	Voigt_rvs.py	/^            fluxDelta = flux$/;"	kind:variable	line:109
+fluxGamma	CompareFit.py	/^            fluxGamma = flux$/;"	kind:variable	line:120
+fluxGamma	Vfit_rvs.py	/^            fluxGamma = flux$/;"	kind:variable	line:105
+fluxGamma	Vfit_rvs_tmp.py	/^            fluxGamma = flux$/;"	kind:variable	line:104
+fluxGamma	Voigt_rvs.py	/^            fluxGamma = flux$/;"	kind:variable	line:105
+fluxes	CompareFit.py	/^    fluxes = [fluxBeta,fluxGamma,fluxDelta]$/;"	kind:variable	line:132
+fluxes	Vfit_rvs.py	/^    fluxes = [fluxBeta,fluxGamma,fluxDelta]$/;"	kind:variable	line:117
+fluxes	Vfit_rvs_tmp.py	/^    fluxes = [fluxBeta,fluxGamma,fluxDelta]$/;"	kind:variable	line:116
+fluxes	Voigt_rvs.py	/^    fluxes = [fluxBeta,fluxGamma,fluxDelta]$/;"	kind:variable	line:116
+gd	OrbitalFitVoigt.py	/^            gd = gd1$/;"	kind:variable	line:166
+gd	OrbitalFitVoigt.py	/^            gd = gd2$/;"	kind:variable	line:172
+gd	OrbitalFitVoigt.py	/^            gd = gd3$/;"	kind:variable	line:178
+gd1Arr	ParamVsNum.py	/^gd1Arr = []$/;"	kind:variable	line:83
+gd1Fit	Voigt_rvs.py	/^    gd1Fit = gd1FitArr.mean()$/;"	kind:variable	line:152
+gd1FitArr	Voigt_rvs.py	/^    gd1FitArr = samplesTrans[2]$/;"	kind:variable	line:138
+gd1Std	Voigt_rvs.py	/^    gd1Std = gd1FitArr.std()$/;"	kind:variable	line:166
+gd2Arr	ParamVsNum.py	/^gd2Arr = []$/;"	kind:variable	line:88
+gd2Fit	Voigt_rvs.py	/^    gd2Fit = gd2FitArr.mean()$/;"	kind:variable	line:156
+gd2FitArr	Voigt_rvs.py	/^    gd2FitArr = samplesTrans[6]$/;"	kind:variable	line:142
+gd2Std	Voigt_rvs.py	/^    gd2Std = gd2FitArr.std()$/;"	kind:variable	line:170
+gd3Arr	ParamVsNum.py	/^gd3Arr = []$/;"	kind:variable	line:93
+gd3Fit	Voigt_rvs.py	/^    gd3Fit = gd3FitArr.mean()$/;"	kind:variable	line:160
+gd3FitArr	Voigt_rvs.py	/^    gd3FitArr = samplesTrans[10]$/;"	kind:variable	line:146
+gd3Std	Voigt_rvs.py	/^    gd3Std = gd3FitArr.std()$/;"	kind:variable	line:174
+gw	OrbitalFitVoigt.py	/^            gw = gw1$/;"	kind:variable	line:167
+gw	OrbitalFitVoigt.py	/^            gw = gw2$/;"	kind:variable	line:173
+gw	OrbitalFitVoigt.py	/^            gw = gw3$/;"	kind:variable	line:179
+gw1Arr	ParamVsNum.py	/^gw1Arr = []$/;"	kind:variable	line:84
+gw1Fit	Voigt_rvs.py	/^    gw1Fit = gw1FitArr.mean()$/;"	kind:variable	line:153
+gw1FitArr	Voigt_rvs.py	/^    gw1FitArr = samplesTrans[3]$/;"	kind:variable	line:139
+gw1Std	Voigt_rvs.py	/^    gw1Std = gw1FitArr.std()$/;"	kind:variable	line:167
+gw2Arr	ParamVsNum.py	/^gw2Arr = []$/;"	kind:variable	line:89
+gw2Fit	Voigt_rvs.py	/^    gw2Fit = gw2FitArr.mean()$/;"	kind:variable	line:157
+gw2FitArr	Voigt_rvs.py	/^    gw2FitArr = samplesTrans[7]$/;"	kind:variable	line:143
+gw2Std	Voigt_rvs.py	/^    gw2Std = gw2FitArr.std()$/;"	kind:variable	line:171
+gw3Arr	ParamVsNum.py	/^gw3Arr = []$/;"	kind:variable	line:94
+gw3Fit	Voigt_rvs.py	/^    gw3Fit = gw3FitArr.mean()$/;"	kind:variable	line:161
+gw3FitArr	Voigt_rvs.py	/^    gw3FitArr = samplesTrans[11]$/;"	kind:variable	line:147
+gw3Std	Voigt_rvs.py	/^    gw3Std = gw3FitArr.std()$/;"	kind:variable	line:175
+header	CompareFit.py	/^    header = fits.getheader(path)$/;"	kind:variable	line:68
+header	Vfit.py	/^    header = fits.getheader(path)$/;"	kind:variable	line:50
+header	VfitMC.py	/^    header = fits.getheader(path)$/;"	kind:variable	line:50
+header	VfitMC_resid.py	/^    header = fits.getheader(path)$/;"	kind:variable	line:50
+header	Vfit_rvs.py	/^    header = fits.getheader(path)$/;"	kind:variable	line:62
+header	Vfit_rvs_tmp.py	/^    header = fits.getheader(path)$/;"	kind:variable	line:61
+header	Vfit_tmp.py	/^    header = fits.getheader(path)$/;"	kind:variable	line:50
+header	Voffset.py	/^    header = fits.getheader(path)$/;"	kind:variable	line:27
+header	VoigtFit.py	/^    header = fits.getheader(path)$/;"	kind:variable	line:50
+header	Voigt_rvs.py	/^    header = fits.getheader(path)$/;"	kind:variable	line:62
+interactive_norm.py	interactive_norm.py	1;"	kind:file	line:1
+label	plot_format.py	/^def label(x,y,title):$/;"	kind:function	line:25
+ld	OrbitalFitVoigt.py	/^            ld = ld1$/;"	kind:variable	line:164
+ld	OrbitalFitVoigt.py	/^            ld = ld2$/;"	kind:variable	line:170
+ld	OrbitalFitVoigt.py	/^            ld = ld3$/;"	kind:variable	line:176
+ld1Arr	ParamVsNum.py	/^ld1Arr = []$/;"	kind:variable	line:81
+ld1Fit	Voigt_rvs.py	/^    ld1Fit = ld1FitArr.mean()$/;"	kind:variable	line:150
+ld1FitArr	Voigt_rvs.py	/^    ld1FitArr = samplesTrans[0]$/;"	kind:variable	line:136
+ld1Std	Voigt_rvs.py	/^    ld1Std = ld1FitArr.std()$/;"	kind:variable	line:164
+ld2Arr	ParamVsNum.py	/^ld2Arr = []$/;"	kind:variable	line:86
+ld2Fit	Voigt_rvs.py	/^    ld2Fit = ld2FitArr.mean()$/;"	kind:variable	line:154
+ld2FitArr	Voigt_rvs.py	/^    ld2FitArr = samplesTrans[4]$/;"	kind:variable	line:140
+ld2Std	Voigt_rvs.py	/^    ld2Std = ld2FitArr.std()$/;"	kind:variable	line:168
+ld3Arr	ParamVsNum.py	/^ld3Arr = []$/;"	kind:variable	line:91
+ld3Fit	Voigt_rvs.py	/^    ld3Fit = ld3FitArr.mean()$/;"	kind:variable	line:158
+ld3FitArr	Voigt_rvs.py	/^    ld3FitArr = samplesTrans[8]$/;"	kind:variable	line:144
+ld3Std	Voigt_rvs.py	/^    ld3Std = ld3FitArr.std()$/;"	kind:variable	line:172
+lineIndex	VfitMC_resid.py	/^    lineIndex = 1$/;"	kind:variable	line:62
+lineList	CompareFit.py	/^    lineList =  np.array([6562.79, 4861.35, 4340.472, 4101.734, 3970.075, 3889.064, 3835.397])$/;"	kind:variable	line:77
+lineList	Vfit.py	/^    lineList =  np.array([6562.79, 4861.35, 4340.472, 4101.734, 3970.075, 3889.064, 3835.397])$/;"	kind:variable	line:59
+lineList	VfitMC.py	/^    lineList =  np.array([6562.79, 4861.35, 4340.472, 4101.734, 3970.075, 3889.064, 3835.397])$/;"	kind:variable	line:59
+lineList	VfitMC_resid.py	/^    lineList =  np.array([6562.79, 4861.35, 4340.472, 4101.734, 3970.075, 3889.064, 3835.397])$/;"	kind:variable	line:59
+lineList	Vfit_rvs.py	/^    lineList =  np.array([6562.79, 4861.35, 4340.472, 4101.734, 3970.075, 3889.064, 3835.397])$/;"	kind:variable	line:71
+lineList	Vfit_rvs_tmp.py	/^    lineList =  np.array([6562.79, 4861.35, 4340.472, 4101.734, 3970.075, 3889.064, 3835.397])$/;"	kind:variable	line:70
+lineList	Vfit_tmp.py	/^    lineList =  np.array([6562.79, 4861.35, 4340.472, 4101.734, 3970.075, 3889.064, 3835.397])$/;"	kind:variable	line:59
+lineList	Voffset.py	/^    lineList =  np.array([6562.79, 4861.35, 4340.472, 4101.734, 3970.075, 3889.064, 3835.397])$/;"	kind:variable	line:36
+lineList	VoigtFit.py	/^    lineList =  np.array([6562.79, 4861.35, 4340.472, 4101.734, 3970.075, 3889.064, 3835.397])$/;"	kind:variable	line:61
+lineList	Voigt_rvs.py	/^    lineList =  np.array([6562.79, 4861.35, 4340.472, 4101.734, 3970.075, 3889.064, 3835.397])$/;"	kind:variable	line:71
+lineNames	CompareFit.py	/^    lineNames = np.array(["Halpha","Hbeta","Hgamma","Hdelta","Hepsilon","H9","H10"])$/;"	kind:variable	line:79
+lineNames	Vfit.py	/^    lineNames = np.array(["Halpha","Hbeta","Hgamma","Hdelta","Hepsilon","H9","H10"])$/;"	kind:variable	line:61
+lineNames	VfitMC.py	/^    lineNames = np.array(["Halpha","Hbeta","Hgamma","Hdelta","Hepsilon","H9","H10"])$/;"	kind:variable	line:61
+lineNames	VfitMC_resid.py	/^    lineNames = np.array(["Halpha","Hbeta","Hgamma","Hdelta","Hepsilon","H9","H10"])$/;"	kind:variable	line:61
+lineNames	Vfit_rvs.py	/^    lineNames = np.array(["Halpha","Hbeta","Hgamma","Hdelta","Hepsilon","H9","H10"])$/;"	kind:variable	line:73
+lineNames	Vfit_rvs_tmp.py	/^    lineNames = np.array(["Halpha","Hbeta","Hgamma","Hdelta","Hepsilon","H9","H10"])$/;"	kind:variable	line:72
+lineNames	Vfit_tmp.py	/^    lineNames = np.array(["Halpha","Hbeta","Hgamma","Hdelta","Hepsilon","H9","H10"])$/;"	kind:variable	line:61
+lineNames	Voffset.py	/^    lineNames = np.array(["Halpha","Hbeta","Hgamma","Hdelta","Hepsilon","H9","H10"])$/;"	kind:variable	line:38
+lineNames	VoigtFit.py	/^    lineNames = np.array(["Halpha","Hbeta","Hgamma","Hdelta","Hepsilon","H9","H10"])$/;"	kind:variable	line:63
+lineNames	Voigt_rvs.py	/^    lineNames = np.array(["Halpha","Hbeta","Hgamma","Hdelta","Hepsilon","H9","H10"])$/;"	kind:variable	line:73
+lineWindows	CompareFit.py	/^    lineWindows = np.array([[4060.0, 4150.0], [4300.0,4375.0], [4800.0,4950.0]])$/;"	kind:variable	line:78
+lineWindows	Vfit.py	/^    lineWindows = np.array([[4060.0, 4150.0], [4300.0,4375.0], [4800.0,4950.0]])$/;"	kind:variable	line:60
+lineWindows	VfitMC.py	/^    lineWindows = np.array([[4060.0, 4150.0], [4300.0,4375.0], [4800.0,4950.0]])$/;"	kind:variable	line:60
+lineWindows	VfitMC_resid.py	/^    lineWindows = np.array([[4060.0, 4150.0], [4300.0,4375.0], [4800.0,4950.0]])$/;"	kind:variable	line:60
+lineWindows	Vfit_rvs.py	/^    lineWindows = np.array([[4060.0, 4150.0], [4300.0,4375.0], [4800.0,4950.0]])$/;"	kind:variable	line:72
+lineWindows	Vfit_rvs_tmp.py	/^    lineWindows = np.array([[4060.0, 4150.0], [4300.0,4375.0], [4800.0,4950.0]])$/;"	kind:variable	line:71
+lineWindows	Vfit_tmp.py	/^    lineWindows = np.array([[4060.0, 4150.0], [4300.0,4375.0], [4800.0,4950.0]])$/;"	kind:variable	line:60
+lineWindows	Voffset.py	/^    lineWindows = np.array([[4060.0, 4150.0], [4300.0,4375.0], [4800.0,4950.0]])$/;"	kind:variable	line:37
+lineWindows	VoigtFit.py	/^    lineWindows = np.array([[4060.0, 4150.0], [4300.0,4375.0], [4800.0,4950.0]])$/;"	kind:variable	line:62
+lineWindows	Voigt_rvs.py	/^    lineWindows = np.array([[4060.0, 4150.0], [4300.0,4375.0], [4800.0,4950.0]])$/;"	kind:variable	line:72
+lines	AIC_csv.py	/^lines = [line.rstrip('\\n') for line in open('filelist')]$/;"	kind:variable	line:174
+lines	BICModel.py	/^lines = [line.rstrip('\\n') for line in open('filelist')]$/;"	kind:variable	line:174
+lines	BIC_csv.py	/^lines = [line.rstrip('\\n') for line in open('filelist')]$/;"	kind:variable	line:175
+lines	CompareFit.py	/^lines = [line.rstrip('\\n') for line in open('filelist')]$/;"	kind:variable	line:42
+lines	ModelFit.py	/^lines = [line.rstrip('\\n') for line in open('filelist')]$/;"	kind:variable	line:155
+lines	ModelFitScipy.py	/^lines = [line.rstrip('\\n') for line in open('filelist')]$/;"	kind:variable	line:165
+lines	ModelPhase.py	/^lines = [line.rstrip('\\n') for line in open('filelist')]$/;"	kind:variable	line:155
+lines	OrbitalFit.py	/^lines = [line.rstrip('\\n') for line in open('filelist')]$/;"	kind:variable	line:67
+lines	OrbitalFitLorentzian.py	/^lines = [line.rstrip('\\n') for line in open('filelist')]$/;"	kind:variable	line:67
+lines	OrbitalFitScipy.py	/^lines = [line.rstrip('\\n') for line in open('filelist')]$/;"	kind:variable	line:70
+lines	OrbitalFitVoigt.py	/^lines = [line.rstrip('\\n') for line in open('filelist')]$/;"	kind:variable	line:105
+lines	ParamVsNum.py	/^lines = [line.rstrip('\\n') for line in open('filelist')]$/;"	kind:variable	line:70
+lines	PhaseDiagram.py	/^lines = [line.rstrip('\\n') for line in open('filelist')]$/;"	kind:variable	line:71
+lines	RVnum.py	/^lines = [line.rstrip('\\n') for line in open('filelist')]$/;"	kind:variable	line:15
+lines	RVtime.py	/^lines = [line.rstrip('\\n') for line in open('filelist')]$/;"	kind:variable	line:18
+lines	SDSSFit.py	/^lines = [line.rstrip('\\n') for line in open('filelist')]$/;"	kind:variable	line:202
+lines	SDSSFitTest.py	/^lines = [line.rstrip('\\n') for line in open('filelist')]$/;"	kind:variable	line:202
+lines	Vfit.py	/^lines = [line.rstrip('\\n') for line in open('filelist')]$/;"	kind:variable	line:31
+lines	VfitMC.py	/^lines = [line.rstrip('\\n') for line in open('filelist')]$/;"	kind:variable	line:31
+lines	VfitMC_resid.py	/^lines = [line.rstrip('\\n') for line in open('filelist')]$/;"	kind:variable	line:31
+lines	Vfit_rvs.py	/^lines = [line.rstrip('\\n') for line in open('filelist')]$/;"	kind:variable	line:43
+lines	Vfit_rvs_tmp.py	/^lines = [line.rstrip('\\n') for line in open('filelist')]$/;"	kind:variable	line:42
+lines	Vfit_scipy.py	/^lines = [line.rstrip('\\n') for line in open('filelist')]$/;"	kind:variable	line:15
+lines	Vfit_tmp.py	/^lines = [line.rstrip('\\n') for line in open('filelist')]$/;"	kind:variable	line:31
+lines	Voffset.py	/^lines = [line.rstrip('\\n') for line in open('filelist')]$/;"	kind:variable	line:10
+lines	VoigtFit.py	/^lines = [line.rstrip('\\n') for line in open('filelist')]$/;"	kind:variable	line:31
+lines	Voigt_rvs.py	/^lines = [line.rstrip('\\n') for line in open('filelist')]$/;"	kind:variable	line:43
+lnlike	AIC_csv.py	/^    def lnlike(p,x,y,err):$/;"	kind:function	line:135
+lnlike	AIC_csv.py	/^    def lnlike(p,x,y,err):$/;"	kind:function	line:81
+lnlike	BICModel.py	/^    def lnlike(p,x,y,err):$/;"	kind:function	line:135
+lnlike	BICModel.py	/^    def lnlike(p,x,y,err):$/;"	kind:function	line:81
+lnlike	BIC_csv.py	/^    def lnlike(p,x,y,err):$/;"	kind:function	line:136
+lnlike	BIC_csv.py	/^    def lnlike(p,x,y,err):$/;"	kind:function	line:82
+lnlike	CompareFit.py	/^def lnlike(p,x,y,err):$/;"	kind:function	line:15
+lnlike	ModelFit.py	/^    def lnlike(p,x,y,err):$/;"	kind:function	line:116
+lnlike	ModelFit.py	/^    def lnlike(p,x,y,err):$/;"	kind:function	line:62
+lnlike	ModelFitScipy.py	/^    def lnlike(p,x,y,err):$/;"	kind:function	line:128
+lnlike	ModelFitScipy.py	/^    def lnlike(p,x,y,err):$/;"	kind:function	line:62
+lnlike	ModelPhase.py	/^    def lnlike(p,x,y,err):$/;"	kind:function	line:116
+lnlike	ModelPhase.py	/^    def lnlike(p,x,y,err):$/;"	kind:function	line:62
+lnlike	OrbitalFit.py	/^def lnlike(p,x,y,err):$/;"	kind:function	line:39
+lnlike	OrbitalFitLorentzian.py	/^def lnlike(p,x,y,err):$/;"	kind:function	line:39
+lnlike	OrbitalFitScipy.py	/^def lnlike(p,x,y,err):$/;"	kind:function	line:42
+lnlike	OrbitalFitVoigt.py	/^def lnlike(p,x,y,err):$/;"	kind:function	line:40
+lnlike	ParamVsNum.py	/^def lnlike(p,x,y,err):$/;"	kind:function	line:40
+lnlike	PhaseDiagram.py	/^def lnlike(p,x,y,err):$/;"	kind:function	line:40
+lnlike	SDSSFit.py	/^    def lnlike(p,x,y,err):$/;"	kind:function	line:66
+lnlike	SDSSFitTest.py	/^    def lnlike(p,x,y,err):$/;"	kind:function	line:66
+lnlike	Vfit.py	/^def lnlike(p,x,y,err):$/;"	kind:function	line:15
+lnlike	VfitMC.py	/^def lnlike(p,x,y,err):$/;"	kind:function	line:15
+lnlike	VfitMC_resid.py	/^def lnlike(p,x,y,err):$/;"	kind:function	line:15
+lnlike	Vfit_rvs.py	/^def lnlike(p,x,y,err):$/;"	kind:function	line:15
+lnlike	Vfit_rvs_tmp.py	/^def lnlike(p,x,y,err):$/;"	kind:function	line:15
+lnlike	Vfit_tmp.py	/^def lnlike(p,x,y,err):$/;"	kind:function	line:15
+lnlike	VoigtFit.py	/^def lnlike(p,x,y,err):$/;"	kind:function	line:15
+lnlike	Voigt_rvs.py	/^def lnlike(p,x,y,err):$/;"	kind:function	line:15
+lnlike1	SDSSFit.py	/^    def lnlike1(p,x,y,err):$/;"	kind:function	line:133
+lnlike1	SDSSFitTest.py	/^    def lnlike1(p,x,y,err):$/;"	kind:function	line:133
+lnlike2	SDSSFit.py	/^    def lnlike2(p,x,y,err):$/;"	kind:function	line:136
+lnlike2	SDSSFitTest.py	/^    def lnlike2(p,x,y,err):$/;"	kind:function	line:136
+lnlike3	SDSSFit.py	/^    def lnlike3(p,x,y,err):$/;"	kind:function	line:139
+lnlike3	SDSSFitTest.py	/^    def lnlike3(p,x,y,err):$/;"	kind:function	line:139
+lnlikeModel	AIC_csv.py	/^    def lnlikeModel(p,x,y,err):$/;"	kind:function	line:115
+lnlikeModel	AIC_csv.py	/^    def lnlikeModel(p,x,y,err):$/;"	kind:function	line:61
+lnlikeModel	BICModel.py	/^    def lnlikeModel(p,x,y,err):$/;"	kind:function	line:115
+lnlikeModel	BICModel.py	/^    def lnlikeModel(p,x,y,err):$/;"	kind:function	line:61
+lnlikeModel	BIC_csv.py	/^    def lnlikeModel(p,x,y,err):$/;"	kind:function	line:116
+lnlikeModel	BIC_csv.py	/^    def lnlikeModel(p,x,y,err):$/;"	kind:function	line:62
+lnlikeModel	ModelFit.py	/^    def lnlikeModel(p,x,y,err):$/;"	kind:function	line:42
+lnlikeModel	ModelFit.py	/^    def lnlikeModel(p,x,y,err):$/;"	kind:function	line:96
+lnlikeModel	ModelFitScipy.py	/^    def lnlikeModel(p,x,y,err):$/;"	kind:function	line:42
+lnlikeModel	ModelFitScipy.py	/^    def lnlikeModel(p,x,y,err):$/;"	kind:function	line:96
+lnlikeModel	ModelPhase.py	/^    def lnlikeModel(p,x,y,err):$/;"	kind:function	line:42
+lnlikeModel	ModelPhase.py	/^    def lnlikeModel(p,x,y,err):$/;"	kind:function	line:96
+lnlikeModel	SDSSFit.py	/^    def lnlikeModel(p,x,y,err):$/;"	kind:function	line:100
+lnlikeModel	SDSSFit.py	/^    def lnlikeModel(p,x,y,err):$/;"	kind:function	line:46
+lnlikeModel	SDSSFitTest.py	/^    def lnlikeModel(p,x,y,err):$/;"	kind:function	line:100
+lnlikeModel	SDSSFitTest.py	/^    def lnlikeModel(p,x,y,err):$/;"	kind:function	line:46
+lnlikeModel	paperplots.py	/^def lnlikeModel(p,x,y,err):$/;"	kind:function	line:44
+lnlikeNoOrbit	AIC_csv.py	/^def lnlikeNoOrbit(p,x,y,err):$/;"	kind:function	line:18
+lnlikeNoOrbit	BICModel.py	/^def lnlikeNoOrbit(p,x,y,err):$/;"	kind:function	line:18
+lnlikeNoOrbit	BIC_csv.py	/^def lnlikeNoOrbit(p,x,y,err):$/;"	kind:function	line:19
+lnlikeSine	AIC_csv.py	/^def lnlikeSine(p,x,y,err):$/;"	kind:function	line:38
+lnlikeSine	BICModel.py	/^def lnlikeSine(p,x,y,err):$/;"	kind:function	line:38
+lnlikeSine	BIC_csv.py	/^def lnlikeSine(p,x,y,err):$/;"	kind:function	line:39
+lnlikeSine	ModelFit.py	/^def lnlikeSine(p,x,y,err):$/;"	kind:function	line:19
+lnlikeSine	ModelFitScipy.py	/^def lnlikeSine(p,x,y,err):$/;"	kind:function	line:19
+lnlikeSine	ModelPhase.py	/^def lnlikeSine(p,x,y,err):$/;"	kind:function	line:19
+lnlikeSine	OrbitalFit.py	/^def lnlikeSine(p,x,y,err):$/;"	kind:function	line:19
+lnlikeSine	OrbitalFitLorentzian.py	/^def lnlikeSine(p,x,y,err):$/;"	kind:function	line:19
+lnlikeSine	OrbitalFitScipy.py	/^def lnlikeSine(p,x,y,err):$/;"	kind:function	line:19
+lnlikeSine	OrbitalFitVoigt.py	/^def lnlikeSine(p,x,y,err):$/;"	kind:function	line:19
+lnlikeSine	ParamVsNum.py	/^def lnlikeSine(p,x,y,err):$/;"	kind:function	line:19
+lnlikeSine	PhaseDiagram.py	/^def lnlikeSine(p,x,y,err):$/;"	kind:function	line:19
+lnlikeSine	SDSSFit.py	/^def lnlikeSine(p,x,y,err):$/;"	kind:function	line:23
+lnlikeSine	SDSSFitTest.py	/^def lnlikeSine(p,x,y,err):$/;"	kind:function	line:23
+lnprior	AIC_csv.py	/^    def lnprior(p):$/;"	kind:function	line:139
+lnprior	AIC_csv.py	/^    def lnprior(p):$/;"	kind:function	line:85
+lnprior	BICModel.py	/^    def lnprior(p):$/;"	kind:function	line:139
+lnprior	BICModel.py	/^    def lnprior(p):$/;"	kind:function	line:85
+lnprior	BIC_csv.py	/^    def lnprior(p):$/;"	kind:function	line:140
+lnprior	BIC_csv.py	/^    def lnprior(p):$/;"	kind:function	line:86
+lnprior	CompareFit.py	/^def lnprior(p):$/;"	kind:function	line:19
+lnprior	ModelFit.py	/^    def lnprior(p):$/;"	kind:function	line:120
+lnprior	ModelFit.py	/^    def lnprior(p):$/;"	kind:function	line:66
+lnprior	ModelFitScipy.py	/^    def lnprior(p):$/;"	kind:function	line:132
+lnprior	ModelFitScipy.py	/^    def lnprior(p):$/;"	kind:function	line:66
+lnprior	ModelPhase.py	/^    def lnprior(p):$/;"	kind:function	line:120
+lnprior	ModelPhase.py	/^    def lnprior(p):$/;"	kind:function	line:66
+lnprior	OrbitalFit.py	/^def lnprior(p):$/;"	kind:function	line:43
+lnprior	OrbitalFitLorentzian.py	/^def lnprior(p):$/;"	kind:function	line:43
+lnprior	OrbitalFitScipy.py	/^def lnprior(p):$/;"	kind:function	line:46
+lnprior	OrbitalFitVoigt.py	/^def lnprior(p):$/;"	kind:function	line:44
+lnprior	ParamVsNum.py	/^def lnprior(p):$/;"	kind:function	line:44
+lnprior	PhaseDiagram.py	/^def lnprior(p):$/;"	kind:function	line:44
+lnprior	SDSSFit.py	/^    def lnprior(p):$/;"	kind:function	line:144
+lnprior	SDSSFit.py	/^    def lnprior(p):$/;"	kind:function	line:70
+lnprior	SDSSFitTest.py	/^    def lnprior(p):$/;"	kind:function	line:144
+lnprior	SDSSFitTest.py	/^    def lnprior(p):$/;"	kind:function	line:70
+lnprior	Vfit.py	/^def lnprior(p):$/;"	kind:function	line:19
+lnprior	VfitMC.py	/^def lnprior(p):$/;"	kind:function	line:19
+lnprior	VfitMC_resid.py	/^def lnprior(p):$/;"	kind:function	line:19
+lnprior	Vfit_rvs.py	/^def lnprior(p):$/;"	kind:function	line:19
+lnprior	Vfit_rvs_tmp.py	/^def lnprior(p):$/;"	kind:function	line:19
+lnprior	Vfit_tmp.py	/^def lnprior(p):$/;"	kind:function	line:19
+lnprior	VoigtFit.py	/^def lnprior(p):$/;"	kind:function	line:19
+lnprior	Voigt_rvs.py	/^def lnprior(p):$/;"	kind:function	line:19
+lnprior2	SDSSFit.py	/^    def lnprior2(p):$/;"	kind:function	line:193
+lnprior2	SDSSFitTest.py	/^    def lnprior2(p):$/;"	kind:function	line:193
+lnpriorModel	AIC_csv.py	/^    def lnpriorModel(p):$/;"	kind:function	line:119
+lnpriorModel	AIC_csv.py	/^    def lnpriorModel(p):$/;"	kind:function	line:65
+lnpriorModel	BICModel.py	/^    def lnpriorModel(p):$/;"	kind:function	line:119
+lnpriorModel	BICModel.py	/^    def lnpriorModel(p):$/;"	kind:function	line:65
+lnpriorModel	BIC_csv.py	/^    def lnpriorModel(p):$/;"	kind:function	line:120
+lnpriorModel	BIC_csv.py	/^    def lnpriorModel(p):$/;"	kind:function	line:66
+lnpriorModel	ModelFit.py	/^    def lnpriorModel(p):$/;"	kind:function	line:100
+lnpriorModel	ModelFit.py	/^    def lnpriorModel(p):$/;"	kind:function	line:46
+lnpriorModel	ModelFitScipy.py	/^    def lnpriorModel(p):$/;"	kind:function	line:100
+lnpriorModel	ModelFitScipy.py	/^    def lnpriorModel(p):$/;"	kind:function	line:46
+lnpriorModel	ModelPhase.py	/^    def lnpriorModel(p):$/;"	kind:function	line:100
+lnpriorModel	ModelPhase.py	/^    def lnpriorModel(p):$/;"	kind:function	line:46
+lnpriorModel	SDSSFit.py	/^    def lnpriorModel(p):$/;"	kind:function	line:104
+lnpriorModel	SDSSFit.py	/^    def lnpriorModel(p):$/;"	kind:function	line:50
+lnpriorModel	SDSSFitTest.py	/^    def lnpriorModel(p):$/;"	kind:function	line:104
+lnpriorModel	SDSSFitTest.py	/^    def lnpriorModel(p):$/;"	kind:function	line:50
+lnpriorModel	paperplots.py	/^def lnpriorModel(p):$/;"	kind:function	line:49
+lnpriorNoOrbit	AIC_csv.py	/^def lnpriorNoOrbit(p):$/;"	kind:function	line:22
+lnpriorNoOrbit	BICModel.py	/^def lnpriorNoOrbit(p):$/;"	kind:function	line:22
+lnpriorNoOrbit	BIC_csv.py	/^def lnpriorNoOrbit(p):$/;"	kind:function	line:23
+lnpriorSine	AIC_csv.py	/^def lnpriorSine(p):$/;"	kind:function	line:43
+lnpriorSine	BICModel.py	/^def lnpriorSine(p):$/;"	kind:function	line:43
+lnpriorSine	BIC_csv.py	/^def lnpriorSine(p):$/;"	kind:function	line:44
+lnpriorSine	ModelFit.py	/^def lnpriorSine(p):$/;"	kind:function	line:24
+lnpriorSine	ModelFitScipy.py	/^def lnpriorSine(p):$/;"	kind:function	line:24
+lnpriorSine	ModelPhase.py	/^def lnpriorSine(p):$/;"	kind:function	line:24
+lnpriorSine	OrbitalFit.py	/^def lnpriorSine(p):$/;"	kind:function	line:24
+lnpriorSine	OrbitalFitLorentzian.py	/^def lnpriorSine(p):$/;"	kind:function	line:24
+lnpriorSine	OrbitalFitScipy.py	/^def lnpriorSine(p):$/;"	kind:function	line:24
+lnpriorSine	OrbitalFitVoigt.py	/^def lnpriorSine(p):$/;"	kind:function	line:24
+lnpriorSine	ParamVsNum.py	/^def lnpriorSine(p):$/;"	kind:function	line:24
+lnpriorSine	PhaseDiagram.py	/^def lnpriorSine(p):$/;"	kind:function	line:24
+lnpriorSine	SDSSFit.py	/^def lnpriorSine(p):$/;"	kind:function	line:28
+lnpriorSine	SDSSFitTest.py	/^def lnpriorSine(p):$/;"	kind:function	line:28
+lnprob	AIC_csv.py	/^    def lnprob(p, x, y, yerr):$/;"	kind:function	line:145
+lnprob	AIC_csv.py	/^    def lnprob(p, x, y, yerr):$/;"	kind:function	line:91
+lnprob	BICModel.py	/^    def lnprob(p, x, y, yerr):$/;"	kind:function	line:145
+lnprob	BICModel.py	/^    def lnprob(p, x, y, yerr):$/;"	kind:function	line:91
+lnprob	BIC_csv.py	/^    def lnprob(p, x, y, yerr):$/;"	kind:function	line:146
+lnprob	BIC_csv.py	/^    def lnprob(p, x, y, yerr):$/;"	kind:function	line:92
+lnprob	CompareFit.py	/^def lnprob(p, x, y, yerr):$/;"	kind:function	line:25
+lnprob	ModelFit.py	/^    def lnprob(p, x, y, yerr):$/;"	kind:function	line:126
+lnprob	ModelFit.py	/^    def lnprob(p, x, y, yerr):$/;"	kind:function	line:72
+lnprob	ModelFitScipy.py	/^    def lnprob(p, x, y, yerr):$/;"	kind:function	line:138
+lnprob	ModelFitScipy.py	/^    def lnprob(p, x, y, yerr):$/;"	kind:function	line:72
+lnprob	ModelPhase.py	/^    def lnprob(p, x, y, yerr):$/;"	kind:function	line:126
+lnprob	ModelPhase.py	/^    def lnprob(p, x, y, yerr):$/;"	kind:function	line:72
+lnprob	OrbitalFit.py	/^def lnprob(p, x, y, yerr):$/;"	kind:function	line:49
+lnprob	OrbitalFitLorentzian.py	/^def lnprob(p, x, y, yerr):$/;"	kind:function	line:49
+lnprob	OrbitalFitScipy.py	/^def lnprob(p, x, y, yerr):$/;"	kind:function	line:52
+lnprob	OrbitalFitVoigt.py	/^def lnprob(p, x, y, yerr):$/;"	kind:function	line:50
+lnprob	ParamVsNum.py	/^def lnprob(p, x, y, yerr):$/;"	kind:function	line:50
+lnprob	PhaseDiagram.py	/^def lnprob(p, x, y, yerr):$/;"	kind:function	line:50
+lnprob	SDSSFit.py	/^    def lnprob(p, x, y, yerr):$/;"	kind:function	line:150
+lnprob	SDSSFit.py	/^    def lnprob(p, x, y, yerr):$/;"	kind:function	line:76
+lnprob	SDSSFitTest.py	/^    def lnprob(p, x, y, yerr):$/;"	kind:function	line:150
+lnprob	SDSSFitTest.py	/^    def lnprob(p, x, y, yerr):$/;"	kind:function	line:76
+lnprob	Vfit.py	/^def lnprob(p, x, y, yerr):$/;"	kind:function	line:25
+lnprob	VfitMC.py	/^def lnprob(p, x, y, yerr):$/;"	kind:function	line:25
+lnprob	VfitMC_resid.py	/^def lnprob(p, x, y, yerr):$/;"	kind:function	line:25
+lnprob	Vfit_rvs.py	/^def lnprob(p, x, y, yerr):$/;"	kind:function	line:25
+lnprob	Vfit_rvs_tmp.py	/^def lnprob(p, x, y, yerr):$/;"	kind:function	line:25
+lnprob	Vfit_tmp.py	/^def lnprob(p, x, y, yerr):$/;"	kind:function	line:25
+lnprob	VoigtFit.py	/^def lnprob(p, x, y, yerr):$/;"	kind:function	line:25
+lnprob	Voigt_rvs.py	/^def lnprob(p, x, y, yerr):$/;"	kind:function	line:25
+lnprob1	SDSSFit.py	/^    def lnprob1(p, x, y, yerr):$/;"	kind:function	line:155
+lnprob1	SDSSFitTest.py	/^    def lnprob1(p, x, y, yerr):$/;"	kind:function	line:155
+lnprob2	SDSSFit.py	/^    def lnprob2(p, x, y, yerr):$/;"	kind:function	line:160
+lnprob2	SDSSFitTest.py	/^    def lnprob2(p, x, y, yerr):$/;"	kind:function	line:160
+lnprob3	SDSSFit.py	/^    def lnprob3(p, x, y, yerr):$/;"	kind:function	line:165
+lnprob3	SDSSFitTest.py	/^    def lnprob3(p, x, y, yerr):$/;"	kind:function	line:165
+lnprobModel	AIC_csv.py	/^    def lnprobModel(p, x, y,yerr):$/;"	kind:function	line:125
+lnprobModel	AIC_csv.py	/^    def lnprobModel(p, x, y,yerr):$/;"	kind:function	line:71
+lnprobModel	BICModel.py	/^    def lnprobModel(p, x, y,yerr):$/;"	kind:function	line:125
+lnprobModel	BICModel.py	/^    def lnprobModel(p, x, y,yerr):$/;"	kind:function	line:71
+lnprobModel	BIC_csv.py	/^    def lnprobModel(p, x, y,yerr):$/;"	kind:function	line:126
+lnprobModel	BIC_csv.py	/^    def lnprobModel(p, x, y,yerr):$/;"	kind:function	line:72
+lnprobModel	ModelFit.py	/^    def lnprobModel(p, x, y,yerr):$/;"	kind:function	line:106
+lnprobModel	ModelFit.py	/^    def lnprobModel(p, x, y,yerr):$/;"	kind:function	line:52
+lnprobModel	ModelFitScipy.py	/^    def lnprobModel(p, x, y,yerr):$/;"	kind:function	line:106
+lnprobModel	ModelFitScipy.py	/^    def lnprobModel(p, x, y,yerr):$/;"	kind:function	line:52
+lnprobModel	ModelPhase.py	/^    def lnprobModel(p, x, y,yerr):$/;"	kind:function	line:106
+lnprobModel	ModelPhase.py	/^    def lnprobModel(p, x, y,yerr):$/;"	kind:function	line:52
+lnprobModel	SDSSFit.py	/^    def lnprobModel(p, x, y,yerr):$/;"	kind:function	line:110
+lnprobModel	SDSSFit.py	/^    def lnprobModel(p, x, y,yerr):$/;"	kind:function	line:56
+lnprobModel	SDSSFitTest.py	/^    def lnprobModel(p, x, y,yerr):$/;"	kind:function	line:110
+lnprobModel	SDSSFitTest.py	/^    def lnprobModel(p, x, y,yerr):$/;"	kind:function	line:56
+lnprobModel	paperplots.py	/^def lnprobModel(p, x, y,yerr):$/;"	kind:function	line:56
+lnprobNoOrbit	AIC_csv.py	/^def lnprobNoOrbit(p,x,y,yerr):$/;"	kind:function	line:28
+lnprobNoOrbit	BICModel.py	/^def lnprobNoOrbit(p,x,y,yerr):$/;"	kind:function	line:28
+lnprobNoOrbit	BIC_csv.py	/^def lnprobNoOrbit(p,x,y,yerr):$/;"	kind:function	line:29
+lnprobSine	AIC_csv.py	/^def lnprobSine(p,x,y,yerr):$/;"	kind:function	line:50
+lnprobSine	BICModel.py	/^def lnprobSine(p,x,y,yerr):$/;"	kind:function	line:50
+lnprobSine	BIC_csv.py	/^def lnprobSine(p,x,y,yerr):$/;"	kind:function	line:51
+lnprobSine	ModelFit.py	/^def lnprobSine(p,x,y,yerr):$/;"	kind:function	line:31
+lnprobSine	ModelFitScipy.py	/^def lnprobSine(p,x,y,yerr):$/;"	kind:function	line:31
+lnprobSine	ModelPhase.py	/^def lnprobSine(p,x,y,yerr):$/;"	kind:function	line:31
+lnprobSine	OrbitalFit.py	/^def lnprobSine(p,x,y,yerr):$/;"	kind:function	line:30
+lnprobSine	OrbitalFitLorentzian.py	/^def lnprobSine(p,x,y,yerr):$/;"	kind:function	line:30
+lnprobSine	OrbitalFitScipy.py	/^def lnprobSine(p,x,y,yerr):$/;"	kind:function	line:30
+lnprobSine	OrbitalFitVoigt.py	/^def lnprobSine(p,x,y,yerr):$/;"	kind:function	line:31
+lnprobSine	ParamVsNum.py	/^def lnprobSine(p,x,y,yerr):$/;"	kind:function	line:31
+lnprobSine	PhaseDiagram.py	/^def lnprobSine(p,x,y,yerr):$/;"	kind:function	line:31
+lnprobSine	SDSSFit.py	/^def lnprobSine(p,x,y,yerr):$/;"	kind:function	line:35
+lnprobSine	SDSSFitTest.py	/^def lnprobSine(p,x,y,yerr):$/;"	kind:function	line:35
+lnprobSum	AIC_csv.py	/^    def lnprobSum(p, x, y, yerr):$/;"	kind:function	line:151
+lnprobSum	AIC_csv.py	/^    def lnprobSum(p, x, y, yerr):$/;"	kind:function	line:97
+lnprobSum	BICModel.py	/^    def lnprobSum(p, x, y, yerr):$/;"	kind:function	line:151
+lnprobSum	BICModel.py	/^    def lnprobSum(p, x, y, yerr):$/;"	kind:function	line:97
+lnprobSum	BIC_csv.py	/^    def lnprobSum(p, x, y, yerr):$/;"	kind:function	line:152
+lnprobSum	BIC_csv.py	/^    def lnprobSum(p, x, y, yerr):$/;"	kind:function	line:98
+lnprobSum	CompareFit.py	/^def lnprobSum(p,x,y,yerr):$/;"	kind:function	line:31
+lnprobSum	ModelFit.py	/^    def lnprobSum(p, x, y, yerr):$/;"	kind:function	line:132
+lnprobSum	ModelFit.py	/^    def lnprobSum(p, x, y, yerr):$/;"	kind:function	line:78
+lnprobSum	ModelFitScipy.py	/^    def lnprobSum(p, x, y, yerr):$/;"	kind:function	line:145
+lnprobSum	ModelFitScipy.py	/^    def lnprobSum(p, x, y, yerr):$/;"	kind:function	line:78
+lnprobSum	ModelPhase.py	/^    def lnprobSum(p, x, y, yerr):$/;"	kind:function	line:132
+lnprobSum	ModelPhase.py	/^    def lnprobSum(p, x, y, yerr):$/;"	kind:function	line:78
+lnprobSum	OrbitalFit.py	/^def lnprobSum(p,x,y,yerr):$/;"	kind:function	line:55
+lnprobSum	OrbitalFitLorentzian.py	/^def lnprobSum(p,x,y,yerr):$/;"	kind:function	line:55
+lnprobSum	OrbitalFitScipy.py	/^def lnprobSum(p, x, y, yerr):$/;"	kind:function	line:58
+lnprobSum	OrbitalFitVoigt.py	/^def lnprobSum(p, x, y, yerr):$/;"	kind:function	line:56
+lnprobSum	ParamVsNum.py	/^def lnprobSum(p, x, y, yerr):$/;"	kind:function	line:56
+lnprobSum	PhaseDiagram.py	/^def lnprobSum(p, x, y, yerr):$/;"	kind:function	line:56
+lnprobSum	SDSSFit.py	/^    def lnprobSum(p, x, y, yerr):$/;"	kind:function	line:172
+lnprobSum	SDSSFit.py	/^    def lnprobSum(p, x, y, yerr):$/;"	kind:function	line:82
+lnprobSum	SDSSFitTest.py	/^    def lnprobSum(p, x, y, yerr):$/;"	kind:function	line:172
+lnprobSum	SDSSFitTest.py	/^    def lnprobSum(p, x, y, yerr):$/;"	kind:function	line:82
+lnprobSum	Vfit_rvs.py	/^def lnprobSum(p,x,y,yerr):$/;"	kind:function	line:31
+lnprobSum	Vfit_rvs_tmp.py	/^def lnprobSum(p,x,y,yerr):$/;"	kind:function	line:31
+lnprobSum	Voigt_rvs.py	/^def lnprobSum(p, x, y, yerr):$/;"	kind:function	line:31
+lorentzian	AIC_csv.py	/^    def lorentzian(x, Ldepth, Lwidth, RVShift):$/;"	kind:function	line:78
+lorentzian	BICModel.py	/^    def lorentzian(x, Ldepth, Lwidth, RVShift):$/;"	kind:function	line:78
+lorentzian	BIC_csv.py	/^    def lorentzian(x, Ldepth, Lwidth, RVShift):$/;"	kind:function	line:79
+lorentzian	CompareFit.py	/^def lorentzian(x, depth, width, RVShift):$/;"	kind:function	line:12
+lorentzian	ModelFit.py	/^    def lorentzian(x, Ldepth, Lwidth, RVShift):$/;"	kind:function	line:59
+lorentzian	ModelFitScipy.py	/^    def lorentzian(x, Ldepth, Lwidth, RVShift):$/;"	kind:function	line:59
+lorentzian	ModelPhase.py	/^    def lorentzian(x, Ldepth, Lwidth, RVShift):$/;"	kind:function	line:59
+lorentzian	OrbitalFit.py	/^def lorentzian(x, depth, width, RVShift):$/;"	kind:function	line:36
+lorentzian	OrbitalFitLorentzian.py	/^def lorentzian(x, depth, width, RVShift):$/;"	kind:function	line:36
+lorentzian	OrbitalFitScipy.py	/^def lorentzian(x, depth, width, RVShift):$/;"	kind:function	line:39
+lorentzian	RVnum.py	/^def lorentzian(x, depth, width, RVShift):$/;"	kind:function	line:12
+lorentzian	RVtime.py	/^def lorentzian(x, depth, width, RVShift):$/;"	kind:function	line:15
+lorentzian	SDSSFit.py	/^    def lorentzian(x, Ldepth, Lwidth, RVShift):$/;"	kind:function	line:63
+lorentzian	SDSSFitTest.py	/^    def lorentzian(x, Ldepth, Lwidth, RVShift):$/;"	kind:function	line:63
+lorentzian	Vfit.py	/^def lorentzian(x, depth, width, RVShift):$/;"	kind:function	line:12
+lorentzian	VfitMC.py	/^def lorentzian(x, depth, width, RVShift):$/;"	kind:function	line:12
+lorentzian	VfitMC_resid.py	/^def lorentzian(x, depth, width, RVShift):$/;"	kind:function	line:12
+lorentzian	Vfit_rvs.py	/^def lorentzian(x, depth, width, RVShift):$/;"	kind:function	line:12
+lorentzian	Vfit_rvs_tmp.py	/^def lorentzian(x, depth, width, RVShift):$/;"	kind:function	line:12
+lorentzian	Vfit_scipy.py	/^def lorentzian(x, depth, width, RVShift):$/;"	kind:function	line:12
+lorentzian	Vfit_tmp.py	/^def lorentzian(x, depth, width, RVShift):$/;"	kind:function	line:12
+lorentzianModel	AIC_csv.py	/^    def lorentzianModel(x, Ldepth, Lwidth):$/;"	kind:function	line:58
+lorentzianModel	BICModel.py	/^    def lorentzianModel(x, Ldepth, Lwidth):$/;"	kind:function	line:58
+lorentzianModel	BIC_csv.py	/^    def lorentzianModel(x, Ldepth, Lwidth):$/;"	kind:function	line:59
+lorentzianModel	ModelFit.py	/^    def lorentzianModel(x, Ldepth, Lwidth):$/;"	kind:function	line:39
+lorentzianModel	ModelFitScipy.py	/^    def lorentzianModel(x, Ldepth, Lwidth):$/;"	kind:function	line:39
+lorentzianModel	ModelPhase.py	/^    def lorentzianModel(x, Ldepth, Lwidth):$/;"	kind:function	line:39
+lorentzianModel	SDSSFit.py	/^    def lorentzianModel(x, Ldepth, Lwidth):$/;"	kind:function	line:43
+lorentzianModel	SDSSFitTest.py	/^    def lorentzianModel(x, Ldepth, Lwidth):$/;"	kind:function	line:43
+lowerLine	CompareFit.py	/^        lowerLine = lineList[lineIndex] - offset$/;"	kind:variable	line:87
+lowerLine	Vfit.py	/^        lowerLine = lineList[lineIndex] - offset$/;"	kind:variable	line:69
+lowerLine	VfitMC.py	/^        lowerLine = lineList[lineIndex] - offset$/;"	kind:variable	line:69
+lowerLine	VfitMC_resid.py	/^    lowerLine = lineList[lineIndex] - offset$/;"	kind:variable	line:69
+lowerLine	Vfit_rvs.py	/^        lowerLine = lineList[lineIndex] - offset$/;"	kind:variable	line:81
+lowerLine	Vfit_rvs_tmp.py	/^        lowerLine = lineList[lineIndex] - offset$/;"	kind:variable	line:80
+lowerLine	Vfit_tmp.py	/^        lowerLine = lineList[lineIndex] - offset$/;"	kind:variable	line:69
+lowerLine	Voffset.py	/^        lowerLine = lineList[lineIndex] - offset$/;"	kind:variable	line:46
+lowerLine	VoigtFit.py	/^        lowerLine = lineList[lineIndex] - offset$/;"	kind:variable	line:71
+lowerLine	Voigt_rvs.py	/^        lowerLine = lineList[lineIndex] - offset$/;"	kind:variable	line:81
+lw	OrbitalFitVoigt.py	/^            lw = lw1$/;"	kind:variable	line:165
+lw	OrbitalFitVoigt.py	/^            lw = lw2$/;"	kind:variable	line:171
+lw	OrbitalFitVoigt.py	/^            lw = lw3$/;"	kind:variable	line:177
+lw1Arr	ParamVsNum.py	/^lw1Arr = []$/;"	kind:variable	line:82
+lw1Fit	Voigt_rvs.py	/^    lw1Fit = lw1FitArr.mean()$/;"	kind:variable	line:151
+lw1FitArr	Voigt_rvs.py	/^    lw1FitArr = samplesTrans[1]$/;"	kind:variable	line:137
+lw1Std	Voigt_rvs.py	/^    lw1Std = lw1FitArr.std()$/;"	kind:variable	line:165
+lw2Arr	ParamVsNum.py	/^lw2Arr = []$/;"	kind:variable	line:87
+lw2Fit	Voigt_rvs.py	/^    lw2Fit = lw2FitArr.mean()$/;"	kind:variable	line:155
+lw2FitArr	Voigt_rvs.py	/^    lw2FitArr = samplesTrans[5]$/;"	kind:variable	line:141
+lw2Std	Voigt_rvs.py	/^    lw2Std = lw2FitArr.std()$/;"	kind:variable	line:169
+lw3Arr	ParamVsNum.py	/^lw3Arr = []$/;"	kind:variable	line:92
+lw3Fit	Voigt_rvs.py	/^    lw3Fit = lw3FitArr.mean()$/;"	kind:variable	line:159
+lw3FitArr	Voigt_rvs.py	/^    lw3FitArr = samplesTrans[9]$/;"	kind:variable	line:145
+lw3Std	Voigt_rvs.py	/^    lw3Std = lw3FitArr.std()$/;"	kind:variable	line:173
+mArr	AIC_csv.py	/^mArr = []$/;"	kind:variable	line:366
+mArr	BICModel.py	/^mArr = []$/;"	kind:variable	line:357
+mArr	BIC_csv.py	/^mArr = []$/;"	kind:variable	line:294
+makeVelocityCurves	paperplots.py	/^def makeVelocityCurves():$/;"	kind:function	line:484
+matplotlib	AIC_csv.py	/^import matplotlib.dates as dates$/;"	kind:namespace	line:6
+matplotlib	AIC_csv.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+matplotlib	BICModel.py	/^import matplotlib.dates as dates$/;"	kind:namespace	line:6
+matplotlib	BICModel.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+matplotlib	BIC_csv.py	/^import matplotlib.dates as dates$/;"	kind:namespace	line:6
+matplotlib	BIC_csv.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+matplotlib	CompareFit.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+matplotlib	ModelFit.py	/^import matplotlib.dates as dates$/;"	kind:namespace	line:6
+matplotlib	ModelFit.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+matplotlib	ModelFitScipy.py	/^import matplotlib.dates as dates$/;"	kind:namespace	line:6
+matplotlib	ModelFitScipy.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+matplotlib	ModelPhase.py	/^import matplotlib.dates as dates$/;"	kind:namespace	line:6
+matplotlib	ModelPhase.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+matplotlib	OrbitalFit.py	/^import matplotlib.dates as dates$/;"	kind:namespace	line:6
+matplotlib	OrbitalFit.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+matplotlib	OrbitalFitLorentzian.py	/^import matplotlib.dates as dates$/;"	kind:namespace	line:6
+matplotlib	OrbitalFitLorentzian.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+matplotlib	OrbitalFitScipy.py	/^import matplotlib.dates as dates$/;"	kind:namespace	line:6
+matplotlib	OrbitalFitScipy.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+matplotlib	OrbitalFitVoigt.py	/^import matplotlib.dates as dates$/;"	kind:namespace	line:6
+matplotlib	OrbitalFitVoigt.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+matplotlib	ParamVsNum.py	/^import matplotlib.dates as dates$/;"	kind:namespace	line:6
+matplotlib	ParamVsNum.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+matplotlib	PhaseDiagram.py	/^import matplotlib.dates as dates$/;"	kind:namespace	line:6
+matplotlib	PhaseDiagram.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+matplotlib	RVnum.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+matplotlib	RVtime.py	/^import matplotlib.dates as dates$/;"	kind:namespace	line:6
+matplotlib	RVtime.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+matplotlib	SDSSFit.py	/^import matplotlib.dates as dates$/;"	kind:namespace	line:8
+matplotlib	SDSSFit.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:7
+matplotlib	SDSSFitTest.py	/^import matplotlib.dates as dates$/;"	kind:namespace	line:8
+matplotlib	SDSSFitTest.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:7
+matplotlib	Vfit.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+matplotlib	VfitMC.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+matplotlib	VfitMC_resid.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+matplotlib	Vfit_rvs.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+matplotlib	Vfit_rvs_tmp.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+matplotlib	Vfit_scipy.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+matplotlib	Vfit_tmp.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+matplotlib	Voffset.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+matplotlib	VoigtFit.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+matplotlib	Voigt_rvs.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+matplotlib	paperplots.py	/^    import matplotlib.pyplot as plt$/;"	kind:namespace	line:192
+matplotlib	paperplots.py	/^    import matplotlib.pyplot as plt$/;"	kind:namespace	line:346
+matplotlib	paperplots.py	/^    import matplotlib.pyplot as plt$/;"	kind:namespace	line:392
+matplotlib	paperplots.py	/^    import matplotlib.pyplot as plt$/;"	kind:namespace	line:69
+matplotlib	paperplots.py	/^    import matplotlib.pyplot as plt$/;"	kind:namespace	line:75
+matplotlib	paperplots.py	/^    import matplotlib.pyplot as plt$/;"	kind:namespace	line:98
+matplotlib	plot_format.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:3
+matplotlib	tools.py	/^    import matplotlib.pyplot as plt$/;"	kind:namespace	line:1064
+matplotlib	tools.py	/^    import matplotlib.pyplot as plt$/;"	kind:namespace	line:207
+matplotlib	tools.py	/^    import matplotlib.pyplot as plt$/;"	kind:namespace	line:348
+matplotlib	tools.py	/^    import matplotlib.pyplot as plt$/;"	kind:namespace	line:40
+matplotlib	tools.py	/^    import matplotlib.pyplot as plt$/;"	kind:namespace	line:417
+matplotlib	tools.py	/^    import matplotlib.pyplot as plt$/;"	kind:namespace	line:674
+matplotlib	tools.py	/^    import matplotlib.pyplot as plt$/;"	kind:namespace	line:739
+matplotlib	tools.py	/^    import matplotlib.pyplot as plt$/;"	kind:namespace	line:80
+matplotlib	tools.py	/^    import matplotlib.pyplot as plt$/;"	kind:namespace	line:807
+matplotlib	tools.py	/^    import matplotlib.pyplot as plt$/;"	kind:namespace	line:884
+matplotlib	tools.py	/^    import matplotlib.pyplot as plt$/;"	kind:namespace	line:968
+mc	AIC_csv.py	/^import emcee as mc$/;"	kind:namespace	line:10
+mc	BICModel.py	/^import emcee as mc$/;"	kind:namespace	line:10
+mc	BIC_csv.py	/^import emcee as mc$/;"	kind:namespace	line:10
+mc	CompareFit.py	/^import emcee as mc$/;"	kind:namespace	line:9
+mc	ModelFit.py	/^import emcee as mc$/;"	kind:namespace	line:10
+mc	ModelFitScipy.py	/^import emcee as mc$/;"	kind:namespace	line:10
+mc	ModelPhase.py	/^import emcee as mc$/;"	kind:namespace	line:10
+mc	OrbitalFit.py	/^import emcee as mc$/;"	kind:namespace	line:10
+mc	OrbitalFitLorentzian.py	/^import emcee as mc$/;"	kind:namespace	line:10
+mc	OrbitalFitScipy.py	/^import emcee as mc$/;"	kind:namespace	line:10
+mc	OrbitalFitVoigt.py	/^import emcee as mc$/;"	kind:namespace	line:10
+mc	ParamVsNum.py	/^import emcee as mc$/;"	kind:namespace	line:10
+mc	PhaseDiagram.py	/^import emcee as mc$/;"	kind:namespace	line:10
+mc	SDSSFit.py	/^import emcee as mc$/;"	kind:namespace	line:12
+mc	SDSSFitTest.py	/^import emcee as mc$/;"	kind:namespace	line:12
+mc	Vfit.py	/^import emcee as mc$/;"	kind:namespace	line:9
+mc	VfitMC.py	/^import emcee as mc$/;"	kind:namespace	line:9
+mc	VfitMC_resid.py	/^import emcee as mc$/;"	kind:namespace	line:9
+mc	Vfit_rvs.py	/^import emcee as mc$/;"	kind:namespace	line:9
+mc	Vfit_rvs_tmp.py	/^import emcee as mc$/;"	kind:namespace	line:9
+mc	Vfit_scipy.py	/^import emcee as mc$/;"	kind:namespace	line:9
+mc	Vfit_tmp.py	/^import emcee as mc$/;"	kind:namespace	line:9
+mc	VoigtFit.py	/^import emcee as mc$/;"	kind:namespace	line:9
+mc	Voigt_rvs.py	/^import emcee as mc$/;"	kind:namespace	line:9
+mc	tools.py	/^    import emcee as mc$/;"	kind:namespace	line:597
+median	paperplots.py	/^    from numpy import array, where, median, abs$/;"	kind:namespace	line:282
+middles	AIC_csv.py	/^middles = np.array([(Amin+Amax)\/2,(Pmin+Pmax)\/2,(Phimin+Phimax)\/2,(GamMin+GamMax)\/2])$/;"	kind:variable	line:356
+middles	BICModel.py	/^middles = np.array([(Amin+Amax)\/2,(Pmin+Pmax)\/2,(Phimin+Phimax)\/2,(GamMin+GamMax)\/2])$/;"	kind:variable	line:347
+middles	BIC_csv.py	/^middles = np.array([(Amin+Amax)\/2,(Pmin+Pmax)\/2,(Phimin+Phimax)\/2,(GamMin+GamMax)\/2])$/;"	kind:variable	line:284
+middles	ModelFit.py	/^middles = np.array([(Amin+Amax)\/2,(Pmin+Pmax)\/2,(Phimin+Phimax)\/2,(GamMin+GamMax)\/2])$/;"	kind:variable	line:320
+middles	ModelFitScipy.py	/^middles = np.array([(Amin+Amax)\/2,(Pmin+Pmax)\/2,(Phimin+Phimax)\/2,(GamMin+GamMax)\/2])$/;"	kind:variable	line:296
+middles	ModelPhase.py	/^middles = np.array([(Amin+Amax)\/2,(Pmin+Pmax)\/2,(Phimin+Phimax)\/2,(GamMin+GamMax)\/2])$/;"	kind:variable	line:320
+middles	OrbitalFitVoigt.py	/^middles = np.array([(Amin+Amax)\/2,(Pmin+Pmax)\/2,(Phimin+Phimax)\/2,(GamMin+GamMax)\/2])$/;"	kind:variable	line:201
+middles	PhaseDiagram.py	/^middles = np.array([(Amin+Amax)\/2,(Pmin+Pmax)\/2,(Phimin+Phimax)\/2,(GamMin+GamMax)\/2])$/;"	kind:variable	line:132
+middles	SDSSFit.py	/^middles = np.array([(Amin+Amax)\/2,(Pmin+Pmax)\/2,(Phimin+Phimax)\/2,(GamMin+GamMax)\/2])$/;"	kind:variable	line:524
+middles	SDSSFitTest.py	/^middles = np.array([(Amin+Amax)\/2,(Pmin+Pmax)\/2,(Phimin+Phimax)\/2,(GamMin+GamMax)\/2])$/;"	kind:variable	line:527
+minit	BICModel.py	/^minit = mArr[-1]$/;"	kind:variable	line:360
+minit	BIC_csv.py	/^minit = mArr[-1]$/;"	kind:variable	line:297
+mkdir	tools.py	/^def mkdir(directory):$/;"	kind:function	line:6
+modelData	SDSSFit.py	/^modelData = np.genfromtxt(modelFile,skip_header=34)$/;"	kind:variable	line:223
+modelData	SDSSFitTest.py	/^modelData = np.genfromtxt(modelFile,skip_header=34)$/;"	kind:variable	line:223
+modelErrs	AIC_csv.py	/^modelErrs = []$/;"	kind:variable	line:191
+modelErrs	BICModel.py	/^modelErrs = []$/;"	kind:variable	line:191
+modelErrs	BIC_csv.py	/^modelErrs = []$/;"	kind:variable	line:192
+modelErrs	ModelFit.py	/^modelErrs = []$/;"	kind:variable	line:172
+modelErrs	ModelFitScipy.py	/^modelErrs = []$/;"	kind:variable	line:182
+modelErrs	ModelPhase.py	/^modelErrs = []$/;"	kind:variable	line:172
+modelErrs	SDSSFit.py	/^modelErrs = []$/;"	kind:variable	line:264
+modelErrs	SDSSFitTest.py	/^modelErrs = []$/;"	kind:variable	line:264
+modelFile	AIC_csv.py	/^modelFile = "..\/..\/KoesterModels\/da"+open('modelVal').read().splitlines()[0]+".dk"$/;"	kind:variable	line:178
+modelFile	BICModel.py	/^modelFile = "..\/..\/KoesterModels\/da"+open('modelVal').read().splitlines()[0]+".dk"$/;"	kind:variable	line:178
+modelFile	BIC_csv.py	/^modelFile = "..\/..\/KoesterModels\/da"+open('modelVal').read().splitlines()[0]+".dk"$/;"	kind:variable	line:179
+modelFile	ModelFit.py	/^modelFile = "..\/..\/KoesterModels\/da"+open('modelVal').read().splitlines()[0]+".dk"$/;"	kind:variable	line:159
+modelFile	ModelFitScipy.py	/^modelFile = "..\/..\/KoesterModels\/da"+open('modelVal').read().splitlines()[0]+".dk"$/;"	kind:variable	line:169
+modelFile	ModelPhase.py	/^modelFile = "..\/..\/KoesterModels\/da"+open('modelVal').read().splitlines()[0]+".dk"$/;"	kind:variable	line:159
+modelFile	SDSSFit.py	/^modelFile = "..\/..\/KoesterModels\/da"+open('modelVal').read().splitlines()[0]+".dk"$/;"	kind:variable	line:206
+modelFile	SDSSFitTest.py	/^modelFile = "..\/..\/KoesterModels\/da"+open('modelVal').read().splitlines()[0]+".dk"$/;"	kind:variable	line:206
+modelFlux	SDSSFit.py	/^modelFlux = modelFlux \/ max(modelFlux)$/;"	kind:variable	line:227
+modelFlux	SDSSFit.py	/^modelFlux = np.array(modelData[:,1])$/;"	kind:variable	line:224
+modelFlux	SDSSFitTest.py	/^modelFlux = modelFlux \/ max(modelFlux)$/;"	kind:variable	line:227
+modelFlux	SDSSFitTest.py	/^modelFlux = np.array(modelData[:,1])$/;"	kind:variable	line:224
+modelMiddles	SDSSFit.py	/^modelMiddles = np.array([(LDMin + LDMax)\/2, (LWMin + LWMax)\/2, (GDMin + GDMax)\/2,(GWMin + GWMax)\/2])$/;"	kind:variable	line:281
+modelMiddles	SDSSFitTest.py	/^modelMiddles = np.array([(LDMin + LDMax)\/2, (LWMin + LWMax)\/2, (GDMin + GDMax)\/2,(GWMin + GWMax)\/2])$/;"	kind:variable	line:281
+modelPos	SDSSFit.py	/^modelPos = [modelMiddles + 1e-4*np.random.randn(mdim) for i in range(mwalkers)]$/;"	kind:variable	line:283
+modelPos	SDSSFitTest.py	/^modelPos = [modelMiddles + 1e-4*np.random.randn(mdim) for i in range(mwalkers)]$/;"	kind:variable	line:283
+modelSampler	BICModel.py	/^    modelSampler = tls.MCMCfit(lnprobModel,args=(np.array(modelVels[i]),np.array(modelFluxes[i]),np.array(modelErrs[i])),nwalkers=mwalkers,ndim=mdim,burnInSteps=16000,steps=16000)$/;"	kind:variable	line:205
+modelSampler	ModelFit.py	/^    modelSampler = tls.MCMCfit(lnprobModel,args=(np.array(modelVels[i]),np.array(modelFluxes[i]),np.array(modelErrs[i])),nwalkers=mwalkers,ndim=mdim,burnInSteps=16000,steps=16000)$/;"	kind:variable	line:186
+modelSampler	ModelFitScipy.py	/^    modelSampler = tls.MCMCfit(lnprobModel,args=(np.array(modelVels[i]),np.array(modelFluxes[i]),np.array(modelErrs[i])),nwalkers=mwalkers,ndim=mdim,burnInSteps=16000,steps=16000)$/;"	kind:variable	line:197
+modelSampler	ModelPhase.py	/^    modelSampler = tls.MCMCfit(lnprobModel,args=(np.array(modelVels[i]),np.array(modelFluxes[i]),np.array(modelErrs[i])),nwalkers=mwalkers,ndim=mdim,burnInSteps=16000,steps=16000)$/;"	kind:variable	line:186
+modelSampler	SDSSFit.py	/^    modelSampler = tls.MCMCfit(lnprobModel,args=(np.array(modelVels[i]),np.array(modelFluxes[i]),np.array(modelErrs[i])),nwalkers=mwalkers,ndim=mdim,burnInSteps=16000,steps=16000,p=modelPos)$/;"	kind:variable	line:287
+modelSampler	SDSSFitTest.py	/^    modelSampler = tls.MCMCfit(lnprobModel,args=(np.array(modelVels[i]),np.array(modelFluxes[i]),np.array(modelErrs[i])),nwalkers=mwalkers,ndim=mdim,burnInSteps=16000,steps=16000,p=modelPos)$/;"	kind:variable	line:287
+modelSamples	BICModel.py	/^    modelSamples = modelSampler.flatchain.reshape((-1,mdim)).T$/;"	kind:variable	line:206
+modelSamples	ModelFit.py	/^    modelSamples = modelSampler.flatchain.reshape((-1,mdim)).T$/;"	kind:variable	line:187
+modelSamples	ModelFitScipy.py	/^    modelSamples = modelSampler.flatchain.reshape((-1,mdim)).T$/;"	kind:variable	line:198
+modelSamples	ModelPhase.py	/^    modelSamples = modelSampler.flatchain.reshape((-1,mdim)).T$/;"	kind:variable	line:187
+modelSamples	SDSSFit.py	/^    modelSamples = modelSampler.flatchain.reshape((-1,mdim)).T$/;"	kind:variable	line:289
+modelSamples	SDSSFitTest.py	/^    modelSamples = modelSampler.flatchain.reshape((-1,mdim)).T$/;"	kind:variable	line:289
+modelSamplesChain	SDSSFit.py	/^    modelSamplesChain = modelSampler.chain[:,:,:].reshape((-1,mdim))$/;"	kind:variable	line:288
+modelSamplesChain	SDSSFitTest.py	/^    modelSamplesChain = modelSampler.chain[:,:,:].reshape((-1,mdim))$/;"	kind:variable	line:288
+modelWl	SDSSFit.py	/^modelWl = modelData[:,0]$/;"	kind:variable	line:225
+modelWl	SDSSFitTest.py	/^modelWl = modelData[:,0]$/;"	kind:variable	line:225
+mparam	AIC_csv.py	/^mparam = mArr[-1]$/;"	kind:variable	line:369
+mparam	BICModel.py	/^mparam = sp.minimize(nllNoOrb,[minit],args=(timeArr,rvArr,stdArr))["x"]$/;"	kind:variable	line:363
+mparam	BIC_csv.py	/^mparam = sp.minimize(nllNoOrb,[minit],args=(timeArr,rvArr,stdArr))["x"]$/;"	kind:variable	line:300
+newTime	AIC_csv.py	/^newTime = np.linspace(np.min(timeArr),np.max(timeArr),5000)$/;"	kind:variable	line:397
+newTime	BICModel.py	/^newTime = np.linspace(np.min(timeArr),np.max(timeArr),5000)$/;"	kind:variable	line:391
+newTime	BIC_csv.py	/^newTime = np.linspace(np.min(timeArr),np.max(timeArr),5000)$/;"	kind:variable	line:329
+newTime	ModelFit.py	/^newTime = np.linspace(np.min(timeArr),np.max(timeArr),5000)$/;"	kind:variable	line:348
+newTime	ModelFitScipy.py	/^newTime = np.linspace(np.min(timeArr),np.max(timeArr),5000)$/;"	kind:variable	line:324
+newTime	ModelPhase.py	/^newTime = np.linspace(np.min(timeArr),np.max(timeArr),5000)$/;"	kind:variable	line:348
+newTime	OrbitalFit.py	/^newTime = np.linspace(np.min(timeArr),np.max(timeArr),1000)$/;"	kind:variable	line:135
+newTime	OrbitalFitLorentzian.py	/^newTime = np.linspace(np.min(timeArr),np.max(timeArr),1000)$/;"	kind:variable	line:135
+newTime	OrbitalFitScipy.py	/^newTime = np.linspace(np.min(timeArr),np.max(timeArr),10000)$/;"	kind:variable	line:145
+newTime	OrbitalFitVoigt.py	/^newTime = np.linspace(np.min(timeArr),np.max(timeArr),5000)$/;"	kind:variable	line:229
+newTime	SDSSFit.py	/^newTime = np.linspace(np.min(timeArr),np.max(timeArr),5000)$/;"	kind:variable	line:552
+newTime	SDSSFitTest.py	/^newTime = np.linspace(np.min(timeArr),np.max(timeArr),5000)$/;"	kind:variable	line:555
+nll	BICModel.py	/^nll = lambda *args: -lnprobSine(*args)$/;"	kind:variable	line:425
+nll	BIC_csv.py	/^nll = lambda *args: -lnprobSine(*args)$/;"	kind:variable	line:363
+nllNoOrb	BICModel.py	/^nllNoOrb = lambda *args: -lnprobNoOrbit(*args)$/;"	kind:variable	line:362
+nllNoOrb	BIC_csv.py	/^nllNoOrb = lambda *args: -lnprobNoOrbit(*args)$/;"	kind:variable	line:299
+noOrbBIC	AIC_csv.py	/^noOrbBIC = -2*lnlikeNoOrbit(mparam,timeArr,rvArr,stdArr)+1*np.log(len(timeArr))$/;"	kind:variable	line:436
+noOrbBIC	BICModel.py	/^noOrbBIC = -2*lnlikeNoOrbit(mparam,timeArr,rvArr,stdArr)+1*np.log(len(timeArr))$/;"	kind:variable	line:436
+noOrbBIC	BIC_csv.py	/^noOrbBIC = -2*lnlikeNoOrbit(mparam,timeArr,rvArr,stdArr)+1*np.log(len(timeArr))$/;"	kind:variable	line:381
+noOrbParams	AIC_csv.py	/^noOrbParams = (mparam)$/;"	kind:variable	line:435
+noOrbParams	BICModel.py	/^noOrbParams = (mparam)$/;"	kind:variable	line:435
+noOrbParams	BIC_csv.py	/^noOrbParams = (mparam)$/;"	kind:variable	line:380
+noOrbPos	AIC_csv.py	/^noOrbPos = [middles[-1] + 1e-4*np.random.randn(noOrbDim) for i in range(noOrbWalkers)]$/;"	kind:variable	line:359
+noOrbPos	BICModel.py	/^noOrbPos = [middles[-1] + 1e-4*np.random.randn(noOrbDim) for i in range(noOrbWalkers)]$/;"	kind:variable	line:350
+noOrbPos	BIC_csv.py	/^noOrbPos = [middles[-1] + 1e-4*np.random.randn(noOrbDim) for i in range(noOrbWalkers)]$/;"	kind:variable	line:287
+noOrbSampler	AIC_csv.py	/^noOrbSampler = tls.MCMCfit(lnprobNoOrbit,args=(timeArr,rvArr,stdArr),nwalkers=noOrbWalkers,ndim=noOrbDim,burnInSteps=250000,steps=250000,p=noOrbPos)$/;"	kind:variable	line:361
+noOrbSampler	BICModel.py	/^noOrbSampler = tls.MCMCfit(lnprobNoOrbit,args=(timeArr,rvArr,stdArr),nwalkers=noOrbWalkers,ndim=noOrbDim,burnInSteps=250000,steps=250000,p=noOrbPos)$/;"	kind:variable	line:352
+noOrbSampler	BIC_csv.py	/^noOrbSampler = tls.MCMCfit(lnprobNoOrbit,args=(timeArr,rvArr,stdArr),nwalkers=noOrbWalkers,ndim=noOrbDim,burnInSteps=250000,steps=250000,p=noOrbPos)$/;"	kind:variable	line:289
+noOrbSamples	AIC_csv.py	/^noOrbSamples = noOrbSampler.flatchain.reshape((-1,1)).T$/;"	kind:variable	line:364
+noOrbSamples	BICModel.py	/^noOrbSamples = noOrbSampler.flatchain.reshape((-1,1)).T$/;"	kind:variable	line:355
+noOrbSamples	BIC_csv.py	/^noOrbSamples = noOrbSampler.flatchain.reshape((-1,1)).T$/;"	kind:variable	line:292
+noOrbSamplesChain	AIC_csv.py	/^noOrbSamplesChain = noOrbSampler.chain[:,:,:].reshape((-1,1))$/;"	kind:variable	line:363
+noOrbSamplesChain	BICModel.py	/^noOrbSamplesChain = noOrbSampler.chain[:,:,:].reshape((-1,1))$/;"	kind:variable	line:354
+noOrbSamplesChain	BIC_csv.py	/^noOrbSamplesChain = noOrbSampler.chain[:,:,:].reshape((-1,1))$/;"	kind:variable	line:291
+np	AIC_csv.py	/^import numpy as np$/;"	kind:namespace	line:3
+np	BICModel.py	/^import numpy as np$/;"	kind:namespace	line:3
+np	BIC_csv.py	/^import numpy as np$/;"	kind:namespace	line:3
+np	CompareFit.py	/^import numpy as np$/;"	kind:namespace	line:3
+np	ModelFit.py	/^import numpy as np$/;"	kind:namespace	line:3
+np	ModelFitScipy.py	/^import numpy as np$/;"	kind:namespace	line:3
+np	ModelPhase.py	/^import numpy as np$/;"	kind:namespace	line:3
+np	OrbitalFit.py	/^import numpy as np$/;"	kind:namespace	line:3
+np	OrbitalFitLorentzian.py	/^import numpy as np$/;"	kind:namespace	line:3
+np	OrbitalFitScipy.py	/^import numpy as np$/;"	kind:namespace	line:3
+np	OrbitalFitVoigt.py	/^import numpy as np$/;"	kind:namespace	line:3
+np	ParamVsNum.py	/^import numpy as np$/;"	kind:namespace	line:3
+np	PhaseDiagram.py	/^import numpy as np$/;"	kind:namespace	line:3
+np	RVnum.py	/^import numpy as np$/;"	kind:namespace	line:3
+np	RVtime.py	/^import numpy as np$/;"	kind:namespace	line:3
+np	SDSSFit.py	/^import numpy as np$/;"	kind:namespace	line:5
+np	SDSSFitTest.py	/^import numpy as np$/;"	kind:namespace	line:5
+np	Vfit.py	/^import numpy as np$/;"	kind:namespace	line:3
+np	VfitMC.py	/^import numpy as np$/;"	kind:namespace	line:3
+np	VfitMC_resid.py	/^import numpy as np$/;"	kind:namespace	line:3
+np	Vfit_rvs.py	/^import numpy as np$/;"	kind:namespace	line:3
+np	Vfit_rvs_tmp.py	/^import numpy as np$/;"	kind:namespace	line:3
+np	Vfit_scipy.py	/^import numpy as np$/;"	kind:namespace	line:3
+np	Vfit_tmp.py	/^import numpy as np$/;"	kind:namespace	line:3
+np	Voffset.py	/^import numpy as np$/;"	kind:namespace	line:3
+np	VoigtFit.py	/^import numpy as np$/;"	kind:namespace	line:3
+np	Voigt_rvs.py	/^import numpy as np$/;"	kind:namespace	line:3
+np	interactive_norm.py	/^import numpy as np$/;"	kind:namespace	line:2
+np	paperplots.py	/^    import numpy as np$/;"	kind:namespace	line:191
+np	paperplots.py	/^    import numpy as np$/;"	kind:namespace	line:304
+np	paperplots.py	/^    import numpy as np$/;"	kind:namespace	line:345
+np	paperplots.py	/^    import numpy as np$/;"	kind:namespace	line:36
+np	paperplots.py	/^    import numpy as np$/;"	kind:namespace	line:390
+np	paperplots.py	/^    import numpy as np$/;"	kind:namespace	line:41
+np	paperplots.py	/^    import numpy as np$/;"	kind:namespace	line:45
+np	paperplots.py	/^    import numpy as np$/;"	kind:namespace	line:50
+np	paperplots.py	/^    import numpy as np$/;"	kind:namespace	line:57
+np	paperplots.py	/^    import numpy as np$/;"	kind:namespace	line:6
+np	paperplots.py	/^    import numpy as np$/;"	kind:namespace	line:64
+np	paperplots.py	/^    import numpy as np$/;"	kind:namespace	line:97
+np	plot_format.py	/^import numpy as np$/;"	kind:namespace	line:2
+np	tools.py	/^    import numpy as np$/;"	kind:namespace	line:1061
+np	tools.py	/^    import numpy as np$/;"	kind:namespace	line:205
+np	tools.py	/^    import numpy as np$/;"	kind:namespace	line:21
+np	tools.py	/^    import numpy as np$/;"	kind:namespace	line:346
+np	tools.py	/^    import numpy as np$/;"	kind:namespace	line:418
+np	tools.py	/^    import numpy as np$/;"	kind:namespace	line:454
+np	tools.py	/^    import numpy as np$/;"	kind:namespace	line:512
+np	tools.py	/^    import numpy as np$/;"	kind:namespace	line:598
+np	tools.py	/^    import numpy as np$/;"	kind:namespace	line:622
+np	tools.py	/^    import numpy as np$/;"	kind:namespace	line:64
+np	tools.py	/^    import numpy as np$/;"	kind:namespace	line:646
+np	tools.py	/^    import numpy as np$/;"	kind:namespace	line:672
+np	tools.py	/^    import numpy as np$/;"	kind:namespace	line:736
+np	tools.py	/^    import numpy as np$/;"	kind:namespace	line:78
+np	tools.py	/^    import numpy as np$/;"	kind:namespace	line:805
+np	tools.py	/^    import numpy as np$/;"	kind:namespace	line:881
+np	tools.py	/^    import numpy as np$/;"	kind:namespace	line:956
+np	tools.py	/^    import numpy as np$/;"	kind:namespace	line:966
+numArr	BICModel.py	/^numArr = []$/;"	kind:variable	line:239
+numArr	BICModel.py	/^numArr = np.array(numArr)$/;"	kind:variable	line:322
+numArr	ModelFit.py	/^numArr = []$/;"	kind:variable	line:220
+numArr	ModelFit.py	/^numArr = np.array(numArr)$/;"	kind:variable	line:303
+numArr	ModelFitScipy.py	/^numArr = []$/;"	kind:variable	line:234
+numArr	ModelFitScipy.py	/^numArr = np.array(numArr)$/;"	kind:variable	line:287
+numArr	ModelPhase.py	/^numArr = []$/;"	kind:variable	line:220
+numArr	ModelPhase.py	/^numArr = np.array(numArr)$/;"	kind:variable	line:303
+numArr	OrbitalFit.py	/^numArr = []$/;"	kind:variable	line:73
+numArr	OrbitalFit.py	/^numArr = np.array(numArr)$/;"	kind:variable	line:112
+numArr	OrbitalFitLorentzian.py	/^numArr = []$/;"	kind:variable	line:73
+numArr	OrbitalFitLorentzian.py	/^numArr = np.array(numArr)$/;"	kind:variable	line:112
+numArr	OrbitalFitScipy.py	/^numArr = []$/;"	kind:variable	line:76
+numArr	OrbitalFitScipy.py	/^numArr = np.array(numArr)$/;"	kind:variable	line:122
+numArr	OrbitalFitVoigt.py	/^numArr = []$/;"	kind:variable	line:111
+numArr	OrbitalFitVoigt.py	/^numArr = np.array(numArr)$/;"	kind:variable	line:192
+numArr	ParamVsNum.py	/^numArr = []$/;"	kind:variable	line:76
+numArr	ParamVsNum.py	/^numArr = np.array(numArr)$/;"	kind:variable	line:154
+numArr	PhaseDiagram.py	/^numArr = []$/;"	kind:variable	line:77
+numArr	PhaseDiagram.py	/^numArr = np.array(numArr)$/;"	kind:variable	line:123
+numArr	SDSSFit.py	/^numArr = []$/;"	kind:variable	line:339
+numArr	SDSSFit.py	/^numArr = np.array(numArr)$/;"	kind:variable	line:515
+numArr	SDSSFitTest.py	/^numArr = []$/;"	kind:variable	line:339
+numArr	SDSSFitTest.py	/^numArr = np.array(numArr)$/;"	kind:variable	line:518
+numArray	CompareFit.py	/^numArray = []$/;"	kind:variable	line:50
+numBeta	RVnum.py	/^numBeta = []$/;"	kind:variable	line:33
+numBeta	RVtime.py	/^numBeta = []$/;"	kind:variable	line:37
+numDelta	RVnum.py	/^numDelta = []$/;"	kind:variable	line:35
+numDelta	RVtime.py	/^numDelta = []$/;"	kind:variable	line:39
+numGamma	RVnum.py	/^numGamma = []$/;"	kind:variable	line:34
+numGamma	RVtime.py	/^numGamma = []$/;"	kind:variable	line:38
+numJoined	RVnum.py	/^numJoined = []$/;"	kind:variable	line:22
+numJoined	RVtime.py	/^numJoined = []$/;"	kind:variable	line:25
+off	BICModel.py	/^    off = 0.5$/;"	kind:variable	line:284
+off	ModelFit.py	/^    off = 0.5$/;"	kind:variable	line:265
+off	ModelPhase.py	/^    off = 0.5$/;"	kind:variable	line:265
+off	OrbitalFitVoigt.py	/^    off = 0.5$/;"	kind:variable	line:159
+off	SDSSFit.py	/^    off = 0.5$/;"	kind:variable	line:396
+off	SDSSFit.py	/^    off = 0.5$/;"	kind:variable	line:477
+off	SDSSFitTest.py	/^    off = 0.5$/;"	kind:variable	line:385
+off	SDSSFitTest.py	/^    off = 0.5$/;"	kind:variable	line:480
+off	VfitMC.py	/^        off = 0.3$/;"	kind:variable	line:134
+off	VfitMC_resid.py	/^    off = 0.3$/;"	kind:variable	line:146
+off	Vfit_rvs.py	/^    off = 0.3$/;"	kind:variable	line:151
+off	Vfit_rvs_tmp.py	/^    off = 0.3$/;"	kind:variable	line:156
+off	VoigtFit.py	/^        off = 0.3$/;"	kind:variable	line:143
+off	Voigt_rvs.py	/^    off = 0.3$/;"	kind:variable	line:187
+offset	CompareFit.py	/^        offset = 25$/;"	kind:variable	line:84
+offset	Vfit.py	/^        offset = 25$/;"	kind:variable	line:66
+offset	VfitMC.py	/^        offset = 25$/;"	kind:variable	line:66
+offset	VfitMC_resid.py	/^    offset = 25$/;"	kind:variable	line:66
+offset	Vfit_rvs.py	/^        offset = 25$/;"	kind:variable	line:78
+offset	Vfit_rvs_tmp.py	/^        offset = 25$/;"	kind:variable	line:77
+offset	Vfit_tmp.py	/^        offset = 25$/;"	kind:variable	line:66
+offset	Voffset.py	/^        offset = 15$/;"	kind:variable	line:43
+offset	VoigtFit.py	/^        offset = 25$/;"	kind:variable	line:68
+offset	Voigt_rvs.py	/^        offset = 25$/;"	kind:variable	line:78
+onclick	interactive_norm.py	/^def onclick(event):$/;"	kind:function	line:7
+onpick	interactive_norm.py	/^def onpick(event):$/;"	kind:function	line:20
+ontype	interactive_norm.py	/^def ontype(event):$/;"	kind:function	line:26
+os	AIC_csv.py	/^import os$/;"	kind:namespace	line:8
+os	BICModel.py	/^import os$/;"	kind:namespace	line:8
+os	BIC_csv.py	/^import os$/;"	kind:namespace	line:8
+os	CompareFit.py	/^import os$/;"	kind:namespace	line:7
+os	ModelFit.py	/^import os$/;"	kind:namespace	line:8
+os	ModelFitScipy.py	/^import os$/;"	kind:namespace	line:8
+os	ModelPhase.py	/^import os$/;"	kind:namespace	line:8
+os	OrbitalFit.py	/^import os$/;"	kind:namespace	line:8
+os	OrbitalFitLorentzian.py	/^import os$/;"	kind:namespace	line:8
+os	OrbitalFitScipy.py	/^import os$/;"	kind:namespace	line:8
+os	OrbitalFitVoigt.py	/^import os$/;"	kind:namespace	line:8
+os	ParamVsNum.py	/^import os$/;"	kind:namespace	line:8
+os	PhaseDiagram.py	/^import os$/;"	kind:namespace	line:8
+os	RVnum.py	/^import os$/;"	kind:namespace	line:8
+os	RVtime.py	/^import os$/;"	kind:namespace	line:11
+os	SDSSFit.py	/^import os$/;"	kind:namespace	line:10
+os	SDSSFitTest.py	/^import os$/;"	kind:namespace	line:10
+os	Vfit.py	/^import os$/;"	kind:namespace	line:7
+os	VfitMC.py	/^import os$/;"	kind:namespace	line:7
+os	VfitMC_resid.py	/^import os$/;"	kind:namespace	line:7
+os	Vfit_rvs.py	/^import os$/;"	kind:namespace	line:7
+os	Vfit_rvs_tmp.py	/^import os$/;"	kind:namespace	line:7
+os	Vfit_scipy.py	/^import os$/;"	kind:namespace	line:7
+os	Vfit_tmp.py	/^import os$/;"	kind:namespace	line:7
+os	Voffset.py	/^import os$/;"	kind:namespace	line:7
+os	VoigtFit.py	/^import os$/;"	kind:namespace	line:7
+os	Voigt_rvs.py	/^import os$/;"	kind:namespace	line:7
+os	interactive_norm.py	/^import os$/;"	kind:namespace	line:5
+os	paperplots.py	/^    import os$/;"	kind:namespace	line:348
+os	paperplots.py	/^    import os$/;"	kind:namespace	line:386
+os	tools.py	/^    import os$/;"	kind:namespace	line:1063
+os	tools.py	/^    import os$/;"	kind:namespace	line:15
+os	tools.py	/^    import os$/;"	kind:namespace	line:456
+os	tools.py	/^    import os$/;"	kind:namespace	line:514
+os	tools.py	/^    import os$/;"	kind:namespace	line:7
+os	tools.py	/^    import os$/;"	kind:namespace	line:738
+os	tools.py	/^    import os$/;"	kind:namespace	line:883
+p0	CompareFit.py	/^    p0  = np.random.random((nwalkers, ndim))$/;"	kind:variable	line:139
+p0	Vfit.py	/^        p0  = np.random.random((nwalkers, ndim))$/;"	kind:variable	line:96
+p0	VfitMC.py	/^        p0  = np.random.random((nwalkers, ndim))$/;"	kind:variable	line:96
+p0	VfitMC_resid.py	/^    p0  = np.random.random((nwalkers, ndim))$/;"	kind:variable	line:96
+p0	Vfit_rvs.py	/^    p0  = np.random.random((nwalkers, ndim))$/;"	kind:variable	line:124
+p0	Vfit_rvs_tmp.py	/^    p0  = np.random.random((nwalkers, ndim))$/;"	kind:variable	line:123
+p0	Vfit_tmp.py	/^        p0  = np.random.random((nwalkers, ndim))$/;"	kind:variable	line:96
+p0	VoigtFit.py	/^        p0  = np.random.random((nwalkers, ndim))$/;"	kind:variable	line:98
+p0	Voigt_rvs.py	/^    p0  = np.random.random((nwalkers, ndim))$/;"	kind:variable	line:123
+paperplots.py	paperplots.py	1;"	kind:file	line:1
+params	AIC_csv.py	/^params = [AArr[-1],PArr[-1],PhArr[-1],GArr[-1]]$/;"	kind:variable	line:431
+params	BICModel.py	/^params = [Afit,Pfit,Phfit,Gfit]$/;"	kind:variable	line:431
+params	BICModel.py	/^params = []$/;"	kind:variable	line:428
+params	BIC_csv.py	/^params = [(Afit,Astd),(Pfit,Pstd),(Phfit,Phstd),(Gfit,Gstd)]$/;"	kind:variable	line:375
+params	BIC_csv.py	/^params = []$/;"	kind:variable	line:372
+params	ModelFit.py	/^params = [AArr[-1],PArr[-1],PhArr[-1],GArr[-1]]$/;"	kind:variable	line:385
+params	ModelFitScipy.py	/^params = [AArr[-1],PArr[-1],PhArr[-1],GArr[-1]]$/;"	kind:variable	line:361
+params	ModelPhase.py	/^params = [AArr[-1],PArr[-1],PhArr[-1],GArr[-1]]$/;"	kind:variable	line:389
+params	OrbitalFitScipy.py	/^params = [AArr[-1],PArr[-1],PhArr[-1],GArr[-1]]$/;"	kind:variable	line:183
+params	OrbitalFitVoigt.py	/^params = [AArr[-1],PArr[-1],PhArr[-1],GArr[-1]]$/;"	kind:variable	line:266
+params	PhaseDiagram.py	/^params = [AArr[-1],PArr[-1],PhArr[-1],GArr[-1]]$/;"	kind:variable	line:154
+params	SDSSFit.py	/^params = [AArr[-1],PArr[-1],PhArr[-1],GArr[-1]]$/;"	kind:variable	line:589
+params	SDSSFitTest.py	/^params = [AArr[-1],PArr[-1],PhArr[-1],GArr[-1]]$/;"	kind:variable	line:592
+path	AIC_csv.py	/^    path = lines[j]$/;"	kind:variable	line:248
+path	BICModel.py	/^    path = lines[j]$/;"	kind:variable	line:248
+path	BIC_csv.py	/^    path = lines[j]$/;"	kind:variable	line:249
+path	CompareFit.py	/^    path = lines[j]$/;"	kind:variable	line:59
+path	ModelFit.py	/^    path = lines[j]$/;"	kind:variable	line:229
+path	ModelFitScipy.py	/^    path = lines[j]$/;"	kind:variable	line:242
+path	ModelPhase.py	/^    path = lines[j]$/;"	kind:variable	line:229
+path	OrbitalFit.py	/^    path = lines[j]$/;"	kind:variable	line:81
+path	OrbitalFitLorentzian.py	/^    path = lines[j]$/;"	kind:variable	line:81
+path	OrbitalFitScipy.py	/^    path = lines[j]$/;"	kind:variable	line:84
+path	OrbitalFitVoigt.py	/^    path = lines[j]$/;"	kind:variable	line:119
+path	ParamVsNum.py	/^    path = lines[j]$/;"	kind:variable	line:100
+path	PhaseDiagram.py	/^    path = lines[j]$/;"	kind:variable	line:85
+path	SDSSFit.py	/^    path = lines[j]$/;"	kind:variable	line:347
+path	SDSSFitTest.py	/^    path = lines[j]$/;"	kind:variable	line:347
+path	Vfit.py	/^    path = lines[j]$/;"	kind:variable	line:41
+path	VfitMC.py	/^    path = lines[j]$/;"	kind:variable	line:41
+path	VfitMC_resid.py	/^    path = lines[j]$/;"	kind:variable	line:41
+path	Vfit_rvs.py	/^    path = lines[j]$/;"	kind:variable	line:53
+path	Vfit_rvs_tmp.py	/^    path = lines[j]$/;"	kind:variable	line:52
+path	Vfit_tmp.py	/^    path = lines[j]$/;"	kind:variable	line:41
+path	Voffset.py	/^    path = lines[j]$/;"	kind:variable	line:18
+path	VoigtFit.py	/^    path = lines[j]$/;"	kind:variable	line:41
+path	Voigt_rvs.py	/^    path = lines[j]$/;"	kind:variable	line:53
+path	testNorm.py	/^path = 'wd0117-2010-10-07T08:33.fits'$/;"	kind:variable	line:3
+perr	CompareFit.py	/^            perr = np.sqrt(np.diag(pcov))$/;"	kind:variable	line:111
+perr	ModelFitScipy.py	/^    perr = np.sqrt(np.diag(pcov))$/;"	kind:variable	line:274
+perr	OrbitalFitScipy.py	/^    perr = np.sqrt(np.diag(pcov))$/;"	kind:variable	line:105
+phiDiagArr	ModelPhase.py	/^phiDiagArr = []$/;"	kind:variable	line:392
+phiDiagArr	ModelPhase.py	/^phiDiagArr = np.array(phiDiagArr)$/;"	kind:variable	line:405
+phiDiagArr	PhaseDiagram.py	/^phiDiagArr = []$/;"	kind:variable	line:158
+phiDiagArr	PhaseDiagram.py	/^phiDiagArr = np.array(phiDiagArr)$/;"	kind:variable	line:173
+planck	tools.py	/^def planck(wl,T):$/;"	kind:function	line:955
+platform	paperplots.py	/^    from sys import platform$/;"	kind:namespace	line:190
+platform	paperplots.py	/^    from sys import platform$/;"	kind:namespace	line:389
+platform	paperplots.py	/^    from sys import platform$/;"	kind:namespace	line:96
+plotIndex	AIC_csv.py	/^plotIndex = 1$/;"	kind:variable	line:196
+plotIndex	BICModel.py	/^plotIndex = 1$/;"	kind:variable	line:196
+plotIndex	BIC_csv.py	/^plotIndex = 1$/;"	kind:variable	line:197
+plotIndex	CompareFit.py	/^plotIndex = 1$/;"	kind:variable	line:46
+plotIndex	ModelFit.py	/^plotIndex = 1$/;"	kind:variable	line:177
+plotIndex	ModelFitScipy.py	/^plotIndex = 1$/;"	kind:variable	line:187
+plotIndex	ModelPhase.py	/^plotIndex = 1$/;"	kind:variable	line:177
+plotIndex	OrbitalFit.py	/^plotIndex = 1$/;"	kind:variable	line:71
+plotIndex	OrbitalFitLorentzian.py	/^plotIndex = 1$/;"	kind:variable	line:71
+plotIndex	OrbitalFitScipy.py	/^plotIndex = 1$/;"	kind:variable	line:74
+plotIndex	OrbitalFitVoigt.py	/^plotIndex = 1$/;"	kind:variable	line:109
+plotIndex	ParamVsNum.py	/^plotIndex = 1$/;"	kind:variable	line:74
+plotIndex	PhaseDiagram.py	/^plotIndex = 1$/;"	kind:variable	line:75
+plotIndex	RVnum.py	/^plotIndex = 1$/;"	kind:variable	line:19
+plotIndex	RVtime.py	/^plotIndex = 1$/;"	kind:variable	line:22
+plotIndex	SDSSFit.py	/^plotIndex = 1$/;"	kind:variable	line:269
+plotIndex	SDSSFitTest.py	/^plotIndex = 1$/;"	kind:variable	line:269
+plotIndex	Vfit.py	/^plotIndex = 1$/;"	kind:variable	line:35
+plotIndex	VfitMC.py	/^plotIndex = 1$/;"	kind:variable	line:35
+plotIndex	VfitMC_resid.py	/^plotIndex = 1$/;"	kind:variable	line:35
+plotIndex	Vfit_rvs.py	/^        plotIndex = 1$/;"	kind:variable	line:185
+plotIndex	Vfit_rvs.py	/^plotIndex = 1$/;"	kind:variable	line:47
+plotIndex	Vfit_rvs_tmp.py	/^plotIndex = 1$/;"	kind:variable	line:46
+plotIndex	Vfit_scipy.py	/^plotIndex = 1$/;"	kind:variable	line:19
+plotIndex	Vfit_tmp.py	/^plotIndex = 1$/;"	kind:variable	line:35
+plotIndex	Voffset.py	/^        plotIndex = 1$/;"	kind:variable	line:85
+plotIndex	Voffset.py	/^plotIndex = 1$/;"	kind:variable	line:14
+plotIndex	VoigtFit.py	/^        plotIndex = 1$/;"	kind:variable	line:160
+plotIndex	VoigtFit.py	/^plotIndex = 1$/;"	kind:variable	line:35
+plotIndex	Voigt_rvs.py	/^        plotIndex = 1$/;"	kind:variable	line:209
+plotIndex	Voigt_rvs.py	/^plotIndex = 1$/;"	kind:variable	line:47
+plotNumber	AIC_csv.py	/^plotNumber = 1$/;"	kind:variable	line:195
+plotNumber	BICModel.py	/^plotNumber = 1$/;"	kind:variable	line:195
+plotNumber	BIC_csv.py	/^plotNumber = 1$/;"	kind:variable	line:196
+plotNumber	CompareFit.py	/^plotNumber = 1$/;"	kind:variable	line:45
+plotNumber	ModelFit.py	/^plotNumber = 1$/;"	kind:variable	line:176
+plotNumber	ModelFitScipy.py	/^plotNumber = 1$/;"	kind:variable	line:186
+plotNumber	ModelPhase.py	/^plotNumber = 1$/;"	kind:variable	line:176
+plotNumber	OrbitalFit.py	/^plotNumber = 1$/;"	kind:variable	line:70
+plotNumber	OrbitalFitLorentzian.py	/^plotNumber = 1$/;"	kind:variable	line:70
+plotNumber	OrbitalFitScipy.py	/^plotNumber = 1$/;"	kind:variable	line:73
+plotNumber	OrbitalFitVoigt.py	/^plotNumber = 1$/;"	kind:variable	line:108
+plotNumber	ParamVsNum.py	/^plotNumber = 1$/;"	kind:variable	line:73
+plotNumber	PhaseDiagram.py	/^plotNumber = 1$/;"	kind:variable	line:74
+plotNumber	RVnum.py	/^plotNumber = 1$/;"	kind:variable	line:18
+plotNumber	RVtime.py	/^plotNumber = 1$/;"	kind:variable	line:21
+plotNumber	SDSSFit.py	/^plotNumber = 1$/;"	kind:variable	line:268
+plotNumber	SDSSFitTest.py	/^plotNumber = 1$/;"	kind:variable	line:268
+plotNumber	Vfit.py	/^plotNumber = 1$/;"	kind:variable	line:34
+plotNumber	VfitMC.py	/^plotNumber = 1$/;"	kind:variable	line:34
+plotNumber	VfitMC_resid.py	/^plotNumber = 1$/;"	kind:variable	line:34
+plotNumber	Vfit_rvs.py	/^plotNumber = 1$/;"	kind:variable	line:46
+plotNumber	Vfit_rvs_tmp.py	/^plotNumber = 1$/;"	kind:variable	line:45
+plotNumber	Vfit_scipy.py	/^plotNumber = 1$/;"	kind:variable	line:18
+plotNumber	Vfit_tmp.py	/^plotNumber = 1$/;"	kind:variable	line:34
+plotNumber	Voffset.py	/^plotNumber = 1$/;"	kind:variable	line:13
+plotNumber	VoigtFit.py	/^plotNumber = 1$/;"	kind:variable	line:34
+plotNumber	Voigt_rvs.py	/^plotNumber = 1$/;"	kind:variable	line:46
+plot_format	AIC_csv.py	/^from plot_format import plot_format$/;"	kind:namespace	line:7
+plot_format	BICModel.py	/^from plot_format import plot_format$/;"	kind:namespace	line:7
+plot_format	BIC_csv.py	/^from plot_format import plot_format$/;"	kind:namespace	line:7
+plot_format	CompareFit.py	/^from plot_format import plot_format$/;"	kind:namespace	line:6
+plot_format	ModelFit.py	/^from plot_format import plot_format$/;"	kind:namespace	line:7
+plot_format	ModelFitScipy.py	/^from plot_format import plot_format$/;"	kind:namespace	line:7
+plot_format	ModelPhase.py	/^from plot_format import plot_format$/;"	kind:namespace	line:7
+plot_format	OrbitalFit.py	/^from plot_format import plot_format$/;"	kind:namespace	line:7
+plot_format	OrbitalFitLorentzian.py	/^from plot_format import plot_format$/;"	kind:namespace	line:7
+plot_format	OrbitalFitScipy.py	/^from plot_format import plot_format$/;"	kind:namespace	line:7
+plot_format	OrbitalFitVoigt.py	/^from plot_format import plot_format$/;"	kind:namespace	line:7
+plot_format	ParamVsNum.py	/^from plot_format import plot_format$/;"	kind:namespace	line:7
+plot_format	PhaseDiagram.py	/^from plot_format import plot_format$/;"	kind:namespace	line:7
+plot_format	RVnum.py	/^from plot_format import plot_format$/;"	kind:namespace	line:6
+plot_format	RVtime.py	/^from plot_format import plot_format$/;"	kind:namespace	line:7
+plot_format	SDSSFit.py	/^from plot_format import plot_format$/;"	kind:namespace	line:9
+plot_format	SDSSFitTest.py	/^from plot_format import plot_format$/;"	kind:namespace	line:9
+plot_format	Vfit.py	/^from plot_format import plot_format$/;"	kind:namespace	line:6
+plot_format	VfitMC.py	/^from plot_format import plot_format$/;"	kind:namespace	line:6
+plot_format	VfitMC_resid.py	/^from plot_format import plot_format$/;"	kind:namespace	line:6
+plot_format	Vfit_rvs.py	/^from plot_format import plot_format$/;"	kind:namespace	line:6
+plot_format	Vfit_rvs_tmp.py	/^from plot_format import plot_format$/;"	kind:namespace	line:6
+plot_format	Vfit_scipy.py	/^from plot_format import plot_format$/;"	kind:namespace	line:6
+plot_format	Vfit_tmp.py	/^from plot_format import plot_format$/;"	kind:namespace	line:6
+plot_format	Voffset.py	/^from plot_format import plot_format$/;"	kind:namespace	line:6
+plot_format	VoigtFit.py	/^from plot_format import plot_format$/;"	kind:namespace	line:6
+plot_format	Voigt_rvs.py	/^from plot_format import plot_format$/;"	kind:namespace	line:6
+plot_format	paperplots.py	/^    from plot_format import plot_format$/;"	kind:namespace	line:193
+plot_format	paperplots.py	/^    from plot_format import plot_format$/;"	kind:namespace	line:388
+plot_format	plot_format.py	/^def plot_format():$/;"	kind:function	line:5
+plot_format.py	plot_format.py	1;"	kind:file	line:1
+plotchains	tools.py	/^def plotchains(sampler,nParamsPerPage,filePrefix,fileSuffix):$/;"	kind:function	line:415
+plt	AIC_csv.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+plt	BICModel.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+plt	BIC_csv.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+plt	CompareFit.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+plt	ModelFit.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+plt	ModelFitScipy.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+plt	ModelPhase.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+plt	OrbitalFit.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+plt	OrbitalFitLorentzian.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+plt	OrbitalFitScipy.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+plt	OrbitalFitVoigt.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+plt	ParamVsNum.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+plt	PhaseDiagram.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+plt	RVnum.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+plt	RVtime.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+plt	SDSSFit.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:7
+plt	SDSSFitTest.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:7
+plt	Vfit.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+plt	VfitMC.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+plt	VfitMC_resid.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+plt	Vfit_rvs.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+plt	Vfit_rvs_tmp.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+plt	Vfit_scipy.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+plt	Vfit_tmp.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+plt	Voffset.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+plt	VoigtFit.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+plt	Voigt_rvs.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+plt	interactive_norm.py	/^import pylab as plt$/;"	kind:namespace	line:1
+plt	paperplots.py	/^    import matplotlib.pyplot as plt$/;"	kind:namespace	line:192
+plt	paperplots.py	/^    import matplotlib.pyplot as plt$/;"	kind:namespace	line:346
+plt	paperplots.py	/^    import matplotlib.pyplot as plt$/;"	kind:namespace	line:392
+plt	paperplots.py	/^    import matplotlib.pyplot as plt$/;"	kind:namespace	line:69
+plt	paperplots.py	/^    import matplotlib.pyplot as plt$/;"	kind:namespace	line:75
+plt	paperplots.py	/^    import matplotlib.pyplot as plt$/;"	kind:namespace	line:98
+plt	plot_format.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:3
+plt	tools.py	/^    import matplotlib.pyplot as plt$/;"	kind:namespace	line:1064
+plt	tools.py	/^    import matplotlib.pyplot as plt$/;"	kind:namespace	line:207
+plt	tools.py	/^    import matplotlib.pyplot as plt$/;"	kind:namespace	line:348
+plt	tools.py	/^    import matplotlib.pyplot as plt$/;"	kind:namespace	line:40
+plt	tools.py	/^    import matplotlib.pyplot as plt$/;"	kind:namespace	line:417
+plt	tools.py	/^    import matplotlib.pyplot as plt$/;"	kind:namespace	line:674
+plt	tools.py	/^    import matplotlib.pyplot as plt$/;"	kind:namespace	line:739
+plt	tools.py	/^    import matplotlib.pyplot as plt$/;"	kind:namespace	line:80
+plt	tools.py	/^    import matplotlib.pyplot as plt$/;"	kind:namespace	line:807
+plt	tools.py	/^    import matplotlib.pyplot as plt$/;"	kind:namespace	line:884
+plt	tools.py	/^    import matplotlib.pyplot as plt$/;"	kind:namespace	line:968
+pos	AIC_csv.py	/^pos = [middles + 1e-4*np.random.randn(dim) for i in range(walkers)]$/;"	kind:variable	line:373
+pos	BICModel.py	/^pos = [middles + 1e-4*np.random.randn(dim) for i in range(walkers)]$/;"	kind:variable	line:367
+pos	BIC_csv.py	/^pos = [middles + 1e-4*np.random.randn(dim) for i in range(walkers)]$/;"	kind:variable	line:305
+pos	ModelFit.py	/^pos = [middles + 1e-4*np.random.randn(dim) for i in range(walkers)]$/;"	kind:variable	line:324
+pos	ModelFitScipy.py	/^pos = [middles + 1e-4*np.random.randn(dim) for i in range(walkers)]$/;"	kind:variable	line:300
+pos	ModelPhase.py	/^pos = [middles + 1e-4*np.random.randn(dim) for i in range(walkers)]$/;"	kind:variable	line:324
+pos	OrbitalFitVoigt.py	/^pos = [middles + 1e-4*np.random.randn(dim) for i in range(walkers)]$/;"	kind:variable	line:205
+pos	PhaseDiagram.py	/^pos = [middles + 1e-4*np.random.randn(dim) for i in range(walkers)]$/;"	kind:variable	line:136
+pos	SDSSFit.py	/^pos = [middles + 1e-4*np.random.randn(dim) for i in range(walkers)]$/;"	kind:variable	line:528
+pos	SDSSFitTest.py	/^pos = [middles + 1e-4*np.random.randn(dim) for i in range(walkers)]$/;"	kind:variable	line:531
+print_function	plot_format.py	/^from __future__ import division, print_function$/;"	kind:namespace	line:1
+rand	tools.py	/^    import random as rand$/;"	kind:namespace	line:599
+residual	VfitMC_resid.py	/^    residual = flux - lorentzian(vel,depthFit,widthFit,RVFit)$/;"	kind:variable	line:134
+residuals	ModelPhase.py	/^residuals = yvalues - rvArr$/;"	kind:variable	line:411
+residuals	PhaseDiagram.py	/^residuals = yvalues - rvArr$/;"	kind:variable	line:179
+results	BICModel.py	/^results = sp.minimize(nll, [AArr[-1],PArr[-1],PhArr[-1],GArr[-1]],args=(timeArr,rvArr,stdArr))$/;"	kind:variable	line:426
+results	BIC_csv.py	/^results = sp.minimize(nll, [AArr[-1],PArr[-1],PhArr[-1],GArr[-1]],args=(timeArr,rvArr,stdArr))$/;"	kind:variable	line:364
+rvArr	AIC_csv.py	/^rvArr = rvdata[:,1]$/;"	kind:variable	line:325
+rvArr	BICModel.py	/^rvArr = []$/;"	kind:variable	line:240
+rvArr	BICModel.py	/^rvArr = np.array(rvArr)$/;"	kind:variable	line:323
+rvArr	BIC_csv.py	/^rvArr = rvArr[wherrSN]$/;"	kind:variable	line:268
+rvArr	BIC_csv.py	/^rvArr = rvdata[:,1]$/;"	kind:variable	line:259
+rvArr	ModelFit.py	/^rvArr = []$/;"	kind:variable	line:221
+rvArr	ModelFit.py	/^rvArr = np.array(rvArr)$/;"	kind:variable	line:304
+rvArr	ModelFitScipy.py	/^rvArr = []$/;"	kind:variable	line:235
+rvArr	ModelFitScipy.py	/^rvArr = np.array(rvArr)$/;"	kind:variable	line:288
+rvArr	ModelPhase.py	/^rvArr = []$/;"	kind:variable	line:221
+rvArr	ModelPhase.py	/^rvArr = np.array(rvArr)$/;"	kind:variable	line:304
+rvArr	OrbitalFit.py	/^rvArr = []$/;"	kind:variable	line:74
+rvArr	OrbitalFit.py	/^rvArr = np.array(rvArr)$/;"	kind:variable	line:113
+rvArr	OrbitalFitLorentzian.py	/^rvArr = []$/;"	kind:variable	line:74
+rvArr	OrbitalFitLorentzian.py	/^rvArr = np.array(rvArr)$/;"	kind:variable	line:113
+rvArr	OrbitalFitScipy.py	/^rvArr = []$/;"	kind:variable	line:77
+rvArr	OrbitalFitScipy.py	/^rvArr = np.array(rvArr)$/;"	kind:variable	line:123
+rvArr	OrbitalFitVoigt.py	/^rvArr = []$/;"	kind:variable	line:112
+rvArr	OrbitalFitVoigt.py	/^rvArr = np.array(rvArr)$/;"	kind:variable	line:193
+rvArr	ParamVsNum.py	/^rvArr = []$/;"	kind:variable	line:77
+rvArr	ParamVsNum.py	/^rvArr = np.array(rvArr)$/;"	kind:variable	line:155
+rvArr	PhaseDiagram.py	/^rvArr = []$/;"	kind:variable	line:78
+rvArr	PhaseDiagram.py	/^rvArr = np.array(rvArr)$/;"	kind:variable	line:124
+rvArr	SDSSFit.py	/^rvArr = []$/;"	kind:variable	line:340
+rvArr	SDSSFit.py	/^rvArr = np.array(rvArr)$/;"	kind:variable	line:516
+rvArr	SDSSFitTest.py	/^rvArr = []$/;"	kind:variable	line:340
+rvArr	SDSSFitTest.py	/^rvArr = np.array(rvArr)$/;"	kind:variable	line:519
+rvBeta	RVnum.py	/^rvBeta = []$/;"	kind:variable	line:25
+rvBeta	RVtime.py	/^rvBeta = []$/;"	kind:variable	line:29
+rvDelta	RVnum.py	/^rvDelta = []$/;"	kind:variable	line:27
+rvDelta	RVtime.py	/^rvDelta = []$/;"	kind:variable	line:31
+rvFit	OrbitalFitScipy.py	/^    rvFit = popt[-1]$/;"	kind:variable	line:107
+rvGamma	RVnum.py	/^rvGamma = [] $/;"	kind:variable	line:26
+rvGamma	RVtime.py	/^rvGamma = [] $/;"	kind:variable	line:30
+rvJoined	RVnum.py	/^rvJoined = []$/;"	kind:variable	line:21
+rvJoined	RVtime.py	/^rvJoined = []$/;"	kind:variable	line:24
+rvStd	OrbitalFitScipy.py	/^    rvStd = perr[-1]$/;"	kind:variable	line:108
+rvdata	AIC_csv.py	/^rvdata = np.genfromtxt("BICFits\/"+wdName+"_rvdata.csv",delimiter=',')$/;"	kind:variable	line:322
+rvdata	BIC_csv.py	/^rvdata = np.genfromtxt("BICFits\/"+wdName+"_rvdata.csv",delimiter=',')$/;"	kind:variable	line:256
+rvs	CompareFit.py	/^            rvs = popt[2]$/;"	kind:variable	line:114
+sampler	AIC_csv.py	/^sampler = tls.MCMCfit(lnprobSine,args=(timeArr,rvArr,stdArr),nwalkers=walkers,ndim=4,burnInSteps=250000,steps=250000,p=pos)$/;"	kind:variable	line:375
+sampler	BICModel.py	/^    sampler = tls.MCMCfit(lnprobSum,args=(vels,fluxes,ferrs),nwalkers=nwalkers,ndim=ndim,burnInSteps=8000,steps=8000)$/;"	kind:variable	line:273
+sampler	BICModel.py	/^sampler = tls.MCMCfit(lnprobSine,args=(timeArr,rvArr,stdArr),nwalkers=walkers,ndim=4,burnInSteps=250000,steps=250000,p=pos)$/;"	kind:variable	line:369
+sampler	BIC_csv.py	/^sampler = tls.MCMCfit(lnprobSine,args=(timeArr,rvArr,stdArr),nwalkers=walkers,ndim=4,burnInSteps=250000,steps=250000,p=pos)$/;"	kind:variable	line:307
+sampler	CompareFit.py	/^    sampler = mc.EnsembleSampler(nwalkers,ndim,lnprobSum,args=(vels,fluxes,ferrs))$/;"	kind:variable	line:137
+sampler	ModelFit.py	/^    sampler = tls.MCMCfit(lnprobSum,args=(vels,fluxes,ferrs),nwalkers=nwalkers,ndim=ndim,burnInSteps=8000,steps=8000)$/;"	kind:variable	line:254
+sampler	ModelFit.py	/^sampler = tls.MCMCfit(lnprobSine,args=(timeArr,rvArr,stdArr),nwalkers=walkers,ndim=4,burnInSteps=250000,steps=250000,p=pos)$/;"	kind:variable	line:326
+sampler	ModelFitScipy.py	/^sampler = tls.MCMCfit(lnprobSine,args=(timeArr,rvArr,stdArr),nwalkers=walkers,ndim=4,burnInSteps=250000,steps=250000,p=pos)$/;"	kind:variable	line:302
+sampler	ModelPhase.py	/^    sampler = tls.MCMCfit(lnprobSum,args=(vels,fluxes,ferrs),nwalkers=nwalkers,ndim=ndim,burnInSteps=8000,steps=8000)$/;"	kind:variable	line:254
+sampler	ModelPhase.py	/^sampler = tls.MCMCfit(lnprobSine,args=(timeArr,rvArr,stdArr),nwalkers=walkers,ndim=4,burnInSteps=250000,steps=250000,p=pos)$/;"	kind:variable	line:326
+sampler	OrbitalFit.py	/^    sampler = tls.MCMCfit(lnprobSum,args=(vels,fluxes,ferrs),nwalkers=nwalkers,ndim=ndim)$/;"	kind:variable	line:101
+sampler	OrbitalFit.py	/^sampler = tls.MCMCfit(lnprobSine,args=(timeArr,rvArr,stdArr),nwalkers=200,ndim=4,burnInSteps=4000,steps=4000)$/;"	kind:variable	line:116
+sampler	OrbitalFitLorentzian.py	/^    sampler = tls.MCMCfit(lnprobSum,args=(vels,fluxes,ferrs),nwalkers=nwalkers,ndim=ndim)$/;"	kind:variable	line:101
+sampler	OrbitalFitLorentzian.py	/^sampler = tls.MCMCfit(lnprobSine,args=(timeArr,rvArr,stdArr),nwalkers=200,ndim=4,burnInSteps=4000,steps=4000)$/;"	kind:variable	line:116
+sampler	OrbitalFitScipy.py	/^sampler = tls.MCMCfit(lnprobSine,args=(timeArr,rvArr,stdArr),nwalkers=walkers,ndim=dim,burnInSteps=8000,steps=8000)$/;"	kind:variable	line:128
+sampler	OrbitalFitVoigt.py	/^    sampler = tls.MCMCfit(lnprobSum,args=(vels,fluxes,ferrs),nwalkers=nwalkers,ndim=ndim,burnInSteps=8000,steps=8000)$/;"	kind:variable	line:144
+sampler	OrbitalFitVoigt.py	/^sampler = tls.MCMCfit(lnprobSine,args=(timeArr,rvArr,stdArr),nwalkers=walkers,ndim=4,burnInSteps=250000,steps=250000,p=pos)$/;"	kind:variable	line:207
+sampler	ParamVsNum.py	/^    sampler = tls.MCMCfit(lnprobSum,args=(vels,fluxes,ferrs),nwalkers=nwalkers,ndim=ndim,burnInSteps=4000,steps=4000)$/;"	kind:variable	line:125
+sampler	PhaseDiagram.py	/^    sampler = tls.MCMCfit(lnprobSum,args=(vels,fluxes,ferrs),nwalkers=nwalkers,ndim=ndim,burnInSteps=4000,steps=4000)$/;"	kind:variable	line:110
+sampler	PhaseDiagram.py	/^sampler = tls.MCMCfit(lnprobSine,args=(timeArr,rvArr,stdArr),nwalkers=walkers,ndim=4,burnInSteps=250000,steps=250000,p=pos)$/;"	kind:variable	line:139
+sampler	SDSSFit.py	/^    sampler = tls.MCMCfit(lnprobSum,args=(vels,fluxes,ferrs),nwalkers=nwalkers,ndim=ndim,burnInSteps=8000,steps=8000)$/;"	kind:variable	line:466
+sampler	SDSSFit.py	/^sampler = tls.MCMCfit(lnprobSine,args=(timeArr,rvArr,stdArr),nwalkers=walkers,ndim=4,burnInSteps=250000,steps=250000,p=pos)$/;"	kind:variable	line:530
+sampler	SDSSFitTest.py	/^    sampler = tls.MCMCfit(lnprobSum,args=(vels,fluxes,ferrs),nwalkers=nwalkers,ndim=ndim,burnInSteps=8000,steps=8000)$/;"	kind:variable	line:469
+sampler	SDSSFitTest.py	/^sampler = tls.MCMCfit(lnprobSine,args=(timeArr,rvArr,stdArr),nwalkers=walkers,ndim=4,burnInSteps=250000,steps=250000,p=pos)$/;"	kind:variable	line:533
+sampler	Vfit.py	/^        sampler = mc.EnsembleSampler(nwalkers,ndim,lnprob,args=(vel,flux,ferr))$/;"	kind:variable	line:94
+sampler	VfitMC.py	/^        sampler = mc.EnsembleSampler(nwalkers,ndim,lnprob,args=(vel,flux,ferr))$/;"	kind:variable	line:94
+sampler	VfitMC_resid.py	/^    sampler = mc.EnsembleSampler(nwalkers,ndim,lnprob,args=(vel,flux,ferr))$/;"	kind:variable	line:94
+sampler	Vfit_rvs.py	/^    sampler = mc.EnsembleSampler(nwalkers,ndim,lnprobSum,args=(vels,fluxes,ferrs))$/;"	kind:variable	line:122
+sampler	Vfit_rvs_tmp.py	/^    sampler = mc.EnsembleSampler(nwalkers,ndim,lnprobSum,args=(vels,fluxes,ferrs))$/;"	kind:variable	line:121
+sampler	Vfit_tmp.py	/^        sampler = mc.EnsembleSampler(nwalkers,ndim,lnprob,args=(vel,flux,ferr))$/;"	kind:variable	line:94
+sampler	VoigtFit.py	/^        sampler = mc.EnsembleSampler(nwalkers,ndim,lnprob,args=(vel,flux,ferr))$/;"	kind:variable	line:96
+sampler	Voigt_rvs.py	/^    sampler = mc.EnsembleSampler(nwalkers,ndim,lnprobSum,args=(vels,fluxes,ferrs))$/;"	kind:variable	line:121
+samples	AIC_csv.py	/^samples = sampler.flatchain.reshape((-1,4)).T$/;"	kind:variable	line:380
+samples	BICModel.py	/^samples = sampler.flatchain.reshape((-1,4)).T$/;"	kind:variable	line:374
+samples	BIC_csv.py	/^samples = sampler.flatchain.reshape((-1,4)).T$/;"	kind:variable	line:312
+samples	CompareFit.py	/^    samples = sampler.flatchain.reshape(-1,ndim).T$/;"	kind:variable	line:146
+samples	ModelFit.py	/^samples = sampler.flatchain.reshape((-1,4)).T$/;"	kind:variable	line:331
+samples	ModelFitScipy.py	/^samples = sampler.flatchain.reshape((-1,4)).T$/;"	kind:variable	line:307
+samples	ModelPhase.py	/^samples = sampler.flatchain.reshape((-1,4)).T$/;"	kind:variable	line:331
+samples	OrbitalFit.py	/^samples = sampler.flatchain.reshape(-1,4).T$/;"	kind:variable	line:120
+samples	OrbitalFitLorentzian.py	/^samples = sampler.flatchain.reshape(-1,4).T$/;"	kind:variable	line:120
+samples	OrbitalFitScipy.py	/^samples = sampler.flatchain.reshape(-1,4).T$/;"	kind:variable	line:133
+samples	OrbitalFitVoigt.py	/^    samples = sampler.flatchain.reshape((-1,ndim)).T$/;"	kind:variable	line:145
+samples	OrbitalFitVoigt.py	/^samples = sampler.flatchain.reshape((-1,4)).T$/;"	kind:variable	line:212
+samples	ParamVsNum.py	/^    samples = sampler.flatchain.reshape(-1,ndim).T$/;"	kind:variable	line:127
+samples	PhaseDiagram.py	/^samples = sampler.flatchain.reshape((-1,4)).T$/;"	kind:variable	line:142
+samples	SDSSFit.py	/^samples = sampler.flatchain.reshape((-1,4)).T$/;"	kind:variable	line:535
+samples	SDSSFitTest.py	/^samples = sampler.flatchain.reshape((-1,4)).T$/;"	kind:variable	line:538
+samples	Vfit.py	/^        samples = sampler.flatchain.reshape(-1,ndim).T$/;"	kind:variable	line:108
+samples	VfitMC.py	/^        samples = sampler.flatchain.reshape(-1,ndim).T$/;"	kind:variable	line:108
+samples	VfitMC_resid.py	/^    samples = sampler.flatchain.reshape(-1,ndim).T$/;"	kind:variable	line:108
+samples	Vfit_rvs.py	/^    samples = sampler.flatchain.reshape(-1,ndim).T$/;"	kind:variable	line:131
+samples	Vfit_rvs_tmp.py	/^    samples = sampler.chain[:, :, :].reshape((-1, ndim))$/;"	kind:variable	line:133
+samples	Vfit_tmp.py	/^        samples = sampler.chain[:, :, :].reshape((-1, ndim))$/;"	kind:variable	line:108
+samples	VoigtFit.py	/^        samples = sampler.flatchain.reshape(-1,ndim)$/;"	kind:variable	line:108
+samples	Voigt_rvs.py	/^    samples = sampler.flatchain.reshape(-1,ndim)$/;"	kind:variable	line:133
+samplesChain	AIC_csv.py	/^samplesChain = sampler.chain[:,:,:].reshape((-1,4))$/;"	kind:variable	line:379
+samplesChain	BICModel.py	/^samplesChain = sampler.chain[:,:,:].reshape((-1,4))$/;"	kind:variable	line:373
+samplesChain	BIC_csv.py	/^samplesChain = sampler.chain[:,:,:].reshape((-1,4))$/;"	kind:variable	line:311
+samplesChain	ModelFit.py	/^samplesChain = sampler.chain[:,:,:].reshape((-1,4))$/;"	kind:variable	line:330
+samplesChain	ModelFitScipy.py	/^samplesChain = sampler.chain[:,:,:].reshape((-1,4))$/;"	kind:variable	line:306
+samplesChain	ModelPhase.py	/^samplesChain = sampler.chain[:,:,:].reshape((-1,4))$/;"	kind:variable	line:330
+samplesChain	OrbitalFitScipy.py	/^samplesChain = sampler.chain[:,:,:].reshape((-1,4))$/;"	kind:variable	line:132
+samplesChain	OrbitalFitVoigt.py	/^samplesChain = sampler.chain[:,:,:].reshape((-1,4))$/;"	kind:variable	line:211
+samplesChain	PhaseDiagram.py	/^samplesChain = sampler.chain[:,:,:].reshape((-1,4))$/;"	kind:variable	line:141
+samplesChain	SDSSFit.py	/^samplesChain = sampler.chain[:,:,:].reshape((-1,4))$/;"	kind:variable	line:534
+samplesChain	SDSSFitTest.py	/^samplesChain = sampler.chain[:,:,:].reshape((-1,4))$/;"	kind:variable	line:537
+samplesTrans	Vfit_rvs_tmp.py	/^    samplesTrans = sampler.flatchain.reshape(-1,ndim).T$/;"	kind:variable	line:134
+samplesTrans	Vfit_tmp.py	/^        samplesTrans = sampler.flatchain.reshape(-1,ndim).T$/;"	kind:variable	line:109
+samplesTrans	VoigtFit.py	/^        samplesTrans = sampler.flatchain.reshape(-1,ndim).T$/;"	kind:variable	line:109
+samplesTrans	Voigt_rvs.py	/^    samplesTrans = sampler.flatchain.reshape(-1,ndim).T$/;"	kind:variable	line:134
+savitzky_golay	tools.py	/^def savitzky_golay(y, window_size, order, deriv=0, rate=1):$/;"	kind:function	line:645
+scipy	AIC_csv.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+scipy	BICModel.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+scipy	BIC_csv.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+scipy	CompareFit.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+scipy	ModelFit.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+scipy	ModelFitScipy.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+scipy	ModelPhase.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+scipy	OrbitalFit.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+scipy	OrbitalFitLorentzian.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+scipy	OrbitalFitScipy.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+scipy	OrbitalFitVoigt.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+scipy	ParamVsNum.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+scipy	PhaseDiagram.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+scipy	RVnum.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+scipy	RVnum.py	/^import scipy.stats as stats$/;"	kind:namespace	line:7
+scipy	RVtime.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+scipy	RVtime.py	/^import scipy.stats as stats$/;"	kind:namespace	line:8
+scipy	SDSSFit.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:6
+scipy	SDSSFitTest.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:6
+scipy	Vfit.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+scipy	VfitMC.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+scipy	VfitMC_resid.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+scipy	Vfit_rvs.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+scipy	Vfit_rvs_tmp.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+scipy	Vfit_scipy.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+scipy	Vfit_tmp.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+scipy	Voffset.py	/^import scipy.interpolate as sp$/;"	kind:namespace	line:4
+scipy	VoigtFit.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+scipy	Voigt_rvs.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+scipy	tools.py	/^    import scipy.interpolate as sp$/;"	kind:namespace	line:206
+scipy	tools.py	/^    import scipy.interpolate as sp$/;"	kind:namespace	line:347
+scipy	tools.py	/^    import scipy.interpolate as sp$/;"	kind:namespace	line:673
+scipy	tools.py	/^    import scipy.interpolate as sp$/;"	kind:namespace	line:79
+scipy	tools.py	/^    import scipy.interpolate as sp$/;"	kind:namespace	line:806
+scipy	tools.py	/^    import scipy.interpolate as sp$/;"	kind:namespace	line:967
+sdssData	SDSSFit.py	/^sdssData = fits.getdata(sdssFile)$/;"	kind:variable	line:216
+sdssData	SDSSFitTest.py	/^sdssData = fits.getdata(sdssFile)$/;"	kind:variable	line:216
+sdssErrsCopy	SDSSFit.py	/^sdssErrsCopy = sdssErrs$/;"	kind:variable	line:252
+sdssErrsCopy	SDSSFitTest.py	/^sdssErrsCopy = sdssErrs$/;"	kind:variable	line:252
+sdssFile	SDSSFit.py	/^sdssFile = "tmpSpecFits.fits"$/;"	kind:variable	line:209
+sdssFile	SDSSFitTest.py	/^sdssFile = "tmpSpecFits.fits"$/;"	kind:variable	line:209
+sdssSampler	SDSSFit.py	/^    sdssSampler = tls.MCMCfit(lnprobSum,args=(np.array(sdssVels),np.array(sdssFluxes),np.array(sdssErrs)),nwalkers=nwalkers,ndim=ndim,burnInSteps=16000,steps=16000)$/;"	kind:variable	line:402
+sdssSampler	SDSSFitTest.py	/^    sdssSampler = tls.MCMCfit(lnprobSum,args=(np.array(sdssVels),np.array(sdssFluxes),np.array(sdssErrs)),nwalkers=nwalkers,ndim=ndim,burnInSteps=16000,steps=16000)$/;"	kind:variable	line:391
+sdssSampler1	SDSSFitTest.py	/^    sdssSampler1 = tls.MCMCfit(lnprob1,args=(np.array(sdssVels[0]),np.array(sdssFluxes[0]),np.array(sdssErrs[0])),nwalkers=nwalkers,ndim=ndim,burnInSteps=8000,steps=8000)$/;"	kind:variable	line:394
+sdssSampler2	SDSSFitTest.py	/^    sdssSampler2 = tls.MCMCfit(lnprob2,args=(np.array(sdssVels[1]),np.array(sdssFluxes[1]),np.array(sdssErrs[1])),nwalkers=nwalkers,ndim=ndim,burnInSteps=8000,steps=8000)$/;"	kind:variable	line:395
+sdssSampler3	SDSSFitTest.py	/^    sdssSampler3 = tls.MCMCfit(lnprob3,args=(np.array(sdssVels[2]),np.array(sdssFluxes[2]),np.array(sdssErrs[2])),nwalkers=nwalkers,ndim=ndim,burnInSteps=8000,steps=8000)$/;"	kind:variable	line:396
+sdssSamplerCopy	SDSSFit.py	/^    sdssSamplerCopy = tls.MCMCfit(lnprobSum,args=(np.array(sdssVels),np.array(sdssFluxes),np.array(sdssErrsCopy)),nwalkers=nwalkers,ndim=ndim,burnInSteps=16000,steps=16000)$/;"	kind:variable	line:403
+sdssSamples	SDSSFit.py	/^    sdssSamples = sdssSampler.flatchain.reshape((-1,ndim)).T$/;"	kind:variable	line:408
+sdssSamplesChain	SDSSFit.py	/^    sdssSamplesChain = sdssSampler.chain[:,:,:].reshape((-1,ndim))$/;"	kind:variable	line:405
+sdssSamplesChain	SDSSFitTest.py	/^    sdssSamplesChain = sdssSampler.chain[:,:,:].reshape((-1,ndim))$/;"	kind:variable	line:402
+sdssSamplesChain1	SDSSFitTest.py	/^    sdssSamplesChain1 = sdssSampler1.chain[:,:,:].reshape((-1,ndim))$/;"	kind:variable	line:403
+sdssSamplesChain2	SDSSFitTest.py	/^    sdssSamplesChain2 = sdssSampler2.chain[:,:,:].reshape((-1,ndim))$/;"	kind:variable	line:404
+sdssSamplesChain3	SDSSFitTest.py	/^    sdssSamplesChain3 = sdssSampler3.chain[:,:,:].reshape((-1,ndim))$/;"	kind:variable	line:405
+sdssSamplesChainCopy	SDSSFit.py	/^    sdssSamplesChainCopy = sdssSamplerCopy.chain[:,:,:].reshape((-1,ndim))$/;"	kind:variable	line:406
+sdssSamplesCopy	SDSSFit.py	/^    sdssSamplesCopy = sdssSamplerCopy.flatchain.reshape((-1,ndim)).T$/;"	kind:variable	line:409
+sdssVelFig	SDSSFit.py	/^    sdssVelFig = corner.corner(sdssSamplesChain,label=["RV"])$/;"	kind:variable	line:462
+sdssVelFig	SDSSFitTest.py	/^    sdssVelFig = corner.corner(sdssSamplesChain,label=["RV"])$/;"	kind:variable	line:458
+sdssVelFig1	SDSSFitTest.py	/^    sdssVelFig1 = corner.corner(sdssSamplesChain1,label=["RV"])$/;"	kind:variable	line:460
+sdssVelFig2	SDSSFitTest.py	/^    sdssVelFig2 = corner.corner(sdssSamplesChain2,label=["RV"])$/;"	kind:variable	line:462
+sdssVelFig3	SDSSFitTest.py	/^    sdssVelFig3 = corner.corner(sdssSamplesChain3,label=["RV"])$/;"	kind:variable	line:464
+setFig	paperplots.py	/^def setFig():$/;"	kind:function	line:74
+sine	AIC_csv.py	/^def sine(t,A,P,Phi,Gamma):$/;"	kind:function	line:34
+sine	BICModel.py	/^def sine(t,A,P,Phi,Gamma):$/;"	kind:function	line:34
+sine	BIC_csv.py	/^def sine(t,A,P,Phi,Gamma):$/;"	kind:function	line:35
+sine	ModelFit.py	/^def sine(t,A,P,Phi,Gamma):$/;"	kind:function	line:15
+sine	ModelFitScipy.py	/^def sine(t,A,P,Phi,Gamma):$/;"	kind:function	line:15
+sine	ModelPhase.py	/^def sine(t,A,P,Phi,Gamma):$/;"	kind:function	line:15
+sine	OrbitalFit.py	/^def sine(t,A,P,Phi,Gamma):$/;"	kind:function	line:15
+sine	OrbitalFitLorentzian.py	/^def sine(t,A,P,Phi,Gamma):$/;"	kind:function	line:15
+sine	OrbitalFitScipy.py	/^def sine(t,A,P,Phi,Gamma):$/;"	kind:function	line:15
+sine	OrbitalFitVoigt.py	/^def sine(t,A,P,Phi,Gamma):$/;"	kind:function	line:15
+sine	ParamVsNum.py	/^def sine(t,A,P,Phi,Gamma):$/;"	kind:function	line:15
+sine	PhaseDiagram.py	/^def sine(t,A,P,Phi,Gamma):$/;"	kind:function	line:15
+sine	SDSSFit.py	/^def sine(t,A,P,Phi,Gamma):$/;"	kind:function	line:19
+sine	SDSSFitTest.py	/^def sine(t,A,P,Phi,Gamma):$/;"	kind:function	line:19
+sine	paperplots.py	/^def sine(t,A,P,Phi,Gamma):$/;"	kind:function	line:35
+sineBIC	AIC_csv.py	/^sineBIC = -2*lnlikeSine(sineParams,timeArr,rvArr,stdArr)+4*np.log(len(timeArr))$/;"	kind:variable	line:439
+sineBIC	BICModel.py	/^sineBIC = -2*lnlikeSine(sineParams,timeArr,rvArr,stdArr)+4*np.log(len(timeArr))$/;"	kind:variable	line:439
+sineBIC	BIC_csv.py	/^sineBIC = -2*lnlikeSine(sineParams,timeArr,rvArr,stdArr)+4*np.log(len(timeArr))$/;"	kind:variable	line:384
+sineParams	AIC_csv.py	/^sineParams = (params[0],params[1],params[2],params[3])$/;"	kind:variable	line:438
+sineParams	BICModel.py	/^sineParams = (params[0],params[1],params[2],params[3])$/;"	kind:variable	line:438
+sineParams	BIC_csv.py	/^sineParams = (Afit,Pfit,Phfit,Gfit)$/;"	kind:variable	line:383
+sp	AIC_csv.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+sp	BICModel.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+sp	BIC_csv.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+sp	CompareFit.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+sp	ModelFit.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+sp	ModelFitScipy.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+sp	ModelPhase.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+sp	OrbitalFit.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+sp	OrbitalFitLorentzian.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+sp	OrbitalFitScipy.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+sp	OrbitalFitVoigt.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+sp	ParamVsNum.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+sp	PhaseDiagram.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+sp	RVnum.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+sp	RVtime.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+sp	SDSSFit.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:6
+sp	SDSSFitTest.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:6
+sp	Vfit.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+sp	VfitMC.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+sp	VfitMC_resid.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+sp	Vfit_rvs.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+sp	Vfit_rvs_tmp.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+sp	Vfit_scipy.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+sp	Vfit_tmp.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+sp	Voffset.py	/^import scipy.interpolate as sp$/;"	kind:namespace	line:4
+sp	VoigtFit.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+sp	Voigt_rvs.py	/^import scipy.optimize as sp$/;"	kind:namespace	line:4
+sp	tools.py	/^    import scipy.interpolate as sp$/;"	kind:namespace	line:206
+sp	tools.py	/^    import scipy.interpolate as sp$/;"	kind:namespace	line:347
+sp	tools.py	/^    import scipy.interpolate as sp$/;"	kind:namespace	line:673
+sp	tools.py	/^    import scipy.interpolate as sp$/;"	kind:namespace	line:79
+sp	tools.py	/^    import scipy.interpolate as sp$/;"	kind:namespace	line:806
+sp	tools.py	/^    import scipy.interpolate as sp$/;"	kind:namespace	line:967
+splev	interactive_norm.py	/^from scipy.interpolate import splrep,splev$/;"	kind:namespace	line:3
+splitAxis	paperplots.py	/^def splitAxis(num):$/;"	kind:function	line:68
+splrep	interactive_norm.py	/^from scipy.interpolate import splrep,splev$/;"	kind:namespace	line:3
+stats	RVnum.py	/^import scipy.stats as stats$/;"	kind:namespace	line:7
+stats	RVtime.py	/^import scipy.stats as stats$/;"	kind:namespace	line:8
+stdArr	AIC_csv.py	/^stdArr = rvdata[:,2]$/;"	kind:variable	line:326
+stdArr	BICModel.py	/^stdArr = []$/;"	kind:variable	line:241
+stdArr	BICModel.py	/^stdArr = np.array(stdArr)$/;"	kind:variable	line:324
+stdArr	BIC_csv.py	/^stdArr = rvdata[:,2]$/;"	kind:variable	line:260
+stdArr	BIC_csv.py	/^stdArr = stdArr[wherrSN]$/;"	kind:variable	line:269
+stdArr	ModelFit.py	/^stdArr = []$/;"	kind:variable	line:222
+stdArr	ModelFit.py	/^stdArr = np.array(stdArr)$/;"	kind:variable	line:305
+stdArr	ModelFitScipy.py	/^stdArr = []$/;"	kind:variable	line:236
+stdArr	ModelFitScipy.py	/^stdArr = np.array(stdArr)$/;"	kind:variable	line:289
+stdArr	ModelPhase.py	/^stdArr = []$/;"	kind:variable	line:222
+stdArr	ModelPhase.py	/^stdArr = np.array(stdArr)$/;"	kind:variable	line:305
+stdArr	OrbitalFit.py	/^stdArr = []$/;"	kind:variable	line:75
+stdArr	OrbitalFit.py	/^stdArr = np.array(stdArr)$/;"	kind:variable	line:114
+stdArr	OrbitalFitLorentzian.py	/^stdArr = []$/;"	kind:variable	line:75
+stdArr	OrbitalFitLorentzian.py	/^stdArr = np.array(stdArr)$/;"	kind:variable	line:114
+stdArr	OrbitalFitScipy.py	/^stdArr = []$/;"	kind:variable	line:78
+stdArr	OrbitalFitScipy.py	/^stdArr = np.array(stdArr)$/;"	kind:variable	line:124
+stdArr	OrbitalFitVoigt.py	/^stdArr = []$/;"	kind:variable	line:113
+stdArr	OrbitalFitVoigt.py	/^stdArr = np.array(stdArr)$/;"	kind:variable	line:194
+stdArr	ParamVsNum.py	/^stdArr = []$/;"	kind:variable	line:78
+stdArr	ParamVsNum.py	/^stdArr = np.array(stdArr)$/;"	kind:variable	line:156
+stdArr	PhaseDiagram.py	/^stdArr = []$/;"	kind:variable	line:79
+stdArr	PhaseDiagram.py	/^stdArr = np.array(stdArr)$/;"	kind:variable	line:125
+stdArr	SDSSFit.py	/^stdArr = []$/;"	kind:variable	line:341
+stdArr	SDSSFit.py	/^stdArr = np.array(stdArr)$/;"	kind:variable	line:517
+stdArr	SDSSFitTest.py	/^stdArr = []$/;"	kind:variable	line:341
+stdArr	SDSSFitTest.py	/^stdArr = np.array(stdArr)$/;"	kind:variable	line:520
+sys	AIC_csv.py	/^import sys$/;"	kind:namespace	line:9
+sys	BICModel.py	/^import sys$/;"	kind:namespace	line:9
+sys	BIC_csv.py	/^import sys$/;"	kind:namespace	line:9
+sys	CompareFit.py	/^import sys$/;"	kind:namespace	line:8
+sys	ModelFit.py	/^import sys$/;"	kind:namespace	line:9
+sys	ModelFitScipy.py	/^import sys$/;"	kind:namespace	line:9
+sys	ModelPhase.py	/^import sys$/;"	kind:namespace	line:9
+sys	OrbitalFit.py	/^import sys$/;"	kind:namespace	line:9
+sys	OrbitalFitLorentzian.py	/^import sys$/;"	kind:namespace	line:9
+sys	OrbitalFitScipy.py	/^import sys$/;"	kind:namespace	line:9
+sys	OrbitalFitVoigt.py	/^import sys$/;"	kind:namespace	line:9
+sys	ParamVsNum.py	/^import sys$/;"	kind:namespace	line:9
+sys	PhaseDiagram.py	/^import sys$/;"	kind:namespace	line:9
+sys	RVnum.py	/^import sys$/;"	kind:namespace	line:9
+sys	RVtime.py	/^import sys$/;"	kind:namespace	line:12
+sys	SDSSFit.py	/^import sys$/;"	kind:namespace	line:11
+sys	SDSSFitTest.py	/^import sys$/;"	kind:namespace	line:11
+sys	Vfit.py	/^import sys$/;"	kind:namespace	line:8
+sys	VfitMC.py	/^import sys$/;"	kind:namespace	line:8
+sys	VfitMC_resid.py	/^import sys$/;"	kind:namespace	line:8
+sys	Vfit_rvs.py	/^import sys$/;"	kind:namespace	line:8
+sys	Vfit_rvs_tmp.py	/^import sys$/;"	kind:namespace	line:8
+sys	Vfit_scipy.py	/^import sys$/;"	kind:namespace	line:8
+sys	Vfit_tmp.py	/^import sys$/;"	kind:namespace	line:8
+sys	Voffset.py	/^import sys$/;"	kind:namespace	line:8
+sys	VoigtFit.py	/^import sys$/;"	kind:namespace	line:8
+sys	Voigt_rvs.py	/^import sys$/;"	kind:namespace	line:8
+sys	interactive_norm.py	/^import sys$/;"	kind:namespace	line:4
+t	BICModel.py	/^    t = Time(dateTimeTaken, format='isot',scale='utc')$/;"	kind:variable	line:262
+t	ModelFit.py	/^    t = Time(dateTimeTaken, format='isot',scale='utc')$/;"	kind:variable	line:243
+t	ModelFitScipy.py	/^    t = Time(dateTimeTaken, format='isot',scale='utc')$/;"	kind:variable	line:256
+t	ModelPhase.py	/^    t = Time(dateTimeTaken, format='isot',scale='utc')$/;"	kind:variable	line:243
+t	OrbitalFit.py	/^    t = Time(dateTimeTaken, format='isot',scale='utc')$/;"	kind:variable	line:92
+t	OrbitalFitLorentzian.py	/^    t = Time(dateTimeTaken, format='isot',scale='utc')$/;"	kind:variable	line:92
+t	OrbitalFitScipy.py	/^    t = Time(dateTimeTaken, format='isot',scale='utc')$/;"	kind:variable	line:95
+t	OrbitalFitVoigt.py	/^    t = Time(dateTimeTaken, format='isot',scale='utc')$/;"	kind:variable	line:133
+t	ParamVsNum.py	/^    t = Time(dateTimeTaken, format='isot',scale='utc')$/;"	kind:variable	line:114
+t	PhaseDiagram.py	/^    t = Time(dateTimeTaken, format='isot',scale='utc')$/;"	kind:variable	line:99
+t	SDSSFit.py	/^    t = Time(dateTimeTaken, format='isot',scale='utc')$/;"	kind:variable	line:361
+t	SDSSFitTest.py	/^    t = Time(dateTimeTaken, format='isot',scale='utc')$/;"	kind:variable	line:361
+testNorm.py	testNorm.py	1;"	kind:file	line:1
+time	RVtime.py	/^import time$/;"	kind:namespace	line:10
+timeArr	AIC_csv.py	/^timeArr = rvdata[:,0]$/;"	kind:variable	line:324
+timeArr	BICModel.py	/^timeArr = []$/;"	kind:variable	line:242
+timeArr	BICModel.py	/^timeArr = np.array(timeArr)$/;"	kind:variable	line:321
+timeArr	BIC_csv.py	/^timeArr = rvdata[:,0]$/;"	kind:variable	line:258
+timeArr	BIC_csv.py	/^timeArr = timeArr[wherrSN]$/;"	kind:variable	line:267
+timeArr	ModelFit.py	/^timeArr = []$/;"	kind:variable	line:223
+timeArr	ModelFit.py	/^timeArr = np.array(timeArr)$/;"	kind:variable	line:302
+timeArr	ModelFitScipy.py	/^timeArr = []$/;"	kind:variable	line:237
+timeArr	ModelFitScipy.py	/^timeArr = np.array(timeArr)$/;"	kind:variable	line:286
+timeArr	ModelPhase.py	/^timeArr = []$/;"	kind:variable	line:223
+timeArr	ModelPhase.py	/^timeArr = np.array(timeArr)$/;"	kind:variable	line:302
+timeArr	OrbitalFit.py	/^timeArr = []$/;"	kind:variable	line:76
+timeArr	OrbitalFit.py	/^timeArr = np.array(timeArr)$/;"	kind:variable	line:111
+timeArr	OrbitalFitLorentzian.py	/^timeArr = []$/;"	kind:variable	line:76
+timeArr	OrbitalFitLorentzian.py	/^timeArr = np.array(timeArr)$/;"	kind:variable	line:111
+timeArr	OrbitalFitScipy.py	/^timeArr = []$/;"	kind:variable	line:79
+timeArr	OrbitalFitScipy.py	/^timeArr = np.array(timeArr)$/;"	kind:variable	line:121
+timeArr	OrbitalFitVoigt.py	/^timeArr = []$/;"	kind:variable	line:114
+timeArr	OrbitalFitVoigt.py	/^timeArr = np.array(timeArr)$/;"	kind:variable	line:191
+timeArr	ParamVsNum.py	/^timeArr = []$/;"	kind:variable	line:79
+timeArr	ParamVsNum.py	/^timeArr = np.array(timeArr)$/;"	kind:variable	line:153
+timeArr	PhaseDiagram.py	/^timeArr = []$/;"	kind:variable	line:80
+timeArr	PhaseDiagram.py	/^timeArr = np.array(timeArr)$/;"	kind:variable	line:122
+timeArr	SDSSFit.py	/^timeArr = []$/;"	kind:variable	line:342
+timeArr	SDSSFit.py	/^timeArr = np.array(timeArr)$/;"	kind:variable	line:514
+timeArr	SDSSFitTest.py	/^timeArr = []$/;"	kind:variable	line:342
+timeArr	SDSSFitTest.py	/^timeArr = np.array(timeArr)$/;"	kind:variable	line:517
+timeBeta	RVtime.py	/^timeBeta = []$/;"	kind:variable	line:41
+timeDelta	RVtime.py	/^timeDelta = []$/;"	kind:variable	line:43
+timeGamma	RVtime.py	/^timeGamma = []$/;"	kind:variable	line:42
+timeJoined	RVtime.py	/^timeJoined = []$/;"	kind:variable	line:27
+timeTaken	CompareFit.py	/^    timeTaken = basename[15:]$/;"	kind:variable	line:64
+timeTaken	OrbitalFit.py	/^    timeTaken = basename[15:]$/;"	kind:variable	line:86
+timeTaken	OrbitalFit.py	/^    timeTaken = basename[18:23]$/;"	kind:variable	line:89
+timeTaken	OrbitalFitLorentzian.py	/^    timeTaken = basename[15:]$/;"	kind:variable	line:86
+timeTaken	OrbitalFitLorentzian.py	/^    timeTaken = basename[18:23]$/;"	kind:variable	line:89
+timeTaken	OrbitalFitScipy.py	/^    timeTaken = basename[15:]$/;"	kind:variable	line:89
+timeTaken	OrbitalFitScipy.py	/^    timeTaken = basename[18:23]$/;"	kind:variable	line:92
+timeTaken	Vfit.py	/^    timeTaken = basename[15:]$/;"	kind:variable	line:46
+timeTaken	VfitMC.py	/^    timeTaken = basename[15:]$/;"	kind:variable	line:46
+timeTaken	VfitMC_resid.py	/^    timeTaken = basename[15:]$/;"	kind:variable	line:46
+timeTaken	Vfit_rvs.py	/^    timeTaken = basename[15:]$/;"	kind:variable	line:58
+timeTaken	Vfit_rvs_tmp.py	/^    timeTaken = basename[15:]$/;"	kind:variable	line:57
+timeTaken	Vfit_tmp.py	/^    timeTaken = basename[15:]$/;"	kind:variable	line:46
+timeTaken	Voffset.py	/^    timeTaken = basename[15:]$/;"	kind:variable	line:23
+timeTaken	VoigtFit.py	/^    timeTaken = basename[15:]$/;"	kind:variable	line:46
+timeTaken	Voigt_rvs.py	/^    timeTaken = basename[15:]$/;"	kind:variable	line:58
+tls	AIC_csv.py	/^import tools as tls$/;"	kind:namespace	line:1
+tls	BICModel.py	/^import tools as tls$/;"	kind:namespace	line:1
+tls	BIC_csv.py	/^import tools as tls$/;"	kind:namespace	line:1
+tls	CompareFit.py	/^import tools as tls$/;"	kind:namespace	line:1
+tls	ModelFit.py	/^import tools as tls$/;"	kind:namespace	line:1
+tls	ModelFitScipy.py	/^import tools as tls$/;"	kind:namespace	line:1
+tls	ModelPhase.py	/^import tools as tls$/;"	kind:namespace	line:1
+tls	OrbitalFit.py	/^import tools as tls$/;"	kind:namespace	line:1
+tls	OrbitalFitLorentzian.py	/^import tools as tls$/;"	kind:namespace	line:1
+tls	OrbitalFitScipy.py	/^import tools as tls$/;"	kind:namespace	line:1
+tls	OrbitalFitVoigt.py	/^import tools as tls$/;"	kind:namespace	line:1
+tls	ParamVsNum.py	/^import tools as tls$/;"	kind:namespace	line:1
+tls	PhaseDiagram.py	/^import tools as tls$/;"	kind:namespace	line:1
+tls	RVnum.py	/^import tools as tls$/;"	kind:namespace	line:1
+tls	RVtime.py	/^import tools as tls$/;"	kind:namespace	line:1
+tls	SDSSFit.py	/^import tools as tls$/;"	kind:namespace	line:3
+tls	SDSSFitTest.py	/^import tools as tls$/;"	kind:namespace	line:3
+tls	Vfit.py	/^import tools as tls$/;"	kind:namespace	line:1
+tls	VfitMC.py	/^import tools as tls$/;"	kind:namespace	line:1
+tls	VfitMC_resid.py	/^import tools as tls$/;"	kind:namespace	line:1
+tls	Vfit_rvs.py	/^import tools as tls$/;"	kind:namespace	line:1
+tls	Vfit_rvs_tmp.py	/^import tools as tls$/;"	kind:namespace	line:1
+tls	Vfit_scipy.py	/^import tools as tls$/;"	kind:namespace	line:1
+tls	Vfit_tmp.py	/^import tools as tls$/;"	kind:namespace	line:1
+tls	Voffset.py	/^import tools as tls$/;"	kind:namespace	line:1
+tls	VoigtFit.py	/^import tools as tls$/;"	kind:namespace	line:1
+tls	Voigt_rvs.py	/^import tools as tls$/;"	kind:namespace	line:1
+tls	paperplots.py	/^    import tools as tls$/;"	kind:namespace	line:189
+tls	paperplots.py	/^    import tools as tls$/;"	kind:namespace	line:283
+tls	paperplots.py	/^    import tools as tls$/;"	kind:namespace	line:305
+tls	paperplots.py	/^    import tools as tls$/;"	kind:namespace	line:344
+tls	paperplots.py	/^    import tools as tls$/;"	kind:namespace	line:387
+tls	paperplots.py	/^    import tools as tls$/;"	kind:namespace	line:5
+tls	paperplots.py	/^    import tools as tls$/;"	kind:namespace	line:95
+tls	testNorm.py	/^import tools as tls$/;"	kind:namespace	line:1
+tools.py	tools.py	1;"	kind:file	line:1
+upperLine	CompareFit.py	/^        upperLine = lineList[lineIndex] + offset$/;"	kind:variable	line:86
+upperLine	Vfit.py	/^        upperLine = lineList[lineIndex] + offset$/;"	kind:variable	line:68
+upperLine	VfitMC.py	/^        upperLine = lineList[lineIndex] + offset$/;"	kind:variable	line:68
+upperLine	VfitMC_resid.py	/^    upperLine = lineList[lineIndex] + offset$/;"	kind:variable	line:68
+upperLine	Vfit_rvs.py	/^        upperLine = lineList[lineIndex] + offset$/;"	kind:variable	line:80
+upperLine	Vfit_rvs_tmp.py	/^        upperLine = lineList[lineIndex] + offset$/;"	kind:variable	line:79
+upperLine	Vfit_tmp.py	/^        upperLine = lineList[lineIndex] + offset$/;"	kind:variable	line:68
+upperLine	Voffset.py	/^        upperLine = lineList[lineIndex] + offset$/;"	kind:variable	line:45
+upperLine	VoigtFit.py	/^        upperLine = lineList[lineIndex] + offset$/;"	kind:variable	line:70
+upperLine	Voigt_rvs.py	/^        upperLine = lineList[lineIndex] + offset$/;"	kind:variable	line:80
+v	CompareFit.py	/^            v = c*(lineList[lineIndex] - wl[w])\/lineList[lineIndex]$/;"	kind:variable	line:103
+v	Vfit.py	/^            v = c*(lineList[lineIndex] - wl[w])\/lineList[lineIndex]$/;"	kind:variable	line:85
+v	VfitMC.py	/^            v = c*(lineList[lineIndex] - wl[w])\/lineList[lineIndex]$/;"	kind:variable	line:85
+v	VfitMC_resid.py	/^        v = c*(lineList[lineIndex] - wl[w])\/lineList[lineIndex]$/;"	kind:variable	line:85
+v	Vfit_rvs.py	/^            v = c*(lineList[lineIndex] - wl[w])\/lineList[lineIndex]$/;"	kind:variable	line:97
+v	Vfit_rvs_tmp.py	/^            v = c*(lineList[lineIndex] - wl[w])\/lineList[lineIndex]$/;"	kind:variable	line:96
+v	Vfit_tmp.py	/^            v = c*(lineList[lineIndex] - wl[w])\/lineList[lineIndex]$/;"	kind:variable	line:85
+v	Voffset.py	/^            v = c*(lineList[lineIndex] - wl[w])\/lineList[lineIndex]$/;"	kind:variable	line:62
+v	VoigtFit.py	/^            v = c*(lineList[lineIndex] - wl[w])\/lineList[lineIndex]$/;"	kind:variable	line:87
+v	Voigt_rvs.py	/^            v = c*(lineList[lineIndex] - wl[w])\/lineList[lineIndex]$/;"	kind:variable	line:97
+vel	CompareFit.py	/^        vel = []$/;"	kind:variable	line:101
+vel	Vfit.py	/^        vel = []$/;"	kind:variable	line:83
+vel	VfitMC.py	/^        vel = []$/;"	kind:variable	line:83
+vel	VfitMC_resid.py	/^    vel = []$/;"	kind:variable	line:83
+vel	Vfit_rvs.py	/^        vel = []$/;"	kind:variable	line:95
+vel	Vfit_rvs_tmp.py	/^        vel = []$/;"	kind:variable	line:94
+vel	Vfit_tmp.py	/^        vel = []$/;"	kind:variable	line:83
+vel	Voffset.py	/^        vel = []$/;"	kind:variable	line:60
+vel	VoigtFit.py	/^        vel = []$/;"	kind:variable	line:85
+vel	Voigt_rvs.py	/^        vel = []$/;"	kind:variable	line:95
+velBeta	CompareFit.py	/^            velBeta = vel$/;"	kind:variable	line:106
+velBeta	Vfit_rvs.py	/^            velBeta = vel$/;"	kind:variable	line:100
+velBeta	Vfit_rvs_tmp.py	/^            velBeta = vel$/;"	kind:variable	line:99
+velBeta	Voigt_rvs.py	/^            velBeta = vel$/;"	kind:variable	line:100
+velDelta	CompareFit.py	/^            velDelta = vel$/;"	kind:variable	line:123
+velDelta	Vfit_rvs.py	/^            velDelta = vel$/;"	kind:variable	line:108
+velDelta	Vfit_rvs_tmp.py	/^            velDelta = vel$/;"	kind:variable	line:107
+velDelta	Voigt_rvs.py	/^            velDelta = vel$/;"	kind:variable	line:108
+velGamma	CompareFit.py	/^            velGamma = vel$/;"	kind:variable	line:119
+velGamma	Vfit_rvs.py	/^            velGamma = vel$/;"	kind:variable	line:104
+velGamma	Vfit_rvs_tmp.py	/^            velGamma = vel$/;"	kind:variable	line:103
+velGamma	Voigt_rvs.py	/^            velGamma = vel$/;"	kind:variable	line:104
+vels	CompareFit.py	/^    vels = [velBeta,velGamma,velDelta]$/;"	kind:variable	line:131
+vels	Vfit_rvs.py	/^    vels = [velBeta,velGamma,velDelta]$/;"	kind:variable	line:116
+vels	Vfit_rvs_tmp.py	/^    vels = [velBeta,velGamma,velDelta]$/;"	kind:variable	line:115
+vels	Voigt_rvs.py	/^    vels = [velBeta,velGamma,velDelta]$/;"	kind:variable	line:115
+voigt	AIC_csv.py	/^    def voigt(x, Ldepth, Lwidth, Gdepth, Gwidth, RVShift):$/;"	kind:function	line:132
+voigt	BICModel.py	/^    def voigt(x, Ldepth, Lwidth, Gdepth, Gwidth, RVShift):$/;"	kind:function	line:132
+voigt	BIC_csv.py	/^    def voigt(x, Ldepth, Lwidth, Gdepth, Gwidth, RVShift):$/;"	kind:function	line:133
+voigt	ModelFit.py	/^    def voigt(x, Ldepth, Lwidth, Gdepth, Gwidth, RVShift):$/;"	kind:function	line:113
+voigt	ModelFitScipy.py	/^    def voigt(x, Ldepth, Lwidth, Gdepth, Gwidth, RVShift):$/;"	kind:function	line:113
+voigt	ModelPhase.py	/^    def voigt(x, Ldepth, Lwidth, Gdepth, Gwidth, RVShift):$/;"	kind:function	line:113
+voigt	OrbitalFitScipy.py	/^def voigt(x, Ldepth, Lwidth, Gdepth, Gwidth, RVShift):$/;"	kind:function	line:36
+voigt	OrbitalFitVoigt.py	/^def voigt(x, Ldepth, Lwidth, Gdepth, Gwidth, RVShift):$/;"	kind:function	line:37
+voigt	ParamVsNum.py	/^def voigt(x, Ldepth, Lwidth, Gdepth, Gwidth, RVShift):$/;"	kind:function	line:37
+voigt	PhaseDiagram.py	/^def voigt(x, Ldepth, Lwidth, Gdepth, Gwidth, RVShift):$/;"	kind:function	line:37
+voigt	SDSSFit.py	/^    def voigt(x, Ldepth, Lwidth, Gdepth, Gwidth, RVShift):$/;"	kind:function	line:117
+voigt	SDSSFitTest.py	/^    def voigt(x, Ldepth, Lwidth, Gdepth, Gwidth, RVShift):$/;"	kind:function	line:117
+voigt	VoigtFit.py	/^def voigt(x, Ldepth, Lwidth, Gdepth, Gwidth, RVShift):$/;"	kind:function	line:12
+voigt	Voigt_rvs.py	/^def voigt(x, Ldepth, Lwidth, Gdepth, Gwidth, RVShift):$/;"	kind:function	line:12
+voigt	paperplots.py	/^def voigt(x, Ldepth, Lwidth, Gdepth, Gwidth, RVShift):$/;"	kind:function	line:63
+voigt1	ModelFitScipy.py	/^    def voigt1(x, RVShift):$/;"	kind:function	line:117
+voigt1	SDSSFit.py	/^    def voigt1(x, RVShift):$/;"	kind:function	line:119
+voigt1	SDSSFitTest.py	/^    def voigt1(x, RVShift):$/;"	kind:function	line:119
+voigt2	ModelFitScipy.py	/^    def voigt2(x, RVShift):$/;"	kind:function	line:120
+voigt2	SDSSFit.py	/^    def voigt2(x, RVShift):$/;"	kind:function	line:122
+voigt2	SDSSFitTest.py	/^    def voigt2(x, RVShift):$/;"	kind:function	line:122
+voigt3	ModelFitScipy.py	/^    def voigt3(x, RVShift):$/;"	kind:function	line:123
+voigt3	SDSSFit.py	/^    def voigt3(x, RVShift):$/;"	kind:function	line:125
+voigt3	SDSSFitTest.py	/^    def voigt3(x, RVShift):$/;"	kind:function	line:125
+voigtModel	AIC_csv.py	/^    def voigtModel(x, Ldepth, Lwidth, Gdepth, Gwidth):$/;"	kind:function	line:112
+voigtModel	BICModel.py	/^    def voigtModel(x, Ldepth, Lwidth, Gdepth, Gwidth):$/;"	kind:function	line:112
+voigtModel	BIC_csv.py	/^    def voigtModel(x, Ldepth, Lwidth, Gdepth, Gwidth):$/;"	kind:function	line:113
+voigtModel	ModelFit.py	/^    def voigtModel(x, Ldepth, Lwidth, Gdepth, Gwidth):$/;"	kind:function	line:93
+voigtModel	ModelFitScipy.py	/^    def voigtModel(x, Ldepth, Lwidth, Gdepth, Gwidth):$/;"	kind:function	line:93
+voigtModel	ModelPhase.py	/^    def voigtModel(x, Ldepth, Lwidth, Gdepth, Gwidth):$/;"	kind:function	line:93
+voigtModel	SDSSFit.py	/^    def voigtModel(x, Ldepth, Lwidth, Gdepth, Gwidth):$/;"	kind:function	line:97
+voigtModel	SDSSFitTest.py	/^    def voigtModel(x, Ldepth, Lwidth, Gdepth, Gwidth):$/;"	kind:function	line:97
+voigtModel	paperplots.py	/^def voigtModel(x, Ldepth, Lwidth, Gdepth, Gwidth):$/;"	kind:function	line:40
+voigtSum	ModelFitScipy.py	/^    def voigtSum(x, RVShift):$/;"	kind:function	line:158
+w1Fit	CompareFit.py	/^    w1Fit = w1FitArr.mean()$/;"	kind:variable	line:157
+w1Fit	Vfit_rvs.py	/^    w1Fit = w1FitArr.mean()$/;"	kind:variable	line:142
+w1Fit	Vfit_rvs_tmp.py	/^    w1Fit = w1FitArr.mean()$/;"	kind:variable	line:147
+w1FitArr	CompareFit.py	/^    w1FitArr = samples[1]$/;"	kind:variable	line:149
+w1FitArr	Vfit_rvs.py	/^    w1FitArr = samples[1]$/;"	kind:variable	line:134
+w1FitArr	Vfit_rvs_tmp.py	/^    w1FitArr = samplesTrans[1]$/;"	kind:variable	line:139
+w2Fit	CompareFit.py	/^    w2Fit = w2FitArr.mean()$/;"	kind:variable	line:159
+w2Fit	Vfit_rvs.py	/^    w2Fit = w2FitArr.mean()$/;"	kind:variable	line:144
+w2Fit	Vfit_rvs_tmp.py	/^    w2Fit = w2FitArr.mean()$/;"	kind:variable	line:149
+w2FitArr	CompareFit.py	/^    w2FitArr = samples[3]$/;"	kind:variable	line:151
+w2FitArr	Vfit_rvs.py	/^    w2FitArr = samples[3]$/;"	kind:variable	line:136
+w2FitArr	Vfit_rvs_tmp.py	/^    w2FitArr = samplesTrans[3]$/;"	kind:variable	line:141
+w3Fit	CompareFit.py	/^    w3Fit = w3FitArr.mean()$/;"	kind:variable	line:161
+w3Fit	Vfit_rvs.py	/^    w3Fit = w3FitArr.mean()$/;"	kind:variable	line:146
+w3Fit	Vfit_rvs_tmp.py	/^    w3Fit = w3FitArr.mean()$/;"	kind:variable	line:151
+w3FitArr	CompareFit.py	/^    w3FitArr = samples[5]$/;"	kind:variable	line:153
+w3FitArr	Vfit_rvs.py	/^    w3FitArr = samples[5]$/;"	kind:variable	line:138
+w3FitArr	Vfit_rvs_tmp.py	/^    w3FitArr = samplesTrans[5]$/;"	kind:variable	line:143
+wdName	AIC_csv.py	/^    wdName = basename[0:6]$/;"	kind:variable	line:252
+wdName	BICModel.py	/^    wdName = basename[0:6]$/;"	kind:variable	line:252
+wdName	BIC_csv.py	/^    wdName = basename[0:6]$/;"	kind:variable	line:253
+wdName	CompareFit.py	/^    wdName = basename[0:6]$/;"	kind:variable	line:63
+wdName	ModelFit.py	/^    wdName = basename[0:6]$/;"	kind:variable	line:233
+wdName	ModelFitScipy.py	/^    wdName = basename[0:6]$/;"	kind:variable	line:246
+wdName	ModelPhase.py	/^    wdName = basename[0:6]$/;"	kind:variable	line:233
+wdName	OrbitalFit.py	/^    wdName = basename[0:6]$/;"	kind:variable	line:85
+wdName	OrbitalFitLorentzian.py	/^    wdName = basename[0:6]$/;"	kind:variable	line:85
+wdName	OrbitalFitScipy.py	/^    wdName = basename[0:6]$/;"	kind:variable	line:88
+wdName	OrbitalFitVoigt.py	/^    wdName = basename[0:6]$/;"	kind:variable	line:123
+wdName	ParamVsNum.py	/^    wdName = basename[0:6]$/;"	kind:variable	line:104
+wdName	PhaseDiagram.py	/^    wdName = basename[0:6]$/;"	kind:variable	line:89
+wdName	SDSSFit.py	/^    wdName = basename[0:6]$/;"	kind:variable	line:351
+wdName	SDSSFitTest.py	/^    wdName = basename[0:6]$/;"	kind:variable	line:351
+wdName	Vfit.py	/^    wdName = basename[0:6]$/;"	kind:variable	line:45
+wdName	VfitMC.py	/^    wdName = basename[0:6]$/;"	kind:variable	line:45
+wdName	VfitMC_resid.py	/^    wdName = basename[0:6]$/;"	kind:variable	line:45
+wdName	Vfit_rvs.py	/^    wdName = basename[0:6]$/;"	kind:variable	line:57
+wdName	Vfit_rvs_tmp.py	/^    wdName = basename[0:6]$/;"	kind:variable	line:56
+wdName	Vfit_tmp.py	/^    wdName = basename[0:6]$/;"	kind:variable	line:45
+wdName	Voffset.py	/^    wdName = basename[0:6]$/;"	kind:variable	line:22
+wdName	VoigtFit.py	/^    wdName = basename[0:6]$/;"	kind:variable	line:45
+wdName	Voigt_rvs.py	/^    wdName = basename[0:6]$/;"	kind:variable	line:57
+where	paperplots.py	/^    from numpy import array, where, median, abs$/;"	kind:namespace	line:282
+wherr	CompareFit.py	/^        wherr = np.where((Owl >= lowerLine) & (Owl <= upperLine))$/;"	kind:variable	line:94
+wherr	SDSSFit.py	/^    wherr = np.where((sdssVels[0] > -250.) & (sdssVels[0] < 0.))$/;"	kind:variable	line:369
+wherr	SDSSFitTest.py	/^    wherr = np.where((sdssVels[0] > -250.) & (sdssVels[0] < 0.))$/;"	kind:variable	line:369
+wherr	Vfit.py	/^        wherr = np.where((Owl >= lowerLine) & (Owl <= upperLine))$/;"	kind:variable	line:76
+wherr	VfitMC.py	/^        wherr = np.where((Owl >= lowerLine) & (Owl <= upperLine))$/;"	kind:variable	line:76
+wherr	VfitMC_resid.py	/^    wherr = np.where((Owl >= lowerLine) & (Owl <= upperLine))$/;"	kind:variable	line:76
+wherr	Vfit_rvs.py	/^        wherr = np.where((Owl >= lowerLine) & (Owl <= upperLine))$/;"	kind:variable	line:88
+wherr	Vfit_rvs_tmp.py	/^        wherr = np.where((Owl >= lowerLine) & (Owl <= upperLine))$/;"	kind:variable	line:87
+wherr	Vfit_tmp.py	/^        wherr = np.where((Owl >= lowerLine) & (Owl <= upperLine))$/;"	kind:variable	line:76
+wherr	Voffset.py	/^        wherr = np.where((Owl >= lowerLine) & (Owl <= upperLine))$/;"	kind:variable	line:53
+wherr	VoigtFit.py	/^        wherr = np.where((Owl >= lowerLine) & (Owl <= upperLine))$/;"	kind:variable	line:78
+wherr	Voigt_rvs.py	/^        wherr = np.where((Owl >= lowerLine) & (Owl <= upperLine))$/;"	kind:variable	line:88
+wherrHotPixelErr	SDSSFit.py	/^    wherrHotPixelErr = np.where(sdssFluxes[0] == wherrMaxFlux)$/;"	kind:variable	line:373
+wherrHotPixelErr	SDSSFitTest.py	/^    wherrHotPixelErr = np.where(sdssFluxes[0] == wherrMaxFlux)$/;"	kind:variable	line:373
+wherrMaxFlux	SDSSFit.py	/^    wherrMaxFlux = np.max(sdssFluxes[0][wherr])$/;"	kind:variable	line:372
+wherrMaxFlux	SDSSFitTest.py	/^    wherrMaxFlux = np.max(sdssFluxes[0][wherr])$/;"	kind:variable	line:372
+wherrSN	BIC_csv.py	/^wherrSN = np.where(SNArr >= SNCut)$/;"	kind:variable	line:265
+widthFit	Vfit.py	/^        widthFit = widthMean$/;"	kind:variable	line:123
+widthFit	VfitMC.py	/^        widthFit = widthMean$/;"	kind:variable	line:123
+widthFit	VfitMC_resid.py	/^    widthFit = widthMean$/;"	kind:variable	line:129
+widthFit	Vfit_tmp.py	/^        widthFit = widthMean$/;"	kind:variable	line:134
+widthFitArr	Vfit.py	/^        widthFitArr = samples[1]$/;"	kind:variable	line:111
+widthFitArr	VfitMC.py	/^        widthFitArr = samples[1]$/;"	kind:variable	line:111
+widthFitArr	VfitMC_resid.py	/^    widthFitArr = samples[1]$/;"	kind:variable	line:114
+widthFitArr	Vfit_tmp.py	/^        widthFitArr = samplesTrans[1]$/;"	kind:variable	line:122
+widthMean	Vfit.py	/^        widthMean = widthFitArr.mean()$/;"	kind:variable	line:115
+widthMean	VfitMC.py	/^        widthMean = widthFitArr.mean()$/;"	kind:variable	line:115
+widthMean	VfitMC_resid.py	/^    widthMean = widthFitArr.mean()$/;"	kind:variable	line:120
+widthMean	Vfit_tmp.py	/^        widthMean = widthFitArr.mean()$/;"	kind:variable	line:126
+widthStd	Vfit.py	/^        widthStd = widthFitArr.std()$/;"	kind:variable	line:119
+widthStd	VfitMC.py	/^        widthStd = widthFitArr.std()$/;"	kind:variable	line:119
+widthStd	VfitMC_resid.py	/^    widthStd = widthFitArr.std()$/;"	kind:variable	line:124
+widthStd	Vfit_tmp.py	/^        widthStd = widthFitArr.std()$/;"	kind:variable	line:130
+wl	CompareFit.py	/^        wl = np.linspace(lowerLine,upperLine,len(flux))$/;"	kind:variable	line:97
+wl	Vfit.py	/^        wl = np.linspace(lowerLine,upperLine,len(flux))$/;"	kind:variable	line:79
+wl	VfitMC.py	/^        wl = np.linspace(lowerLine,upperLine,len(flux))$/;"	kind:variable	line:79
+wl	VfitMC_resid.py	/^    wl = np.linspace(lowerLine,upperLine,len(flux))$/;"	kind:variable	line:79
+wl	Vfit_rvs.py	/^        wl = np.linspace(lowerLine,upperLine,len(flux))$/;"	kind:variable	line:91
+wl	Vfit_rvs_tmp.py	/^        wl = np.linspace(lowerLine,upperLine,len(flux))$/;"	kind:variable	line:90
+wl	Vfit_tmp.py	/^        wl = np.linspace(lowerLine,upperLine,len(flux))$/;"	kind:variable	line:79
+wl	Voffset.py	/^        wl = np.linspace(lowerLine,upperLine,len(flux))$/;"	kind:variable	line:55
+wl	VoigtFit.py	/^        wl = np.linspace(lowerLine,upperLine,len(flux))$/;"	kind:variable	line:81
+wl	Voigt_rvs.py	/^        wl = np.linspace(lowerLine,upperLine,len(flux))$/;"	kind:variable	line:91
+yvalues	ModelPhase.py	/^yvalues = sine(phiDiagArr,AFit,2*np.pi,0,GamFit)$/;"	kind:variable	line:409
+yvalues	PhaseDiagram.py	/^yvalues = sine(phiDiagArr,AFit,2*np.pi,0,GamFit)$/;"	kind:variable	line:177
