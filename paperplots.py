@@ -1,5 +1,45 @@
 ### STUFF FOR PAPER
 
+"""Get Teff and Logg with errors from the Kleinman Catalog"""
+def TeffLogg():
+    import numpy as np
+    from astropy.io import ascii
+    
+    Objects = {"wd1235" : "123549.89+154319.3", "wd1203" : "120315.22+650524.4",
+               "wd1140" : "114024.02+661842.3", "wd1121" : "112105.25+644336.2",
+               "wd0907" : "090751.78+071844.6", "wd0343" : "034319.09+101238.0"}
+
+    tableHead = { "SDSS":0, "Teff":28,"TeffErr":29,"logg":30,"loggErr":31 }
+    #kdata = np.genfromtxt("/home/seth/research/Paperwds/KleinmanCatalog.dat")
+
+    catalog = "/home/seth/research/Paperwds/KleinmanCatalog.dat"
+
+    for key in Objects:
+        with open(catalog) as f:
+            foundObj = False
+            for i, line in enumerate(f):
+                splitline = line.split()
+                if splitline[0] == Objects[key]:
+                    objData = splitline
+                    foundObj = True
+                    #print splitline
+                    break
+            if not foundObj:
+                print key
+                raise Exception("The object is not found in the catalog")
+            
+        #objData = kdata[np.where(kdata[0] == Objects[key])]
+
+        objTeff = float(objData[tableHead["Teff"]])
+        objTeffErr = float(objData[tableHead["TeffErr"]])
+        objLogg = float(objData[tableHead["logg"]])
+        objLoggErr = float(objData[tableHead["loggErr"]])
+
+        dataArr = np.array([objTeff,objTeffErr,objLogg,objLoggErr])
+        print key, dataArr
+        np.savetxt("/home/seth/research/Paperwds/"+key+"/BICFits/"+key+"_TeffLogg.csv",dataArr,delimiter=',')
+    
+    
 """Binary Mass function Calculation"""
 def BinMassFunc():
     import tools as tls
@@ -34,8 +74,10 @@ def getCoolingModelData(path):
     import numpy as np
 
     filelines = []
+    Hfilelines = []
+    Hefilelines = []
 
-    HHEMODEL = False
+    HHeFlag = False
     Cflag, COFlag, HFlag, HeFlag = False,False,False,False
     if "C_" in path:
         datastart = 5
@@ -44,35 +86,60 @@ def getCoolingModelData(path):
         datastart = 0
         COFlag = True
     elif "Table_" in path:
-        HHEMODEL = True
+        HHeFlag = True
         
-        
-    with open(path) as f:
-        for i, line in enumerate(f):
-            if i >= datastart and len(line.split()) > 1:
-                tmpLine = line.split()
-                filelines.append(tmpLine)
-
-    data = []
-    for i in range(len(filelines)):
-        try:
-            if filelines[i] == filelines[i+1]:
-                del filelines[i+1]
-        except:
-            tmp = 1
+    if HHeFlag:
+        HData = []
+        HeData = []
+        with open(path) as f:
+            for i, line in enumerate(f):
+                if "hydrogen" in line:
+                    HFlag = True
+                    HIndex = i
+                elif "helium" in line:
+                    HFlag = False
+                    HeFlag = True
+                    HeIndex = i
+                if HFlag and i >= HIndex + 2:
+                    tmpLine = line.split()
+                    Hfilelines.append(tmpLine)
+                elif HeFlag and i >= HeIndex + 2:
+                    tmpLine = line.split()
+                    Hefilelines.append(tmpLine)
+                    
+        HData = np.array(Hfilelines)
+        HeData = np.array(Hefilelines)
+        return (HData,HeData,Cflag,COFlag,HHeFlag)
             
-    for i in range(len(filelines)):
-        try:
-            if i % 3 == 0:
-                newLine = filelines[i] + filelines[i+1] + filelines[i+2]
-                data.append(newLine)
-        except IndexError:
-            print path
-            print filelines[i]
-            raise
+        
+                
+    else:
+        with open(path) as f:
+            for i, line in enumerate(f):
+                if i >= datastart and len(line.split()) > 1:
+                    tmpLine = line.split()
+                    filelines.append(tmpLine)
+
+        data = []
+        for i in range(len(filelines)):
+            try:
+                if filelines[i] == filelines[i+1]:
+                    del filelines[i+1]
+            except:
+                tmp = 1
+            
+        for i in range(len(filelines)):
+            try:
+                if i % 3 == 0:
+                    newLine = filelines[i] + filelines[i+1] + filelines[i+2]
+                    data.append(newLine)
+            except IndexError:
+                print path
+                print filelines[i]
+                raise
 
     
-    return (np.array(data),Cflag,COFlag,HFlag,HeFlag)
+        return (np.array(data),Cflag,COFlag,HHeFlag)
     
 def CoolingModelMass():
     import tools as tls
@@ -88,28 +155,37 @@ def CoolingModelMass():
     HTeff,Hlogg = [],[]
     HeTeff,Helogg = [],[]
     for coolingFile in lines:
-        data,Cflag,COFlag,HFlag,HeFlag = getCoolingModelData(coolingFile)
-        
-        Teff = data[:,1]
-        logg = data[:,2]
+        getData = getCoolingModelData(coolingFile)
+        if getData[-1]:
+            HData,HeData,CFlag,COFlag,HHeFlag = getData
+            HTeffData = HData[:,0]
+            HloggData = HData[:,1]
+            HeTeffData = HeData[:,0]
+            HeloggData = HeData[:,1]
+        else:
+            data,Cflag,COFlag,HHeFlag = getCoolingModelData(coolingFile)
+            Teff = data[:,1]
+            logg = data[:,2]
+            
         if Cflag:
             CTeff.append(Teff)
             Clogg.append(logg)
             co = 'k'
+            plt.plot(Teff,logg,color=co,linewidth=1.5)
         elif COFlag:
             COTeff.append(Teff)
             COlogg.append(logg)
             co = 'b'
-        elif HFlag:
-            HTeff.append(Teff)
-            Hlogg.append(logg)
-            co = 'g'
-        elif HeFlag:
-            HeTeff.append(Teff)
-            Helogg.append(logg)
-            co = 'r'
-            
-        plt.plot(Teff,logg,color=co,linewidth=1.5)
+            plt.plot(Teff,logg,color=co,linewidth=1.5)
+        elif HHeFlag:
+            HTeff.append(HTeffData)
+            HeTeff.append(HeTeffData)
+            Hlogg.append(HloggData)
+            Hlogg.append(HloggData)
+
+            plt.plot(HTeffData,HloggData,color='g',linewidth=1.5)
+            plt.plot(HeTeffData,HeloggData,color='r',linewidth=1.5)
+
     plt.show()
     
     
@@ -397,7 +473,7 @@ def LatexTable():
     rvdata = np.genfromtxt("BICFits/"+wdName+"_rvdata.csv",delimiter=',')
 
     Objects = {"wd1235" : "J123549.89+154319.3", "wd1203" : "J120315.22+650524.4",
-               "wd1140" : "J114024.02+661842.2", "wd1121" : "J112105.23+644336.4",
+               "wd1140" : "J114024.02+661842.3", "wd1121" : "J112105.25+644336.2",
                "wd0907" : "J090751.78+071844.6", "wd0343" : "J034319.09+101238.0"}
 
     fullName = Objects[wdName]
@@ -431,7 +507,7 @@ def GetModelVelocity(Hline="gamma"):
     import os
     
     Objects = {"wd1235" : "J123549.89+154319.3", "wd1203" : "J120315.22+650524.4",
-               "wd1140" : "J114024.02+661842.2", "wd1121" : "J112105.23+644336.4",
+               "wd1140" : "J114024.02+661842.3", "wd1121" : "J112105.25+644336.2",
                "wd0907" : "J090751.78+071844.6", "wd0343" : "J034319.09+101238.0"}
 
     HLines = { "beta" : 0, "gamma" : 1, "delta" : 2 }
@@ -576,4 +652,5 @@ if __name__ == '__main__':
     #BinMassFunc()
     #GetModelVelocity()
     #PlotVelocities()
-    CoolingModelMass()
+    #CoolingModelMass()
+    #TeffLogg()
