@@ -144,16 +144,27 @@ def getCoolingModelData(path):
 def CoolingModelMass():
     import tools as tls
     import numpy as np
+    from plot_format import plot_format
     import matplotlib.pyplot as plt
 
     coolingPath = '/home/seth/research/Paperwds/coolingmodels/'
     #coolingFile = "/home/seth/research/Paperwds/coolingmodels/C_0200204"
     lines = [coolingPath+line.rstrip('\n') for line in open(coolingPath+'filelist')]
+    Objects = {"wd1235" : "123549.89+154319.3", "wd1203" : "120315.22+650524.4",
+               "wd1140" : "114024.02+661842.3", "wd1121" : "112105.25+644336.2",
+               "wd0907" : "090751.78+071844.6", "wd0343" : "034319.09+101238.0"}
+
+    
+    plot_format()
     setFig()
     CTeff, Clogg = [],[]
     COTeff,COlogg = [],[]
     HTeff,Hlogg = [],[]
     HeTeff,Helogg = [],[]
+    
+    firstCFlag = True
+    firstCOFlag = True
+    firstHHEFlag = True
     for coolingFile in lines:
         getData = getCoolingModelData(coolingFile)
         if getData[-1]:
@@ -171,22 +182,45 @@ def CoolingModelMass():
             CTeff.append(Teff)
             Clogg.append(logg)
             co = 'k'
-            plt.plot(Teff,logg,color=co,linewidth=1.5)
+            if firstCFlag:
+                plt.plot(Teff,logg,color=co,linewidth=1.5,label="C Core")
+                firstCFlag = False
+            else:
+                plt.plot(Teff,logg,color=co,linewidth=1.5)
         elif COFlag:
             COTeff.append(Teff)
             COlogg.append(logg)
             co = 'b'
-            plt.plot(Teff,logg,color=co,linewidth=1.5)
+            if firstCOFlag:
+                plt.plot(Teff,logg,color=co,linewidth=1.5,label="CO Core")
+                firstCOFlag = False
+            else:
+                plt.plot(Teff,logg,color=co,linewidth=1.5)
         elif HHeFlag:
             HTeff.append(HTeffData)
             HeTeff.append(HeTeffData)
             Hlogg.append(HloggData)
             Hlogg.append(HloggData)
+            if firstHHEFlag:
+                plt.plot(HTeffData,HloggData,color='g',linewidth=1.5,label="H Core")
+                plt.plot(HeTeffData,HeloggData,color='r',linewidth=1.5,label="He Core")
+                firstHHEFlag = False
+            else:
+                plt.plot(HTeffData,HloggData,color='g',linewidth=1.5)
+                plt.plot(HeTeffData,HeloggData,color='r',linewidth=1.5)
 
-            plt.plot(HTeffData,HloggData,color='g',linewidth=1.5)
-            plt.plot(HeTeffData,HeloggData,color='r',linewidth=1.5)
+    for key in Objects:
+        teff,teffErr,logg,loggErr = np.genfromtxt("/home/seth/research/Paperwds/"+key+"/BICFits/"+key+"_TeffLogg.csv",delimiter=',')
+        plt.errorbar(teff,logg,xerr=teffErr,yerr=loggErr,color='k',linewidth=2.5)
+    plt.xlim(0,45000)
+    plt.ylim(7,8.75)
+    plt.legend(loc="lower right",borderaxespad=0.,fontsize=30)
+    plt.gca().xaxis.set_ticks([10000,20000,30000,40000])
+    plt.ylabel("Log(g)")
+    plt.xlabel("Teff")
+    #plt.show()
+    plt.savefig("/home/seth/research/PaperPlots/TeffLoggCombinedPlot.pdf")
 
-    plt.show()
     
     
     
@@ -652,5 +686,5 @@ if __name__ == '__main__':
     #BinMassFunc()
     #GetModelVelocity()
     #PlotVelocities()
-    #CoolingModelMass()
+    CoolingModelMass()
     #TeffLogg()
