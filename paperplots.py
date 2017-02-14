@@ -252,7 +252,7 @@ def CoolingModelMass():
     HTeff,Hlogg = np.array(HTeff), np.array(Hlogg)
     HeTeff,Helogg = np.array(HeTeff), np.array(Helogg)
 
-    """Plot the points"""
+    ## Plot the points
     for key in Objects:
         teff,teffErr,logg,loggErr = np.genfromtxt("/home/seth/research/Paperwds/"+key+"/BICFits/"+key+"_TeffLogg.csv",delimiter=',')
         plt.errorbar(teff,logg,xerr=teffErr,yerr=loggErr,color='k',marker='o',linewidth=2.5,markersize=8)
@@ -260,20 +260,17 @@ def CoolingModelMass():
             plt.annotate(key, xy=(teff-9000,logg),fontsize=28)
         else:
             plt.annotate(key, xy=(teff,logg),fontsize=28)
-    
+
+
     plt.xlim(0,45000)
     plt.ylim(7,8.6)
     leg = plt.legend(loc="lower left",borderaxespad=0.,fontsize=30,frameon=True,framealpha=1)
 #    leg.get_frame().set_alpha(1)
     plt.gca().xaxis.set_ticks([10000,20000,30000,40000])
     plt.ylabel("Log(g)")
-    plt.xlabel("Teff")
+    plt.xlabel("Teff [K]")
     #plt.show()
-    plt.savefig("/home/seth/research/PaperPlots/TeffLoggCombinedPlot.pdf")
-
-
-    #### MASS MEASUREMENT ####
-    
+    plt.savefig("/home/seth/research/PaperPlots/TeffLoggCombinedPlot.pdf")    
     
     
 """Sine model for fitting"""
