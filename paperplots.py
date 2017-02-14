@@ -72,21 +72,27 @@ def BinMassFunc():
 
 def getCoolingModelData(path):
     import numpy as np
+    from os.path import basename
 
     filelines = []
     Hfilelines = []
     Hefilelines = []
-
+    base = basename(path)
     HHeFlag = False
     Cflag, COFlag, HFlag, HeFlag = False,False,False,False
+
     if "C_" in path:
         datastart = 5
         Cflag = True
+        massVal = float(base[2] + "." + base[3])
     elif "CO_" in path:
         datastart = 0
         COFlag = True
+        massVal = float(base[3] + "." + base[4])
     elif "Table_" in path:
         HHeFlag = True
+        massVal = float(base[-3:])
+
         
     if HHeFlag:
         HData = []
@@ -109,7 +115,7 @@ def getCoolingModelData(path):
                     
         HData = np.array(Hfilelines)
         HeData = np.array(Hefilelines)
-        return (HData,HeData,Cflag,COFlag,HHeFlag)
+        return (HData,HeData,Cflag,COFlag,HHeFlag,massVal)
             
         
                 
@@ -139,7 +145,7 @@ def getCoolingModelData(path):
                 raise
 
     
-        return (np.array(data),Cflag,COFlag,HHeFlag)
+        return (np.array(data),Cflag,COFlag,HHeFlag,massVal)
     
 def CoolingModelMass():
     import tools as tls
@@ -161,66 +167,112 @@ def CoolingModelMass():
     COTeff,COlogg = [],[]
     HTeff,Hlogg = [],[]
     HeTeff,Helogg = [],[]
+    Cmass = []
+    COmass = []
+    HHEmass = []
+    AgeArr = []
     
     firstCFlag = True
     firstCOFlag = True
     firstHHEFlag = True
+    pnineFlag = 0
+    count = 0
     for coolingFile in lines:
+
         getData = getCoolingModelData(coolingFile)
-        if getData[-1]:
-            HData,HeData,CFlag,COFlag,HHeFlag = getData
+        if getData[-2]:
+            HData,HeData,CFlag,COFlag,HHeFlag,massVal = getData
             HTeffData = HData[:,0]
             HloggData = HData[:,1]
-            HeTeffData = HeData[:,0]
-            HeloggData = HeData[:,1]
+            HeTeffData = np.array(HeData[:,0]).astype(np.float)
+            HeloggData = np.array(HeData[:,1]).astype(np.float)
+            
         else:
-            data,Cflag,COFlag,HHeFlag = getCoolingModelData(coolingFile)
-            Teff = data[:,1]
-            logg = data[:,2]
+            data,Cflag,COFlag,HHeFlag,massVal = getCoolingModelData(coolingFile)
+            Teff = np.array(data[:,1]).astype(np.float)
+            logg = np.array(data[:,2]).astype(np.float)
+            Age = np.array(data[:,4]).astype(np.float)
+            
             
         if Cflag:
             CTeff.append(Teff)
             Clogg.append(logg)
             co = 'k'
-            if firstCFlag:
-                plt.plot(Teff,logg,color=co,linewidth=1.5,label="C Core")
-                firstCFlag = False
-            else:
-                plt.plot(Teff,logg,color=co,linewidth=1.5)
+            Cmass.append(massVal)
+            #if firstCFlag:
+            #    plt.plot(Teff,logg,color=co,linewidth=1.5,label="C Core")
+            #    firstCFlag = False
+            #else:
+            #    plt.plot(Teff,logg,color=co,linewidth=1.5)
+        
         elif COFlag:
+            COmass.append(massVal)
             COTeff.append(Teff)
             COlogg.append(logg)
+            AgeArr.append(Age)
             co = 'b'
-            if firstCOFlag:
+            count += 1
+            if firstCOFlag and massVal >= 0.45:
                 plt.plot(Teff,logg,color=co,linewidth=1.5,label="CO Core")
+                if not massVal == 1.0:
+                    plt.annotate(str(massVal)+"$M_\odot$",xy=(np.min(Teff),np.max(logg)),fontsize=24)
                 firstCOFlag = False
-            else:
-                plt.plot(Teff,logg,color=co,linewidth=1.5)
+            #elif count%2 == 1:
+            elif massVal >= 0.45 and massVal < 1.0:
+                #print coolingFile
+                if pnineFlag < 2:
+                    if massVal == 0.9:
+                        pnineFlag += 1
+                    plt.plot(Teff,logg,color=co,linewidth=1.5)
+                    if count % 2 == 1 and not massVal == 1.0:
+                        plt.annotate(str(massVal)+"$M_\odot$",xy=(np.min(Teff),np.max(logg)+0.02),fontsize=22)
+
+        
         elif HHeFlag:
+            HHEmass.append(massVal)
             HTeff.append(HTeffData)
             HeTeff.append(HeTeffData)
             Hlogg.append(HloggData)
-            Hlogg.append(HloggData)
-            if firstHHEFlag:
-                plt.plot(HTeffData,HloggData,color='g',linewidth=1.5,label="H Core")
+            Helogg.append(HeloggData)
+            if firstHHEFlag and massVal <= 0.45:
+                #plt.plot(HTeffData,HloggData,color='g',linewidth=1.5,label="H Core")
                 plt.plot(HeTeffData,HeloggData,color='r',linewidth=1.5,label="He Core")
+                #plt.annotate(str(massVal)+"$M_\odot$",xy=(np.min(HeTeffData),np.max(HeloggData)),fontsize=24)
                 firstHHEFlag = False
-            else:
-                plt.plot(HTeffData,HloggData,color='g',linewidth=1.5)
+                plt.annotate(str(massVal)+"$M_\odot$",xy=(np.min(HeTeffData),np.max(HeloggData)),fontsize=24)
+            elif massVal <= 0.45:
+                #plt.plot(HTeffData,HloggData,color='g',linewidth=1.5)
                 plt.plot(HeTeffData,HeloggData,color='r',linewidth=1.5)
+                plt.annotate(str(massVal)+"$M_\odot$",xy=(np.min(HeTeffData),np.max(HeloggData)),fontsize=24)
+                #plt.annotate(str(massVal)+"$M_\odot$",xy=(np.min(HeTeffData),np.max(HeloggData)),fontsize=24)                
 
+
+    CTeff,Clogg = np.array(CTeff), np.array(Clogg)
+    COTeff,COlogg = np.array(COTeff), np.array(COlogg)
+    HTeff,Hlogg = np.array(HTeff), np.array(Hlogg)
+    HeTeff,Helogg = np.array(HeTeff), np.array(Helogg)
+
+    """Plot the points"""
     for key in Objects:
         teff,teffErr,logg,loggErr = np.genfromtxt("/home/seth/research/Paperwds/"+key+"/BICFits/"+key+"_TeffLogg.csv",delimiter=',')
-        plt.errorbar(teff,logg,xerr=teffErr,yerr=loggErr,color='k',linewidth=2.5)
+        plt.errorbar(teff,logg,xerr=teffErr,yerr=loggErr,color='k',marker='o',linewidth=2.5,markersize=8)
+        if key == "wd1203":
+            plt.annotate(key, xy=(teff-9000,logg),fontsize=28)
+        else:
+            plt.annotate(key, xy=(teff,logg),fontsize=28)
+        
+    
     plt.xlim(0,45000)
-    plt.ylim(7,8.75)
-    plt.legend(loc="lower right",borderaxespad=0.,fontsize=30)
+    plt.ylim(7,8.6)
+    plt.legend(loc="lower left",borderaxespad=0.,fontsize=30)
     plt.gca().xaxis.set_ticks([10000,20000,30000,40000])
     plt.ylabel("Log(g)")
     plt.xlabel("Teff")
     #plt.show()
     plt.savefig("/home/seth/research/PaperPlots/TeffLoggCombinedPlot.pdf")
 
+
+    #### MASS MEASUREMENT ####
     
     
     
