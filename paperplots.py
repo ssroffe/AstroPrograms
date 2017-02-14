@@ -215,7 +215,7 @@ def CoolingModelMass():
             if firstCOFlag and massVal >= 0.45:
                 plt.plot(Teff,logg,color=co,linewidth=1.5,label="CO Core")
                 if not massVal == 1.0:
-                    plt.annotate(str(massVal)+"$M_\odot$",xy=(np.min(Teff),np.max(logg)),fontsize=24)
+                    plt.annotate(str(massVal)+"$M_\odot$",xy=(np.min(Teff),np.max(logg)+0.02),fontsize=24)
                 firstCOFlag = False
             #elif count%2 == 1:
             elif massVal >= 0.45 and massVal < 1.0:
@@ -260,11 +260,11 @@ def CoolingModelMass():
             plt.annotate(key, xy=(teff-9000,logg),fontsize=28)
         else:
             plt.annotate(key, xy=(teff,logg),fontsize=28)
-        
     
     plt.xlim(0,45000)
     plt.ylim(7,8.6)
-    plt.legend(loc="lower left",borderaxespad=0.,fontsize=30)
+    leg = plt.legend(loc="lower left",borderaxespad=0.,fontsize=30,frameon=True,framealpha=1)
+#    leg.get_frame().set_alpha(1)
     plt.gca().xaxis.set_ticks([10000,20000,30000,40000])
     plt.ylabel("Log(g)")
     plt.xlabel("Teff")
