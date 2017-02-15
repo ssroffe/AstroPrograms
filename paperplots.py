@@ -261,19 +261,34 @@ def CoolingModelMass():
         else:
             plt.annotate(key, xy=(teff,logg),fontsize=28)
 
+    ### Age Lines ###
     for i in range(len(AgeArr)):
         if AgeArr[i][0] == 0.0:
             AgeArr[i] = AgeArr[i][1:]
             COTeff[i] = COTeff[i][1:]
             COlogg[i] = COlogg[i][1:]
 
-    maxAgeArr = min(AgeArr,key=len)
-
-    for i in range(len(maxAgeArr)):
-        TeffArr = [x[i] for x in COTeff]
-        loggArr = [x[i] for x in COlogg]
-        plt.plot(TeffArr,loggArr,ls='--',color='k')
+    maxAgeArr = AgeArr[0]#max(AgeArr,key=len)
+    #for i in range(len(AgeArr)):
+    #    print len(AgeArr[i])
     
+    for i in range(0,len(maxAgeArr),15):
+        TeffArr = []
+        loggArr = []
+        for j in COTeff:
+            if len(j) > i:
+                TeffArr.append(j[i])
+        for j in COlogg:
+            if len(j) > i:
+                loggArr.append(j[i])
+
+        plt.plot(TeffArr,loggArr,ls='--',color='k',alpha=0.5)
+        #plt.annotate("{:.2E}".format(maxAgeArr[i]),xy=(max(TeffArr),9))
+                
+        #TeffArr = [x[i] for x in COTeff]
+        #loggArr = [x[i] for x in COlogg]
+        #plt.plot(TeffArr,loggArr,ls='--',color='k',alpha=0.5)
+
             
     plt.xlim(0,45000)
     plt.ylim(7,8.6)
