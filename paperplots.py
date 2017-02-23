@@ -210,6 +210,7 @@ def CoolingModelMass():
             COTeff.append(Teff)
             COlogg.append(logg)
             AgeArr.append(Age)
+            
             co = 'b'
             count += 1
             if firstCOFlag and massVal >= 0.45:
@@ -234,13 +235,13 @@ def CoolingModelMass():
             HeTeff.append(HeTeffData)
             Hlogg.append(HloggData)
             Helogg.append(HeloggData)
-            if firstHHEFlag and massVal <= 0.45:
+            if firstHHEFlag and massVal <= 0.5:
                 #plt.plot(HTeffData,HloggData,color='g',linewidth=1.5,label="H Core")
                 plt.plot(HeTeffData,HeloggData,color='r',linewidth=1.5,label="He Core")
                 #plt.annotate(str(massVal)+"$M_\odot$",xy=(np.min(HeTeffData),np.max(HeloggData)),fontsize=24)
                 firstHHEFlag = False
                 plt.annotate(str(massVal)+"$M_\odot$",xy=(np.min(HeTeffData),np.max(HeloggData)),fontsize=24)
-            elif massVal <= 0.45:
+            elif massVal <= 0.5:
                 #plt.plot(HTeffData,HloggData,color='g',linewidth=1.5)
                 plt.plot(HeTeffData,HeloggData,color='r',linewidth=1.5)
                 plt.annotate(str(massVal)+"$M_\odot$",xy=(np.min(HeTeffData),np.max(HeloggData)),fontsize=24)
