@@ -106,18 +106,19 @@ if (len(sys.argv) == 2) and sys.argv[1] is "lorentzian":
         p3 = (ld3,lw3,rvs)
         s = lnprob(p1,x1,y1,yerr1) + lnprob(p2,x2,y2,yerr2) + lnprob(p3,x3,y3,yerr3)
         return s
+
 else:
     print "Using Voigt Model"
-    def voigtModel(x, Gdepth, Gwidth):
-        return 1.0-Gdepth*np.exp(-(x)**2/(2*Gwidth**2))
+    def voigtModel(x, Ldepth, Lwidth, Gdepth, Gwidth):
+        return 1.0-Ldepth/(1.0 + ((x)/Lwidth)**2) - Gdepth*np.exp(-(x)**2/(2*Gwidth**2))
 
     def lnlikeModel(p,x,y,err):
-        Gdepth,Gwidth = p
-        return -np.sum((y-voigtModel(x,Gdepth,Gwidth))**2/(2*err))
+        Ldepth,Lwidth,Gdepth,Gwidth = p
+        return -np.sum((y-voigtModel(x,Ldepth,Lwidth,Gdepth,Gwidth))**2/(2*err))
 
     def lnpriorModel(p):
-        Gdepth,Gwidth = p
-        if 0.0 < Gdepth < 1.0 and 0.0 < Gwidth < 600.0:
+        Ldepth,Lwidth,Gdepth,Gwidth = p
+        if 0.0 < Ldepth < 1.0 and 0.0 < Lwidth < 3000.0 and 0.0 < Gdepth < 1.0 and 0.0 < Gwidth < 600.0:
             return 0.0
         return -np.inf
     
@@ -128,15 +129,15 @@ else:
         return lp + lnlikeModel(p, x, y, yerr)
 
     
-    def voigt(x, Gdepth, Gwidth, RVShift):
-        return 1.0 - Gdepth*np.exp(-(x-RVShift)**2/(2*Gwidth**2))
+    def voigt(x, Ldepth, Lwidth, Gdepth, Gwidth, RVShift):
+        return 1.0-Ldepth/(1.0 + ((x-RVShift)/Lwidth)**2) - Gdepth*np.exp(-(x-RVShift)**2/(2*Gwidth**2))
     
     def lnlike(p,x,y,err):
-        Gdepth,Gwidth,RVShift = p
-        return -np.sum((y-voigt(x,Gdepth,Gwidth,RVShift))**2/(2*err))
+        Ldepth,Lwidth,Gdepth,Gwidth,RVShift = p
+        return -np.sum((y-voigt(x,Ldepth,Lwidth,Gdepth,Gwidth,RVShift))**2/(2*err))
     
     def lnprior(p):
-        Gdepth,Gwidth,RVShift = p
+        Ldepth,Lwidth,Gdepth,Gwidth,RVShift = p
         if -500.0 < RVShift < 500.0:
             return 0.0
         return -np.inf
@@ -159,13 +160,12 @@ else:
         print ld3, lw3, gd3, gw3
         print "\n"
         """
-        p1 = (gd1,gw1,rvs)
-        p2 = (gd2,gw2,rvs)
-        p3 = (gd3,gw3,rvs)
+        p1 = (ld1,lw1,gd1,gw1,rvs)
+        p2 = (ld2,lw2,gd2,gw2,rvs)
+        p3 = (ld3,lw3,gd3,gw3,rvs)
         s = lnprob(p1,x1,y1,yerr1) + lnprob(p2,x2,y2,yerr2) + lnprob(p3,x3,y3,yerr3)
         
         return s
-
 
 tls.mkdir("BICFits")
 tls.mkdir("BICFits/VelFits")
@@ -198,43 +198,42 @@ plotIndex = 1
 if (len(sys.argv) == 2) and sys.argv[1] is "lorentzian":
     mdim,mwalkers = 2,200
 else:
-    #mdim,mwalkers = 4,200
-    mdim,mwalkers = 2,200
+    mdim,mwalkers = 4,200
     
 for i in range(len(modelVels)):
     
     modelSampler = tls.MCMCfit(lnprobModel,args=(np.array(modelVels[i]),np.array(modelFluxes[i]),np.array(modelErrs[i])),nwalkers=mwalkers,ndim=mdim,burnInSteps=16000,steps=16000)
     modelSamples = modelSampler.flatchain.reshape((-1,mdim)).T
     if i == 0:
-        #global ld1
-        #ld1 = modelSamples[0].mean()
-        #global lw1
-        #lw1 = modelSamples[1].mean()
+        global ld1
+        ld1 = modelSamples[0].mean()
+        global lw1
+        lw1 = modelSamples[1].mean()
         if (len(sys.argv) == 1) or (sys.argv[1] is "voigt"):
             global gd1
-            gd1 = modelSamples[0].mean()
+            gd1 = modelSamples[2].mean()
             global gw1
-            gw1 = modelSamples[1].mean()
+            gw1 = modelSamples[3].mean()
     elif i == 1:
-        #global ld2
-        #ld2 = modelSamples[0].mean()
-        #global lw2
-        #lw2 = modelSamples[1].mean()
+        global ld2
+        ld2 = modelSamples[0].mean()
+        global lw2
+        lw2 = modelSamples[1].mean()
         if (len(sys.argv) == 1) or (sys.argv[1] is "voigt"):
             global gd2
-            gd2 = modelSamples[0].mean()
+            gd2 = modelSamples[2].mean()
             global gw2
-            gw2 = modelSamples[1].mean()
+            gw2 = modelSamples[3].mean()
     elif i == 2:
-        #global ld3
-        #ld3 = modelSamples[0].mean()
-        #global lw3
-        #lw3 = modelSamples[1].mean()
+        global ld3
+        ld3 = modelSamples[0].mean()
+        global lw3
+        lw3 = modelSamples[1].mean()
         if (len(sys.argv) == 1) or (sys.argv[1] is "voigt"):
             global gd3
-            gd3 = modelSamples[0].mean()
+            gd3 = modelSamples[2].mean()
             global gw3
-            gw3 = modelSamples[1].mean() 
+            gw3 = modelSamples[3].mean() 
 
 
 numArr = []
@@ -287,27 +286,27 @@ for j in range(len(lines)):
     for i in range(len(vels)):
         if i ==0:
             co = 'b'
-            #ld = ld1
-            #lw = lw1
+            ld = ld1
+            lw = lw1
             gd = gd1
             gw = gw1
         elif i==1:
             co = 'g'
-            #ld = ld2
-            #lw = lw2
+            ld = ld2
+            lw = lw2
             gd = gd2
             gw = gw2
         else:
             co = 'r'
-            #ld = ld3
-            #lw = lw3
+            ld = ld3
+            lw = lw3
             gd = gd3
             gw = gw3
         plt.step(vels[i],fluxes[i]+i*off,where='mid',linewidth=1.5,color=co)
         plt.errorbar(vels[i],fluxes[i]+i*off,yerr=ferrs[i],linewidth=1.5,ls='None',color=co)
-        plt.plot(vels[i],voigt(vels[i],gd,gw,rvFit)+i*off,color='k',linewidth=1.5)
-        plt.plot(vels[i],voigt(vels[i],gd,gw,rvFit+rvStd)+i*off,color='c',linewidth=1.5)
-        plt.plot(vels[i],voigt(vels[i],gd,gw,rvFit-rvStd)+i*off,color='c',linewidth=1.5)
+        plt.plot(vels[i],voigt(vels[i],ld,lw,gd,gw,rvFit)+i*off,color='k',linewidth=1.5)
+        plt.plot(vels[i],voigt(vels[i],ld,lw,gd,gw,rvFit+rvStd)+i*off,color='c',linewidth=1.5)
+        plt.plot(vels[i],voigt(vels[i],ld,lw,gd,gw,rvFit-rvStd)+i*off,color='c',linewidth=1.5)
     plt.axvline(0,color='k',ls='--')
     plt.axvline(rvFit,color='purple',ls='--')
     plt.axvline(rvFit+rvStd,color='c',ls='--')
