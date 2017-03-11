@@ -11,6 +11,7 @@ import emcee as mc
 import corner as cn
 from datetime import datetime
 from astropy.time import Time
+from paperplots import Signal2Noise
 
 def NoOrbit(t,Gamma):
     return Gamma
@@ -170,6 +171,7 @@ else:
 #tls.mkdir("BICFits")
 #tls.mkdir("BICFits/VelFits")
 
+#tls.mkdir("AICFits")
 
 lines = [line.rstrip('\n') for line in open('filelist')]
 
@@ -251,73 +253,6 @@ for j in range(len(lines)):
     basename = os.path.basename(path)[:-5]
     wdName = basename[0:6]
     #timeTaken = basename[15:]
-    """
-    dateTaken = basename[7:17]
-    
-    #timeTaken = basename[18:23]
-    #dateTimeTaken = basename[7:23]
-    dateTimeTaken = tls.GetDateTime(path)
-    if "T" not in dateTimeTaken:
-        dateTimeTaken = dateTaken + "T" + dateTimeTaken
-
-    t = Time(dateTimeTaken, format='isot',scale='utc')
-    
-    timeArr.append(t.mjd)
-
-    ### Get velocites, fluxes and errors
-    vels,fluxes,ferrs = tls.GetAllVelocities(path)
-
-    ### Do the fit
-    #ndim, nwalkers = 7,200
-    ndim, nwalkers = 1, 200
-    
-    sampler = tls.MCMCfit(lnprobSum,args=(vels,fluxes,ferrs),nwalkers=nwalkers,ndim=ndim,burnInSteps=8000,steps=8000)
-
-
-    ### Get the RV Shifts from the sampler with errors
-    rvFit,rvStd = tls.GetRV(sampler)
-    print rvFit,rvStd
-
-    numArr.append(j)
-    rvArr.append(rvFit)
-    stdArr.append(rvStd)
-
-    off = 0.5
-    
-    for i in range(len(vels)):
-        if i ==0:
-            co = 'b'
-            ld = ld1
-            lw = lw1
-            gd = gd1
-            gw = gw1
-        elif i==1:
-            co = 'g'
-            ld = ld2
-            lw = lw2
-            gd = gd2
-            gw = gw2
-        else:
-            co = 'r'
-            ld = ld3
-            lw = lw3
-            gd = gd3
-            gw = gw3
-        plt.step(vels[i],fluxes[i]+i*off,where='mid',linewidth=1.5,color=co)
-        plt.errorbar(vels[i],fluxes[i]+i*off,yerr=ferrs[i],linewidth=1.5,ls='None',color=co)
-        plt.plot(vels[i],voigt(vels[i],ld,lw,gd,gw,rvFit)+i*off,color='k',linewidth=1.5)
-        plt.plot(vels[i],voigt(vels[i],ld,lw,gd,gw,rvFit+rvStd)+i*off,color='c',linewidth=1.5)
-        plt.plot(vels[i],voigt(vels[i],ld,lw,gd,gw,rvFit-rvStd)+i*off,color='c',linewidth=1.5)
-    plt.axvline(0,color='k',ls='--')
-    plt.axvline(rvFit,color='purple',ls='--')
-    plt.axvline(rvFit+rvStd,color='c',ls='--')
-    plt.axvline(rvFit-rvStd,color='c',ls='--')
-    plt.xlim(-1500,1500)
-    plt.ylim(0,3)
-    plt.title(wdName+" RV value="+str(rvFit)+" RV Err="+str(rvStd))
-    plt.savefig("BICFits/VelFits/Vel_specnum_"+str(j)+".pdf")
-    plot_format()
-"""
 
 rvdata = np.genfromtxt("BICFits/"+wdName+"_rvdata.csv",delimiter=',')
 
@@ -325,20 +260,14 @@ timeArr = rvdata[:,0]
 rvArr = rvdata[:,1]
 stdArr = rvdata[:,2]
 
-#timeArr = np.array(timeArr)
-#numArr = np.array(numArr)
-#rvArr = np.array(rvArr)
-#stdArr = np.array(stdArr)
+SNArr = Signal2Noise()
 
-"""
-### Save data to a csv
-data = []
-for i in range(len(timeArr)):
-    data.append((timeArr[i],rvArr[i],stdArr[i]))
+SNCut = 2.0
+wherrSN = np.where(SNArr >= SNCut)
 
-dataArr = np.array(data)
-np.savetxt("BICFits/"+wdName+"_rvdata.csv",dataArr,delimiter=',')
-"""
+timeArr = timeArr[wherrSN]
+rvArr = rvArr[wherrSN]
+stdArr = stdArr[wherrSN]
 
 ###
 Amin, Amax = 5.0, 500.0
@@ -355,18 +284,26 @@ GamMin, GamMax = -500.0, 500.0
 
 middles = np.array([(Amin+Amax)/2,(Pmin+Pmax)/2,(Phimin+Phimax)/2,(GamMin+GamMax)/2])
 
-noOrbWalkers,noOrbDim = 200,1
-noOrbPos = [middles[-1] + 1e-4*np.random.randn(noOrbDim) for i in range(noOrbWalkers)]
+#noOrbWalkers,noOrbDim = 200,1
+#noOrbPos = [middles[-1] + 1e-4*np.random.randn(noOrbDim) for i in range(noOrbWalkers)]
 
-noOrbSampler = tls.MCMCfit(lnprobNoOrbit,args=(timeArr,rvArr,stdArr),nwalkers=noOrbWalkers,ndim=noOrbDim,burnInSteps=250000,steps=250000,p=noOrbPos)
+#noOrbSampler = tls.MCMCfit(lnprobNoOrbit,args=(timeArr,rvArr,stdArr),nwalkers=noOrbWalkers,ndim=noOrbDim,burnInSteps=250000,steps=250000,p=noOrbPos)
 
-noOrbSamplesChain = noOrbSampler.chain[:,:,:].reshape((-1,1))
-noOrbSamples = noOrbSampler.flatchain.reshape((-1,1)).T
+#noOrbSamplesChain = noOrbSampler.chain[:,:,:].reshape((-1,1))
+#noOrbSamples = noOrbSampler.flatchain.reshape((-1,1)).T
 
-mArr = []
-for m in noOrbSamplesChain[np.random.randint(len(noOrbSamplesChain),size=1000)]:
-    mArr.append(m)
-mparam = mArr[-1]
+#mArr = []
+#for m in noOrbSamplesChain[np.random.randint(len(noOrbSamplesChain),size=1000)]:
+#    mArr.append(m)
+#minit = mArr[-1]
+
+#nllNoOrb = lambda *args: -lnprobNoOrbit(*args)
+#mparam = sp.minimize(nllNoOrb,[minit],args=(timeArr,rvArr,stdArr))["x"]
+#print mparam
+
+wgtAvg = (np.sum(rvArr * stdArr**(-2))) / np.sum(stdArr[i]**(-2))
+wgtStd = 1 / (np.sum(stdArr**(-2)))
+mparam = wgtAvg
 
 walkers,dim = 200,4
 
@@ -420,7 +357,7 @@ plt.savefig("BICFits/"+wdName+"_time.pdf")
 plot_format()
 plt.subplot(4,1,1)
 plt.errorbar(timeArr,rvArr,yerr=stdArr,linestyle='None',marker='o')
-for A,P,Ph,Gam in samplesChain[np.random.randint(len(samplesChain),size=1000)]:
+for A,P,Ph,Gam in samplesChain[np.random.randint(len(samplesChain),size=5000)]:
     #plt.plot(newTime,sine(newTime,A,P,Ph,Gam),color='k',alpha=0.01)
     AArr.append(A)
     PArr.append(P)
@@ -428,41 +365,59 @@ for A,P,Ph,Gam in samplesChain[np.random.randint(len(samplesChain),size=1000)]:
     GArr.append(Gam)
     #print A,P,Ph,Gam
 
-params = [AArr[-1],PArr[-1],PhArr[-1],GArr[-1]]
+nll = lambda *args: -lnprobSine(*args)
+results = sp.minimize(nll, [AArr[-1],PArr[-1],PhArr[-1],GArr[-1]],args=(timeArr,rvArr,stdArr))
 
+Astd = np.array(AArr).std()
+Pstd = np.array(PArr).std()
+Phstd = np.array(PhArr).std()
+Gstd = np.array(GArr).std()
+
+#print results
+params = []
+Afit,Pfit,Phfit,Gfit = results["x"]
+#params = [AArr[-1],PArr[-1],PhArr[-1],GArr[-1]]
+params = [(Afit,Astd),(Pfit,Pstd),(Phfit,Phstd),(Gfit,Gstd)]
+
+np.savetxt("BICFits/"+wdName+"_sineParams.csv",params,delimiter=',')
 
 ##### BIC CALCULATIONS ########
 noOrbParams = (mparam)
-noOrbBIC = -2*lnlikeNoOrbit(mparam,timeArr,rvArr,stdArr)+1*np.log(len(timeArr))
+noOrbk = 1
+#noOrbBIC = -2*lnlikeNoOrbit(mparam,timeArr,rvArr,stdArr)+noOrbk*np.log(len(timeArr))
+noOrbBIC = -2*lnlikeNoOrbit(mparam,timeArr,rvArr,stdArr)+2*noOrbk + ( (2*noOrbk*(noOrbk+1)) / (len(timeArr) - noOrbk - 1))
 
-sineParams = (params[0],params[1],params[2],params[3])
-sineBIC = -2*lnlikeSine(sineParams,timeArr,rvArr,stdArr)+4*np.log(len(timeArr))
+sineParams = (Afit,Pfit,Phfit,Gfit)
+sinek = 4
+#sineBIC = -2*lnlikeSine(sineParams,timeArr,rvArr,stdArr)+sinek*np.log(len(timeArr))
+sineBIC = -2*lnlikeNoOrbit(mparam,timeArr,rvArr,stdArr)+2*sinek + ( (2*sinek*(sinek+1)) / (len(timeArr) - sinek - 1))
 
 deltaBIC = noOrbBIC - sineBIC
 
 bicFile = open("BICFits/"+wdName+"_BICCalc.txt",'w')
-bicFile.write("Orbit eqn: v(t) = {0:.3f}*sin(2*pi*(t/{1:.3f}) + {2:.3f}) + {3:.3f}\n".format(params[0],params[1],params[2],params[3]))
+bicFile.write("Orbit eqn: v(t) = {0:.3f}*sin(2*pi*(t/{1:.3f}) + {2:.3f}) + {3:.3f}\n".format(Afit,Pfit,Phfit,Gfit))
 bicFile.write("No Orbit eqn: v(t) = {0:.3f}\n".format(float(mparam)))
 bicFile.write("No Orbit BIC = {0:.3f}\n".format(float(noOrbBIC)))
-bicFile.write("Sine BIC = {0:.3f}\n".format(float(sineBIC)))
-bicFile.write("Delta BIC = noOrbBIC - sineBIC = {0:.3f}".format(float(deltaBIC)))
+bicFile.write("Sine AIC = {0:.3f}\n".format(float(sineBIC)))
+bicFile.write("Delta AIC = noOrbBIC - sineBIC = {0:.3f}".format(float(deltaBIC)))
 bicFile.close()
-
+deltaBICArr = np.array([noOrbBIC, sineBIC, deltaBIC])
+np.savetxt("BICFits/"+wdName+"_deltaBIC.csv",deltaBICArr,delimiter=',')
 ##############################
 
 
-plt.plot(newTime,sine(newTime,params[0],params[1],params[2],params[3]),color="red",alpha=0.75)
+plt.plot(newTime,sine(newTime,Afit,Pfit,Phfit,Gfit),color="red",alpha=0.75)
 #plt.plot(newTime,sine(newTime,Amp,Per,Phi,Gamma),color="red",alpha=0.75)
 plt.xlabel("MJD [days]")
 plt.ylabel("Velocity [km/s]")
-plt.title(wdName + " velocity vs time"+'\n'+"$v(t) = {0:.3f}*sin(2\pi(t/{1:.3f}) + {2:.3f}) + {3:.3f}$".format(params[0],params[1],params[2],params[3]))
+plt.title(wdName + " velocity vs time"+'\n'+"$v(t) = {0:.3f}*sin(2\pi(t/{1:.3f}) + {2:.3f}) + {3:.3f}$".format(Afit,Pfit,Phfit,Gfit))
 
 plt.subplot(4,1,2)
 plt.errorbar(timeArr,rvArr,yerr=stdArr,linestyle='None',marker='o')
 #for A,P,Ph,Gam in samplesChain[np.random.randint(len(samplesChain),size=100)]:
     #plt.plot(newTime,sine(newTime,A,P,Ph,Gam),color='k',alpha=0.1)
     #print A,P,Ph,Gam
-plt.plot(newTime,sine(newTime,params[0],params[1],params[2],params[3]),color="red",alpha=0.75)
+plt.plot(newTime,sine(newTime,Afit,Pfit,Phfit,Gfit),color="red",alpha=0.75)
 plt.xlabel("MJD [days]")
 plt.ylabel("Velocity [km/s]")
 #plt.title(wdName + " velocity vs time")
@@ -473,7 +428,7 @@ plt.errorbar(timeArr,rvArr,yerr=stdArr,linestyle='None',marker='o')
 #for A,P,Ph,Gam in samplesChain[np.random.randint(len(samplesChain),size=100)]:
     #plt.plot(newTime,sine(newTime,A,P,Ph,Gam),color='k',alpha=0.1)
     #print A,P,Ph,Gam
-plt.plot(newTime,sine(newTime,params[0],params[1],params[2],params[3]),color="red",alpha=0.75)
+plt.plot(newTime,sine(newTime,Afit,Pfit,Phfit,Gfit),color="red",alpha=0.75)
 plt.xlabel("MJD [days]")
 plt.ylabel("Velocity [km/s]")
 #plt.title(wdName + " velocity vs time")
@@ -484,7 +439,7 @@ plt.errorbar(timeArr,rvArr,yerr=stdArr,linestyle='None',marker='o')
 #for A,P,Ph,Gam in samplesChain[np.random.randint(len(samplesChain),size=100)]:
     #plt.plot(newTime,sine(newTime,A,P,Ph,Gam),color='k',alpha=0.1)
     #print A,P,Ph,Gam
-plt.plot(newTime,sine(newTime,params[0],params[1],params[2],params[3]),color="red",alpha=0.75)
+plt.plot(newTime,sine(newTime,Afit,Pfit,Phfit,Gfit),color="red",alpha=0.75)
 plt.xlabel("MJD [days]")
 plt.ylabel("Velocity [km/s]")
 #plt.title(wdName + " velocity vs time")
