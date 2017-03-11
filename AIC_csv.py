@@ -171,7 +171,7 @@ else:
 #tls.mkdir("BICFits")
 #tls.mkdir("BICFits/VelFits")
 
-#tls.mkdir("AICFits")
+tls.mkdir("AICFits")
 
 lines = [line.rstrip('\n') for line in open('filelist')]
 
