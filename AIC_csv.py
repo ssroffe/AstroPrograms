@@ -185,7 +185,7 @@ plot_format()
 plt.plot(tmpWl,tmpFlux,alpha=0.4)
 plt.plot(modelWl,modelFlux)
 plt.xlim(np.min(tmpWl),np.max(tmpWl))
-plt.savefig("BICFits/SpectrumCheck.pdf")
+plt.savefig("AICFits/SpectrumCheck.pdf")
 plot_format()
 
 modelVels,modelFluxes = tls.ModelGetAllVelocities(modelFile)
@@ -352,7 +352,7 @@ for A,P,Ph,Gam in samplesChain[np.random.randint(len(samplesChain),size=100)]:
 plt.plot(newTime,NoOrbArr,color='r')
 plt.xlabel("MJD [days]")
 plt.ylabel("Velocity [km/s]")
-plt.savefig("BICFits/"+wdName+"_time.pdf")
+plt.savefig("AICFits/"+wdName+"_time.pdf")
 
 plot_format()
 plt.subplot(4,1,1)
@@ -379,7 +379,7 @@ Afit,Pfit,Phfit,Gfit = results["x"]
 #params = [AArr[-1],PArr[-1],PhArr[-1],GArr[-1]]
 params = [(Afit,Astd),(Pfit,Pstd),(Phfit,Phstd),(Gfit,Gstd)]
 
-np.savetxt("BICFits/"+wdName+"_sineParams.csv",params,delimiter=',')
+np.savetxt("AICFits/"+wdName+"_sineParams.csv",params,delimiter=',')
 
 ##### BIC CALCULATIONS ########
 noOrbParams = (mparam)
@@ -394,7 +394,7 @@ sineBIC = -2*lnlikeNoOrbit(mparam,timeArr,rvArr,stdArr)+2*sinek + ( (2*sinek*(si
 
 deltaBIC = noOrbBIC - sineBIC
 
-bicFile = open("BICFits/"+wdName+"_BICCalc.txt",'w')
+bicFile = open("AICFits/"+wdName+"_BICCalc.txt",'w')
 bicFile.write("Orbit eqn: v(t) = {0:.3f}*sin(2*pi*(t/{1:.3f}) + {2:.3f}) + {3:.3f}\n".format(Afit,Pfit,Phfit,Gfit))
 bicFile.write("No Orbit eqn: v(t) = {0:.3f}\n".format(float(mparam)))
 bicFile.write("No Orbit BIC = {0:.3f}\n".format(float(noOrbBIC)))
@@ -402,7 +402,7 @@ bicFile.write("Sine AIC = {0:.3f}\n".format(float(sineBIC)))
 bicFile.write("Delta AIC = noOrbBIC - sineBIC = {0:.3f}".format(float(deltaBIC)))
 bicFile.close()
 deltaBICArr = np.array([noOrbBIC, sineBIC, deltaBIC])
-np.savetxt("BICFits/"+wdName+"_deltaBIC.csv",deltaBICArr,delimiter=',')
+np.savetxt("AICFits/"+wdName+"_deltaBIC.csv",deltaBICArr,delimiter=',')
 ##############################
 
 
@@ -445,12 +445,12 @@ plt.ylabel("Velocity [km/s]")
 #plt.title(wdName + " velocity vs time")
 plt.xlim(np.max(timeArr)-0.1,np.max(timeArr)+0.1)
 
-plt.savefig("BICFits/"+wdName+"_time_zoomed.pdf")
+plt.savefig("AICFits/"+wdName+"_time_zoomed.pdf")
 
 #print ""
 #print Amp,Per,Phi,Gamma
 
 import corner
 fig = corner.corner(samplesChain, labels=["A","P","Phi","Gam"])
-fig.savefig("BICFits/"+wdName+"_Triangle.pdf")
+fig.savefig("AICFits/"+wdName+"_Triangle.pdf")
 
