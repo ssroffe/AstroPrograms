@@ -171,12 +171,15 @@ def CoolingModelMass():
     COmass = []
     HHEmass = []
     AgeArr = []
+    massArr = []
+    HeAgeArr = []
     
     firstCFlag = True
     firstCOFlag = True
     firstHHEFlag = True
     pnineFlag = 0
     count = 0
+    flag = True
     for coolingFile in lines:
 
         getData = getCoolingModelData(coolingFile)
@@ -186,13 +189,13 @@ def CoolingModelMass():
             HloggData = HData[:,1]
             HeTeffData = np.array(HeData[:,0]).astype(np.float)
             HeloggData = np.array(HeData[:,1]).astype(np.float)
+            HeAgeData = np.array(HeData[:,-1]).astype(np.float)
             
         else:
             data,Cflag,COFlag,HHeFlag,massVal = getCoolingModelData(coolingFile)
             Teff = np.array(data[:,1]).astype(np.float)
             logg = np.array(data[:,2]).astype(np.float)
             Age = np.array(data[:,4]).astype(np.float)
-            
             
         if Cflag:
             CTeff.append(Teff)
@@ -210,23 +213,31 @@ def CoolingModelMass():
             COTeff.append(Teff)
             COlogg.append(logg)
             AgeArr.append(Age)
+            massArr.append(massVal)
             
             co = 'b'
             count += 1
-            if firstCOFlag and massVal >= 0.45:
-                plt.plot(Teff,logg,color=co,linewidth=1.5,label="CO Core")
-                if not massVal == 1.0:
-                    plt.annotate(str(massVal)+"$M_\odot$",xy=(np.min(Teff),np.max(logg)+0.02),fontsize=24)
-                firstCOFlag = False
+            if firstCOFlag and massVal >= 0.45 and (count %2) == 1:
+                tmp = -1
+                #plt.plot(Teff,logg,color=co,linewidth=1.5,label="CO Core")
+                #if not massVal == 1.0:
+                #    plt.annotate(str(massVal)+"$M_\odot$",xy=(np.min(Teff),np.max(logg)+0.02),fontsize=24)
+                #firstCOFlag = False
             #elif count%2 == 1:
-            elif massVal >= 0.45 and massVal < 1.0:
+            elif massVal >= 0.45 and massVal < 1.0 and (count % 2) == 0:
                 #print coolingFile
                 if pnineFlag < 2:
                     if massVal == 0.9:
                         pnineFlag += 1
-                    plt.plot(Teff,logg,color=co,linewidth=1.5)
-                    if count % 2 == 1 and not massVal == 1.0:
-                        plt.annotate(str(massVal)+"$M_\odot$",xy=(np.min(Teff),np.max(logg)+0.02),fontsize=22)
+                    if massVal == 0.5 and count %2 == 0:
+                        plt.plot(Teff,logg,color=co,linewidth=1.5,label="CO Core")
+                    elif count % 2 == 0 and not massVal == 1.0 and not massVal == 0.5:
+                        if flag:
+                            plt.plot(Teff,logg,color=co,linewidth=1.5)
+                            plt.annotate(str(massVal)+"$M_\odot$",xy=(np.min(Teff),np.max(logg)+0.01),fontsize=22)
+                        flag = True
+                        if massVal == 0.9:
+                            flag = False
 
         
         elif HHeFlag:
@@ -235,13 +246,18 @@ def CoolingModelMass():
             HeTeff.append(HeTeffData)
             Hlogg.append(HloggData)
             Helogg.append(HeloggData)
-            if firstHHEFlag and massVal <= 0.5:
+
+            HeAgeArr.append(HeAgeData)
+
+            
+            
+            if firstHHEFlag and massVal <= 0.5 and massVal > 0.2:
                 #plt.plot(HTeffData,HloggData,color='g',linewidth=1.5,label="H Core")
                 plt.plot(HeTeffData,HeloggData,color='r',linewidth=1.5,label="He Core")
                 #plt.annotate(str(massVal)+"$M_\odot$",xy=(np.min(HeTeffData),np.max(HeloggData)),fontsize=24)
                 firstHHEFlag = False
                 plt.annotate(str(massVal)+"$M_\odot$",xy=(np.min(HeTeffData),np.max(HeloggData)),fontsize=24)
-            elif massVal <= 0.5:
+            elif massVal <= 0.5 and massVal > 0.2:
                 #plt.plot(HTeffData,HloggData,color='g',linewidth=1.5)
                 plt.plot(HeTeffData,HeloggData,color='r',linewidth=1.5)
                 plt.annotate(str(massVal)+"$M_\odot$",xy=(np.min(HeTeffData),np.max(HeloggData)),fontsize=24)
@@ -256,40 +272,117 @@ def CoolingModelMass():
     ## Plot the points
     for key in Objects:
         teff,teffErr,logg,loggErr = np.genfromtxt("/home/seth/research/Paperwds/"+key+"/BICFits/"+key+"_TeffLogg.csv",delimiter=',')
-        plt.errorbar(teff,logg,xerr=teffErr,yerr=loggErr,color='k',marker='o',linewidth=2.5,markersize=8)
+        #plt.errorbar(teff,logg,xerr=teffErr,yerr=loggErr,color='green',marker='o',linewidth=2.5,markersize=11,markeredgecolor='k',markeredgewidth=1.5)
         if key == "wd1203":
-            plt.annotate(key, xy=(teff-9000,logg),fontsize=28)
+            plt.annotate(key, xy=(teff-7500,logg+0.02),fontsize=22)
+        elif key == 'wd0343':
+            plt.annotate(key, xy=(teff+500,logg+0.035),fontsize=22)
         else:
-            plt.annotate(key, xy=(teff,logg),fontsize=28)
+            plt.annotate(key, xy=(teff+500,logg),fontsize=22)
 
     ### Age Lines ###
+
+    ### CO Core age lines
+
     for i in range(len(AgeArr)):
         if AgeArr[i][0] == 0.0:
             AgeArr[i] = AgeArr[i][1:]
             COTeff[i] = COTeff[i][1:]
             COlogg[i] = COlogg[i][1:]
 
-    maxAgeArr = AgeArr[0]#max(AgeArr,key=len)
-    #for i in range(len(AgeArr)):
-    #    print len(AgeArr[i])
-    
-    for i in range(0,len(maxAgeArr),15):
+    maxAgeArr = AgeArr[0] ##max(AgeArr,key=len)
+
+    allTeffArr = []
+    allLoggArr = []
+    for i in range(0,len(maxAgeArr)):
         TeffArr = []
         loggArr = []
-        for j in COTeff:
-            if len(j) > i:
-                TeffArr.append(j[i])
-        for j in COlogg:
-            if len(j) > i:
-                loggArr.append(j[i])
+        count = 0
+        for j in range(len(COTeff)):
+            count += 1
+            if len(COTeff[j]) > i and COmass[j] >= 0.5 and (count % 2) == 0:
+                TeffArr.append(COTeff[j][i])
+        count = 0
+        for j in range(len(COlogg)):
+            count += 1
+            if len(COlogg[j]) > i and COmass[j] >= 0.5 and (count % 2) == 0:
+                loggArr.append(COlogg[j][i])
+        allTeffArr.append(np.array(TeffArr))
+        allLoggArr.append(np.array(loggArr))
 
-        plt.plot(TeffArr,loggArr,ls='--',color='k',alpha=0.5)
-        #plt.annotate("{:.2E}".format(maxAgeArr[i]),xy=(max(TeffArr),9))
+        #plt.plot(TeffArr,loggArr,ls='--',color='b',alpha=0.5)
+        
+    allTeffArr = np.array(allTeffArr)
+    allLoggArr = np.array(allLoggArr)
+    count = 0
+    for key in Objects:
+        teff,teffErr,logg,loggErr = np.genfromtxt("/home/seth/research/Paperwds/"+key+"/BICFits/"+key+"_TeffLogg.csv",delimiter=',')
+        #teff, _, logg, _ = np.genfromtxt("/home/seth/research/Paperwds/"+key+"/BICFits/"+key+"_TeffLogg.csv",delimiter=',')
+        flag = True
+        distArr = []
+        dxArr = []
+        dyArr = []
+        indexArr = []
+        tmpAgeArr = []
+        for i in range(len(allTeffArr)):
+            if not len(allTeffArr[i]) == 0:
+                #allTeffArr[i] = allTeffArr[i][np.where(allLoggArr < 9.0)]
+                #allLoggArr[i] = allLoggArr[i][np.where(allLoggArr < 9.0)]
+                #dx,dy = dist(allTeffArr[i],teff,0,0), dist(logg,allLoggArr[i],0,0)
+                dx = abs(allTeffArr[i] - teff)
+                dy = abs(allLoggArr[i] - logg)
+                #d = dist(allTeffArr[i],allLoggArr[i],teff,logg)
+                dyI = np.argmin(dy)
+                #tmpAgeArr.append(AgeArr[i])
+                dxArr.append(dx[dyI])
+                
+                #print minD
+                indexArr.append(i)
+                #distArr.append(minD)
+                
+        
+
+        index = indexArr[np.argmin(dxArr)]
+        #index = np.where( np.array(allTeffArr) == np.array(tmpx)[np.argmin(dxArr)] )
+        #print index
+        alp = 0.4
+        
+        plt.plot(allTeffArr[index],allLoggArr[index],color='b',ls='--',alpha=alp)
+        fs = 18
+        if key == 'wd1203':
+            plt.annotate(str("{:.2E}".format(maxAgeArr[index]))+"yr",xy=(teff-8500,logg-0.08),color='blue',fontsize=fs)
+        elif key=='wd1121':
+            plt.annotate(str("{:.2E}".format(maxAgeArr[index]))+"yr",xy=(teff+1200,logg-0.1),color='blue',fontsize=fs)
+        elif key=='wd1235':
+            tmp = 1
+        else:
+            plt.annotate(str("{:.2E}".format(maxAgeArr[index]))+"yr",xy=(teff-1000,logg-0.11),color='blue',fontsize=fs)
+
+        #plt.annotate("test",xy=(np.min(allTeffArr[index]),8.6),color='blue')
+        count += 1
+        plt.errorbar(teff,logg,xerr=teffErr,yerr=loggErr,color='green',marker='o',linewidth=2.5,markersize=11,markeredgecolor='k',markeredgewidth=1.5)            
+        
+        
+        
+        #plt.annotate("{:.2E}".format(maxAgeArr[index]),xy=(max(TeffArr),9))
                 
         #TeffArr = [x[i] for x in COTeff]
         #loggArr = [x[i] for x in COlogg]
         #plt.plot(TeffArr,loggArr,ls='--',color='k',alpha=0.5)
 
+    ### He Core Age Lines
+    ####FUCK THIS WE'RE DOING IT MANUALLY
+    for key in Objects:
+        if key == 'wd1235':
+            wd1235teff,teffErr,wd1235logg,loggErr = np.genfromtxt("/home/seth/research/Paperwds/"+key+"/BICFits/"+key+"_TeffLogg.csv",delimiter=',')
+    #        print teff, logg
+    Teffs = [18000,21000,21000,22000]
+    loggs = [6.652,7.246,7.578,7.806]
+    HeAge = [3.224e7]
+
+    plt.plot(Teffs,loggs,color='r',ls='--',alpha=alp)
+    plt.annotate(str("{:.2E}".format(HeAge[0]))+"yr",xy=(wd1235teff,wd1235logg-0.1),color='r',fontsize=fs)
+        
             
     plt.xlim(0,45000)
     plt.ylim(7,8.6)
@@ -754,6 +847,11 @@ def PlotAll():
 def makeVelocityCurves():
     GetModelVelocity()
     PlotVelocities()
+
+def dist(x,y,x2,y2):
+    import numpy as np
+    d = np.sqrt((x-x2)**2 + (y-y2)**2)
+    return d
     
 if __name__ == '__main__':
     #TimePlot()
