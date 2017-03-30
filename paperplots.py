@@ -1,11 +1,41 @@
 ### STUFF FOR PAPER
 
+"""Get AIC Table"""
+def AICTable():
+    import numpy as np
+    from astropy.io import ascii
+    import tools as tls
+
+    lines = [line.rstrip('\n') for line in open('filelist')]
+
+    basename = tls.GetFileName(lines[0])
+    wdName = basename[0:6]
+
+    deltaAIC = np.genfromtxt("AICFits/"+wdName+"_deltaBIC.csv",delimiter=',')
+    noOrbAIC, sineAIC, dAIC = deltaAIC
+
+    numSpec = len(lines)
+
+    AllObjects = {"wd0117":"J011721.34+311650.9","wd0204":"J020439.19+220724.7","wd0309":"J030941.46+005259.4",
+                  "wd0332":"J033205.53+011206.7","wd0343":"J034319.09+101238.0","wd0749":"J074904.33+422420.0",
+                  "wd0859":"J085921.90+043812.3","wd0907":"J090751.78+071844.6","wd0912":"J091215.43+011958.8",
+                  "wd1115":"J111501.16-124217.9","wd1121":"J112105.23+644336.4","wd1137":"J113709.84+003542.9",
+                  "wd1140":"J114024.02+661842.2","wd1203":"J120315.22+650524.4","wd1235":"J123549.89+154319.3",
+                  "wd1306":"J130646.51+152224.9","wd1331":"J133137.06+010632.3","wd1403":"J140327.76+002119.5",
+                  "wd1511":"J151132.20+451732.6","wd1521":"J152125.02+391536.5","wd1541":"J154126.42+371647.6",
+                  "wd1659":"J165923.87+643809.3","wd2051":"J205118.90+031209.4","wd2229":"J222903.69+122928.6",
+                  "wd2349":"J234902.80+355301.0" }
+
+    fullname = AllObjects[wdName]
+
+    print fullname + " & " + str(numSpec) + " & " + str(dAIC)
+
 """Get Teff and Logg with errors from the Kleinman Catalog"""
 def TeffLogg():
     import numpy as np
     from astropy.io import ascii
     
-    Objects = {"wd1235" : "123549.89+154319.3", "wd1203" : "120315.22+650524.4",
+    Objects = {"wd2349" : "234902.80+355301.0","wd1235" : "123549.89+154319.3", "wd1203" : "120315.22+650524.4",
                "wd1140" : "114024.02+661842.3", "wd1121" : "112105.25+644336.2",
                "wd0907" : "090751.78+071844.6", "wd0343" : "034319.09+101238.0"}
 
@@ -29,15 +59,20 @@ def TeffLogg():
                 raise Exception("The object is not found in the catalog")
             
         #objData = kdata[np.where(kdata[0] == Objects[key])]
-
-        objTeff = float(objData[tableHead["Teff"]])
-        objTeffErr = float(objData[tableHead["TeffErr"]])
-        objLogg = float(objData[tableHead["logg"]])
-        objLoggErr = float(objData[tableHead["loggErr"]])
+        if key == 'wd2349':
+            objTeff = float(objData[tableHead["Teff"]-1])
+            objTeffErr = float(objData[tableHead["TeffErr"]-1])
+            objLogg = float(objData[tableHead["logg"]-1])
+            objLoggErr = float(objData[tableHead["loggErr"]-1])
+        else:
+            objTeff = float(objData[tableHead["Teff"]])
+            objTeffErr = float(objData[tableHead["TeffErr"]])
+            objLogg = float(objData[tableHead["logg"]])
+            objLoggErr = float(objData[tableHead["loggErr"]])
 
         dataArr = np.array([objTeff,objTeffErr,objLogg,objLoggErr])
         print key, dataArr
-        np.savetxt("/home/seth/research/Paperwds/"+key+"/BICFits/"+key+"_TeffLogg.csv",dataArr,delimiter=',')
+        np.savetxt("/home/seth/research/Paperwds/"+key+"/AICFits/"+key+"_TeffLogg.csv",dataArr,delimiter=',')
     
     
 """Binary Mass function Calculation"""
@@ -49,8 +84,8 @@ def BinMassFunc():
     basename = tls.GetFileName(lines[0])
     wdName = basename[0:6]
     
-    rvdata = np.genfromtxt("BICFits/"+wdName+"_rvdata.csv",delimiter=',')
-    sineData = np.genfromtxt("BICFits/"+wdName+"_sineParams.csv")
+    rvdata = np.genfromtxt("AICFits/"+wdName+"_rvdata.csv",delimiter=',')
+    sineData = np.genfromtxt("AICFits/"+wdName+"_sineParams.csv")
 
     amp,period,phi,gam = sineData
 
@@ -66,7 +101,7 @@ def BinMassFunc():
     print "Binary mass function output: " + str(Msf) + " Msun"
 
     tmpArr = np.array([Msf])
-    np.savetxt("BICFits/"+wdName+"_BinMassFuncVal.csv",tmpArr,delimiter=',')
+    np.savetxt("AICFits/"+wdName+"_BinMassFuncVal.csv",tmpArr,delimiter=',')
     
     return f
 
@@ -156,9 +191,9 @@ def CoolingModelMass():
     coolingPath = '/home/seth/research/Paperwds/coolingmodels/'
     #coolingFile = "/home/seth/research/Paperwds/coolingmodels/C_0200204"
     lines = [coolingPath+line.rstrip('\n') for line in open(coolingPath+'filelist')]
-    Objects = {"wd1235" : "123549.89+154319.3", "wd1203" : "120315.22+650524.4",
+    Objects = {"wd2349" : "234902.80+355301.0","wd1235" : "123549.89+154319.3", "wd1203" : "120315.22+650524.4",
                "wd1140" : "114024.02+661842.3", "wd1121" : "112105.25+644336.2",
-               "wd0907" : "090751.78+071844.6", "wd0343" : "034319.09+101238.0"}
+               "wd0343" : "034319.09+101238.0"}
 
     
     plot_format()
@@ -271,7 +306,7 @@ def CoolingModelMass():
 
     ## Plot the points
     for key in Objects:
-        teff,teffErr,logg,loggErr = np.genfromtxt("/home/seth/research/Paperwds/"+key+"/BICFits/"+key+"_TeffLogg.csv",delimiter=',')
+        teff,teffErr,logg,loggErr = np.genfromtxt("/home/seth/research/Paperwds/"+key+"/AICFits/"+key+"_TeffLogg.csv",delimiter=',')
         #plt.errorbar(teff,logg,xerr=teffErr,yerr=loggErr,color='green',marker='o',linewidth=2.5,markersize=11,markeredgecolor='k',markeredgewidth=1.5)
         if key == "wd1203":
             plt.annotate(key, xy=(teff-7500,logg+0.02),fontsize=22)
@@ -316,8 +351,8 @@ def CoolingModelMass():
     allLoggArr = np.array(allLoggArr)
     count = 0
     for key in Objects:
-        teff,teffErr,logg,loggErr = np.genfromtxt("/home/seth/research/Paperwds/"+key+"/BICFits/"+key+"_TeffLogg.csv",delimiter=',')
-        #teff, _, logg, _ = np.genfromtxt("/home/seth/research/Paperwds/"+key+"/BICFits/"+key+"_TeffLogg.csv",delimiter=',')
+        teff,teffErr,logg,loggErr = np.genfromtxt("/home/seth/research/Paperwds/"+key+"/AICFits/"+key+"_TeffLogg.csv",delimiter=',')
+        #teff, _, logg, _ = np.genfromtxt("/home/seth/research/Paperwds/"+key+"/AICFits/"+key+"_TeffLogg.csv",delimiter=',')
         flag = True
         distArr = []
         dxArr = []
@@ -346,14 +381,15 @@ def CoolingModelMass():
         #index = np.where( np.array(allTeffArr) == np.array(tmpx)[np.argmin(dxArr)] )
         #print index
         alp = 0.4
-        
+
         plt.plot(allTeffArr[index],allLoggArr[index],color='b',ls='--',alpha=alp)
         fs = 18
+        
         if key == 'wd1203':
             plt.annotate(str("{:.2E}".format(maxAgeArr[index]))+"yr",xy=(teff-8500,logg-0.08),color='blue',fontsize=fs)
         elif key=='wd1121':
             plt.annotate(str("{:.2E}".format(maxAgeArr[index]))+"yr",xy=(teff+1200,logg-0.1),color='blue',fontsize=fs)
-        elif key=='wd1235':
+        elif key=='wd1235' or key=='wd2349':
             tmp = 1
         else:
             plt.annotate(str("{:.2E}".format(maxAgeArr[index]))+"yr",xy=(teff-1000,logg-0.11),color='blue',fontsize=fs)
@@ -374,14 +410,23 @@ def CoolingModelMass():
     ####FUCK THIS WE'RE DOING IT MANUALLY
     for key in Objects:
         if key == 'wd1235':
-            wd1235teff,teffErr,wd1235logg,loggErr = np.genfromtxt("/home/seth/research/Paperwds/"+key+"/BICFits/"+key+"_TeffLogg.csv",delimiter=',')
-    #        print teff, logg
-    Teffs = [18000,21000,21000,22000]
-    loggs = [6.652,7.246,7.578,7.806]
-    HeAge = [3.224e7]
+            wd1235teff,teffErr,wd1235logg,loggErr = np.genfromtxt("/home/seth/research/Paperwds/"+key+"/AICFits/"+key+"_TeffLogg.csv",delimiter=',')
+        elif key == 'wd2349':
+            wd2349teff,teffErr,wd2349logg,loggErr = np.genfromtxt("/home/seth/research/Paperwds/"+key+"/AICFits/"+key+"_TeffLogg.csv",delimiter=',')
+            
+    wd1235Teffs = [18000,21000,21000,22000]
+    wd1235loggs = [6.652,7.246,7.578,7.806]
+    wd1235HeAge = [3.224e7]
 
-    plt.plot(Teffs,loggs,color='r',ls='--',alpha=alp)
-    plt.annotate(str("{:.2E}".format(HeAge[0]))+"yr",xy=(wd1235teff,wd1235logg-0.1),color='r',fontsize=fs)
+    wd2349Age = [2.026e7]
+    wd2349Teffs = [24000,25000,24000,19000]
+    wd2349loggs = [7.797,7.546,7.193,6.576]
+
+    plt.plot(wd2349Teffs,wd2349loggs,color='r',ls='--',alpha=alp)
+    plt.annotate(str("{:.2E}".format(wd2349Age[0]))+"yr",xy=(wd2349teff,wd2349logg+0.1),color='r',fontsize=fs)
+    
+    plt.plot(wd1235Teffs,wd1235loggs,color='r',ls='--',alpha=alp)
+    plt.annotate(str("{:.2E}".format(wd1235HeAge[0]))+"yr",xy=(wd1235teff,wd1235logg-0.1),color='r',fontsize=fs)
         
             
     plt.xlim(0,45000)
@@ -439,7 +484,7 @@ def setFig():
     plt.rcdefaults()
     plt.rcParams.update({'figure.autolayout':'True'})
     #plt.rcParams.update({'font.size': 16})
-    plt.rcParams.update({'font.size': 36})
+    plt.rcParams.update({'font.size': 38})
     plt.rcParams.update({'mathtext.default':'regular'})
     plt.rcParams.update({'mathtext.fontset':'stixsans'})
     plt.rcParams.update({'axes.linewidth': 3.0})
@@ -451,6 +496,7 @@ def setFig():
     plt.rcParams.update({'ytick.major.width': 1.25 })
     plt.rcParams.update({'ytick.minor.size': 2.5})
     plt.rcParams.update({'ytick.minor.width': 1.25 })
+    
     #plt.figure(1,figsize = [11.0, 8.5])
 
 """Plot orbital solution vs time"""
@@ -460,7 +506,8 @@ def TimePlot():
     import numpy as np
     import matplotlib.pyplot as plt
     from matplotlib.ticker import FormatStrFormatter
-
+    from plot_format import plot_format
+    plot_format()
     setFig()
     tls.mkdir("../../PaperPlots")
 
@@ -472,7 +519,7 @@ def TimePlot():
     
     tls.mkdir("../../PaperPlots/"+wdName)
     
-    rvdata = np.genfromtxt("BICFits/"+wdName+"_rvdata.csv",delimiter=',')
+    rvdata = np.genfromtxt("AICFits/"+wdName+"_rvdata.csv",delimiter=',')
     
     timeArr = rvdata[:,0]
     rvArr = rvdata[:,1]
@@ -489,11 +536,12 @@ def TimePlot():
     stdArr = stdArr[wherrSN]
     SNArr = SNArr[wherrSN]
     
-    sineData = np.genfromtxt("BICFits/"+wdName+"_sineParams.csv")
-    amp,period,phi,gam = sineData
-    largeTime = np.linspace(np.min(timeArr)-0.2, np.max(timeArr)+0.2, 5000)
+    sineData = np.genfromtxt("AICFits/"+wdName+"_sineParams.csv",delimiter=',')
+    amp,period,phi,gam = sineData[:,0]
     
-    sineVals = sine(largeTime, sineData[0], sineData[1], sineData[2], sineData[3])
+    largeTime = np.linspace(np.min(timeArr)-0.2, np.max(timeArr)+0.2, 5000)
+    #sineVals = sine(largeTime, sineData[0], sineData[1], sineData[2], sineData[3])
+    sineVals = sine(largeTime, amp, period,phi,gam)
     
     wherr1 = np.where((np.min(timeArr) <= timeArr) & (timeArr <= np.min(timeArr) + 0.5))
     #s2n = Signal2Noise()
@@ -510,9 +558,13 @@ def TimePlot():
     
     ## Plotting
     off = 55950
+    #plot_format()
+    
     for i in range(len(axes)):
-        axes[i].errorbar(timeArr-off,rvArr,yerr=stdArr,ls="None",marker='o',markersize=10)
-        axes[i].plot(largeTime-off,sineVals,color='k')
+        axes[i].tick_params(labelsize=36)
+        #axes[i].tick_params({'fontsize': 36})
+        axes[i].errorbar(timeArr-off,rvArr,yerr=stdArr,ls="None",marker='o',markersize=14)
+        axes[i].plot(largeTime-off,sineVals,color='k',linewidth=3.0)
         #ax2 = axes[i].twinx()
         #ax2.plot(timeArr,SNArr,ls="None",marker='o',color='r',markersize=10)
         #ax2.set_ylabel("Signal to Noise Ratio", color='r')
@@ -523,16 +575,17 @@ def TimePlot():
             axes[i].xaxis.set_ticks([wherrArr[i]-off])
         else:
             axes[i].set_xlim(min(wherrArr[i])-off-0.005,max(wherrArr[i])-off+0.005)
-            axes[i].xaxis.set_ticks(np.arange(min(wherrArr[i])-off,max(wherrArr[i])-off,0.02))
+            axes[i].xaxis.set_ticks(np.arange(min(wherrArr[i])-off,max(wherrArr[i])-off,0.04))
+            
         axes[i].yaxis.tick_left()
         axes[i].ticklabel_format(useOffset=False)
         axes[i].xaxis.set_major_formatter(FormatStrFormatter('%.3f'))
         #axes[i].set_ylim(-400,400)
-        axes[i].set_ylim(-350,350)
+        #axes[i].set_ylim(-350,350)
         #axes[i].xaxis.get_offset_text().set_visible(False) #remove scientific notation
         axes[i].set_xlabel("MJD [days - "+str(off)+"]")
-        plt.setp(axes[i].get_xticklabels(), rotation=25, horizontalalignment='right')
         #if i == int(len(axes)/2):
+        plt.setp(axes[i].get_xticklabels(), rotation=25, horizontalalignment='right')
         #
         #    axes[i].set_title(wdName)
         if i == 0:
@@ -554,7 +607,7 @@ def PhasePlot():
     import numpy as np
     import matplotlib.pyplot as plt
     from plot_format import plot_format
-    from matplotlib.ticker import MaxNLocator
+    from matplotlib.ticker import MaxNLocator, FormatStrFormatter, MultipleLocator
     #setFig()
     tls.mkdir("../../PaperPlots")
 
@@ -565,7 +618,7 @@ def PhasePlot():
 
     tls.mkdir("../../PaperPlots/"+wdName)
     
-    rvdata = np.genfromtxt("BICFits/"+wdName+"_rvdata.csv",delimiter=',')
+    rvdata = np.genfromtxt("AICFits/"+wdName+"_rvdata.csv",delimiter=',')
     
     timeArr = rvdata[:,0]
     rvArr = rvdata[:,1]
@@ -581,7 +634,8 @@ def PhasePlot():
     rvArr = rvArr[wherrSN]
     stdArr = stdArr[wherrSN]
     
-    sineData = np.genfromtxt("BICFits/"+wdName+"_sineParams.csv")
+    sineData = np.genfromtxt("AICFits/"+wdName+"_sineParams.csv",delimiter=',')
+    sineData = sineData[:,0]
     
     largeTime = np.linspace(np.min(timeArr), np.max(timeArr), 5000)
     
@@ -611,26 +665,32 @@ def PhasePlot():
     plot_format()
     setFig()
     plt.figure(1).add_axes((.1,.3,.8,.6))
-    plt.plot(angles,sine(angles,AFit,2*np.pi,0,GamFit),'k--')
-    plt.gca().yaxis.set_major_locator(MaxNLocator(prune='lower'))
+    plt.plot(angles,sine(angles,AFit,2*np.pi,0,GamFit),color='k',ls='--',linewidth=3.0)
+    #plt.gca().yaxis.set_major_locator(MaxNLocator(nbins=7,prune='lower'))
+    #plt.gca().yaxis.set_ticks(np.arange(min(yvalues),max(yvalues)))
+    plt.gca().yaxis.set_ticks([-200,-100,0,100,200])
     plt.gca().xaxis.set_ticks([])
     plt.title(wdName+" Phase")
     plt.ylabel("RV [km/s]")
     plt.xlim(0,2*np.pi)
-    plt.errorbar(phiDiagArr,rvArr,yerr=stdArr,linestyle='None',marker='o',markersize=10)
+    plt.errorbar(phiDiagArr,rvArr,yerr=stdArr,linestyle='None',marker='o',markersize=14)
 
     ## Residuals
-    plt.figure(1).add_axes((.1,.1,.8,.2))
-    plt.gca().xaxis.set_ticks(np.arange(min(angles),max(angles),np.pi/2))
-    plt.gca().yaxis.set_ticks([-150,0,150])
-    plt.errorbar(phiDiagArr,residuals,yerr=stdArr,linestyle="None",marker="o",markersize=10)
+    plt.figure(1).add_axes((.1,.15,.8,.2))
+    plt.gca().xaxis.set_ticks(np.arange(min(angles),max(angles)+np.pi/2,np.pi/2))
+    #print np.arange(min(angles),max(angles)+np.pi/2,np.pi/2)
+    plt.gca().xaxis.set_ticklabels(['0','$\pi/2$','$\pi$','$3\pi/2$','$2\pi$'])
+    #plt.gca().xaxis.set_major_formatter(FormatStrFormatter('%g $\pi$'))
+    #plt.gca().xaxis.set_major_locator(MultipleLocator(base=0.5))
+    plt.gca().yaxis.set_ticks([-200,0,200])
+    plt.errorbar(phiDiagArr,residuals,yerr=stdArr,linestyle="None",marker="o",markersize=14)
     #plt.gca().yaxis.set_major_locator(MaxNLocator(prune='upper'))
-    plt.gca().xaxis.set_major_locator(MaxNLocator(prune='lower'))
+    #plt.gca().xaxis.set_major_locator(MaxNLocator(prune='lower'))
     plt.xlabel("Phase [rad]")
     plt.xlim(0,2*np.pi)
     #plt.ylim(-200,200)
     plt.axhline(0,linestyle="--",color="black",alpha=0.5)
-
+    
     if platform == 'cygwin':
         #plt.savefig("/home/seth/Dropbox/astro_research/PaperPlots/"+wdName+"/"+wdName+"_phase.pdf")
         plt.savefig("/cygdrive/c/Users/seth/Dropbox/astro_research/PaperPlots/"+wdName+"/"+wdName+"_phase.pdf")
@@ -674,9 +734,14 @@ def LatexTable():
     basename = tls.GetFileName(lines[0])
     wdName = basename[0:6]
 
-    rvdata = np.genfromtxt("BICFits/"+wdName+"_rvdata.csv",delimiter=',')
+    rvdata = np.genfromtxt("AICFits/"+wdName+"_rvdata.csv",delimiter=',')
+    sineData = np.genfromtxt("AICFits/"+wdName+"_sineParams.csv",delimiter=',')
+    sine = sineData[:,0]
+    sineErr = sineData[:,1]
 
-    Objects = {"wd1235" : "J123549.89+154319.3", "wd1203" : "J120315.22+650524.4",
+
+
+    Objects = {"wd2349" : "234902.80+355301.0","wd1235" : "J123549.89+154319.3", "wd1203" : "J120315.22+650524.4",
                "wd1140" : "J114024.02+661842.3", "wd1121" : "J112105.25+644336.2",
                "wd0907" : "J090751.78+071844.6", "wd0343" : "J034319.09+101238.0"}
 
@@ -687,6 +752,16 @@ def LatexTable():
     rvArr = rvdata[:,1]
     stdArr = rvdata[:,2]
 
+    ### Sine params
+    sineCol = []
+    nameCol = []
+    row = [fullName,"$" + str("{0:.2f}".format(sine[0])) + " " + plusminus + str("{0:.2f}".format(sineErr[0]))+"$","$" + str("{0:.2E}".format(sine[1])) + " " + plusminus + str("{0:.2E}".format(sineErr[1]))+"$",
+           "$" + str("{0:.2f}".format(sine[2])) + " " + plusminus + str("{0:.2f}".format(sineErr[2])) + "$","$" + str("{0:.2f}".format(sine[3])) + " " + plusminus + str("{0:.2f}".format(sineErr[3]))+ "$"]
+    print "&".join(row)
+    #ascii.write(row,format='latex')
+        
+        
+    ### RVS
     nameCol = []
     rvCol = []
     for i in range(len(rvArr)):
@@ -698,7 +773,7 @@ def LatexTable():
         else:
             nameCol.append("...")
             
-    ascii.write([nameCol,timeArr,rvCol],format="latex")
+    #ascii.write([nameCol,timeArr,rvCol],format="latex")
 
 """Velocity plots"""
 
@@ -742,7 +817,7 @@ def GetModelVelocity(Hline="gamma"):
     gw = modelSamples[3].mean()
 
     modelParams = np.array([ld,lw,gd,gw])
-    np.savetxt("BICFits/"+wdName+"_"+Hline+"_modelParams.csv",modelParams,delimiter=',')
+    np.savetxt("AICFits/"+wdName+"_"+Hline+"_modelParams.csv",modelParams,delimiter=',')
 
 """Actually plot the velocity curves"""
 def PlotVelocities(Hline="gamma"):
@@ -837,6 +912,79 @@ def PlotVelocities(Hline="gamma"):
         plt.savefig("/home/seth/Dropbox/astro_research/PaperPlots/"+wdName+"/"+wdName+"_phase.pdf")
 
     plt.savefig("../../PaperPlots/"+wdName+"/"+wdName+"_velocity.pdf")
+
+def PlotOneVelocity(Hline='gamma'):
+    import os
+    import tools as tls
+    from plot_format import plot_format
+    from sys import platform
+    import numpy as np
+    from matplotlib.ticker import MaxNLocator, MultipleLocator
+    import matplotlib.pyplot as plt
+    
+    HLines = { "beta" : 0, "gamma" : 1, "delta" : 2 }
+    Hl = HLines[Hline]
+    lines = [line.rstrip('\n') for line in open('filelist')]
+    tmppath = lines[0]
+    basename = os.path.basename(tmppath)[:-5]
+    wdName = basename[0:6]
+
+    minorLocator = MultipleLocator(100)
+    
+    ld,lw,gd,gw = np.genfromtxt("BICFits/"+wdName+"_"+Hline+"_modelParams.csv",delimiter=',')
+    rvdata = np.genfromtxt("BICFits/"+wdName+"_rvdata.csv",delimiter=',')
+    rvdataclone = np.genfromtxt("BICFits/"+wdName+"_rvdata.csv",delimiter=',')
+    
+    timeArr = rvdata[:,0]
+    rvArr = rvdata[:,1]
+    stdArr = rvdata[:,2]    
+
+    ind = np.argmax(rvArr)
+
+    path = lines[ind]
+    vels,fluxes,ferrs = tls.GetAllVelocities(path)
+    vels = vels[Hl]
+    fluxes = fluxes[Hl]
+    ferrs = ferrs[Hl]
+    rv = rvArr[ind]
+    std = stdArr[ind]
+    modelLW = 3.0
+    vpstd = voigt(vels,ld,lw,gd,gw,rv+std)
+    vnstd = voigt(vels,ld,lw,gd,gw,rv-std)
+    pstd = rv+std
+    nstd = rv-std
+    stdalph = 0.6
+
+    setFig()
+    plot_format()
+    setFig()
+    plt.step(vels,fluxes,where='mid',linewidth=2.0,color='k')
+    plt.plot(vels,voigt(vels,ld,lw,gd,gw,rv),color='r',linewidth=modelLW,label='Best Fit')
+    plt.plot(vels,vpstd,color='cyan',linewidth=modelLW,alpha=stdalph,label='Best fit $\pm$ std')
+    plt.plot(vels,vnstd,color='cyan',linewidth=modelLW,alpha=stdalph)
+
+    plt.axvspan(nstd,pstd,color='grey',alpha=0.5)
+    plt.axvline(0,color='k',ls='--',linewidth=2.0)
+
+    plt.ylabel("Normalized Flux + offset")
+    plt.xlabel("Velocity [km s$^{-1}$]")
+    plt.xlim(-1500,1500)
+    plt.gca().xaxis.set_ticks([-1000,-500,0,500,1000])
+    plt.gca().xaxis.set_minor_locator(minorLocator)
+    plt.xticks(rotation=25)
+
+    plt.tick_params(which='both',width=1.5)
+    plt.tick_params(which='minor',length=7)
+    plt.ylim(min(fluxes-0.2),max(fluxes)+0.2)
+    
+    if platform == 'cygwin':
+        #plt.savefig("/home/seth/Dropbox/astro_research/PaperPlots/"+wdName+"/"+wdName+"_phase.pdf")
+        plt.savefig("/cygdrive/c/Users/seth/Dropbox/astro_research/PaperPlots/"+wdName+"/"+wdName+"_velocity.pdf")
+    else:
+        plt.savefig("/home/seth/Dropbox/astro_research/PaperPlots/"+wdName+"/"+wdName+"_phase.pdf")
+
+    plt.savefig("../../PaperPlots/"+wdName+"/"+wdName+"_velocity.pdf")
+
     
     
 def PlotAll():
@@ -855,11 +1003,13 @@ def dist(x,y,x2,y2):
     
 if __name__ == '__main__':
     #TimePlot()
-    #PhasePlot()
+    PhasePlot()
     #PlotAll()
     #LatexTable()
     #BinMassFunc()
     #GetModelVelocity()
+    #PlotOneVelocity()
     #PlotVelocities()
-    CoolingModelMass()
+    #CoolingModelMass()
     #TeffLogg()
+    #AICTable()
