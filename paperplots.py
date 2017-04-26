@@ -664,8 +664,10 @@ def PhasePlot():
 
     plot_format()
     setFig()
+
+    plt.figure(1).set_size_inches(30,20)
     plt.figure(1).add_axes((.1,.3,.8,.6))
-    plt.plot(angles,sine(angles,AFit,2*np.pi,0,GamFit),color='k',ls='--',linewidth=3.0)
+    plt.plot(angles,sine(angles,AFit,2*np.pi,0,GamFit),color='k',ls='--',linewidth=8.0)
     #plt.gca().yaxis.set_major_locator(MaxNLocator(nbins=7,prune='lower'))
     #plt.gca().yaxis.set_ticks(np.arange(min(yvalues),max(yvalues)))
     plt.gca().yaxis.set_ticks([-200,-100,0,100,200])
@@ -673,9 +675,10 @@ def PhasePlot():
     plt.title(wdName+" Phase")
     plt.ylabel("RV [km/s]")
     plt.xlim(0,2*np.pi)
-    plt.errorbar(phiDiagArr,rvArr,yerr=stdArr,linestyle='None',marker='o',markersize=14)
+    plt.errorbar(phiDiagArr,rvArr,yerr=stdArr,linestyle='None',marker='o',markersize=28)
 
     ## Residuals
+    #plt.figure(1).add_axes((.1,.15,.8,.2))
     plt.figure(1).add_axes((.1,.15,.8,.2))
     plt.gca().xaxis.set_ticks(np.arange(min(angles),max(angles)+np.pi/2,np.pi/2))
     #print np.arange(min(angles),max(angles)+np.pi/2,np.pi/2)
@@ -683,19 +686,20 @@ def PhasePlot():
     #plt.gca().xaxis.set_major_formatter(FormatStrFormatter('%g $\pi$'))
     #plt.gca().xaxis.set_major_locator(MultipleLocator(base=0.5))
     plt.gca().yaxis.set_ticks([-200,0,200])
-    plt.errorbar(phiDiagArr,residuals,yerr=stdArr,linestyle="None",marker="o",markersize=14)
+    plt.errorbar(phiDiagArr,residuals,yerr=stdArr,linestyle="None",marker="o",markersize=28)
     #plt.gca().yaxis.set_major_locator(MaxNLocator(prune='upper'))
     #plt.gca().xaxis.set_major_locator(MaxNLocator(prune='lower'))
     plt.xlabel("Phase [rad]")
     plt.xlim(0,2*np.pi)
     #plt.ylim(-200,200)
-    plt.axhline(0,linestyle="--",color="black",alpha=0.5)
+    plt.axhline(0,linestyle="--",color="black",alpha=0.5,linewidth=8.0)
     
     if platform == 'cygwin':
         #plt.savefig("/home/seth/Dropbox/astro_research/PaperPlots/"+wdName+"/"+wdName+"_phase.pdf")
         plt.savefig("/cygdrive/c/Users/seth/Dropbox/astro_research/PaperPlots/"+wdName+"/"+wdName+"_phase.pdf")
     else:
         plt.savefig("/home/seth/Dropbox/astro_research/PaperPlots/"+wdName+"/"+wdName+"_phase.pdf")
+    plt.savefig("/home/seth/research/tmp/"+wdName+"_phase.png")
     plt.savefig("../../PaperPlots/"+wdName+"/"+wdName+"_phase.pdf")
     #plt.show()
 
