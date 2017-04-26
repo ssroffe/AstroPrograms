@@ -464,7 +464,7 @@ noOrbBIC = -2*lnlikeNoOrbit(mparam,timeArr,rvArr,stdArr)+2*noOrbk + ( (2*noOrbk*
 sineParams = (Afit,Pfit,Phfit,Gfit)
 sinek = 4
 #sineBIC = -2*lnlikeSine(sineParams,timeArr,rvArr,stdArr)+sinek*np.log(len(timeArr))
-sineBIC = -2*lnlikeNoOrbit(mparam,timeArr,rvArr,stdArr)+2*sinek + ( (2*sinek*(sinek+1)) / (len(timeArr) - sinek - 1))
+sineBIC = -2*lnlikeSine(sineParams,timeArr,rvArr,stdArr)+2*sinek + ( (2*sinek*(sinek+1)) / (len(timeArr) - sinek - 1))
 
 deltaBIC = noOrbBIC - sineBIC
 

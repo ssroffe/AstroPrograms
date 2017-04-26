@@ -254,7 +254,7 @@ for j in range(len(lines)):
     wdName = basename[0:6]
     #timeTaken = basename[15:]
 
-rvdata = np.genfromtxt("BICFits/"+wdName+"_rvdata.csv",delimiter=',')
+rvdata = np.genfromtxt("AICFits/"+wdName+"_rvdata.csv",delimiter=',')
 
 timeArr = rvdata[:,0]
 rvArr = rvdata[:,1]
@@ -301,7 +301,7 @@ middles = np.array([(Amin+Amax)/2,(Pmin+Pmax)/2,(Phimin+Phimax)/2,(GamMin+GamMax
 #mparam = sp.minimize(nllNoOrb,[minit],args=(timeArr,rvArr,stdArr))["x"]
 #print mparam
 
-wgtAvg = (np.sum(rvArr * stdArr**(-2))) / np.sum(stdArr[i]**(-2))
+wgtAvg = (np.sum(rvArr * stdArr**(-2))) / np.sum(stdArr**(-2))
 wgtStd = 1 / (np.sum(stdArr**(-2)))
 mparam = wgtAvg
 
@@ -390,7 +390,7 @@ noOrbBIC = -2*lnlikeNoOrbit(mparam,timeArr,rvArr,stdArr)+2*noOrbk + ( (2*noOrbk*
 sineParams = (Afit,Pfit,Phfit,Gfit)
 sinek = 4
 #sineBIC = -2*lnlikeSine(sineParams,timeArr,rvArr,stdArr)+sinek*np.log(len(timeArr))
-sineBIC = -2*lnlikeNoOrbit(mparam,timeArr,rvArr,stdArr)+2*sinek + ( (2*sinek*(sinek+1)) / (len(timeArr) - sinek - 1))
+sineBIC = -2*lnlikeSine(sineParams,timeArr,rvArr,stdArr)+2*sinek + ( (2*sinek*(sinek+1)) / (len(timeArr) - sinek - 1))
 
 deltaBIC = noOrbBIC - sineBIC
 
