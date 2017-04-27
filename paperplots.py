@@ -11,7 +11,7 @@ def AICTable():
     basename = tls.GetFileName(lines[0])
     wdName = basename[0:6]
 
-    deltaAIC = np.genfromtxt("AICFits/"+wdName+"_deltaBIC.csv",delimiter=',')
+    deltaAIC = np.genfromtxt("AICFits/"+wdName+"_deltaAIC.csv",delimiter=',')
     noOrbAIC, sineAIC, dAIC = deltaAIC
 
     numSpec = len(lines)

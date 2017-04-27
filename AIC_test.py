@@ -73,7 +73,8 @@ sineAIC = -2*lnlikeSine(sineParams,timeArr,rvArr,stdArr)+2*sinek + ( (2*sinek*(s
 
 deltaAIC = noOrbAIC - sineAIC
 
-print(noOrbAIC,sineAIC,deltaAIC)
+#print(noOrbAIC,sineAIC,deltaAIC)
+
 #bicFile = open("AICFits/"+wdName+"_BICCalc.txt",'w')
 #bicFile.write("Orbit eqn: v(t) = {0:.3f}*sin(2*pi*(t/{1:.3f}) + {2:.3f}) + {3:.3f}\n".format(Afit,Pfit,Phfit,Gfit))
 #bicFile.write("No Orbit eqn: v(t) = {0:.3f}\n".format(float(mparam)))
@@ -81,4 +82,5 @@ print(noOrbAIC,sineAIC,deltaAIC)
 #bicFile.write("Sine AIC = {0:.3f}\n".format(float(sineBIC)))
 #bicFile.write("Delta AIC = noOrbBIC - sineBIC = {0:.3f}".format(float(deltaBIC)))
 #bicFile.close()
-#deltaBICArr = np.array([noOrbBIC, sineBIC, deltaBIC])
+deltaAICArr = np.array([noOrbAIC, sineAIC, deltaAIC])
+np.savetxt("AICFits/"+wdName+"_deltaAIC.csv",deltaAICArr,delimiter=',')
