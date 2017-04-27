@@ -191,7 +191,10 @@ def CoolingModelMass():
     coolingPath = '/home/seth/research/Paperwds/coolingmodels/'
     #coolingFile = "/home/seth/research/Paperwds/coolingmodels/C_0200204"
     lines = [coolingPath+line.rstrip('\n') for line in open(coolingPath+'filelist')]
-    Objects = {"wd2349" : "234902.80+355301.0","wd1235" : "123549.89+154319.3", "wd1203" : "120315.22+650524.4",
+    #Objects = {"wd2349" : "234902.80+355301.0","wd1235" : "123549.89+154319.3", "wd1203" : "120315.22+650524.4",
+    #           "wd1140" : "114024.02+661842.3", "wd1121" : "112105.25+644336.2",
+    #           "wd0343" : "034319.09+101238.0"}
+    Objects = {"wd2349" : "234902.80+355301.0","wd1235" : "123549.89+154319.3", 
                "wd1140" : "114024.02+661842.3", "wd1121" : "112105.25+644336.2",
                "wd0343" : "034319.09+101238.0"}
 
@@ -699,7 +702,7 @@ def PhasePlot():
         plt.savefig("/cygdrive/c/Users/seth/Dropbox/astro_research/PaperPlots/"+wdName+"/"+wdName+"_phase.pdf")
     else:
         plt.savefig("/home/seth/Dropbox/astro_research/PaperPlots/"+wdName+"/"+wdName+"_phase.pdf")
-    plt.savefig("/home/seth/research/tmp/"+wdName+"_phase.png")
+    #plt.savefig("/home/seth/research/tmp/"+wdName+"_phase.png")
     plt.savefig("../../PaperPlots/"+wdName+"/"+wdName+"_phase.pdf")
     #plt.show()
 
@@ -1007,13 +1010,13 @@ def dist(x,y,x2,y2):
     
 if __name__ == '__main__':
     #TimePlot()
-    PhasePlot()
+    #PhasePlot()
     #PlotAll()
     #LatexTable()
     #BinMassFunc()
     #GetModelVelocity()
     #PlotOneVelocity()
     #PlotVelocities()
-    #CoolingModelMass()
+    CoolingModelMass()
     #TeffLogg()
     #AICTable()
