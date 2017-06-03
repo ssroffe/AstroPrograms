@@ -56,7 +56,7 @@ def lnprobSine(p,x,y,err):
 
     lp = lnpriorSine(p)
     if not np.isfinite(lp):
-        return -np.inf,None
+        return -np.inf
 
     ll_fg = lnlikeSine_fg(p,x,y,err)
     arg1 = ll_fg + np.log(Q)
@@ -65,7 +65,7 @@ def lnprobSine(p,x,y,err):
     arg2 = ll_bg + np.log(1.0 - Q)
 
     ll = np.sum(np.logaddexp(arg1,arg2))
-    return lp + ll, (arg1,arg2)
+    return lp + ll
 
 
 def lnpriorSine(p):
