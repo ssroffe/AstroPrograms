@@ -47,8 +47,8 @@ def lnlikeSine_fg(p,x,y,err):
     return -0.5 * (((model - y) / err) ** 2 + 2 * np.log(err))
 
 def lnlikeSine_bg(p,x,y,err):
-    _,_, Q, M, lnV = p
-    var = np.exp(lnV) + yerr**2
+    _,_,_,_, Q, M, lnV = p
+    var = np.exp(lnV) + err**2
     return -0.5 * ((M - y) **2 / var + np.log(var))
 
 def lnprobSine(p,x,y,err):
@@ -61,7 +61,7 @@ def lnprobSine(p,x,y,err):
     ll_fg = lnlikeSine_fg(p,x,y,err)
     arg1 = ll_fg + np.log(Q)
 
-    ll_bg = lnlikeSine_bg(p)
+    ll_bg = lnlikeSine_bg(p,x,y,err)
     arg2 = ll_bg + np.log(1.0 - Q)
 
     ll = np.sum(np.logaddexp(arg1,arg2))
