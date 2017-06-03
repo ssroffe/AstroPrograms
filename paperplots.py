@@ -28,7 +28,7 @@ def AICTable():
 
     fullname = AllObjects[wdName]
 
-    print fullname + " & " + str(numSpec) + " & " + str(dAIC)
+    print(fullname + " & " + str(numSpec) + " & " + str(dAIC))
 
 """Get Teff and Logg with errors from the Kleinman Catalog"""
 def TeffLogg():
@@ -55,7 +55,7 @@ def TeffLogg():
                     #print splitline
                     break
             if not foundObj:
-                print key
+                print(key)
                 raise Exception("The object is not found in the catalog")
             
         #objData = kdata[np.where(kdata[0] == Objects[key])]
@@ -71,7 +71,7 @@ def TeffLogg():
             objLoggErr = float(objData[tableHead["loggErr"]])
 
         dataArr = np.array([objTeff,objTeffErr,objLogg,objLoggErr])
-        print key, dataArr
+        print(key, dataArr)
         np.savetxt("/home/seth/research/Paperwds/"+key+"/AICFits/"+key+"_TeffLogg.csv",dataArr,delimiter=',')
     
     
@@ -98,7 +98,7 @@ def BinMassFunc():
 
     Msf = f/(1.989 * 10**30)
     
-    print "Binary mass function output: " + str(Msf) + " Msun"
+    print("Binary mass function output: " + str(Msf) + " Msun")
 
     tmpArr = np.array([Msf])
     np.savetxt("AICFits/"+wdName+"_BinMassFuncVal.csv",tmpArr,delimiter=',')
@@ -175,8 +175,8 @@ def getCoolingModelData(path):
                     newLine = filelines[i] + filelines[i+1] + filelines[i+2]
                     data.append(newLine)
             except IndexError:
-                print path
-                print filelines[i]
+                print(path)
+                print(filelines[i])
                 raise
 
     
@@ -764,7 +764,7 @@ def LatexTable():
     nameCol = []
     row = [fullName,"$" + str("{0:.2f}".format(sine[0])) + " " + plusminus + str("{0:.2f}".format(sineErr[0]))+"$","$" + str("{0:.2E}".format(sine[1])) + " " + plusminus + str("{0:.2E}".format(sineErr[1]))+"$",
            "$" + str("{0:.2f}".format(sine[2])) + " " + plusminus + str("{0:.2f}".format(sineErr[2])) + "$","$" + str("{0:.2f}".format(sine[3])) + " " + plusminus + str("{0:.2f}".format(sineErr[3]))+ "$"]
-    print "&".join(row)
+    print("&".join(row))
     #ascii.write(row,format='latex')
         
         

@@ -480,7 +480,7 @@ def GetVelArr(path,lineIndex):
     #lineWindows = np.array([[4060.0, 4150.0], [4300.0,4400.0], [4800.0,4950.0]])
     lineNames = np.array(["Halpha","Hbeta","Hgamma","Hdelta","Hepsilon","H9","H10"])
 
-    print "Obtaining "+lineNames[lineIndex]+" velocities"
+    print("Obtaining "+lineNames[lineIndex]+" velocities")
 
     #offset = 30
     offset = 25
@@ -649,7 +649,7 @@ def savitzky_golay(y, window_size, order, deriv=0, rate=1):
     try:
         window_size = np.abs(np.int(window_size))
         order = np.abs(np.int(order))
-    except ValueError, msg:
+    except ValueError:
         raise ValueError("window_size and order have to be of type int")
     if window_size % 2 != 1 or window_size < 1:
         raise TypeError("window_size size must be a positive odd number")
