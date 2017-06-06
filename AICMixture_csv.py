@@ -56,7 +56,7 @@ def lnprobSine(p,x,y,err):
 
     lp = lnpriorSine(p)
     if not np.isfinite(lp):
-        return -np.inf
+        return -np.inf, None
 
     ll_fg = lnlikeSine_fg(p,x,y,err)
     arg1 = ll_fg + np.log(Q)
@@ -65,13 +65,13 @@ def lnprobSine(p,x,y,err):
     arg2 = ll_bg + np.log(1.0 - Q)
 
     ll = np.sum(np.logaddexp(arg1,arg2))
-    return lp + ll
+    return lp + ll, (arg1, arg2)
 
 
 def lnpriorSine(p):
     A,P,Phi,Gamma,Q,M,lnV = p
     #minimum at 0.02 days for P
-    bounds = [(5.0,500.0),(0.02,0.1),(0.0,2*np.pi),(-500.0,500.0),(0,1),(-2.4,2.4),(-7.2,5.2)]
+    bounds = [(5.0,500.0),(0.02,0.1),(0.0,2*np.pi),(-500.0,500.0),(0,1),(-250.0,250),(-500.0,500.0)]
     if not all(b[0] < v < b[1] for v,b in zip(p,bounds)):
         return -np.inf
     return 0
@@ -287,7 +287,14 @@ walkers,dim = 200,7
 
 pos = [middles + 1e-4*np.random.randn(dim) for i in range(walkers)]
 
-sampler = tls.MCMCfit(lnprobSine,args=(timeArr,rvArr,stdArr),nwalkers=walkers,ndim=7,burnInSteps=250000,steps=250000,p=pos)
+#sampler = tls.MCMCfit(lnprobSine,args=(timeArr,rvArr,stdArr),nwalkers=walkers,ndim=7,burnInSteps=250000,steps=250000,p=pos)
+sampler = mc.EnsembleSampler(walkers,dim,lnprobSine, args=(timeArr,rvArr,stdArr))
+
+p0, _, _, _ = sampler.run_mcmc(pos, 200000)
+
+sampler.reset()
+
+sampler.run_mcmc(p0, 200000)
 
 tls.plotchains(sampler,7,"AICFits/"+wdName,"chains.pdf")
 
@@ -310,6 +317,7 @@ for i in range(sampler.chain.shape[1]):
         norm += 1
 post_prob /= norm
 
+print(", ".join(map("{0:.3f}".format,post_prob)))
 
 AmpArr = samples[0]
 PerArr = samples[1]
@@ -341,6 +349,9 @@ AArr = []
 PArr = []
 PhArr = []
 GArr = []
+QArr = []
+MArr = []
+lnVArr = []
 
 #plot_format()
 #plt.errorbar(timeArr,rvArr,yerr=stdArr,linestyle='None',marker='o')
@@ -357,16 +368,19 @@ GArr = []
 plot_format()
 plt.subplot(4,1,1)
 plt.errorbar(timeArr,rvArr,yerr=stdArr,linestyle='None',marker='o')
-for A,P,Ph,Gam in samplesChain[np.random.randint(len(samplesChain),size=5000)]:
+for A,P,Ph,Gam, Q, M, lnV in samplesChain[np.random.randint(len(samplesChain),size=5000)]:
     #plt.plot(newTime,sine(newTime,A,P,Ph,Gam),color='k',alpha=0.01)
     AArr.append(A)
     PArr.append(P)
     PhArr.append(Ph)
     GArr.append(Gam)
+    QArr.append(Q)
+    MArr.append(M)
+    lnVArr.append(lnV)
     #print A,P,Ph,Gam
 
-nll = lambda *args: -lnprobSine(*args)
-results = sp.minimize(nll, [AArr[-1],PArr[-1],PhArr[-1],GArr[-1]],args=(timeArr,rvArr,stdArr))
+nll = lambda *args: -lnprobSine(*args)[0]
+results = sp.minimize(nll, [AArr[-1],PArr[-1],PhArr[-1],GArr[-1],QArr[-1],MArr[-1],lnVArr[-1]],args=(timeArr,rvArr,stdArr))
 
 Astd = np.array(AArr).std()
 Pstd = np.array(PArr).std()
@@ -375,7 +389,7 @@ Gstd = np.array(GArr).std()
 
 #print results
 params = []
-Afit,Pfit,Phfit,Gfit = results["x"]
+Afit,Pfit,Phfit,Gfit, Qfit, Mfit, lnVfit = results["x"]
 #params = [AArr[-1],PArr[-1],PhArr[-1],GArr[-1]]
 params = [(Afit,Astd),(Pfit,Pstd),(Phfit,Phstd),(Gfit,Gstd)]
 
@@ -388,7 +402,7 @@ noOrbk = 1
 noOrbBIC = -2*lnlikeNoOrbit(mparam,timeArr,rvArr,stdArr)+2*noOrbk + ( (2*noOrbk*(noOrbk+1)) / (len(timeArr) - noOrbk - 1))
 
 sineParams = (Afit,Pfit,Phfit,Gfit,Q,M,lnV)
-sinek = 4
+sinek = 7
 #sineBIC = -2*lnlikeSine(sineParams,timeArr,rvArr,stdArr)+sinek*np.log(len(timeArr))
 sineBIC = -2*lnlikeSine_fg(sineParams,timeArr,rvArr,stdArr)+2*sinek + ( (2*sinek*(sinek+1)) / (len(timeArr) - sinek - 1))
 

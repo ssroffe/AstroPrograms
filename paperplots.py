@@ -1009,13 +1009,13 @@ def dist(x,y,x2,y2):
     return d
     
 if __name__ == '__main__':
-    #TimePlot()
-    #PhasePlot()
+    TimePlot()
+    PhasePlot()
     #PlotAll()
     #LatexTable()
     #BinMassFunc()
     #GetModelVelocity()
-    PlotOneVelocity()
+    #PlotOneVelocity()
     #PlotVelocities()
     #CoolingModelMass()
     #TeffLogg()
